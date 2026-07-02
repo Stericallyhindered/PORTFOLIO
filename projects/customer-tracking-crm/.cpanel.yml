@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/username/public_html/customertracking
+    - /bin/cp -R server.js $DEPLOYPATH
+    - /bin/cp -R package.json $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH/uploads
+    - /bin/touch $DEPLOYPATH/database.sqlite
+    - /bin/chmod 755 $DEPLOYPATH/uploads
+    - /bin/chmod 644 $DEPLOYPATH/database.sqlite

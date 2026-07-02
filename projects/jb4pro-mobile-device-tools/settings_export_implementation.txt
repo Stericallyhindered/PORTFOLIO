@@ -1,0 +1,218 @@
+SETTINGS EXPORT IMPLEMENTATION
+============================
+
+// Exports settings and logging data to CSV
+```csharp
+private void export_excel()
+{
+    try
+    {
+        string eString = "";
+        byte[] e85_bits_value = new byte[1];
+        byte[] fud_bits_value = new byte[1];
+
+        if (ll_logging_active == true)
+        {
+            pauseToolStripMenuItem_Click(null, null);
+        }
+
+        // Check for WOT activity
+        int wotSAMPLES = 0;
+        for (int i = 0; i < dataPOS; i++)
+        {
+            if (inDATA[i].tps > 90)
+            {
+                wotSAMPLES++;
+            }
+        }
+
+        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+        saveFileDialog1.Title = "CSV Log Export";
+        saveFileDialog1.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+        saveFileDialog1.FilterIndex = 1;
+        saveFileDialog1.RestoreDirectory = true;
+        saveFileDialog1.FileName = DateTime.Now.ToString("yyMMdd_HHmm", CultureInfo.InvariantCulture);
+
+        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+        {
+            using (FileStream file = new FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write))
+            using (StreamWriter sr = new StreamWriter(file))
+            {
+                e85_bits.CopyTo(e85_bits_value, 0);
+                fud_bits.CopyTo(fud_bits_value, 0);
+
+                // Write header with map configuration
+                sr.WriteLine("Firmware,Interface,JB4_MAC_Address,TMAP_V,Learned_Ign,DWP,MethTriggerMode,FF,MethSafeMode,MethAdd,MethScale,MethPSI,VIN,E85_Setup,VFF_Offset,,fuel_30,fuel_35,fuel_40,fuel_45,fuel_50,fuel_55,fuel_60,fuel_65,fuel_70,map6_15,map6_20,map6_25,map6_30,map6_35,map6_40,map6_45,map6_50,map6_55,map6_60,map6_65,map6_70");
+
+                // Build first row of settings
+                eString = JB4firmware.Text + "," + JB4interface.Text + "," + 
+                         JB4address.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         ambientv.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         avgigndrop.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                         m1lagfix.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                         meth_trigger.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         feed_forward.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                         meth_safety.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                         m1methhard.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         methrange.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                         n1minpsi.Text.ToString(CultureInfo.InvariantCulture);
+
+                eString += "," + vin.Text.ToString() + "," + 
+                          convert_to_bits(e85_bits_value[0].ToString()) + "," + 
+                          virtual_ff_offset.Text + ",," + 
+                          fuel2500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          fuel3000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          fuel3500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          fuel4000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          fuel4500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          fuel5000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          fuel5500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          fuel6000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          fuel6500.Text.ToString(CultureInfo.InvariantCulture);
+
+                eString += "," + rpm1500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          rpm2000.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          rpm2500.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          rpm3000.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          rpm3500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          rpm4000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          rpm4500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          rpm5000.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          rpm5500.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          rpm6000.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          rpm6500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          rpm7000.Text.ToString(CultureInfo.InvariantCulture);
+
+                sr.WriteLine(eString);
+
+                // Write second header with additional settings
+                sr.WriteLine("BoostSafety,PID Gain,AutoShiftRed,Fuel_OL,FUA,1st_limiter,2nd_limiter,3rd_limiter,Options,N20_TMAP,6CylMode,LastSafety,,duty_15,duty_20,duty_25,duty_30,duty_35,duty_40,duty_45,duty_50,duty_55,duty_60,duty_65,duty_70,,et_enabled,et_n1minrpm,et_n1maxrpm,et_n1ramprate,et_n1mingear,et_n1minadv,et_n1minafr");
+
+                // Build second row of settings
+                eString = m1boostlimit.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         m1pidgain.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                         m1throttle.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         open_loop.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                         future_use_a.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         boost_limit_1st.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                         boost_limit_2nd.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         boost_limit_3rd.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         convert_to_bits(fud_bits_value[0].ToString()) + "," +
+                         tmap_sensor.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                         six_cyl_timing.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                         last_safety.Text.ToString(CultureInfo.InvariantCulture);
+
+                eString += ",," + cps1500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          cps2000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          cps2500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          cps3000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          cps3500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          cps4000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          cps4500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          cps5000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          cps5500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          cps6000.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          cps6500.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          cps7000.Text.ToString(CultureInfo.InvariantCulture);
+
+                eString += ",," + n1enabled.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          n1minrpm.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          n1maxrpm.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          n1ramprate.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          n1mingear.Text.ToString(CultureInfo.InvariantCulture) + "," + 
+                          n1minadvance.Text.ToString(CultureInfo.InvariantCulture) + "," +
+                          n1minafr.Text.ToString(CultureInfo.InvariantCulture);
+
+                sr.WriteLine(eString);
+
+                // Write data header
+                sr.WriteLine("timestamp,rpm,ecu_psi,target,boost,pedal,iat,fuelen,wgdc,throttle,fp_h,ign_1,avg_ign,calc_torque,trims,dme_bt,meth,fp_l,afr,gear,ff,load,clock,map,afr2,ign_2,ign_3,ign_4,ign_5,ign_6,oilf,waterf,transf,e85,boost2,trims2,mph,ign_7,ign_8,aux_1,aux_2,aux_3,aux_4,aux_5,aux_6,maf,maf2");
+
+                // Write all logged data points
+                for (int i = 0; i < dataPOS; i++)
+                {
+                    eString = inDATA[i].timestamp.ToString("0.0.##", CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].rpm.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].dmeboost.ToString("0.0.##", CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].dmetarget.ToString("0.0.##", CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].boost.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].tps.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].iat.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].fuel.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].pwm.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].accel.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].fuelp.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].ignadv.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].avgign.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].afr.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].egt.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].dmebt.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].meth.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].oiltemp.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].afr2.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].gear.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].ffpid.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].cps.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].clock.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].map.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].kr_1.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].kr_2.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].kr_3.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].kr_4.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].kr_5.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].kr_6.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].oilf.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].waterf.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].transf.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].e85.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].boost2.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].trims2.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].mph.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].kr_7.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].kr_8.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].aux1.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].aux2.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].aux3.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].aux4.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].aux5.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].aux6.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].maf1.ToString(CultureInfo.InvariantCulture) + "," +
+                             inDATA[i].maf2.ToString(CultureInfo.InvariantCulture);
+
+                    sr.WriteLine(eString);
+                }
+            }
+
+            status_update("Export Complete");
+        }
+    }
+    catch
+    {
+        status_update("Unable to export CSV");
+    }
+}
+
+// Helper function to convert bit values to readable format
+private string convert_to_bits(string input)
+{
+    string output = "";
+    BitArray fud_bits = new BitArray(new byte[] { Convert.ToByte(input) });
+             
+    for (int x = 0; x < 8; x++) 
+    {
+        if (fud_bits[x] == true)
+        {
+            if (!output.Equals(""))
+                output += "_";
+
+            output += x.ToString(); 
+        }
+    }
+
+    if (output.Equals(""))
+        output = "NONE";
+    else
+        output += "_ON";
+                      
+    return output;
+}

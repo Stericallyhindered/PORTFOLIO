@@ -1,0 +1,622 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent-red: #ff4d00;
+  --accent-orange: #ff6b00;
+  --panel-bg: #1a1a1a;
+  --panel-border: #333333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000000;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Main configurator container - full viewport */
+.configurator-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000000;
+}
+
+/* All image layers are absolutely positioned */
+.configurator-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Click zones container */
+.click-zones-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Individual boat click zones - positioned over each boat */
+.boat-click-zone {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.2s ease;
+}
+
+/* Debug: uncomment to see click zones */
+/*
+.boat-click-zone {
+  background: rgba(255, 0, 0, 0.2);
+  border: 2px dashed red;
+}
+*/
+
+.boat-click-zone:hover {
+  /* No hover effect - only change on click */
+}
+
+.boat-click-zone.active {
+  /* Active boat zone indicator */
+}
+
+/* Boat 1 zone (left boat) - adjust percentages based on actual boat positions */
+.boat-1-zone {
+  left: 5%;
+  top: 15%;
+  width: 22%;
+  height: 75%;
+}
+
+/* Boat 2 zone (center boat) */
+.boat-2-zone {
+  left: 39%;
+  top: 15%;
+  width: 22%;
+  height: 75%;
+}
+
+/* Boat 3 zone (right boat) */
+.boat-3-zone {
+  left: 72%;
+  top: 15%;
+  width: 22%;
+  height: 75%;
+}
+
+/* Config panel container - positioned over the black panel area in x-ray PNG */
+.config-panel-container {
+  position: absolute;
+  pointer-events: auto;
+  z-index: 100;
+  overflow: hidden;
+}
+
+/* Position for each boat's config panel - aligned to black box in x-ray PNG */
+/* These values are percentages of the viewport */
+.config-panel-boat-1 {
+  /* Boat 1 x-ray panel - black box position */
+  left: 30.2%;
+  top: 22.5%;
+  width: 19.8%;
+  height: 37%;
+}
+
+.config-panel-boat-2 {
+  /* Boat 2 x-ray panel - black box position */
+  left: 61.5%;
+  top: 22.5%;
+  width: 19.8%;
+  height: 37%;
+}
+
+.config-panel-boat-3 {
+  /* Boat 3 x-ray panel - black box position */
+  left: 46.2%;
+  top: 24%;
+  width: 19.8%;
+  height: 36%;
+}
+
+.config-panel-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Tabs inside the panel */
+.config-tabs {
+  display: none; /* Hidden since tabs are in the PNG */
+}
+
+/* Scrollable content area */
+.config-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-red) transparent;
+  margin-top: 28px; /* Space for AMP GEN logo in PNG */
+}
+
+.config-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.config-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.config-scroll-area::-webkit-scrollbar-thumb {
+  background: var(--accent-red);
+  border-radius: 3px;
+}
+
+/* Config sections */
+.config-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.config-section-title {
+  color: var(--accent-red);
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Form fields */
+.config-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.config-label {
+  color: var(--accent-orange);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Dropdowns */
+.config-select {
+  background: #0a0a0a;
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 6px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.config-select:hover {
+  border-color: var(--accent-red);
+}
+
+.config-select:focus {
+  outline: none;
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 2px rgba(255, 77, 0, 0.2);
+}
+
+/* Slider */
+.config-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #333;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.config-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(255, 77, 0, 0.4);
+}
+
+.config-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(255, 77, 0, 0.4);
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #666;
+}
+
+/* Button groups */
+.config-button-group {
+  display: flex;
+  gap: 6px;
+}
+
+.config-voltage-btn,
+.config-count-btn {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  background: #0a0a0a;
+  color: #888;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.config-voltage-btn:hover,
+.config-count-btn:hover {
+  border-color: var(--accent-red);
+  color: #fff;
+}
+
+.config-voltage-btn.active,
+.config-count-btn.active {
+  background: var(--accent-red);
+  border-color: var(--accent-red);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255, 77, 0, 0.4);
+}
+
+/* Checkboxes */
+.config-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.config-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.config-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  background: #0a0a0a;
+  cursor: pointer;
+  accent-color: var(--accent-red);
+}
+
+.amp-draw {
+  margin-left: auto;
+  color: var(--accent-orange);
+  font-size: 10px;
+}
+
+/* Summary section */
+.config-summary {
+  padding-top: 8px;
+  border-top: 1px solid var(--panel-border);
+  margin-top: auto;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #888;
+}
+
+.summary-value {
+  color: var(--accent-red);
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .config-panel-boat-1,
+  .config-panel-boat-2,
+  .config-panel-boat-3 {
+    width: 24%;
+  }
+}
+
+@media (max-width: 900px) {
+  .config-section-title {
+    font-size: 12px;
+  }
+  
+  .config-label {
+    font-size: 10px;
+  }
+  
+  .config-select,
+  .config-voltage-btn,
+  .config-count-btn {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+/* ========================================
+   DEV MODE STYLES
+   ======================================== */
+
+/* Draggable rectangles */
+.draggable-rect {
+  position: absolute;
+  border: 2px dashed;
+  cursor: move;
+  user-select: none;
+  z-index: 200;
+}
+
+.draggable-rect.active {
+  border-style: solid;
+  border-width: 3px;
+}
+
+.draggable-rect.hidden-zone {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.draggable-rect.hidden-zone:hover {
+  background: rgba(255, 77, 0, 0.15);
+}
+
+.rect-label {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+  border-radius: 3px;
+}
+
+.rect-coords {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  font-size: 9px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px 4px;
+  border-radius: 2px;
+  line-height: 1.3;
+}
+
+.resize-handle {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  cursor: se-resize;
+}
+
+/* Dev Mode Controls Panel */
+.dev-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px 16px;
+  z-index: 1000;
+  min-width: 280px;
+}
+
+.dev-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.dev-badge {
+  background: #ff4d00;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.dev-hint {
+  color: #666;
+  font-size: 10px;
+}
+
+.dev-info {
+  color: #aaa;
+  font-size: 11px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #333;
+}
+
+.dev-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dev-buttons button {
+  background: #222;
+  border: 1px solid #444;
+  color: #fff;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dev-buttons button:hover {
+  background: #333;
+  border-color: #ff4d00;
+}
+
+.dev-buttons button:active {
+  background: #ff4d00;
+}
+
+.dev-close-btn {
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0 4px;
+}
+
+.dev-close-btn:hover {
+  color: #ff4d00;
+}
+
+/* Dev Mode Toggle Button - Always Visible */
+.dev-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #444;
+  color: #888;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1001;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
+.dev-toggle-btn:hover {
+  border-color: #ff4d00;
+  color: #fff;
+}
+
+.dev-toggle-btn.active {
+  background: #ff4d00;
+  border-color: #ff4d00;
+  color: #fff;
+}
+
+/* Dev sections */
+.dev-section {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #333;
+}
+
+.dev-section-title {
+  font-size: 10px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.dev-input {
+  background: #111;
+  border: 1px solid #444;
+  color: #fff;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.dev-input:focus {
+  outline: none;
+  border-color: #ff4d00;
+}
+
+.dev-add-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dev-add-zone button {
+  background: #222;
+  border: 1px solid #ff4d00;
+  color: #ff4d00;
+}
+
+.dev-edit-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dev-buttons button.active {
+  background: #ff4d00;
+  border-color: #ff4d00;
+}
+
+.dev-buttons button.danger {
+  border-color: #ff3333;
+  color: #ff3333;
+}
+
+.dev-buttons button.danger:hover {
+  background: #ff3333;
+  color: #fff;
+}
+
+/* Section zones - no hover effect, only change on click */
+.section-zone:hover {
+  /* No hover effect */
+}

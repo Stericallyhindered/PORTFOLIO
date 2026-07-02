@@ -1,0 +1,451 @@
+Command	ASCII Code	Usage & Description	Example from Code
+":"	0x3A	Firmware HEX Record Indicator – Each line in a HEX firmware file starts with “:”. The code skips any line not starting with “:”	if (!temps.StartsWith(":")) { continue; }
+"U"	0x55	Delete Command/Response – Sent (via read_single_byte("U")) to initiate deletion of firmware data. A reply of 85 (0x55) indicates success.	reply_byte = read_single_byte("U");
+"ZY"	0x5A 0x59	Enter Bootloader Mode – Issued to put the JB4 into boot-load mode before a firmware update.	SERout("ZY");
+"E"	0x45	Firmware/Board Query – Sent (via read_string("E")) to check the board type or firmware status.	string result = read_string("E");
+"V"	0x56	Initiate Flash Write – A command used to begin the flashing process (its reply is checked later).	read_single_byte("V")
+"YX"	0x59 0x58	Reboot Command – Sent after a successful firmware upload to reboot the JB4.	SERout("YX");
+"R"	0x52	Settings Save Command – In the settings save routine, the first byte of the outgoing settings packet is set to 82 (‘R’), indicating that these bytes represent a settings update.	b[0] = 82; (in checkButton11_CheckedChanged)
+"T"	0x54	N2O Settings Command – In the N2O send routine, the first byte is set to 84 (‘T’), indicating a command to save N2O/E85 settings.	b[0] = 84; (in N2Osend)
+
+
+
+
+                        chip_type = 2; //26K80 
+                        boot_blocks_bytes = 2048;
+                        boot_blocks = 32;
+                        memory_blocks = 1020;
+                        checksum2 = checksum3;
+                        ln_blocks = Convert.ToInt16((total_write2 / 64)) - boot_blocks;
+                        checksum2 = checksum3 + ((63232 - temp_byte_count2) * 255);  
+                        
+                        if (total_write2 < 100)
+                        {
+                            MessageBox.Show("Invalid firmware file for 26K80 chipset, update failed");
+                            return;
+                        }
+						
+						
+						
+						
+						
+						//Stop charting/logging 
+            pauseToolStripMenuItem_Click2(null, null);
+            clearToolStripMenuItem_Click(null, null);
+
+            MessageBox.Show("To upload firmware ignition/dash lights should be on but engine off. In some cases it may be necessary to use the AC power cord with your laptop to maintain connection throughout the upload process. If the upload process fails your JB4 will be without firmware so do not attempt to operate the vehcile until you complete the firmware upload process.", "Firmware Upload Directions");
+            
+            //Select HEX file
+            OpenFileDialog saveFileDialog1 = new OpenFileDialog();
+           
+            saveFileDialog1.Filter = "JB4 Firmware|*.hex;*.jb4|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                 
+                FileStream file = new FileStream(saveFileDialog1.FileName, FileMode.Open, FileAccess.Read);
+                StreamReader sr = new StreamReader(file);
+    
+
+                while (!sr.EndOfStream)
+                    {
+                        temps = sr.ReadLine();
+
+                      
+                         
+                        if (!temps.StartsWith(":"))
+                        {
+                            continue;
+                        }
+
+
+                        //Amount of data in line
+                        length = Convert.ToInt16(temps.Substring(1, 2),16);
+                        placement = Convert.ToInt32(temps.Substring(3, 4),16);
+                        direction = Convert.ToInt16(temps.Substring(7, 2),16);
+
+                                        
+                        //USA compliance check
+                        if (temps.Equals(":020000000000FE"))
+                        {
+                            ll_compliant = true;
+                        }
+                       
+               
+                        if (placement > 1023) //If we're reading past boot loader area for either chip type
+                        {
+                            if (length > 0)
+                            {
+                                data = temps.Substring(9, length * 2);
+                            }
+                            else
+                            {
+                                data = "";
+                            }
+
+                            if (direction == 00)
+                            {
+                                //Run through data and convert to bytes
+                                for (int i = 0; i < length; i++)
+                                {
+                                  
+                                        bb_26k80[placement + i] = (byte)Convert.ToInt32(data.Substring(i * 2, 2), 16);
+  
+                                        checksum3 += bb_26k80[placement + i];
+
+                                        //Track highest byte written
+                                        if (placement > total_write2)
+                                            total_write2 = placement;
+
+                                        temp_byte_count2++;
+                                 
+                                }                            
+
+                            }
+                        }
+                         
+                    }
+                 
+                    
+                    //Close file
+                    file.Close();
+
+                    //Validate that this is likely to work before deleting firmware off device....
+                    if ((ll_compliant == false) && ((country.Text.Contains("States"))))
+                    {
+                        MessageBox.Show("This firmware is not USA compliant", "Error Unable To Load");
+                        return;
+                    }
+                     
+                    
+
+                    //Throw JB4 in to boot-load mode
+                    status_update("Loading HEX");
+
+                    //start timer
+                    var watch = new System.Diagnostics.Stopwatch();
+                    watch.Start();
+                     
+                    Refresh();
+                    SERout("ZY");
+                    Thread.Sleep(1500);
+
+                    //Check board type
+                    string result = read_string("E");
+                     
+                 
+                        chip_type = 2; //26K80 
+                        boot_blocks_bytes = 2048;
+                        boot_blocks = 32;
+                        memory_blocks = 1020;
+                        checksum2 = checksum3;
+                        ln_blocks = Convert.ToInt16((total_write2 / 64)) - boot_blocks;
+                        checksum2 = checksum3 + ((63232 - temp_byte_count2) * 255);  
+                        
+                        if (total_write2 < 100)
+                        {
+                            MessageBox.Show("Invalid firmware file for 26K80 chipset, update failed");
+                            return;
+                        }
+                            
+                    
+
+
+                    //Initiate delete
+                    reply_byte = read_single_byte("U");
+
+                    if (reply_byte.Equals(88))
+                    {
+                        MessageBox.Show("Delete Time Out. Firmware not erased on JB4.");
+                        return;
+                    }
+                    
+                    if (!reply_byte.Equals(85))
+                    {
+                        MessageBox.Show("Delete Failed. Status " + reply_byte);
+                        return;
+                    }
+
+
+                    byte[] temp_buffer = new byte[16];
+
+                
+
+                    while (ll_ok.Equals(false))
+                    {
+
+                        //Initiate flash
+                        read_single_byte("V").ToString();
+
+                        //Transmit data to chip
+                        for (int i = boot_blocks; i < memory_blocks; i++) 
+                        {
+                            if (bluetooth_port.Equals(false))
+                            {
+                            //for (int y = 0; y < 64; y += 2)
+                            //{
+                            //    if (chip_type.Equals(2))
+                            //        Port1.Write(bb_26k80, (i * 64) + y, 2);
+                            //    else
+                            //        Port1.Write(bb, (i * 64) + y, 2);
+
+                            //Thread.Sleep(msDELAY);
+                            //}
+
+                            Port1.Write(bb_26k80, (i * 64), 64);
+
+                            reply_byte = read_single_byte("");
+                                
+                            }
+                            else
+                            {
+                                //for (int y = 0; y < 64; y += 16)
+                                //{
+                                //    temp_buffer[0] = bb[(i * 64) + y];    
+                                //    temp_buffer[1] = bb[(i * 64) + y + 1];
+                                //    temp_buffer[2] = bb[(i * 64) + y + 2];
+                                //    temp_buffer[3] = bb[(i * 64) + y + 3];
+                                //    temp_buffer[4] = bb[(i * 64) + y + 4];
+                                //    temp_buffer[5] = bb[(i * 64) + y + 5];
+                                //    temp_buffer[6] = bb[(i * 64) + y + 6];
+                                //    temp_buffer[7] = bb[(i * 64) + y + 7];
+                                //    temp_buffer[8] = bb[(i * 64) + y + 8];
+                                //    temp_buffer[9] = bb[(i * 64) + y + 9];
+                                //    temp_buffer[10] = bb[(i * 64) + y + 10];
+                                //    temp_buffer[11] = bb[(i * 64) + y + 11];
+                                //    temp_buffer[12] = bb[(i * 64) + y + 12];
+                                //    temp_buffer[13] = bb[(i * 64) + y + 13];
+                                //    temp_buffer[14] = bb[(i * 64) + y + 14];
+                                //    temp_buffer[15] = bb[(i * 64) + y + 15];
+
+                                //    bluetooth_out_bytes(temp_buffer);
+                                    
+                                //}
+                            }
+
+                            
+                            status_update("Writing 26K80 " + (i - boot_blocks).ToString() + "/" + ln_blocks.ToString());
+                             
+                            Refresh();
+                            
+                            if (reply_byte.Equals(88))
+                            {                                
+                                break;
+                            }
+
+                            
+                            if ( (i - boot_blocks) >= ln_blocks)
+                            {
+                                ll_ok = true;
+                                break;
+                            }
+                            
+                        }
+
+                        //If we made it then break out of the main loop
+                        if (ll_ok.Equals(false))
+                        {
+                            status_update("Upload failed. Starting again: " + msDELAY.ToString());
+                            Thread.Sleep(2000);
+                            //MessageBox.Show("Time Out Failure. Restart Computer, Increase Upload Timeout Under Settings Tab, and Try Again.");
+                            msDELAY = Settings.Default.delayMS;
+                            
+                            if ((msDELAY += 5) > 25)
+                            {
+                                msDELAY = 0;
+                            }
+
+                            Settings.Default.delayMS = msDELAY;
+                            Settings.Default.Save();
+                            maploaddelay.Text = msDELAY.ToString(CultureInfo.InvariantCulture);
+
+                            if (upload_attempts++ > 2)
+                            {
+                                status_update("Failed to load firmware");
+                                return;
+                            }
+
+                        }
+
+                    }
+
+                    status_update("Verifying Checksum");
+                    Thread.Sleep(5000); //Let it fall out of write mode -- has to be a better way to handle this
+
+                    int read_cs = 0;
+                    bool passed = false;
+                    int tries = 0;
+
+                    //Confirm checksum a few times  
+                    while (tries < 5)
+                    {
+                        temps = read_string("W");
+                        int index = (temps.IndexOf("W"));
+                        if ((index > 0))
+                        {
+                            try
+                            {read_cs = Convert.ToInt32(temps.Substring(0, index));}
+                            catch {}
+                        }
+
+                        if (checksum2.Equals(read_cs))
+                        {
+                            passed = true;
+                            break;
+                        }
+
+                        tries++;
+                        Thread.Sleep(1000);
+                        status_update("Verifying Checksum" + tries.ToString());
+                       
+                    }
+
+
+                    if (passed == false)
+                    {
+                        MessageBox.Show("Failed Checksum Testing File:" + checksum2.ToString() + ", Read:" + read_cs.ToString() +  ", Delta:" + (checksum2-read_cs).ToString(), "Error Unable To Load");
+                        return;
+                    }
+
+
+                    status_update("Rebooting JB4");
+                    Thread.Sleep(1500); //Let it fall out of write mode -- has to be a better way to handle this
+                    SERout("YX");
+
+                    //parse_data();
+                    Port1.DiscardInBuffer();
+
+                    watch.Stop();
+                    status_update("Update Complete in " + watch.Elapsed.ToString().Substring(3, 5)); // + ", CS: " + checksum2.ToString() + ", " + read_cs.ToString()
+
+                    startToolStripMenuItem_Click(null, null);
+            }
+
+        }
+
+        private int read_single_byte(string send)
+
+        {
+            int temp = 0;
+            int counter = 0;
+
+            try
+            {
+
+                //Clear out input buffer
+                if (bluetooth_port.Equals(true))
+                {
+                    byte_counter = 0;
+                    byte_counter_end = 0;
+                }
+                else
+                {
+                    Port1.ReadExisting();
+                }
+
+                if (!send.Equals(""))
+                    SERout(send);
+
+                //Wait a second for reply
+                while (counter++ < 75)
+                {
+                    if (bluetooth_port.Equals(true) && byte_counter_end > 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        if (Port1.BytesToRead > 0)
+                            break;
+                    }
+
+                    Thread.Sleep(20);
+                }
+
+
+                if (bluetooth_port.Equals(true))
+                    temp = byteIN[0];
+                else
+                    temp = Port1.ReadChar();
+
+
+                if (temp.Equals(""))
+                {
+                    return 88;
+                }
+                else
+                {
+                    return temp;
+                }
+            }
+            catch
+            {
+                return 88; //failed
+            }
+                
+ 
+        }
+
+        private string read_string(string send)
+        {
+          
+            int counter = 0;
+
+            //Clear existing data    
+
+            if (!send.Equals(""))
+            {
+                //Clear out input buffer
+                if (bluetooth_port.Equals(true))
+                {
+                    byte_counter = 0;
+                    byte_counter_end = 0;
+                }
+                else
+                {
+                    Port1.ReadExisting();
+                }
+
+                SERout(send);
+            }
+
+            Thread.Sleep(500);
+
+            //Wait a second for reply
+            while (counter++ < 200)
+            {
+                if (bluetooth_port.Equals(true) && byte_counter_end > 0)
+                {
+                    break;
+                }
+                else
+                {
+                    if (Port1.BytesToRead > 0)
+                        break;
+                }
+
+                Thread.Sleep(25);
+            }
+
+            if (counter.Equals(50))
+            {
+                return "";
+            }
+            else
+            {
+                if (bluetooth_port.Equals(true))
+                {
+                    byte[] temp_byte = new byte[byte_counter_end];
+                  
+                    Buffer.BlockCopy(byteIN,0,temp_byte,0,byte_counter_end);
+                    return System.Text.Encoding.ASCII.GetString(temp_byte);
+
+                }
+                else
+                {
+                    return Port1.ReadExisting();
+                }
+            }
+

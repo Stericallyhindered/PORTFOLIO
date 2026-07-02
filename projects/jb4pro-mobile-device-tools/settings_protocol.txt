@@ -1,0 +1,288 @@
+JB4 SETTINGS PROTOCOL
+====================
+
+1. COMMAND STRUCTURE
+-------------------
+
+Single-letter commands are used for basic operations:
+- B: Stop logging
+- C: Start logging
+- D: Request data
+- E: Request status
+- F: Set map
+- G: Read codes
+- H: Delete codes
+- M: Map select
+- T,U,V: Reset sequence
+- Z,Y: Bootloader commands
+
+2. DATA PARSING
+--------------
+
+Data is parsed using single-letter identifiers:
+
+```csharp
+// Boost related
+"B" -> boost = value / 10.0  // Convert to decimal PSI
+"j" -> boost2 = value / 10.0 // Secondary boost reading
+"M" -> dmeboost = value / 10.0 // DME boost reading
+"N" -> dmetarget = value / 10.0 // DME target
+
+// RPM/Load related
+"A" -> rpm = value
+"C" -> tps = value // Throttle position
+"W" -> accel = value
+"l" -> speed = value / 1.61 // Convert to MPH
+
+// Temperature related
+"G" -> iat = value // Intake temp
+"$" -> oiltemp = value
+"<" -> waterf = value
+">" -> oilf = value
+"e" -> transf = value * 1.8 - 40 // Trans temp conversion
+
+// Timing/Ignition related
+")" -> ignadv = value / 10.0 // Timing advance
+"(" -> avgign = value / 10.0 // Average timing
+"z" -> avgigndrop = value / 10.0 // Timing drop
+
+// Fuel related
+"E" -> fuel = value
+"X" -> fuelpressure = value
+"^" -> afr = value // Air/fuel ratio
+":" -> afr2 = value / 10.0 // Secondary AFR
+
+// Map/Mode related
+"F" -> map_select = value
+"-" -> ffpid = value / 2.55 // Feed forward PID
+"!" -> gear = value
+
+// Methanol related
+"%" -> meth = value
+"@" -> methrange = value
+"m" -> meth_trigger = value
+"`" -> meth_safety = value
+
+// Knock related
+"~" -> kr1 = value / 10.0
+"I" -> kr2 = value / 10.0
+"J" -> kr3 = value / 10.0
+"O" -> kr4 = value / 10.0
+"K" -> kr5 = value / 10.0
+"y" -> kr6 = value / 10.0
+"[" -> kr7 = value / 10.0
+"\" -> kr8 = value / 10.0
+
+// E85 related
+"f" -> e85 = value
+
+// Auxiliary inputs
+"]" -> aux1 = value
+"_" -> aux2 = value
+"b" -> aux3 = value
+"c" -> aux4 = value
+"d" -> aux5 = value
+"g" -> aux6 = value
+"h" -> maf1 = value
+"i" -> maf2 = value
+
+3. SETTINGS SAVE PROTOCOL
+------------------------
+
+Settings are saved in specific byte sequences:
+
+N2O/WMI Settings (Command 0x54):
+```
+Byte 0: 0x54 (Command identifier)
+Bytes 1-2: n1minpsi (16-bit)
+Bytes 3-4: n1enabled (16-bit)
+Byte 5: e85_bits
+Byte 6: e85_bits (duplicate)
+Bytes 7-8: n1minrpm (16-bit)
+Bytes 9-10: n1maxrpm (16-bit)
+Bytes 11-12: n1ramprate (16-bit)
+Bytes 13-14: virtual_ff_offset (16-bit)
+Bytes 15-16: m1methhard (16-bit)
+Bytes 17-18: methrange (16-bit)
+Bytes 19-20: n1mingear (16-bit)
+Bytes 21-22: n1minafr (16-bit)
+Bytes 23-24: n1minadvance (16-bit)
+Byte 25: 0x24 (End marker)
+```
+
+Map Settings (Command 0x52):
+```
+Byte 0: 0x52 (Command identifier)
+Bytes 1-24: RPM targets (12 x 16-bit values)
+Byte 25: m1boostlimit
+Byte 26: feed_forward
+Byte 27: meth_trigger
+Byte 28: boost_limit_1st
+Byte 29: future_use_a
+Byte 30: m1lagfix
+Byte 31: fud_bits
+Byte 32: m1pidgain
+Byte 33: open_loop
+Byte 34: m1throttle
+Byte 35: boost_limit_2nd
+Byte 36: meth_safety
+Byte 37: tmap_sensor
+Byte 38: boost_limit_3rd
+Bytes 39-48: Fuel settings (10 bytes)
+Byte 49: six_cyl_timing
+Bytes 50-61: CPS settings (12 bytes)
+Byte 62: Checksum
+Byte 63: 0x23 (End marker)
+```
+
+4. MATH/CONVERSIONS
+------------------
+
+Common conversions used in settings:
+
+```csharp
+// Boost conversions (PSI)
+decimal boost_psi = raw_value / 10.0m;
+
+// Speed conversion (KPH to MPH)
+int mph = (int)(kph_value / 1.61);
+
+// Temperature conversion (for trans temp)
+int temp_f = (int)(raw_value * 1.8) - 40;
+
+// Timing conversions
+decimal timing = raw_value / 10.0m;
+
+// Feed forward PID
+int ff_pid = (int)(raw_value / 2.55);
+
+// Checksum calculation
+int checksum = 0;
+for (int x = 1; x < 62; x++) {
+    checksum += data[x];
+}
+byte checksum_byte = (byte)(checksum % 256);
+```
+
+5. COMMUNICATION TIMING
+----------------------
+
+```csharp
+// Default delays
+int msDELAY = Settings.Default.delayMS; // Default 5ms
+int msDELAY2 = 25; // For serial communication
+
+// Command sending with delay
+private void SERout(string command)
+{
+    foreach (char c in command)
+    {
+        Port1.Write(c.ToString());
+        Thread.Sleep(msDELAY2);
+    }
+}
+
+// Binary data sending with delay
+private void SERoutBYTES(byte[] data, int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        Port1.Write(data, i, 1);
+        Thread.Sleep(msDELAY2);
+    }
+}
+```
+
+6. ERROR HANDLING
+----------------
+
+Common error conditions and handling:
+
+```csharp
+// Communication errors
+try {
+    if (!Port1.IsOpen) {
+        status_update("Port not open");
+        return;
+    }
+    
+    // Send command
+    SERout(command);
+    
+    // Wait for response
+    string response = read_string(command);
+    if (response.Equals("")) {
+        status_update("No response");
+        return;
+    }
+    
+    // Verify checksum if applicable
+    if (!verify_checksum(response)) {
+        status_update("Checksum failed");
+        return;
+    }
+}
+catch (Exception ex) {
+    status_update("Communication error: " + ex.Message);
+}
+
+// Value validation
+private bool validate_value(decimal value, decimal min, decimal max, string name) {
+    if (value < min || value > max) {
+        MessageBox.Show($"Valid {name} range is {min}-{max}");
+        return false;
+    }
+    return true;
+}
+
+// Platform-specific validation
+private bool validate_platform_limits() {
+    decimal tempMAX;
+    
+    if (tmap_sensor.Text.Equals("1")) {
+        tempMAX = 36.1m;
+    }
+    else if (tmap_sensor.Text.Equals("2")) {
+        tempMAX = 43m;
+    }
+    else if ((platform == 10) || (platform == 32) || (platform == 5)) {
+        tempMAX = 25m;
+    }
+    else {
+        tempMAX = 25m;
+    }
+    
+    return validate_value(boost_value, 0, tempMAX, "boost");
+}
+```
+
+7. PLATFORM DETECTION
+--------------------
+
+```csharp
+private void detect_platform()
+{
+    // Parse firmware version xx/yy//zz
+    if (JB4firmware.Text.Contains("/"))
+    {
+        platform = Convert.ToInt16(JB4firmware.Text.Substring(0, 
+            JB4firmware.Text.IndexOf("/", 0)));
+    }
+    else
+    {
+        platform = 0;
+    }
+
+    if (JB4firmware.Text.Contains("//"))
+    {
+        board_type = Convert.ToInt16(JB4firmware.Text.Substring(
+            JB4firmware.Text.IndexOf("//") + 2));
+    }
+    else
+    {
+        board_type = 0;
+    }
+}
+```
+
+This protocol documentation provides the complete technical details needed to implement the settings communication and data handling in the Flutter port, including command structure, data parsing, math conversions, and error handling.

@@ -1,0 +1,23 @@
+It sends a command that begins with the letter "M" concatenated with the selected map number converted to its ASCII representation. For example, if the user selects map number 3, the app calls:
+
+  SERout("M" + WordToAscii(3));
+
+Immediately after that, it sends an update command:
+
+  SERout("$#CJ");
+
+In terms of raw byte values (using ASCII):  • 'M' = 0x4D
+ • If the map number is 3, then '3' = 0x33
+ • '$' = 0x24
+ • '#' = 0x23
+ • 'C' = 0x43
+ • 'J' = 0x4A
+
+So for map 3 the exact sequence of bytes sent would be:  0x4D, 0x33, 0x24, 0x23, 0x43, 0x4A
+
+If the selected map number were different (say 10), then WordToAscii(10) would output "10" and the sequence would be:  0x4D, 0x31, 0x30, 0x24, 0x23, 0x43, 0x4A
+
+Each character is sent individually (with a small delay between each byte, as managed by the SERout function).
+
+
+the drop down selector should have maps 0-8 

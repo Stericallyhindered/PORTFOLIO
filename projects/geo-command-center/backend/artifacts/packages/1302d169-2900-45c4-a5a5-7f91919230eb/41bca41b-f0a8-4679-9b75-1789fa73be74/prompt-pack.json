@@ -1,0 +1,267 @@
+{
+  "kind": "prompt_pack",
+  "projectId": "41bca41b-f0a8-4679-9b75-1789fa73be74",
+  "clusterCount": 20,
+  "clusters": [
+    {
+      "name": "az - informational",
+      "intent_type": "informational",
+      "topic": "az",
+      "prompts": [
+        "what is az",
+        "how does az work",
+        "best az tools",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "az - commercial",
+      "intent_type": "commercial",
+      "topic": "az",
+      "prompts": [
+        "best az platform",
+        "az service provider",
+        "az software for agencies",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.8
+    },
+    {
+      "name": "az - comparison",
+      "intent_type": "comparison",
+      "topic": "az",
+      "prompts": [
+        "az vs az",
+        "best alternative to az",
+        "az platforms comparison",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.8
+    },
+    {
+      "name": "az - alternatives",
+      "intent_type": "alternatives",
+      "topic": "az",
+      "prompts": [
+        "what is az",
+        "how does az work",
+        "best az tools",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.8
+    },
+    {
+      "name": "az - best-for",
+      "intent_type": "best-for",
+      "topic": "az",
+      "prompts": [
+        "what is az",
+        "how does az work",
+        "best az tools",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "az - how-to",
+      "intent_type": "how-to",
+      "topic": "az",
+      "prompts": [
+        "what is az",
+        "how does az work",
+        "best az tools",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "az - troubleshooting",
+      "intent_type": "troubleshooting",
+      "topic": "az",
+      "prompts": [
+        "what is az",
+        "how does az work",
+        "best az tools",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "az - navigational",
+      "intent_type": "navigational",
+      "topic": "az",
+      "prompts": [
+        "what is az",
+        "how does az work",
+        "best az tools",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "az - long-tail-conversational",
+      "intent_type": "long-tail-conversational",
+      "topic": "az",
+      "prompts": [
+        "what is az",
+        "how does az work",
+        "best az tools",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "az - follow-up",
+      "intent_type": "follow-up",
+      "topic": "az",
+      "prompts": [
+        "what is az",
+        "how does az work",
+        "best az tools",
+        "az for chatgpt",
+        "az for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "generative engine optimization - informational",
+      "intent_type": "informational",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - commercial",
+      "intent_type": "commercial",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "best generative engine optimization platform",
+        "generative engine optimization service provider",
+        "generative engine optimization software for agencies",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.9
+    },
+    {
+      "name": "generative engine optimization - comparison",
+      "intent_type": "comparison",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "az vs generative engine optimization",
+        "best alternative to az",
+        "generative engine optimization platforms comparison",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.9
+    },
+    {
+      "name": "generative engine optimization - alternatives",
+      "intent_type": "alternatives",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.9
+    },
+    {
+      "name": "generative engine optimization - best-for",
+      "intent_type": "best-for",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - how-to",
+      "intent_type": "how-to",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - troubleshooting",
+      "intent_type": "troubleshooting",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - navigational",
+      "intent_type": "navigational",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - long-tail-conversational",
+      "intent_type": "long-tail-conversational",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - follow-up",
+      "intent_type": "follow-up",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    }
+  ]
+}

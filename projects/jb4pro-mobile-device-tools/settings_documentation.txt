@@ -1,0 +1,186 @@
+JB4 SETTINGS DOCUMENTATION
+=========================
+
+1. SETTINGS DATA STRUCTURES
+--------------------------
+
+1.1 BitArray Settings Flags
+- e85_bits: Controls E85 related settings
+  * bit 0: JB4 2/3/4 FlexFuel Input
+  * bit 1: JB4 15/16 FlexFuel Input
+  * bit 2: DTML FlexFuel Input
+  * bit 3: DTML WMI Input
+  * bit 4: Scale PI On FlexFuel
+  * bit 5: Startup E85 Indicator
+  * bit 6: Blocked in USA/Passive Delete
+  * bit 7: Enable WMI Pump PWM
+
+- fud_bits: Platform-specific feature flags
+  Platform-dependent meanings (examples):
+  For firmware "30/":
+  * bit 0: Disable Wheel Controls
+  * bit 1: Disable WG Adaption
+  * bit 2: Boost Cold Start
+  * bit 3: PI Tip In Increase
+  * bit 4: No Longer Active
+  * bit 5: Block Antilag From Brake
+  * bit 6: Disable O2 pressure factor
+  * bit 7: Disable O2 adaption resets
+
+1.2 LogPoint Structure
+Contains all data points and settings values:
+- Boost settings (boost, boost2, dmetarget, dmeboost)
+- RPM settings (rpm ranges from 1500-7000)
+- Temperature settings (iat, oiltemp, waterf, transf)
+- Fuel settings (fuel, fuelp, afr, afr2)
+- Timing settings (ignadv, avgign)
+- Knock settings (kr_1 through kr_8)
+- Status values (gear, clock, map, accel)
+- Auxiliary inputs (aux1-aux6, maf1, maf2)
+
+2. SETTINGS LOADING & SAVING
+---------------------------
+
+2.1 Initial Settings Load
+- Loaded during Form1 initialization
+- Default values set for:
+  * Delay settings (msDELAY = Settings.Default.delayMS)
+  * Boost scale (boost_SCALE = 50)
+  * Chart visibility settings
+  * Communication timing (msDELAY2 = 25)
+  * Data buffer size (buffer_size = 2000)
+
+2.2 Settings Validation Methods
+
+N2Ovalid() - Validates WMI/N2O settings:
+- n1enabled: Range 0-255
+- n1minpsi: Range 0-tempMAX2 (varies by tmap_sensor)
+- n1minrpm: Range 0-10000
+- n1maxrpm: Range 0-10000
+- n1ramprate: Range 0-255
+- virtual_ff_offset: Range 0-255
+- m1methhard: Range 0-tempMAX
+- methrange: Range 0-255
+- n1minafr: Range 0-255
+- n1minadvance: Range 0-255
+- n1mingear: Range 0-255
+
+MAP1valid() - Validates map settings:
+- CPS settings (1500-7000 rpm): Range 0-100
+- Boost limits: Range 0-255
+- Fuel settings (2500-6500 rpm): Range 0-200
+- RPM targets (1500-7000): Range 0-tempMAX
+- Various control settings:
+  * meth_trigger: Range 0-100
+  * m1lagfix: Range 0-100
+  * m1boostlimit: Range 0-tempMAX
+  * feed_forward: Range 0-150
+  * open_loop: Range 0-150
+  * meth_safety: Range 0-100
+  * m1throttle: Range 0-255
+  * m1pidgain: Range 0-255
+
+3. SETTINGS COMMUNICATION
+------------------------
+
+3.1 Command Structure
+Settings are communicated using single-letter commands:
+- 'B': Stop logging
+- 'C': Start logging
+- 'D': Request data
+- 'E': Request status
+- 'F': Set map
+- 'G': Read codes
+- 'H': Delete codes
+- 'M': Map select
+- 'T','U','V': Reset sequence
+- 'Z','Y': Bootloader commands
+
+3.2 Data Parsing
+parse_data() method handles incoming data:
+- Parses single-letter identifiers
+- Converts raw values to appropriate units
+- Updates UI elements
+- Handles different data types (integers, decimals)
+- Special handling for bit arrays (e85_bits, fud_bits)
+
+3.3 Settings Output
+SERout methods for sending commands:
+- SERout(): Basic command output with delay
+- SERout_FAST(): Direct command output
+- SERoutBYTES(): Binary data output
+- Bluetooth variants for BLE communication
+
+4. SETTINGS UPDATES & VALIDATION
+-------------------------------
+
+4.1 Settings Save Process
+1. Validate all input values
+2. Convert settings to appropriate format
+3. Calculate checksum if required
+4. Send command sequence
+5. Wait for acknowledgment
+6. Verify written values
+
+4.2 Error Handling
+- Range validation for all numeric inputs
+- Platform-specific validation rules
+- Communication error handling
+- Timeout handling
+- Checksum verification
+
+5. BLUETOOTH SETTINGS HANDLING
+-----------------------------
+
+5.1 Connection Management
+- Bluetooth device discovery
+- Connection establishment
+- Service discovery
+- RSSI monitoring
+- Connection maintenance
+
+5.2 Data Transfer
+- Packet size management
+- Command queueing
+- Response handling
+- Error recovery
+
+6. PLATFORM-SPECIFIC SETTINGS
+----------------------------
+
+Settings behavior varies by platform/firmware:
+- Platform 30: Standard BMW settings
+- Platform 58: Enhanced wastegate control
+- Platform 50: Fuel wire support
+- Platform 32: Hybrid support
+- Platform 21: Manual fuel mapping
+- Platform 22: CANbus features
+- Platforms 10/12: Dashboard integration
+- Platform 13: F10 compatibility
+- Platform 4: Cold start features
+- Platform 7: X5M/X6M support
+- Platform 46: IAT spoofing support
+
+Each platform has unique:
+- Feature flags
+- Safety limits
+- Control parameters
+- UI configurations
+- Communication protocols
+
+7. SETTINGS PERSISTENCE
+----------------------
+
+Settings are stored in:
+- Device memory (JB4)
+- Windows registry (interface)
+- Configuration files
+- Exportable CSV format
+
+Export format includes:
+- Firmware version
+- Interface version
+- Device MAC address
+- All current settings
+- Logging data
+- Checksum values

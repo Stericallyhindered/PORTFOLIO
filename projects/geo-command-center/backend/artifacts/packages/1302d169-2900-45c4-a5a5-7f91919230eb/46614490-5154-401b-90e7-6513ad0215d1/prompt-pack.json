@@ -1,0 +1,267 @@
+{
+  "kind": "prompt_pack",
+  "projectId": "46614490-5154-401b-90e7-6513ad0215d1",
+  "clusterCount": 20,
+  "clusters": [
+    {
+      "name": "fishin48 - informational",
+      "intent_type": "informational",
+      "topic": "fishin48",
+      "prompts": [
+        "what is fishin48",
+        "how does fishin48 work",
+        "best fishin48 tools",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "fishin48 - commercial",
+      "intent_type": "commercial",
+      "topic": "fishin48",
+      "prompts": [
+        "best fishin48 platform",
+        "fishin48 service provider",
+        "fishin48 software for agencies",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.8
+    },
+    {
+      "name": "fishin48 - comparison",
+      "intent_type": "comparison",
+      "topic": "fishin48",
+      "prompts": [
+        "fishin48 vs fishin48",
+        "best alternative to fishin48",
+        "fishin48 platforms comparison",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.8
+    },
+    {
+      "name": "fishin48 - alternatives",
+      "intent_type": "alternatives",
+      "topic": "fishin48",
+      "prompts": [
+        "what is fishin48",
+        "how does fishin48 work",
+        "best fishin48 tools",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.8
+    },
+    {
+      "name": "fishin48 - best-for",
+      "intent_type": "best-for",
+      "topic": "fishin48",
+      "prompts": [
+        "what is fishin48",
+        "how does fishin48 work",
+        "best fishin48 tools",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "fishin48 - how-to",
+      "intent_type": "how-to",
+      "topic": "fishin48",
+      "prompts": [
+        "what is fishin48",
+        "how does fishin48 work",
+        "best fishin48 tools",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "fishin48 - troubleshooting",
+      "intent_type": "troubleshooting",
+      "topic": "fishin48",
+      "prompts": [
+        "what is fishin48",
+        "how does fishin48 work",
+        "best fishin48 tools",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "fishin48 - navigational",
+      "intent_type": "navigational",
+      "topic": "fishin48",
+      "prompts": [
+        "what is fishin48",
+        "how does fishin48 work",
+        "best fishin48 tools",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "fishin48 - long-tail-conversational",
+      "intent_type": "long-tail-conversational",
+      "topic": "fishin48",
+      "prompts": [
+        "what is fishin48",
+        "how does fishin48 work",
+        "best fishin48 tools",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "fishin48 - follow-up",
+      "intent_type": "follow-up",
+      "topic": "fishin48",
+      "prompts": [
+        "what is fishin48",
+        "how does fishin48 work",
+        "best fishin48 tools",
+        "fishin48 for chatgpt",
+        "fishin48 for google ai overviews"
+      ],
+      "priority_score": 0.55
+    },
+    {
+      "name": "generative engine optimization - informational",
+      "intent_type": "informational",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - commercial",
+      "intent_type": "commercial",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "best generative engine optimization platform",
+        "generative engine optimization service provider",
+        "generative engine optimization software for agencies",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.9
+    },
+    {
+      "name": "generative engine optimization - comparison",
+      "intent_type": "comparison",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "fishin48 vs generative engine optimization",
+        "best alternative to fishin48",
+        "generative engine optimization platforms comparison",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.9
+    },
+    {
+      "name": "generative engine optimization - alternatives",
+      "intent_type": "alternatives",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.9
+    },
+    {
+      "name": "generative engine optimization - best-for",
+      "intent_type": "best-for",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - how-to",
+      "intent_type": "how-to",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - troubleshooting",
+      "intent_type": "troubleshooting",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - navigational",
+      "intent_type": "navigational",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - long-tail-conversational",
+      "intent_type": "long-tail-conversational",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    },
+    {
+      "name": "generative engine optimization - follow-up",
+      "intent_type": "follow-up",
+      "topic": "generative engine optimization",
+      "prompts": [
+        "what is generative engine optimization",
+        "how does generative engine optimization work",
+        "best generative engine optimization tools",
+        "generative engine optimization for chatgpt",
+        "generative engine optimization for google ai overviews"
+      ],
+      "priority_score": 0.65
+    }
+  ]
+}

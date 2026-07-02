@@ -1,0 +1,62 @@
+name: canflexbasic
+description: "JB4Pro BLE Control App for CANFLEX"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.7.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # BLE Communication
+  flutter_reactive_ble: ^5.4.0
+
+  # UI Components
+  syncfusion_flutter_gauges: ^28.2.7
+  flutter_colorpicker: ^0.5.0
+  sleek_circular_slider: ^2.0.1
+  cupertino_icons: ^1.0.8
+  syncfusion_flutter_charts: ^28.2.7
+
+  # State Management
+  provider: ^6.0.3
+
+  # UUID Handling
+  uuid: ^3.0.5
+
+  # File System & Storage
+  path_provider: ^2.0.11
+  share_plus: ^7.2.1
+
+  # URL Launcher for Email Functionality
+  url_launcher: ^6.1.7
+
+  permission_handler: ^11.3.1
+
+  # HTTP Client
+  http: ^1.3.0
+
+  # File Selector (for firmware HEX file selection, etc.)
+  file_selector: ^1.0.3
+
+  # WebView (for developer log screen, etc.)
+  webview_flutter: ^4.0.1
+  
+  flutter_email_sender: ^7.0.0
+  
+  # CSV package for generating CSV content
+  csv: ^5.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.3
+
+flutter_icons:
+  android: true
+  ios: true
+
+flutter:
+  uses-material-design: true

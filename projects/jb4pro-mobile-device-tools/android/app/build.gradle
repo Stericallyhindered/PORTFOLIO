@@ -1,0 +1,48 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    // Updated namespace (this is used for new projects)
+    namespace = "com.example.jb4pro"
+    compileSdk = 34 // Use the latest stable version for compileSdk
+
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // Updated applicationId – this is the unique ID installed on the device.
+        applicationId = "com.example.jb4pro"
+        minSdk = 21 // Set minSdk to 21 or lower
+        targetSdk = 34 // Use a recent stable version for targetSdk
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+
+        // Support multiple CPU architectures
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+    }
+
+    buildTypes {
+        release {
+            // Add signing config for the release build
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}

@@ -1,0 +1,31 @@
+{
+  "project_id": "46614490-5154-401b-90e7-6513ad0215d1",
+  "project_name": "fishin48",
+  "geo_score": 74.2,
+  "brand_mention_rate": 0.41,
+  "citation_rate": 0.29,
+  "engine_run_count": 5,
+  "open_recommendations": 48,
+  "engines": {
+    "chatgpt": {
+      "mentions": 6,
+      "citations": 3
+    },
+    "google-ai-overviews": {
+      "mentions": 4,
+      "citations": 2
+    },
+    "perplexity": {
+      "mentions": 8,
+      "citations": 5
+    },
+    "gemini": {
+      "mentions": 3,
+      "citations": 1
+    },
+    "claude": {
+      "mentions": 2,
+      "citations": 1
+    }
+  }
+}

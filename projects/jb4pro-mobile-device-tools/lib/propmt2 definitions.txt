@@ -1,0 +1,460 @@
+A
+
+Usage: Sets the RPM value (i.e. rpm.Text = tempBODY;)
+Log Example: A3000 (RPM 3000)
+B
+
+Usage: Sets the main boost value; converts by dividing by 10
+Log Example: B200 → 20.0 PSI
+j (lowercase)
+
+Usage: Sets the second boost value (boost2.Text), also divided by 10
+C
+
+Usage: Sets the TPS value (tps.Text = tempBODY;)
+F
+
+Usage: Updates the current map selection (map_select_ss.Text) and posts a status update
+G
+
+Usage: Sets the IAT (Intake Air Temperature) value
+<
+
+Usage: Sets the water temperature (waterf.Text)
+>
+
+Usage: Sets the oil temperature (or related value) via oilf.Text
+f
+
+Usage: Sets the E85 value (e85.Text)
+e
+
+Usage: Sets the transmission temperature; converts the raw value by multiplying by 1.8 then subtracting 40
+H
+
+Usage: Updates the clock value by computing the difference from the last reading
+D
+
+Usage: Sets the PWM value after multiplying by 0.3921568
+E
+
+Usage: Sets the fuel value
+&
+
+Usage: Sets the EGT (Exhaust Gas Temperature) value (with rounding)
+k
+
+Usage: Sets the second boost trim value (trims2.Text) with rounding
+!
+
+Usage: Sets the gear value
+l
+
+Usage: Sets the speed value after converting (dividing by 1.61)
+^
+
+Usage: Sets the AFR (Air-Fuel Ratio) value
+%
+
+Usage: Sets the methanol (or related) value
+$
+
+Usage: Sets the oil temperature value
+-
+
+Usage: Sets the FFPID value after dividing by 2.55
+:
+
+Usage: Sets the second AFR value (afr2.Text), dividing by 10
+Y
+
+Usage: Indicates a bootloader/firmware error and stops timers
+L
+
+Usage: Sets the ambient voltage; if the raw value is high, it converts it using (raw / 1023 * 5)
+M
+
+Usage: Sets the DME boost value (divided by 10)
+)
+
+Usage: Sets the ignition advance (ignadv.Text) with a division by 10 conversion and clamps if over 500
+(
+
+Usage: Sets the average ignition value (avgign.Text) similarly, with a clamp if over 500
+z
+
+Usage: Sets the average ignition drop value (avgigndrop.Text) with division by 10 and a clamp if over 500
+Usage: Sets the DME boost (dmebt) value, dividing by 10
+
+Additionally, the code has special cases for:
+
+a (lowercase): Used to process a block of 48 bytes (though then ignored)
+Z: Used to read a 12-byte VIN string
+These identifiers match many of those seen in your logs. Note that some identifiers appearing in your logs (like W, N, X, = and others) aren’t handled in this block—those remain “unknown” in this code.
+
+
+N
+
+Usage: DME Target
+Conversion: Divided by 10 (rounded to one decimal)
+Code:
+csharp
+Copy
+dmetarget.Text = Math.Round(Convert.ToDouble(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+Z
+
+Usage: VIN string
+Code:
+csharp
+Copy
+vin.Text = tempBODY;
+a
+
+Usage: Processes a block of bytes to populate a table of values (typically RPM values at various points plus related sensor data)
+Details:
+Reads 24 bytes following the identifier and computes values for:
+RPM values: rpm1500, rpm2000, …, rpm7000 (each calculated as (byteIN[offset]*256 + byteIN[offset+1]) / 10)
+Other sensors: tmap_sensor, boost_limit_3rd, fuel values (for various RPMs), six_cyl_timing, and a series of CPS values (cps1500–cps7000)
+Note: This block fills an entire calibration table or sensor mapping.
+n
+
+Usage: Future-use parameter (placeholder)
+Code:
+csharp
+Copy
+future_use_a.Text = tempBODY;
+p
+
+Usage: M1 PID Gain
+Code:
+csharp
+Copy
+m1pidgain.Text = tempBODY;
+r
+
+Usage: M1 Throttle
+Code:
+csharp
+Copy
+m1throttle.Text = tempBODY;
+s
+
+Usage: M1 Lag Fix
+Code:
+csharp
+Copy
+m1lagfix.Text = tempBODY;
+t
+
+Usage: M1 Boost Limit
+Conversion: Divided by 10 (rounded)
+Code:
+csharp
+Copy
+m1boostlimit.Text = Math.Round(Convert.ToDouble(tempBODY, CultureInfo.InvariantCulture)/10).ToString("0.0.##", CultureInfo.InvariantCulture);
+u
+
+Usage: Feed Forward parameter
+Code:
+csharp
+Copy
+feed_forward.Text = tempBODY;
+v
+
+Usage: First Boost Limit
+Conversion: Rounded to one decimal
+Code:
+csharp
+Copy
+boost_limit_1st.Text = Math.Round(Convert.ToDouble(tempBODY, CultureInfo.InvariantCulture), 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+x
+
+Usage: Second Boost Limit
+Conversion: Rounded to one decimal
+Code:
+csharp
+Copy
+boost_limit_2nd.Text = Math.Round(Convert.ToDouble(tempBODY, CultureInfo.InvariantCulture), 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+w
+
+Usage: M1 Meth Hard (likely a parameter related to methanol injection tuning)
+Code:
+csharp
+Copy
+m1methhard.Text = tempBODY;
+@
+
+Usage: Methanol Range
+Code:
+csharp
+Copy
+methrange.Text = tempBODY;
+m
+
+Usage: Meth Trigger
+Code:
+csharp
+Copy
+meth_trigger.Text = tempBODY;
+o
+
+Usage: FUD (Flex Fuel) Bits
+Logic:
+Converts the numeric string into a byte then a BitArray
+Sets eight checkboxes (fud_bit0 through fud_bit7) based on individual bits
+Calls setup_fud_prompts();
+Code:
+csharp
+Copy
+fud_bits = new BitArray(new byte[] { Convert.ToByte(tempBODY) });
+// Then sets each fud_bit checkbox accordingly...
+X
+
+Usage: Fuel Pressure
+Code:
+csharp
+Copy
+fuelpressure.Text = tempBODY;
+q
+
+Usage: JB4 Firmware version
+Logic:
+Displays firmware version
+Parses the string to extract a platform number (before “/”) and a board type (after “//”)
+Code:
+csharp
+Copy
+JB4firmware.Text = tempBODY;
+// Then extracts platform and board_type from tempBODY...
+P
+
+Usage: N1 Minimum PSI
+Conversion: Rounded to one decimal
+Code:
+csharp
+Copy
+n1minpsi.Text = (Convert.ToDouble(tempBODY, CultureInfo.InvariantCulture)).ToString("0.0.##", CultureInfo.InvariantCulture);
+Q
+
+Usage: N1 Enabled flag
+Code:
+csharp
+Copy
+n1enabled.Text = tempBODY;
+R
+
+Usage: E85 Bits
+Logic:
+Converts the value to a byte and then to a BitArray
+Sets eight checkboxes (e85_bit0 through e85_bit7) accordingly
+Additionally, if the country contains “States”, it forces e85_bit6 to false
+Code:
+csharp
+Copy
+e85_bits = new BitArray(new byte[] { Convert.ToByte(tempBODY) });
+// Then sets each e85_bit checkbox accordingly...
+S
+
+Usage: N1 Minimum RPM
+Code:
+csharp
+Copy
+n1minrpm.Text = tempBODY;
+T
+
+Usage: N1 Maximum RPM
+Code:
+csharp
+Copy
+n1maxrpm.Text = tempBODY;
+U
+
+Usage: N1 Ramp Rate
+Code:
+csharp
+Copy
+n1ramprate.Text = tempBODY;
+V
+
+Usage: Virtual FF Offset
+Code:
+csharp
+Copy
+virtual_ff_offset.Text = tempBODY;
++
+
+Usage: Open Loop parameter
+Code:
+csharp
+Copy
+open_loop.Text = tempBODY;
+` (backtick)
+
+Usage: Meth Safety parameter
+Code:
+csharp
+Copy
+meth_safety.Text = tempBODY;
+=
+
+Usage: CPS (Crank Position Sensor) value
+Conversion: Divided by 10 and rounded
+Code:
+csharp
+Copy
+CPS.Text = Math.Round(Convert.ToDecimal(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+#
+
+Usage: Last Safety parameter
+Code:
+csharp
+Copy
+last_safety.Text = tempBODY;
+W
+
+Usage: Acceleration
+Code:
+csharp
+Copy
+accel.Text = tempBODY;
+{
+
+Usage: N1 Minimum Gear
+Code:
+csharp
+Copy
+n1mingear.Text = tempBODY;
+}
+
+Usage: N1 Minimum AFR (Air-Fuel Ratio)
+Code:
+csharp
+Copy
+n1minafr.Text = tempBODY;
+|
+
+Usage: N1 Minimum Advance
+Code:
+csharp
+Copy
+n1minadvance.Text = tempBODY;
+~
+
+Usage: KR1 value
+Conversion: Divided by 10 and rounded
+Code:
+csharp
+Copy
+kr1.Text = Math.Round(Convert.ToDecimal(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+I
+
+Usage: KR2 value
+Conversion: Divided by 10 and rounded
+Code:
+csharp
+Copy
+kr2.Text = Math.Round(Convert.ToDecimal(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+J
+
+Usage: KR3 value
+Conversion: Divided by 10 and rounded
+Code:
+csharp
+Copy
+kr3.Text = Math.Round(Convert.ToDecimal(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+O
+
+Usage: KR4 value
+Conversion: Divided by 10 and rounded
+Code:
+csharp
+Copy
+kr4.Text = Math.Round(Convert.ToDecimal(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+K
+
+Usage: KR5 value
+Conversion: Divided by 10 and rounded
+Code:
+csharp
+Copy
+kr5.Text = Math.Round(Convert.ToDecimal(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+y
+
+Usage: KR6 value
+Conversion: Divided by 10 and rounded
+Code:
+csharp
+Copy
+kr6.Text = Math.Round(Convert.ToDecimal(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+[
+
+Usage: KR7 value
+Conversion: Divided by 10 and rounded
+Code:
+csharp
+Copy
+kr7.Text = Math.Round(Convert.ToDecimal(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+\
+
+Usage: KR8 value
+Conversion: Divided by 10 and rounded
+Code:
+csharp
+Copy
+kr8.Text = Math.Round(Convert.ToDecimal(tempBODY, CultureInfo.InvariantCulture) / 10, 1).ToString("0.0.##", CultureInfo.InvariantCulture);
+]
+
+Usage: Auxiliary value 1
+Code:
+csharp
+Copy
+aux1.Text = tempBODY;
+_
+
+Usage: Auxiliary value 2
+Code:
+csharp
+Copy
+aux2.Text = tempBODY;
+b
+
+Usage: Auxiliary value 3
+Code:
+csharp
+Copy
+aux3.Text = tempBODY;
+c
+
+Usage: Auxiliary value 4
+Code:
+csharp
+Copy
+aux4.Text = tempBODY;
+d
+
+Usage: Auxiliary value 5
+Code:
+csharp
+Copy
+aux5.Text = tempBODY;
+g
+
+Usage: Auxiliary value 6
+Code:
+csharp
+Copy
+aux6.Text = tempBODY;
+h
+
+Usage: MAF Sensor 1 value
+Code:
+csharp
+Copy
+maf1.Text = tempBODY;
+i
+
+Usage: MAF Sensor 2 value
+Code:
+csharp
+Copy
+maf2.Text = tempBODY;

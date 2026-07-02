@@ -1,0 +1,31 @@
+{
+  "project_id": "8747450a-0664-4624-a71b-aa18bc2023fb",
+  "project_name": "az christmas",
+  "geo_score": 74.2,
+  "brand_mention_rate": 0.41,
+  "citation_rate": 0.29,
+  "engine_run_count": 5,
+  "open_recommendations": 55,
+  "engines": {
+    "chatgpt": {
+      "mentions": 6,
+      "citations": 3
+    },
+    "google-ai-overviews": {
+      "mentions": 4,
+      "citations": 2
+    },
+    "perplexity": {
+      "mentions": 8,
+      "citations": 5
+    },
+    "gemini": {
+      "mentions": 3,
+      "citations": 1
+    },
+    "claude": {
+      "mentions": 2,
+      "citations": 1
+    }
+  }
+}

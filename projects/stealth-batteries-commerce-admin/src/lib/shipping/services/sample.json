@@ -1,0 +1,96 @@
+{
+  "RateRequest": {
+    "Request": {
+      "TransactionReference": {
+        "CustomerContext": "Rating and Service Request"
+      },
+      "RequestOption": ["Rate", "Shop"],
+      "SubVersion": "2409"
+    },
+    "CustomerClassification": {
+      "Code": "04"
+    },
+    "Shipment": {
+      "ShipmentRatingOptions": {
+        "TPFCNegotiatedRatesIndicator": "Y",
+        "NegotiatedRatesIndicator": "Y",
+        "RateChartIndicator": "Y",
+        "UserLevelDiscountIndicator": "Y"
+      },
+      "PaymentInformation": {
+        "ShipmentCharge": {
+          "Type": "01",
+          "BillShipper": {
+            "AccountNumber": "ACCOUNT_NUMBER"
+          }
+        }
+      },
+      "DeliveryTimeInformation": {
+        "PackageBillType": "03",
+        "Pickup": {
+          "Date": "20250425"
+        }
+      },
+      "TimeInTransitIndicator": "Y",
+      "TaxInformationIndicator": "Y",
+      "Shipper": {
+        "Name": "Stealth Batteries",
+        "ShipperNumber": "ACCOUNT_NUMBER",
+        "Address": {
+          "AddressLine": ["3266 W Galveston Dr"],
+          "City": "Apache Junction",
+          "StateProvinceCode": "AZ",
+          "PostalCode": "85120",
+          "CountryCode": "US"
+        }
+      },
+      "ShipTo": {
+        "Name": "Customer",
+        "Address": {
+          "AddressLine": ["1600 West Royal Court Ave."],
+          "City": "Baltimore",
+          "StateProvinceCode": "MD",
+          "PostalCode": "21217",
+          "CountryCode": "US",
+          "ResidentialAddressIndicator": "Y"
+        }
+      },
+      "ShipFrom": {
+        "Name": "Stealth Batteries",
+        "ShipperNumber": "ACCOUNT_NUMBER",
+        "Address": {
+          "AddressLine": ["3266 W Galveston Dr"],
+          "City": "Apache Junction",
+          "StateProvinceCode": "AZ",
+          "PostalCode": "85120",
+          "CountryCode": "US"
+        }
+      },
+      "NumOfPieces": "1",
+      "Package": [
+        {
+          "PackagingType": {
+            "Code": "02",
+            "Description": "Customer Supplied"
+          },
+          "Dimensions": {
+            "UnitOfMeasurement": {
+              "Code": "IN",
+              "Description": "Inches"
+            },
+            "Length": "12",
+            "Width": "10",
+            "Height": "12"
+          },
+          "PackageWeight": {
+            "UnitOfMeasurement": {
+              "Code": "LBS",
+              "Description": "Pounds"
+            },
+            "Weight": "26"
+          }
+        }
+      ]
+    }
+  }
+}

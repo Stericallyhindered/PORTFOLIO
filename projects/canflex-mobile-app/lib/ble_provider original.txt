@@ -1,0 +1,298 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
+import 'dart:async';
+
+class BleProvider with ChangeNotifier {
+  final FlutterReactiveBle _ble = FlutterReactiveBle();
+  late DiscoveredDevice _device;
+  QualifiedCharacteristic? _writeCharacteristic;
+  QualifiedCharacteristic? _readCharacteristic;
+  Function(String)? addLog;
+
+  String deviceName = "CANFLEX";
+  String _status = "Disconnected";
+  String _errorMessage = "";
+
+  String ethanolContent = 'E--';
+  String fuelTemperature = '--°F';
+  String fuelPressure = '-- PSI';
+  String firmwareVersion = 'Unknown';
+
+  String selectedCanbusOutput = '0';
+  String selectedAnalogOutput = '0';
+  String selectedPressureReading = '0';
+  List<int> calibrationValues = [25, 50, 75];
+
+  final Uuid _serviceUuid = Uuid.parse("0000FFE0-0000-1000-8000-00805F9B34FB");
+  final Uuid _writeUuid = Uuid.parse("0000FFE9-0000-1000-8000-00805F9B34FB");
+  final Uuid _notifyUuid = Uuid.parse("0000FFE4-0000-1000-8000-00805F9B34FB");
+
+  Timer? _dataRequestTimer;
+  List<String> logs = [];
+
+  String get status => _status;
+  String get errorMessage => _errorMessage;
+
+  /// Logs a message with detailed byte information
+  void logBytes(String message, List<int> bytes) {
+    final byteString = bytes.map((byte) => byte.toRadixString(16).padLeft(2, '0')).join(' ');
+    log("$message: [Bytes: $byteString]");
+  }
+
+  /// Logs a generic message and adds it to the log list
+  void log(String message) {
+    final timestamp = DateTime.now().toIso8601String();
+    logs.add("[$timestamp] $message");
+    notifyListeners();
+    if (addLog != null) {
+      addLog!(message);
+    }
+  }
+
+  /// Sets an error message and logs it
+  void setErrorMessage(String message) {
+    _errorMessage = message;
+    log("Error: $message");
+    notifyListeners();
+  }
+
+  Future<void> scanAndConnect() async {
+    _status = "Scanning for CANFLEX...";
+    notifyListeners();
+    log("Started scanning for CANFLEX...");
+
+    try {
+      _ble.scanForDevices(withServices: []).listen((device) {
+        if (device.name == deviceName) {
+          _device = device;
+          _status = "Device Found. Connecting...";
+          notifyListeners();
+          log("Found CANFLEX device. Attempting to connect...");
+          _connectToDevice();
+        }
+      }, onError: (error) {
+        setErrorMessage("Error during scan: $error");
+        _status = "Scan Failed";
+        notifyListeners();
+      });
+    } catch (e) {
+      setErrorMessage("Error initiating scan: $e");
+      _status = "Failed";
+      notifyListeners();
+    }
+  }
+
+  Future<void> _connectToDevice() async {
+    try {
+      _ble.connectToDevice(id: _device.id).listen((connectionState) {
+        if (connectionState.connectionState == DeviceConnectionState.connected) {
+          _status = "Connected";
+          notifyListeners();
+          log("Connected to CANFLEX.");
+          _discoverServices();
+        } else if (connectionState.connectionState == DeviceConnectionState.disconnected) {
+          _status = "Disconnected";
+          _dataRequestTimer?.cancel();
+          notifyListeners();
+          log("Disconnected from CANFLEX.");
+        }
+      }, onError: (error) {
+        setErrorMessage("Connection error: $error");
+        _status = "Connection Failed";
+        notifyListeners();
+      });
+    } catch (e) {
+      setErrorMessage("Connection failed: $e");
+      _status = "Failed";
+      notifyListeners();
+    }
+  }
+
+  Future<void> _discoverServices() async {
+    try {
+      log("Discovering services for CANFLEX...");
+      final services = await _ble.discoverServices(_device.id);
+
+      for (var service in services) {
+        log("Service found: ${service.serviceId}");
+        for (var characteristic in service.characteristics) {
+          log("Characteristic found: ${characteristic.characteristicId}");
+        }
+      }
+
+      _setUpCharacteristics(services);
+    } catch (e) {
+      setErrorMessage("Error discovering services: $e");
+    }
+  }
+
+  void _setUpCharacteristics(List<DiscoveredService> services) {
+    try {
+      final writeService = services.firstWhere(
+        (service) => service.serviceId == _serviceUuid,
+        orElse: () => throw Exception("Write Service not found"),
+      );
+
+      _writeCharacteristic = QualifiedCharacteristic(
+        serviceId: writeService.serviceId,
+        characteristicId: _writeUuid,
+        deviceId: _device.id,
+      );
+
+      final notifyService = services.firstWhere(
+        (service) => service.serviceId == _serviceUuid,
+        orElse: () => throw Exception("Notify Service not found"),
+      );
+
+      _readCharacteristic = QualifiedCharacteristic(
+        serviceId: notifyService.serviceId,
+        characteristicId: _notifyUuid,
+        deviceId: _device.id,
+      );
+
+      log("Successfully set up characteristics for CANFLEX.");
+
+      _ble.subscribeToCharacteristic(_readCharacteristic!).listen((data) {
+        _processData(data);
+        logBytes("Received data", data);
+      }, onError: (error) {
+        setErrorMessage("Error receiving data: $error");
+      });
+
+      _requestData();
+    } catch (e) {
+      setErrorMessage("Error setting up characteristics: $e");
+    }
+  }
+
+  /// Pauses real-time data updates
+  void pauseRealTimeUpdates() {
+    _dataRequestTimer?.cancel();
+    log("Paused real-time data updates.");
+  }
+
+  /// Resumes real-time data updates
+  void resumeRealTimeUpdates() {
+    if (_status == "Connected") {
+      _requestData();
+      log("Resumed real-time data updates.");
+    }
+  }
+
+  Future<void> _requestData() async {
+    _dataRequestTimer = Timer.periodic(const Duration(milliseconds: 200), (timer) async {
+      if (_status == "Connected") {
+        try {
+          await _ble.writeCharacteristicWithoutResponse(
+            _writeCharacteristic!,
+            value: [65, 13, 10, 0],
+          );
+          logBytes("Sent command to request data", [65, 13, 10, 0]);
+        } catch (e) {
+          setErrorMessage("Error requesting data: $e");
+        }
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
+  Future<bool> requestSettings() async {
+    try {
+      await _ble.writeCharacteristicWithoutResponse(_writeCharacteristic!, value: [80, 13, 10, 0]);
+      logBytes("Requested CANbus setting", [80, 13, 10, 0]);
+      await Future.delayed(const Duration(milliseconds: 100));
+
+      await _ble.writeCharacteristicWithoutResponse(_writeCharacteristic!, value: [81, 13, 10, 0]);
+      logBytes("Requested Analog setting", [81, 13, 10, 0]);
+      await Future.delayed(const Duration(milliseconds: 100));
+
+      await _ble.writeCharacteristicWithoutResponse(_writeCharacteristic!, value: [82, 13, 10, 0]);
+      logBytes("Requested Calibration setting", [82, 13, 10, 0]);
+      await Future.delayed(const Duration(milliseconds: 100));
+
+      await _ble.writeCharacteristicWithoutResponse(_writeCharacteristic!, value: [83, 13, 10, 0]);
+      logBytes("Requested Pressure setting", [83, 13, 10, 0]);
+      await Future.delayed(const Duration(milliseconds: 100));
+
+      await _ble.writeCharacteristicWithoutResponse(_writeCharacteristic!, value: [33, 13, 10, 0]);
+      logBytes("Requested Firmware version", [33, 13, 10, 0]);
+      log("Requested all settings and firmware version.");
+
+      return true; // Indicate success
+    } catch (e) {
+      setErrorMessage("Error requesting settings: $e");
+      return false; // Indicate failure
+    }
+  }
+
+  /// Sends settings commands with delay between each
+  Future<void> sendSettingsWithDelay(List<List<int>> commands) async {
+    pauseRealTimeUpdates(); // Pause updates during settings save
+    try {
+      for (List<int> command in commands) {
+        logBytes("Sending command", command);
+        await _ble.writeCharacteristicWithoutResponse(_writeCharacteristic!, value: command);
+        await Future.delayed(const Duration(milliseconds: 500)); // 500ms delay between each command
+      }
+      log("All settings sent with delay.");
+    } catch (e) {
+      setErrorMessage("Error sending settings with delay: $e");
+    } finally {
+      resumeRealTimeUpdates(); // Resume updates after saving
+    }
+  }
+
+  void _processData(List<int> data) {
+    try {
+      logBytes("Processing received data", data);
+
+      if (data.isNotEmpty) {
+        switch (data[0]) {
+          case 65:
+            if (data.length >= 4) {
+              ethanolContent = data[1].toString();
+              fuelTemperature = '${data[2]}°F';
+              fuelPressure = '${data[3]} PSI';
+              log("Processed data: E85 = $ethanolContent, Temp = $fuelTemperature, Pressure = $fuelPressure");
+            } else {
+              setErrorMessage("Insufficient data length for command 65.");
+            }
+            break;
+          case 80:
+            selectedCanbusOutput = data[1].toString();
+            log("Processed CANbus output: $selectedCanbusOutput");
+            break;
+          case 81:
+            selectedAnalogOutput = data[1].toString();
+            log("Processed Analog output: $selectedAnalogOutput");
+            break;
+          case 82:
+            if (data.length >= 4) {
+              calibrationValues = [data[1], data[2], data[3]];
+              log("Processed calibration values: $calibrationValues");
+            } else {
+              setErrorMessage("Insufficient data length for calibration.");
+            }
+            break;
+          case 83:
+            selectedPressureReading = data[1].toString();
+            log("Processed pressure reading: $selectedPressureReading");
+            break;
+          case 33:
+            firmwareVersion = 'Firmware v${data[1]}';
+            log("Processed firmware version: $firmwareVersion");
+            break;
+          default:
+            setErrorMessage("Unknown data type received: ${data[0]}");
+            break;
+        }
+        notifyListeners(); // Notify after updating data
+      } else {
+        setErrorMessage("Received empty data.");
+      }
+    } catch (e) {
+      setErrorMessage("Error processing settings data: $e");
+    }
+  }
+}

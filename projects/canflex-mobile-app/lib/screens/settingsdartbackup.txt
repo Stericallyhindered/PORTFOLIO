@@ -1,0 +1,253 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../ble_provider.dart';
+
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
+  @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  String? selectedCanbusOutput;
+  String? selectedAnalogOutput;
+  int sensorCalibration25 = 25;
+  int sensorCalibration50 = 50;
+  int sensorCalibration75 = 75;
+  String appVersion = '0.0.0.1';  // Static app version
+  String firmwareVersion = 'Unknown';  // Placeholder for firmware version
+
+  final List<Map<String, String>> canbusOptions = [
+    {'label': 'Disabled', 'value': '0'},
+    {'label': 'JB4', 'value': '1'},
+    {'label': 'MHD G Chassis', 'value': '2'},
+    {'label': 'MHD F Chassis', 'value': '3'},
+    {'label': 'BM3', 'value': '4'},
+  ];
+
+  final List<Map<String, String>> analogOptions = [
+    {'label': 'Disabled', 'value': '0'},
+    {'label': '0-5V', 'value': '1'},
+    {'label': '0.5-4.5V', 'value': '2'},
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSettings();
+  }
+
+  Future<void> _loadSettings() async {
+    if (context.read<BleProvider>().status == "Connected") {
+      await context.read<BleProvider>().requestSettings();
+
+      // Set values based on BLE read
+      setState(() {
+        selectedCanbusOutput = context.read<BleProvider>().selectedCanbusOutput ?? '0';
+        selectedAnalogOutput = context.read<BleProvider>().selectedAnalogOutput ?? '0';
+        sensorCalibration25 = context.read<BleProvider>().calibrationValues[0];
+        sensorCalibration50 = context.read<BleProvider>().calibrationValues[1];
+        sensorCalibration75 = context.read<BleProvider>().calibrationValues[2];
+        firmwareVersion = context.read<BleProvider>().firmwareVersion;
+      });
+    }
+  }
+
+  Future<void> _saveSettings() async {
+    int canbusSetting = int.parse(selectedCanbusOutput ?? '0');
+    int analogSetting = int.parse(selectedAnalogOutput ?? '0');
+    List<int> calibrationValues = [sensorCalibration25, sensorCalibration50, sensorCalibration75]; 
+
+    // Preparing the commands for the BLE provider to send
+    List<int> canbusCommand = [80, canbusSetting, 0]; // 'P' + value + null byte
+    List<int> analogCommand = [81, analogSetting, 0]; // 'Q' + value + null byte
+    List<int> calibrationCommand = [82, calibrationValues[0], calibrationValues[1], calibrationValues[2], 0]; // 'R' + calibration values + null byte
+
+    // Send settings back even if nothing changed
+    if (context.read<BleProvider>().status == "Connected") {
+      context.read<BleProvider>().sendSettings(canbusCommand, analogCommand, calibrationCommand);
+    }
+
+    Navigator.pop(context); // Go back after saving
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings'),
+        backgroundColor: Colors.black,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Image.asset(
+                'assets/images/logo.png',
+                height: 100,
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // Display Firmware Version
+            const Text('Firmware Version', style: TextStyle(fontSize: 18, color: Colors.white)),
+            Text(firmwareVersion, style: const TextStyle(fontSize: 16, color: Colors.white)),
+            const SizedBox(height: 10),
+
+            // Display App Version
+            const Text('App Version', style: TextStyle(fontSize: 18, color: Colors.white)),
+            Text(appVersion, style: const TextStyle(fontSize: 16, color: Colors.white)),
+            const SizedBox(height: 20),
+
+            const Text('CANbus Output Setting', style: TextStyle(fontSize: 18, color: Colors.white)),
+            _buildCanbusDropdown(),
+
+            const SizedBox(height: 20),
+
+            const Text('Analog Output Setting', style: TextStyle(fontSize: 18, color: Colors.white)),
+            _buildAnalogOutputDropdown(),
+
+            const SizedBox(height: 20),
+
+            const Text('Sensor Calibration', style: TextStyle(fontSize: 18, color: Colors.white)),
+            _buildSensorCalibration(),
+
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+              ),
+              onPressed: _saveSettings,
+              child: const Text('SAVE SETTINGS', style: TextStyle(color: Colors.black)),
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Colors.black,
+    );
+  }
+
+  Widget _buildCanbusDropdown() {
+    return DropdownButton<String>(
+      value: selectedCanbusOutput,
+      items: canbusOptions.map((option) {
+        return DropdownMenuItem(
+          value: option['value'],
+          child: Text(option['label']!, style: const TextStyle(color: Colors.white)),
+        );
+      }).toList(),
+      onChanged: (value) {
+        setState(() {
+          selectedCanbusOutput = value;
+        });
+      },
+      hint: const Text('Select CANbus Output', style: TextStyle(color: Colors.white)),
+      dropdownColor: Colors.black,
+      iconEnabledColor: Colors.white,
+    );
+  }
+
+  Widget _buildAnalogOutputDropdown() {
+    return DropdownButton<String>(
+      value: selectedAnalogOutput,
+      items: analogOptions.map((option) {
+        return DropdownMenuItem(
+          value: option['value'],
+          child: Text(option['label']!, style: const TextStyle(color: Colors.white)),
+        );
+      }).toList(),
+      onChanged: (value) {
+        setState(() {
+          selectedAnalogOutput = value;
+        });
+      },
+      hint: const Text('Select Analog Output', style: TextStyle(color: Colors.white)),
+      dropdownColor: Colors.black,
+      iconEnabledColor: Colors.white,
+    );
+  }
+
+  Widget _buildSensorCalibration() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('25%', style: TextStyle(fontSize: 16, color: Colors.white)),
+            SizedBox(
+              width: 100,
+              child: TextFormField(
+                initialValue: sensorCalibration25.toString(),
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  setState(() {
+                    sensorCalibration25 = int.parse(value);
+                  });
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('50%', style: TextStyle(fontSize: 16, color: Colors.white)),
+            SizedBox(
+              width: 100,
+              child: TextFormField(
+                initialValue: sensorCalibration50.toString(),
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  setState(() {
+                    sensorCalibration50 = int.parse(value);
+                  });
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('75%', style: TextStyle(fontSize: 16, color: Colors.white)),
+            SizedBox(
+              width: 100,
+              child: TextFormField(
+                initialValue: sensorCalibration75.toString(),
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  setState(() {
+                    sensorCalibration75 = int.parse(value);
+                  });
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}

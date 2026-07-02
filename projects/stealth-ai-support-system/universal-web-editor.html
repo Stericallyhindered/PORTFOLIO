@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Web Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1e1e1e;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Editor Layout */
+        .editor-container {
+            display: grid;
+            grid-template-columns: 250px 1fr 300px;
+            grid-template-rows: 50px 1fr;
+            height: 100vh;
+        }
+
+        /* Top Toolbar */
+        .toolbar {
+            grid-column: 1 / -1;
+            background: #2d2d2d;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 15px;
+            border-bottom: 1px solid #404040;
+        }
+
+        .toolbar button {
+            background: #404040;
+            border: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        .toolbar button:hover {
+            background: #505050;
+        }
+
+        .toolbar button.active {
+            background: #007acc;
+        }
+
+        .toolbar input[type="file"] {
+            display: none;
+        }
+
+        /* Left Panel - Assets & Layers */
+        .left-panel {
+            background: #252526;
+            border-right: 1px solid #404040;
+            overflow-y: auto;
+        }
+
+        .panel-section {
+            border-bottom: 1px solid #404040;
+        }
+
+        .panel-header {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .panel-content {
+            padding: 10px;
+        }
+
+        /* Asset Browser */
+        .asset-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 5px;
+            background: #2d2d2d;
+            border-radius: 4px;
+            cursor: grab;
+            transition: background 0.2s;
+        }
+
+        .asset-item:hover {
+            background: #404040;
+        }
+
+        .asset-item:active {
+            cursor: grabbing;
+        }
+
+        .asset-thumbnail {
+            width: 30px;
+            height: 30px;
+            background: #404040;
+            border-radius: 3px;
+            margin-right: 10px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .asset-name {
+            font-size: 12px;
+            flex: 1;
+        }
+
+        /* Layer Panel */
+        .layer-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 2px;
+            background: #2d2d2d;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .layer-item:hover {
+            background: #404040;
+        }
+
+        .layer-item.selected {
+            background: #007acc;
+        }
+
+        .layer-visibility {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            cursor: pointer;
+            background: #404040;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .layer-visibility.visible {
+            background: #007acc;
+        }
+
+        .layer-name {
+            font-size: 12px;
+            flex: 1;
+        }
+
+        .layer-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .layer-controls button {
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            padding: 2px;
+            font-size: 10px;
+        }
+
+        .layer-controls button:hover {
+            color: #fff;
+        }
+
+        /* Main Canvas */
+        .canvas-container {
+            background: #1e1e1e;
+            position: relative;
+            overflow: auto;
+        }
+
+        .canvas {
+            position: relative;
+            min-width: 100%;
+            min-height: 100%;
+            background: #fff;
+            margin: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* Draggable Elements */
+        .draggable-element {
+            position: absolute;
+            cursor: move;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .draggable-element:hover {
+            border-color: #007acc;
+        }
+
+        .draggable-element.selected {
+            border-color: #007acc;
+            box-shadow: 0 0 0 1px #007acc;
+        }
+
+        .draggable-element img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        /* Resize Handles */
+        .resize-handle {
+            position: absolute;
+            background: #007acc;
+            border: 1px solid #fff;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .resize-handle.nw { top: -4px; left: -4px; cursor: nw-resize; }
+        .resize-handle.ne { top: -4px; right: -4px; cursor: ne-resize; }
+        .resize-handle.sw { bottom: -4px; left: -4px; cursor: sw-resize; }
+        .resize-handle.se { bottom: -4px; right: -4px; cursor: se-resize; }
+        .resize-handle.n { top: -4px; left: 50%; transform: translateX(-50%); cursor: n-resize; }
+        .resize-handle.s { bottom: -4px; left: 50%; transform: translateX(-50%); cursor: s-resize; }
+        .resize-handle.w { top: 50%; left: -4px; transform: translateY(-50%); cursor: w-resize; }
+        .resize-handle.e { top: 50%; right: -4px; transform: translateY(-50%); cursor: e-resize; }
+
+        /* Text Elements */
+        .text-element {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #333;
+            resize: none;
+            outline: none;
+            overflow: auto;
+        }
+
+        .text-element:focus {
+            border-color: #007acc;
+            box-shadow: 0 0 0 2px rgba(0,122,204,0.2);
+        }
+
+        /* Right Panel - Properties */
+        .right-panel {
+            background: #252526;
+            border-left: 1px solid #404040;
+            overflow-y: auto;
+        }
+
+        .property-group {
+            margin-bottom: 20px;
+        }
+
+        .property-label {
+            font-size: 12px;
+            color: #ccc;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .property-input {
+            width: 100%;
+            background: #3c3c3c;
+            border: 1px solid #404040;
+            color: #fff;
+            padding: 6px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .property-input:focus {
+            border-color: #007acc;
+            outline: none;
+        }
+
+        .property-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .property-row .property-input {
+            flex: 1;
+        }
+
+        /* Selection Rectangle */
+        .selection-rectangle {
+            position: absolute;
+            border: 2px dashed #007acc;
+            background: rgba(0,122,204,0.1);
+            pointer-events: none;
+            display: none;
+        }
+
+        /* Context Menu */
+        .context-menu {
+            position: fixed;
+            background: #2d2d2d;
+            border: 1px solid #404040;
+            border-radius: 4px;
+            padding: 5px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: none;
+        }
+
+        .context-menu-item {
+            padding: 8px 15px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .context-menu-item:hover {
+            background: #404040;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 25px;
+            background: #007acc;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 12px;
+            z-index: 100;
+        }
+
+        .status-info {
+            margin-right: 20px;
+        }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2d2d2d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #404040;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #505050;
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <button onclick="openFile()">📁 Open HTML</button>
+            <button onclick="saveFile()">💾 Save</button>
+            <button onclick="exportHTML()">📤 Export</button>
+            <div style="width: 1px; height: 20px; background: #404040; margin: 0 10px;"></div>
+            <button id="selectTool" class="active" onclick="setTool('select')">🔍 Select</button>
+            <button id="textTool" onclick="setTool('text')">📝 Text</button>
+            <button id="rectangleTool" onclick="setTool('rectangle')">⬜ Rectangle</button>
+            <div style="width: 1px; height: 20px; background: #404040; margin: 0 10px;"></div>
+            <button onclick="undo()">↶ Undo</button>
+            <button onclick="redo()">↷ Redo</button>
+            <div style="width: 1px; height: 20px; background: #404040; margin: 0 10px;"></div>
+            <button onclick="togglePreview()">👁️ Preview</button>
+            <input type="file" id="assetInput" accept="image/*" multiple onchange="loadAssets(event)">
+            <button onclick="document.getElementById('assetInput').click()">🖼️ Add Assets</button>
+        </div>
+
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="panel-section">
+                <div class="panel-header">Assets</div>
+                <div class="panel-content" id="assetsList">
+                    <div class="asset-item" draggable="true" data-src="assets for app/1x/1x/Asset 2.png">
+                        <div class="asset-thumbnail"></div>
+                        <div class="asset-name">Asset 2.png</div>
+                    </div>
+                    <div class="asset-item" draggable="true" data-src="assets for app/1x/1x/Asset 3.png">
+                        <div class="asset-thumbnail"></div>
+                        <div class="asset-name">Asset 3.png</div>
+                    </div>
+                    <div class="asset-item" draggable="true" data-src="assets for app/1x/1x/Asset 4.png">
+                        <div class="asset-thumbnail"></div>
+                        <div class="asset-name">Asset 4.png</div>
+                    </div>
+                    <div class="asset-item" draggable="true" data-src="assets for app/1x/1x/Asset 5.png">
+                        <div class="asset-thumbnail"></div>
+                        <div class="asset-name">Asset 5.png</div>
+                    </div>
+                    <div class="asset-item" draggable="true" data-src="assets for app/1x/1x/Asset 6.png">
+                        <div class="asset-thumbnail"></div>
+                        <div class="asset-name">Asset 6.png</div>
+                    </div>
+                    <div class="asset-item" draggable="true" data-src="assets for app/1x/1x/Asset 7.png">
+                        <div class="asset-thumbnail"></div>
+                        <div class="asset-name">Asset 7.png</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-section">
+                <div class="panel-header">Layers</div>
+                <div class="panel-content" id="layersList">
+                    <!-- Layers will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Canvas -->
+        <div class="canvas-container">
+            <div class="canvas" id="canvas">
+                <!-- Elements will be added here -->
+            </div>
+            <div class="selection-rectangle" id="selectionRect"></div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="panel-section">
+                <div class="panel-header">Properties</div>
+                <div class="panel-content" id="propertiesPanel">
+                    <div class="property-group">
+                        <label class="property-label">Position</label>
+                        <div class="property-row">
+                            <input type="number" class="property-input" id="propX" placeholder="X">
+                            <input type="number" class="property-input" id="propY" placeholder="Y">
+                        </div>
+                    </div>
+                    <div class="property-group">
+                        <label class="property-label">Size</label>
+                        <div class="property-row">
+                            <input type="number" class="property-input" id="propWidth" placeholder="Width">
+                            <input type="number" class="property-input" id="propHeight" placeholder="Height">
+                        </div>
+                    </div>
+                    <div class="property-group">
+                        <label class="property-label">Z-Index</label>
+                        <input type="number" class="property-input" id="propZIndex" placeholder="Z-Index">
+                    </div>
+                    <div class="property-group">
+                        <label class="property-label">Background Color</label>
+                        <input type="color" class="property-input" id="propBgColor">
+                    </div>
+                    <div class="property-group">
+                        <label class="property-label">Text</label>
+                        <textarea class="property-input" id="propText" rows="4" placeholder="Enter text..."></textarea>
+                    </div>
+                    <div class="property-group">
+                        <label class="property-label">Font Size</label>
+                        <input type="number" class="property-input" id="propFontSize" placeholder="Font Size">
+                    </div>
+                    <div class="property-group">
+                        <label class="property-label">Font Color</label>
+                        <input type="color" class="property-input" id="propFontColor">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Context Menu -->
+    <div class="context-menu" id="contextMenu">
+        <div class="context-menu-item" onclick="duplicateElement()">Duplicate</div>
+        <div class="context-menu-item" onclick="deleteElement()">Delete</div>
+        <div class="context-menu-item" onclick="bringToFront()">Bring to Front</div>
+        <div class="context-menu-item" onclick="sendToBack()">Send to Back</div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-info" id="statusInfo">Ready</div>
+        <div class="status-info" id="mousePos">X: 0, Y: 0</div>
+        <div class="status-info" id="selectedInfo">No selection</div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentTool = 'select';
+        let selectedElement = null;
+        let elements = [];
+        let elementCounter = 0;
+        let isDragging = false;
+        let isResizing = false;
+        let dragOffset = { x: 0, y: 0 };
+        let history = [];
+        let historyIndex = -1;
+        let isDrawing = false;
+        let startPos = { x: 0, y: 0 };
+
+        // Initialize editor
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEditor();
+            loadAssetThumbnails();
+        });
+
+        function initializeEditor() {
+            const canvas = document.getElementById('canvas');
+            
+            // Canvas event listeners
+            canvas.addEventListener('mousedown', onCanvasMouseDown);
+            canvas.addEventListener('mousemove', onCanvasMouseMove);
+            canvas.addEventListener('mouseup', onCanvasMouseUp);
+            canvas.addEventListener('contextmenu', onContextMenu);
+            
+            // Global event listeners
+            document.addEventListener('keydown', onKeyDown);
+            document.addEventListener('click', hideContextMenu);
+            
+            // Asset drag and drop
+            setupAssetDragDrop();
+            
+            // Property panel listeners
+            setupPropertyListeners();
+            
+            updateStatus('Editor initialized');
+        }
+
+        function loadAssetThumbnails() {
+            const assetItems = document.querySelectorAll('.asset-item');
+            assetItems.forEach(item => {
+                const thumbnail = item.querySelector('.asset-thumbnail');
+                const src = item.dataset.src;
+                if (src) {
+                    thumbnail.style.backgroundImage = `url('${src}')`;
+                }
+            });
+        }
+
+        function setupAssetDragDrop() {
+            const assetItems = document.querySelectorAll('.asset-item');
+            const canvas = document.getElementById('canvas');
+            
+            assetItems.forEach(item => {
+                item.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', item.dataset.src);
+                });
+            });
+            
+            canvas.addEventListener('dragover', (e) => {
+                e.preventDefault();
+            });
+            
+            canvas.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const src = e.dataTransfer.getData('text/plain');
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                createImageElement(src, x, y);
+            });
+        }
+
+        function createImageElement(src, x, y) {
+            const element = document.createElement('div');
+            element.className = 'draggable-element';
+            element.style.left = x + 'px';
+            element.style.top = y + 'px';
+            element.style.width = '200px';
+            element.style.height = '200px';
+            element.style.zIndex = elements.length + 1;
+            
+            const img = document.createElement('img');
+            img.src = src;
+            img.onload = () => {
+                // Maintain aspect ratio
+                const aspectRatio = img.naturalWidth / img.naturalHeight;
+                if (aspectRatio > 1) {
+                    element.style.height = (200 / aspectRatio) + 'px';
+                } else {
+                    element.style.width = (200 * aspectRatio) + 'px';
+                }
+            };
+            
+            element.appendChild(img);
+            
+            const elementData = {
+                id: 'element_' + (++elementCounter),
+                element: element,
+                type: 'image',
+                src: src
+            };
+            
+            elements.push(elementData);
+            document.getElementById('canvas').appendChild(element);
+            
+            addResizeHandles(element);
+            updateLayersList();
+            selectElement(element);
+            saveState();
+        }
+
+        function createTextElement(x, y, width, height) {
+            const element = document.createElement('textarea');
+            element.className = 'draggable-element text-element';
+            element.style.left = x + 'px';
+            element.style.top = y + 'px';
+            element.style.width = width + 'px';
+            element.style.height = height + 'px';
+            element.style.zIndex = elements.length + 1;
+            element.placeholder = 'Enter text here...';
+            
+            const elementData = {
+                id: 'element_' + (++elementCounter),
+                element: element,
+                type: 'text'
+            };
+            
+            elements.push(elementData);
+            document.getElementById('canvas').appendChild(element);
+            
+            addResizeHandles(element);
+            updateLayersList();
+            selectElement(element);
+            saveState();
+        }
+
+        function addResizeHandles(element) {
+            const handles = ['nw', 'ne', 'sw', 'se', 'n', 's', 'w', 'e'];
+            handles.forEach(handle => {
+                const handleEl = document.createElement('div');
+                handleEl.className = `resize-handle ${handle}`;
+                handleEl.addEventListener('mousedown', (e) => startResize(e, element, handle));
+                element.appendChild(handleEl);
+            });
+        }
+
+        function setTool(tool) {
+            currentTool = tool;
+            document.querySelectorAll('.toolbar button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tool + 'Tool').classList.add('active');
+            
+            const canvas = document.getElementById('canvas');
+            canvas.style.cursor = tool === 'text' || tool === 'rectangle' ? 'crosshair' : 'default';
+            
+            updateStatus(`Tool: ${tool}`);
+        }
+
+        function onCanvasMouseDown(e) {
+            if (e.target.classList.contains('resize-handle')) return;
+            
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            if (currentTool === 'text' || currentTool === 'rectangle') {
+                startPos = { x, y };
+                isDrawing = true;
+                
+                const selectionRect = document.getElementById('selectionRect');
+                selectionRect.style.left = x + 'px';
+                selectionRect.style.top = y + 'px';
+                selectionRect.style.width = '0px';
+                selectionRect.style.height = '0px';
+                selectionRect.style.display = 'block';
+                
+                return;
+            }
+            
+            if (e.target.classList.contains('draggable-element')) {
+                selectElement(e.target);
+                startDrag(e, e.target);
+            } else {
+                selectElement(null);
+            }
+        }
+
+        function onCanvasMouseMove(e) {
+            const rect = document.getElementById('canvas').getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            document.getElementById('mousePos').textContent = `X: ${Math.round(x)}, Y: ${Math.round(y)}`;
+            
+            if (isDrawing) {
+                const selectionRect = document.getElementById('selectionRect');
+                const width = Math.abs(x - startPos.x);
+                const height = Math.abs(y - startPos.y);
+                const left = Math.min(x, startPos.x);
+                const top = Math.min(y, startPos.y);
+                
+                selectionRect.style.left = left + 'px';
+                selectionRect.style.top = top + 'px';
+                selectionRect.style.width = width + 'px';
+                selectionRect.style.height = height + 'px';
+            }
+            
+            if (isDragging && selectedElement) {
+                const newX = x - dragOffset.x;
+                const newY = y - dragOffset.y;
+                
+                selectedElement.style.left = Math.max(0, newX) + 'px';
+                selectedElement.style.top = Math.max(0, newY) + 'px';
+                
+                updateProperties();
+            }
+        }
+
+        function onCanvasMouseUp(e) {
+            if (isDrawing) {
+                const rect = document.getElementById('canvas').getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const width = Math.abs(x - startPos.x);
+                const height = Math.abs(y - startPos.y);
+                const left = Math.min(x, startPos.x);
+                const top = Math.min(y, startPos.y);
+                
+                if (width > 10 && height > 10) {
+                    if (currentTool === 'text') {
+                        createTextElement(left, top, width, height);
+                    }
+                }
+                
+                document.getElementById('selectionRect').style.display = 'none';
+                isDrawing = false;
+            }
+            
+            isDragging = false;
+            isResizing = false;
+        }
+
+        function startDrag(e, element) {
+            isDragging = true;
+            const rect = element.getBoundingClientRect();
+            const canvasRect = document.getElementById('canvas').getBoundingClientRect();
+            
+            dragOffset.x = e.clientX - rect.left;
+            dragOffset.y = e.clientY - rect.top;
+        }
+
+        function startResize(e, element, handle) {
+            e.stopPropagation();
+            isResizing = true;
+            
+            const startX = e.clientX;
+            const startY = e.clientY;
+            const startRect = element.getBoundingClientRect();
+            const canvasRect = document.getElementById('canvas').getBoundingClientRect();
+            
+            const startLeft = startRect.left - canvasRect.left;
+            const startTop = startRect.top - canvasRect.top;
+            const startWidth = startRect.width;
+            const startHeight = startRect.height;
+            
+            function onMouseMove(e) {
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                let newLeft = startLeft;
+                let newTop = startTop;
+                let newWidth = startWidth;
+                let newHeight = startHeight;
+                
+                if (handle.includes('w')) {
+                    newLeft = startLeft + deltaX;
+                    newWidth = startWidth - deltaX;
+                }
+                if (handle.includes('e')) {
+                    newWidth = startWidth + deltaX;
+                }
+                if (handle.includes('n')) {
+                    newTop = startTop + deltaY;
+                    newHeight = startHeight - deltaY;
+                }
+                if (handle.includes('s')) {
+                    newHeight = startHeight + deltaY;
+                }
+                
+                if (newWidth > 10 && newHeight > 10) {
+                    element.style.left = Math.max(0, newLeft) + 'px';
+                    element.style.top = Math.max(0, newTop) + 'px';
+                    element.style.width = newWidth + 'px';
+                    element.style.height = newHeight + 'px';
+                    
+                    updateProperties();
+                }
+            }
+            
+            function onMouseUp() {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+                isResizing = false;
+                saveState();
+            }
+            
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        }
+
+        function selectElement(element) {
+            // Remove selection from all elements
+            document.querySelectorAll('.draggable-element').forEach(el => {
+                el.classList.remove('selected');
+                el.querySelectorAll('.resize-handle').forEach(handle => {
+                    handle.style.display = 'none';
+                });
+            });
+            
+            selectedElement = element;
+            
+            if (element) {
+                element.classList.add('selected');
+                element.querySelectorAll('.resize-handle').forEach(handle => {
+                    handle.style.display = 'block';
+                });
+                
+                updateProperties();
+                updateStatus(`Selected: ${element.tagName.toLowerCase()}`);
+            } else {
+                clearProperties();
+                updateStatus('No selection');
+            }
+            
+            updateSelectedInfo();
+        }
+
+        function updateProperties() {
+            if (!selectedElement) return;
+            
+            const rect = selectedElement.getBoundingClientRect();
+            const canvasRect = document.getElementById('canvas').getBoundingClientRect();
+            
+            document.getElementById('propX').value = Math.round(selectedElement.offsetLeft);
+            document.getElementById('propY').value = Math.round(selectedElement.offsetTop);
+            document.getElementById('propWidth').value = Math.round(selectedElement.offsetWidth);
+            document.getElementById('propHeight').value = Math.round(selectedElement.offsetHeight);
+            document.getElementById('propZIndex').value = selectedElement.style.zIndex || 1;
+            
+            if (selectedElement.classList.contains('text-element')) {
+                document.getElementById('propText').value = selectedElement.value;
+                const computedStyle = window.getComputedStyle(selectedElement);
+                document.getElementById('propFontSize').value = parseInt(computedStyle.fontSize);
+                document.getElementById('propFontColor').value = rgbToHex(computedStyle.color);
+                document.getElementById('propBgColor').value = rgbToHex(computedStyle.backgroundColor);
+            }
+        }
+
+        function clearProperties() {
+            document.getElementById('propX').value = '';
+            document.getElementById('propY').value = '';
+            document.getElementById('propWidth').value = '';
+            document.getElementById('propHeight').value = '';
+            document.getElementById('propZIndex').value = '';
+            document.getElementById('propText').value = '';
+            document.getElementById('propFontSize').value = '';
+            document.getElementById('propFontColor').value = '#000000';
+            document.getElementById('propBgColor').value = '#ffffff';
+        }
+
+        function setupPropertyListeners() {
+            // Position properties
+            document.getElementById('propX').addEventListener('input', (e) => {
+                if (selectedElement) {
+                    selectedElement.style.left = e.target.value + 'px';
+                    saveState();
+                }
+            });
+            
+            document.getElementById('propY').addEventListener('input', (e) => {
+                if (selectedElement) {
+                    selectedElement.style.top = e.target.value + 'px';
+                    saveState();
+                }
+            });
+            
+            // Size properties
+            document.getElementById('propWidth').addEventListener('input', (e) => {
+                if (selectedElement) {
+                    selectedElement.style.width = e.target.value + 'px';
+                    saveState();
+                }
+            });
+            
+            document.getElementById('propHeight').addEventListener('input', (e) => {
+                if (selectedElement) {
+                    selectedElement.style.height = e.target.value + 'px';
+                    saveState();
+                }
+            });
+            
+            // Z-Index
+            document.getElementById('propZIndex').addEventListener('input', (e) => {
+                if (selectedElement) {
+                    selectedElement.style.zIndex = e.target.value;
+                    updateLayersList();
+                    saveState();
+                }
+            });
+            
+            // Text properties
+            document.getElementById('propText').addEventListener('input', (e) => {
+                if (selectedElement && selectedElement.classList.contains('text-element')) {
+                    selectedElement.value = e.target.value;
+                    saveState();
+                }
+            });
+            
+            document.getElementById('propFontSize').addEventListener('input', (e) => {
+                if (selectedElement && selectedElement.classList.contains('text-element')) {
+                    selectedElement.style.fontSize = e.target.value + 'px';
+                    saveState();
+                }
+            });
+            
+            document.getElementById('propFontColor').addEventListener('input', (e) => {
+                if (selectedElement && selectedElement.classList.contains('text-element')) {
+                    selectedElement.style.color = e.target.value;
+                    saveState();
+                }
+            });
+            
+            document.getElementById('propBgColor').addEventListener('input', (e) => {
+                if (selectedElement) {
+                    selectedElement.style.backgroundColor = e.target.value;
+                    saveState();
+                }
+            });
+        }
+
+        function updateLayersList() {
+            const layersList = document.getElementById('layersList');
+            layersList.innerHTML = '';
+            
+            // Sort elements by z-index (highest first)
+            const sortedElements = [...elements].sort((a, b) => {
+                const aZ = parseInt(a.element.style.zIndex) || 1;
+                const bZ = parseInt(b.element.style.zIndex) || 1;
+                return bZ - aZ;
+            });
+            
+            sortedElements.forEach((elementData, index) => {
+                const layerItem = document.createElement('div');
+                layerItem.className = 'layer-item';
+                if (elementData.element === selectedElement) {
+                    layerItem.classList.add('selected');
+                }
+                
+                layerItem.innerHTML = `
+                    <div class="layer-visibility visible" onclick="toggleLayerVisibility('${elementData.id}')">👁</div>
+                    <div class="layer-name">${elementData.type} ${elementData.id.split('_')[1]}</div>
+                    <div class="layer-controls">
+                        <button onclick="moveLayerUp('${elementData.id}')">↑</button>
+                        <button onclick="moveLayerDown('${elementData.id}')">↓</button>
+                        <button onclick="deleteLayer('${elementData.id}')">🗑</button>
+                    </div>
+                `;
+                
+                layerItem.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('layer-visibility') && !e.target.tagName === 'BUTTON') {
+                        selectElement(elementData.element);
+                        updateLayersList();
+                    }
+                });
+                
+                layersList.appendChild(layerItem);
+            });
+        }
+
+        function toggleLayerVisibility(elementId) {
+            const elementData = elements.find(e => e.id === elementId);
+            if (elementData) {
+                const isVisible = elementData.element.style.display !== 'none';
+                elementData.element.style.display = isVisible ? 'none' : 'block';
+                updateLayersList();
+                saveState();
+            }
+        }
+
+        function moveLayerUp(elementId) {
+            const elementData = elements.find(e => e.id === elementId);
+            if (elementData) {
+                const currentZ = parseInt(elementData.element.style.zIndex) || 1;
+                elementData.element.style.zIndex = currentZ + 1;
+                updateLayersList();
+                updateProperties();
+                saveState();
+            }
+        }
+
+        function moveLayerDown(elementId) {
+            const elementData = elements.find(e => e.id === elementId);
+            if (elementData) {
+                const currentZ = parseInt(elementData.element.style.zIndex) || 1;
+                if (currentZ > 1) {
+                    elementData.element.style.zIndex = currentZ - 1;
+                    updateLayersList();
+                    updateProperties();
+                    saveState();
+                }
+            }
+        }
+
+        function deleteLayer(elementId) {
+            const elementIndex = elements.findIndex(e => e.id === elementId);
+            if (elementIndex !== -1) {
+                const elementData = elements[elementIndex];
+                elementData.element.remove();
+                elements.splice(elementIndex, 1);
+                
+                if (selectedElement === elementData.element) {
+                    selectElement(null);
+                }
+                
+                updateLayersList();
+                saveState();
+            }
+        }
+
+        function onContextMenu(e) {
+            e.preventDefault();
+            if (e.target.classList.contains('draggable-element')) {
+                selectElement(e.target);
+                showContextMenu(e.clientX, e.clientY);
+            }
+        }
+
+        function showContextMenu(x, y) {
+            const contextMenu = document.getElementById('contextMenu');
+            contextMenu.style.left = x + 'px';
+            contextMenu.style.top = y + 'px';
+            contextMenu.style.display = 'block';
+        }
+
+        function hideContextMenu() {
+            document.getElementById('contextMenu').style.display = 'none';
+        }
+
+        function duplicateElement() {
+            if (selectedElement) {
+                const rect = selectedElement.getBoundingClientRect();
+                const canvasRect = document.getElementById('canvas').getBoundingClientRect();
+                
+                const elementData = elements.find(e => e.element === selectedElement);
+                if (elementData) {
+                    if (elementData.type === 'image') {
+                        createImageElement(elementData.src, selectedElement.offsetLeft + 20, selectedElement.offsetTop + 20);
+                    } else if (elementData.type === 'text') {
+                        createTextElement(
+                            selectedElement.offsetLeft + 20,
+                            selectedElement.offsetTop + 20,
+                            selectedElement.offsetWidth,
+                            selectedElement.offsetHeight
+                        );
+                        // Copy text content
+                        const newElement = elements[elements.length - 1].element;
+                        newElement.value = selectedElement.value;
+                        newElement.style.fontSize = selectedElement.style.fontSize;
+                        newElement.style.color = selectedElement.style.color;
+                        newElement.style.backgroundColor = selectedElement.style.backgroundColor;
+                    }
+                }
+            }
+            hideContextMenu();
+        }
+
+        function deleteElement() {
+            if (selectedElement) {
+                const elementData = elements.find(e => e.element === selectedElement);
+                if (elementData) {
+                    deleteLayer(elementData.id);
+                }
+            }
+            hideContextMenu();
+        }
+
+        function bringToFront() {
+            if (selectedElement) {
+                const maxZ = Math.max(...elements.map(e => parseInt(e.element.style.zIndex) || 1));
+                selectedElement.style.zIndex = maxZ + 1;
+                updateLayersList();
+                updateProperties();
+                saveState();
+            }
+            hideContextMenu();
+        }
+
+        function sendToBack() {
+            if (selectedElement) {
+                selectedElement.style.zIndex = 1;
+                updateLayersList();
+                updateProperties();
+                saveState();
+            }
+            hideContextMenu();
+        }
+
+        function onKeyDown(e) {
+            if (e.key === 'Delete' && selectedElement) {
+                deleteElement();
+            } else if (e.ctrlKey && e.key === 'z') {
+                e.preventDefault();
+                undo();
+            } else if (e.ctrlKey && e.key === 'y') {
+                e.preventDefault();
+                redo();
+            } else if (e.ctrlKey && e.key === 'd') {
+                e.preventDefault();
+                duplicateElement();
+            }
+        }
+
+        function saveState() {
+            const state = {
+                elements: elements.map(e => ({
+                    id: e.id,
+                    type: e.type,
+                    src: e.src,
+                    style: {
+                        left: e.element.style.left,
+                        top: e.element.style.top,
+                        width: e.element.style.width,
+                        height: e.element.style.height,
+                        zIndex: e.element.style.zIndex,
+                        backgroundColor: e.element.style.backgroundColor,
+                        color: e.element.style.color,
+                        fontSize: e.element.style.fontSize,
+                        display: e.element.style.display
+                    },
+                    value: e.element.value || ''
+                }))
+            };
+            
+            history = history.slice(0, historyIndex + 1);
+            history.push(JSON.stringify(state));
+            historyIndex++;
+            
+            if (history.length > 50) {
+                history.shift();
+                historyIndex--;
+            }
+        }
+
+        function undo() {
+            if (historyIndex > 0) {
+                historyIndex--;
+                restoreState(JSON.parse(history[historyIndex]));
+                updateStatus('Undo');
+            }
+        }
+
+        function redo() {
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                restoreState(JSON.parse(history[historyIndex]));
+                updateStatus('Redo');
+            }
+        }
+
+        function restoreState(state) {
+            // Clear current elements
+            elements.forEach(e => e.element.remove());
+            elements = [];
+            
+            // Restore elements
+            state.elements.forEach(elementState => {
+                let element;
+                
+                if (elementState.type === 'image') {
+                    element = document.createElement('div');
+                    element.className = 'draggable-element';
+                    
+                    const img = document.createElement('img');
+                    img.src = elementState.src;
+                    element.appendChild(img);
+                } else if (elementState.type === 'text') {
+                    element = document.createElement('textarea');
+                    element.className = 'draggable-element text-element';
+                    element.placeholder = 'Enter text here...';
+                    element.value = elementState.value;
+                }
+                
+                // Apply styles
+                Object.assign(element.style, elementState.style);
+                
+                const elementData = {
+                    id: elementState.id,
+                    element: element,
+                    type: elementState.type,
+                    src: elementState.src
+                };
+                
+                elements.push(elementData);
+                document.getElementById('canvas').appendChild(element);
+                addResizeHandles(element);
+            });
+            
+            updateLayersList();
+            selectElement(null);
+        }
+
+        function loadAssets(event) {
+            const files = event.target.files;
+            const assetsList = document.getElementById('assetsList');
+            
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const assetItem = document.createElement('div');
+                    assetItem.className = 'asset-item';
+                    assetItem.draggable = true;
+                    assetItem.dataset.src = e.target.result;
+                    
+                    assetItem.innerHTML = `
+                        <div class="asset-thumbnail" style="background-image: url('${e.target.result}')"></div>
+                        <div class="asset-name">${file.name}</div>
+                    `;
+                    
+                    assetItem.addEventListener('dragstart', (e) => {
+                        e.dataTransfer.setData('text/plain', assetItem.dataset.src);
+                    });
+                    
+                    assetsList.appendChild(assetItem);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function openFile() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.html';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        // Parse HTML and extract elements
+                        // This is a simplified version - you could enhance this
+                        updateStatus('HTML file loaded');
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+
+        function saveFile() {
+            const html = exportHTML();
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'edited-page.html';
+            a.click();
+            URL.revokeObjectURL(url);
+            updateStatus('File saved');
+        }
+
+        function exportHTML() {
+            const canvas = document.getElementById('canvas');
+            const canvasHTML = canvas.innerHTML;
+            
+            const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exported Page</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #fff; }
+        .canvas { position: relative; width: 100%; height: 100vh; }
+        .draggable-element { position: absolute; }
+        .draggable-element img { width: 100%; height: 100%; object-fit: contain; }
+        .text-element { background: rgba(255,255,255,0.9); border: 1px solid #ccc; padding: 10px; font-family: Arial, sans-serif; resize: none; outline: none; overflow: auto; }
+        .resize-handle { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="canvas">${canvasHTML}</div>
+</body>
+</html>`;
+            
+            return html;
+        }
+
+        function togglePreview() {
+            const canvas = document.getElementById('canvas');
+            const isPreview = canvas.classList.contains('preview-mode');
+            
+            if (isPreview) {
+                canvas.classList.remove('preview-mode');
+                document.querySelectorAll('.resize-handle').forEach(handle => {
+                    handle.style.display = 'block';
+                });
+                document.querySelectorAll('.draggable-element').forEach(el => {
+                    el.style.cursor = 'move';
+                });
+                updateStatus('Edit mode');
+            } else {
+                canvas.classList.add('preview-mode');
+                document.querySelectorAll('.resize-handle').forEach(handle => {
+                    handle.style.display = 'none';
+                });
+                document.querySelectorAll('.draggable-element').forEach(el => {
+                    el.style.cursor = 'default';
+                });
+                selectElement(null);
+                updateStatus('Preview mode');
+            }
+        }
+
+        function updateStatus(message) {
+            document.getElementById('statusInfo').textContent = message;
+        }
+
+        function updateSelectedInfo() {
+            const info = selectedElement ? 
+                `Selected: ${selectedElement.tagName.toLowerCase()} (${Math.round(selectedElement.offsetLeft)}, ${Math.round(selectedElement.offsetTop)})` : 
+                'No selection';
+            document.getElementById('selectedInfo').textContent = info;
+        }
+
+        function rgbToHex(rgb) {
+            if (!rgb || rgb === 'rgba(0, 0, 0, 0)') return '#ffffff';
+            const result = rgb.match(/\d+/g);
+            if (!result) return '#ffffff';
+            return '#' + result.slice(0, 3).map(x => {
+                const hex = parseInt(x).toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            }).join('');
+        }
+
+        // Initialize with a saved state
+        saveState();
+    </script>
+</body>
+</html>

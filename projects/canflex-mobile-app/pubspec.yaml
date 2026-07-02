@@ -1,0 +1,51 @@
+name: canflexbasic
+description: "CANflex BLE Control"
+publish_to: 'none'  # Don't publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"  # Updated to include lower-bound SDK constraint
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # BLE Communication
+  flutter_reactive_ble: ^5.4.0
+
+  # UI Components
+  syncfusion_flutter_gauges: ^20.1.55
+  flutter_colorpicker: ^0.5.0
+  sleek_circular_slider: ^2.0.1
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  provider: ^6.0.3
+
+  # UUID Handling
+  uuid: ^3.0.5
+
+  # Permissions Handling
+  permission_handler: ^10.2.0
+
+  # File System Access
+  path_provider: ^2.0.11
+
+  # URL Launcher for Email Functionality
+  url_launcher: ^6.1.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.10.0  # Added here
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"  # Path to your icon file
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/logo.png

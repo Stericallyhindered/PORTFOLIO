@@ -1,0 +1,105 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Kraken",
+      "voltage": "12V",
+      "capacity": "60AH",
+      "link": "/products/kraken-12v-60ah",
+      "image": "https://i1vip8txhmugx0q6.public.blob.vercel-storage.com/stealth-batteries/uploads/kraken-12v-100ah-600x418.png",
+      "isBattery": true
+    },
+    {
+      "id": 2,
+      "name": "Kraken",
+      "voltage": "12V",
+      "capacity": "100AH",
+      "link": "/products/kraken-12v-100ah",
+      "image": "https://i1vip8txhmugx0q6.public.blob.vercel-storage.com/stealth-batteries/uploads/kraken-12v-100ah-600x418.png",
+      "isBattery": true
+    },
+    {
+      "id": 3,
+      "name": "Kraken",
+      "voltage": "12V",
+      "capacity": "135AH",
+      "link": "/products/kraken-12v-135ah",
+      "image": "https://i1vip8txhmugx0q6.public.blob.vercel-storage.com/stealth-batteries/uploads/kraken-12v-135ah-600x418.png",
+      "isBattery": true
+    },
+    {
+      "id": 4,
+      "name": "Kraken",
+      "voltage": "12V",
+      "capacity": "160AH",
+      "link": "/products/kraken-12v-160ah",
+      "image": "https://i1vip8txhmugx0q6.public.blob.vercel-storage.com/stealth-batteries/uploads/kraken-12v-160ah-600x418.png",
+      "isBattery": true
+    },
+    {
+      "id": 5,
+      "name": "Livescope",
+      "voltage": "16V",
+      "capacity": "100AH",
+      "link": "/products/live-scope-16v-100ah",
+      "image": "https://i1vip8txhmugx0q6.public.blob.vercel-storage.com/stealth-batteries/uploads/livescope-16v-100ah-600x418.png",
+      "isBattery": true
+    },
+    {
+      "id": 6,
+      "name": "Stealth",
+      "voltage": "24V",
+      "capacity": "60AH",
+      "link": "/products/stealth-24v-60ah",
+      "image": "https://i1vip8txhmugx0q6.public.blob.vercel-storage.com/stealth-batteries/uploads/kraken-12v-160ah-600x418.png",
+      "isBattery": true
+    },
+    {
+      "id": 7,
+      "name": "Stryker",
+      "voltage": "36V",
+      "capacity": "60AH",
+      "link": "/products/stryker-36v-60ah",
+      "image": "https://i1vip8txhmugx0q6.public.blob.vercel-storage.com/stealth-batteries/uploads/kraken-12v-160ah-600x418.png",
+      "isBattery": true
+    },
+
+    {
+      "id": 8,
+      "name": "3 Bank",
+      "voltage": "",
+      "capacity": "Charger",
+      "link": "/products/lightning-charger-3-bank-24v",
+      "image": "/assets/carousel-media/3-bank-charger-24v-carousel.png",
+      "isCharger": false
+    },
+
+    {
+      "id": 9,
+      "name": "4 Bank",
+      "voltage": "",
+      "capacity": "Charger",
+      "link": "/products/lightning-charger-4-bank",
+      "image": "/assets/carousel-media/4-bank-charger-12v-carousel.png",
+      "isCharger": false
+    },
+    {
+      "id": 10,
+      "name": "5 Bank",
+      "voltage": "",
+      "capacity": "Charger",
+      "link": "/products/lightning-charger-5-bank",
+      "image": "/assets/carousel-media/5-bank-charger-12v-carousel.png",
+      "isCharger": false
+    },
+    {
+      "id": 11,
+      "name": "Battery Tray",
+      "voltage": "",
+      "capacity": "HullShot",
+      "link": "/products/hullshot-weighted-battery-tray",
+      "image": "https://i1vip8txhmugx0q6.public.blob.vercel-storage.com/stealth-batteries/uploads/stealth-hull-shot-battery-tray-600x418.png",
+      "isBattery": false
+    }
+  ]
+}

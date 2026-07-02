@@ -1,0 +1,78 @@
+{
+    "generatedFrom":  "tunerpro_help_digest.md",
+    "includedCount":  30,
+    "excludedCount":  24,
+    "categories":  [
+                       {
+                           "name":  "Overview and UI",
+                           "pages":  [
+                                         "source/TunerProOverview.htm",
+                                         "source/TunerProInterface.htm",
+                                         "source/Preferences.htm",
+                                         "source/Shortcuts.htm",
+                                         "source/ViewFilters.htm"
+                                     ]
+                       },
+                       {
+                           "name":  "BIN Editing Workflows",
+                           "pages":  [
+                                         "source/GeneralEditing.htm",
+                                         "source/EditingBins.htm",
+                                         "source/Constants.htm",
+                                         "source/Flags.htm",
+                                         "source/Tables.htm",
+                                         "source/Functions.htm",
+                                         "source/TableGraphing.htm",
+                                         "source/ItemSummary.htm",
+                                         "source/ComparingBins.htm",
+                                         "source/EditLogging.htm",
+                                         "source/DiffTool.htm",
+                                         "source/FindItem.htm",
+                                         "source/BinStacker.htm",
+                                         "source/GraphicalTableFinder.htm",
+                                         "source/HexEditor.htm",
+                                         "source/UnderstandingHex.htm"
+                                     ]
+                       },
+                       {
+                           "name":  "XDF Authoring",
+                           "pages":  [
+                                         "source/XDFAddRemoveOrder.htm",
+                                         "source/XDFEditorToolbar.htm",
+                                         "source/XDFHeader.htm",
+                                         "source/XDFConstantEditor.htm",
+                                         "source/XDFFlagEditor.htm",
+                                         "source/XDFTableEditor.htm",
+                                         "source/XDFFunctionEditor.htm",
+                                         "source/GenConv.htm",
+                                         "source/Categories.htm"
+                                     ]
+                       }
+                   ],
+    "excludedPages":  [
+                          "source/DataAcq.htm",
+                          "source/DataAcqStart.htm",
+                          "source/DAToolbar.htm",
+                          "source/DALists.htm",
+                          "source/DAMonitors.htm",
+                          "source/DADash.htm",
+                          "source/DADataLogging.htm",
+                          "source/DATracing.htm",
+                          "source/DADatastreamDef.htm",
+                          "source/DADefCommandsOverview.html",
+                          "source/DADefHeader.htm",
+                          "source/DADefValue.htm",
+                          "source/DADefBitmask.htm",
+                          "source/DADefLookup.htm",
+                          "source/DADefDashes.htm",
+                          "source/DADefLists.htm",
+                          "source/DADefHistos.htm",
+                          "source/DADefMons.htm",
+                          "source/Emulation.htm",
+                          "source/EmulationStart.htm",
+                          "source/EmulationToolbar.htm",
+                          "source/AutoPromOverview.htm",
+                          "source/AutoPromPROMIO.htm",
+                          "source/CreatingECUs.htm"
+                      ]
+}

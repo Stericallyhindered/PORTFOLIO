@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JB4 Logging Chart Only</title>
+
+  <!-- Chart.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.min.js"></script>
+
+  <style>
+    html, body {
+      margin: 0; padding: 0; width: 100%; height: 100%;
+      background-color: #121212; color: #ffffff; font-family: Arial, sans-serif;
+    }
+    .app-bar {
+      background-color: #1f1f1f; padding: 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .app-title { font-size: 1.2rem; font-weight: bold; }
+    .upload-label {
+      cursor: pointer; display: inline-block; padding: 0.5rem 1rem;
+      background-color: #3b3b3b; border-radius: 4px; transition: background-color 0.2s;
+    }
+    .upload-label:hover { background-color: #555; }
+    input[type="file"] { display: none; }
+
+    #main-content {
+      display: flex; flex-direction: column; width: 100%; height: calc(100% - 64px);
+    }
+    #no-file-message {
+      text-align: center; padding: 2rem; flex: 1; color: #ccc;
+    }
+    #app-ui { flex: 1; overflow: hidden; display: none; /* shown after file loads */ }
+    .uploaded-file-info { padding: 1rem; font-weight: bold; }
+    .container {
+      display: flex; flex-direction: column; gap: 1rem;
+      padding: 1rem; box-sizing: border-box; flex: 1; overflow: hidden;
+    }
+
+    .chart-container {
+      border: 1px solid #444; border-radius: 4px;
+      padding: 1rem; display: flex; flex-direction: column;
+      flex: 1; min-height: 0; box-sizing: border-box; overflow: hidden;
+    }
+    #myChart {
+      width: 100% !important; height: 100% !important;
+      flex: 1;
+    }
+
+    .toggles-container {
+      margin-top: 1rem; border: 1px solid #444; border-radius: 4px;
+      padding: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .control-row {
+      display: flex; align-items: center; gap: 0.3rem;
+      background-color: #2a2a2a; border-radius: 12px;
+      padding: 0.2rem 0.6rem; font-size: 0.8rem;
+    }
+    .control-row input[type="color"] {
+      width: 20px; height: 20px; border: none; background: transparent; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Minimal App Bar -->
+  <div class="app-bar">
+    <div class="app-title">JB4 Logging Chart</div>
+    <label class="upload-label" for="file-input">
+      <span>Upload CSV</span>
+      <input type="file" id="file-input" accept=".csv"/>
+    </label>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content">
+    <div id="no-file-message">
+      <p>Please upload a CSV file to see the chart.</p>
+    </div>
+
+    <!-- After file upload, show #app-ui -->
+    <div id="app-ui">
+      <div class="uploaded-file-info" id="uploaded-file-info">Uploaded File:</div>
+
+      <div class="container">
+        <div class="chart-container">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="toggles-container" id="controls-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /********************************************************
+     * GLOBALS
+     ********************************************************/
+    let allCsvMatrix  = [];
+    let headers       = [];
+    let dataRows      = [];
+    let visibleSeries = [];
+    let seriesColors  = [];
+    let chartInstance = null;
+    let tooltipLocked = false;
+    const fileInput        = document.getElementById('file-input');
+    const noFileMessage    = document.getElementById('no-file-message');
+    const appUI            = document.getElementById('app-ui');
+    const uploadedFileInfo = document.getElementById('uploaded-file-info');
+    const controlsList     = document.getElementById('controls-list');
+    const chartCanvas      = document.getElementById('myChart');
+
+    /********************************************************
+     * EVENT LISTENERS
+     ********************************************************/
+    fileInput.addEventListener('change', handleFileUpload);
+
+    /********************************************************
+     * FILE UPLOAD & CSV PARSING
+     ********************************************************/
+    async function handleFileUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const rawCsv = await file.text();
+      const rows = rawCsv.split(/\r?\n/).filter(r => r.trim() !== "");
+      allCsvMatrix = rows.map(r => r.split(","));
+
+      // We assume row 0 is headers, rest is data
+      headers = allCsvMatrix[0];
+      const rawData = allCsvMatrix.slice(1);
+      dataRows = rawData.map(line => {
+        const rowObj = {};
+        headers.forEach((h, i) => {
+          const val = parseFloat(line[i]);
+          rowObj[h] = isNaN(val) ? (line[i] || "") : val;
+        });
+        return rowObj;
+      });
+
+      // Default: all columns except first one is data
+      // We'll assume first column is X-axis
+      visibleSeries = headers.slice(1).map(() => true);
+
+      // Assign random color to each
+      seriesColors = headers.slice(1).map(() => {
+        return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+      });
+
+      uploadedFileInfo.textContent = "Uploaded File: " + file.name;
+
+      noFileMessage.style.display = "none";
+      appUI.style.display         = "block";
+
+      buildControls();
+      buildChart();
+    }
+
+    /********************************************************
+     * BUILD CONTROLS + CHART
+     ********************************************************/
+    function buildControls() {
+      controlsList.innerHTML = "";
+      headers.slice(1).forEach((colName, idx) => {
+        const rowDiv = document.createElement("div");
+        rowDiv.className = "control-row";
+
+        const colorInput = document.createElement("input");
+        colorInput.type  = "color";
+        colorInput.value = seriesColors[idx];
+        colorInput.addEventListener("input", () => {
+          seriesColors[idx] = colorInput.value;
+          buildChart();
+        });
+        rowDiv.appendChild(colorInput);
+
+        const labelSpan = document.createElement("span");
+        labelSpan.textContent = colName;
+        rowDiv.appendChild(labelSpan);
+
+        const toggleCheckbox = document.createElement("input");
+        toggleCheckbox.type   = "checkbox";
+        toggleCheckbox.checked = visibleSeries[idx];
+        toggleCheckbox.addEventListener("change", () => {
+          visibleSeries[idx] = toggleCheckbox.checked;
+          buildChart();
+        });
+        rowDiv.appendChild(toggleCheckbox);
+
+        controlsList.appendChild(rowDiv);
+      });
+    }
+
+    function buildChart() {
+      if (chartInstance) chartInstance.destroy();
+
+      const xHeader = headers[0];
+      const datasets = headers.slice(1).map((colName, idx) => {
+        if (!visibleSeries[idx]) return null;
+        return {
+          label: colName,
+          data: dataRows.map(r => ({ x: r[xHeader], y: r[colName] })),
+          borderColor: seriesColors[idx],
+          backgroundColor: seriesColors[idx],
+          fill: false,
+          tension: 0.2,
+          borderWidth: 2,
+          pointRadius: 1.5,
+          pointHitRadius: 10,
+          pointHoverRadius: 6
+        };
+      }).filter(Boolean);
+
+      chartInstance = new Chart(chartCanvas, {
+        type: "line",
+        data: { datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: "x", intersect: false },
+          scales: {
+            y: {
+              type: "linear",
+              display: true,
+              title: { display: true, text: "Main Values", color: "#ffffff" },
+              grid: { color: "#ffffff33" },
+              ticks: { color: "#ffffff" }
+            },
+            x: {
+              type: "linear",
+              display: true,
+              title: { display: true, text: xHeader, color: "#ffffff" },
+              grid: { color: "#ffffff33" },
+              ticks: { color: "#ffffff" }
+            }
+          },
+          plugins: {
+            tooltip: { enabled: true, mode: "x", intersect: false },
+            legend: { display: false }
+          }
+        }
+      });
+
+      // Optional: "sticky" tooltip on click
+      chartCanvas.onclick = evt => {
+        const points = chartInstance.getElementsAtEventForMode(evt, "index", { intersect: false }, false);
+        if (points.length) {
+          if (tooltipLocked) {
+            chartInstance.tooltip.setActiveElements([], { x: 0, y: 0 });
+            tooltipLocked = false;
+          } else {
+            chartInstance.tooltip.setActiveElements(
+              points.map(pt => ({ datasetIndex: pt.datasetIndex, index: pt.index })),
+              { x: points[0].element.x, y: points[0].element.y }
+            );
+            tooltipLocked = true;
+          }
+          chartInstance.update();
+        }
+      };
+    }
+  </script>
+</body>
+</html>

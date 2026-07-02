@@ -1,0 +1,796 @@
+// Form1.cs Complete Settings Reference
+// This file contains ALL settings-related code extracted from Form1.cs
+
+// ===== TMAP Sensor Types & Limits =====
+// The TMAP (Turbo Manifold Absolute Pressure) sensor type determines boost limits
+// TMAP sensor value is stored in byte 38 of MAP1 packet
+
+// TMAP Types:
+// Type 1: 3.5 bar sensor
+//   - Max boost: 36.1 PSI
+//   - Max value: 140
+// Type 2: 4.0 bar sensor
+//   - Max boost: 43.0 PSI 
+//   - Max value: 140
+// Other types:
+//   - Max boost: 20.0 PSI
+//   - Max value: 80
+
+// TMAP Voltage Conversion:
+// - Raw sensor value * 0.0228 = Voltage
+// - Example: Raw value 100 = 2.28V
+
+// TMAP Validation Rules:
+// - All boost-related values must be under the TMAP max boost limit
+// - This includes: RPM boost targets, boost safety limits, WMI settings
+// - TMAP sensor type is validated when loading settings
+// - Invalid TMAP type defaults to lowest limits
+
+// ===== Constants & Timing =====
+msDELAY = 25; // Default delay between bytes for settings transmission
+msDELAY2 = 25; // Default for serial 50
+buffer_size = 2000; // Buffer size for incoming data
+maxLogPoints = 5000; // Maximum number of log points
+
+// ===== MAP1 Settings (64-byte packet) =====
+
+// MAP1 Validation
+private bool MAP1valid() {
+    int temp;
+    decimal tempd;
+    decimal tempMAX;
+
+    // TMAP sensor type determines max boost limits
+    if (tmap_sensor.Text.Equals("1")) {
+        tempMAX = (decimal)36.1;  // 3.5 bar sensor max boost
+    } else if (tmap_sensor.Text.Equals("2")) {
+        tempMAX = 43;  // 4.0 bar sensor max boost
+    } else {
+        tempMAX = 25;  // Default/other sensor max boost
+    }
+    
+    tempMAX = 60;  // Global override for testing - use with caution
+
+    // RPM Boost Values Validation
+    tempd = Convert.ToDecimal(rpm1500.Text);
+    if (tempd < 0 || tempd > tempMAX) {
+        MessageBox.Show("Valid 1500rpm target is 0 - " + tempMAX.ToString());
+        rpm1500.Focus();
+        return false;
+    }
+
+    // Repeat for all RPM points: 2000-7000
+    // Example for 2000:
+    tempd = Convert.ToDecimal(rpm2000.Text);
+    if (tempd < 0 || tempd > tempMAX) {
+        MessageBox.Show("Valid 2000rpm target is 0 - " + tempMAX.ToString());
+        rpm2000.Focus();
+        return false;
+    }
+
+    // Fuel Bias Values Validation
+    tempd = Convert.ToDecimal(fuel2500.Text);
+    if (tempd < 0 || tempd > 200) {
+        MessageBox.Show("Valid range is 0-200");
+        fuel2500.Focus();
+        return false;
+    }
+
+    // Repeat for all fuel bias points: 3000-6500
+    
+    // CPS Values Validation
+    tempd = Convert.ToDecimal(cps1500.Text);
+    if (tempd < 0 || tempd > 100) {
+        MessageBox.Show("Valid range is 0-100");
+        cps1500.Focus();
+        return false;
+    }
+
+    // Repeat for all CPS points: 2000-7000
+
+    // Advanced Settings Validation
+    temp = Convert.ToInt16(meth_trigger.Text);
+    if (temp < 0 || temp > 100) {
+        MessageBox.Show("Valid range is 0-100");
+        meth_trigger.Focus();
+        return false;
+    }
+
+    temp = Convert.ToInt16(m1lagfix.Text);
+    if (temp < 0 || temp > 100) {
+        MessageBox.Show("Valid range is 0-100");
+        m1lagfix.Focus();
+        return false;
+    }
+
+    tempd = Convert.ToDecimal(m1boostlimit.Text);
+    if (tempd < 0 || tempd > tempMAX) {
+        MessageBox.Show("Valid boost safety failsafe is 0 - " + tempMAX.ToString());
+        m1boostlimit.Focus();
+        return false;
+    }
+
+    temp = Convert.ToInt16(feed_forward.Text);
+    if (temp < 0 || temp > 150) {
+        MessageBox.Show("Valid ffmax range is 0-150");
+        feed_forward.Focus();
+        return false;
+    }
+
+    temp = Convert.ToInt16(open_loop.Text);
+    if (temp < 0 || temp > 150) {
+        MessageBox.Show("Valid open loop fuel setting is 0-150");
+        open_loop.Focus();
+        return false;
+    }
+
+    temp = Convert.ToInt16(meth_safety.Text);
+    if (temp < 0 || temp > 100) {
+        MessageBox.Show("Valid range is 0-100");
+        meth_safety.Focus();
+        return false;
+    }
+
+    temp = Convert.ToInt16(m1pidgain.Text);
+    if (temp < 0 || temp > 255) {
+        MessageBox.Show("Valid pidgain range is 0-255");
+        m1pidgain.Focus();
+        return false;
+    }
+
+    return true;
+}
+
+// MAP1 Packet Building
+private void MAP1send() {
+    if (!MAP1valid()) {
+        return;
+    }
+
+    byte[] b = new byte[100];
+    byte[] value = new byte[1];
+    b[0] = 82; // 'R' for MAP1 settings
+
+    // Stop logging for data updates
+    pauseToolStripMenuItem_Click2(null, null);
+
+    try {
+        // Convert fud bits to byte value
+        fud_bits[0] = fud_bit0.Checked;
+        fud_bits[1] = fud_bit1.Checked;
+        fud_bits[2] = fud_bit2.Checked;
+        fud_bits[3] = fud_bit3.Checked;
+        fud_bits[4] = fud_bit4.Checked;
+        fud_bits[5] = fud_bit5.Checked;
+        fud_bits[6] = fud_bit6.Checked;
+        fud_bits[7] = fud_bit7.Checked;
+        fud_bits.CopyTo(value, 0);
+
+        // RPM boost values (12 values, 2 bytes each)
+        b[1] = WordToBytes(Convert.ToInt32(Convert.ToDouble(rpm1500.Text) * 10))[0];
+        b[2] = WordToBytes(Convert.ToInt32(Convert.ToDouble(rpm1500.Text) * 10))[1];
+        // ... Repeat for all RPM points 2000-7000 ...
+
+        // M1 Boost Limit
+        b[25] = WordToBytes(Convert.ToInt32(Convert.ToDouble(m1boostlimit.Text) * 10))[0];
+        b[26] = WordToBytes(Convert.ToInt32(Convert.ToDouble(m1boostlimit.Text) * 10))[1];
+
+        // Single byte settings
+        b[27] = (byte)(Convert.ToInt32(feed_forward.Text));
+        b[28] = (byte)(Convert.ToInt32(meth_trigger.Text));
+        b[29] = (byte)(Convert.ToInt32(Convert.ToDouble(boost_limit_1st.Text)));
+        b[30] = (byte)(Convert.ToInt32(future_use_a.Text));
+        b[31] = (byte)(Convert.ToInt32(m1lagfix.Text));
+        b[32] = value[0]; // FUD bits
+        b[33] = (byte)(Convert.ToInt32(m1pidgain.Text));
+        b[34] = (byte)(Convert.ToInt32(open_loop.Text));
+        b[35] = (byte)(Convert.ToInt32(m1throttle.Text));
+        b[36] = (byte)(Convert.ToInt32(Convert.ToDouble(boost_limit_2nd.Text)));
+        b[37] = (byte)(Convert.ToInt32(meth_safety.Text));
+        // TMAP sensor type (byte 38)
+        // Values: 1 = 3.5 bar, 2 = 4.0 bar, other = standard
+        b[38] = (byte)(Convert.ToInt32(tmap_sensor.Text));
+        b[39] = (byte)(Convert.ToInt32(Convert.ToDouble(boost_limit_3rd.Text)));
+
+        // Fuel bias values
+        b[40] = (byte)(Convert.ToInt32(fuel2500.Text));
+        // ... Repeat for all fuel bias points 3000-6500 ...
+
+        // Six-cyl timing
+        b[49] = (byte)(Convert.ToInt32(six_cyl_timing.Text));
+
+        // CPS values
+        b[50] = (byte)(Convert.ToInt32(cps1500.Text));
+        // ... Repeat for all CPS points 2000-7000 ...
+
+        // Calculate checksum (sum of bytes 1-61 mod 256)
+        int checksum = 0;
+        for (int i = 1; i <= 61; i++) {
+            checksum += b[i];
+        }
+        b[62] = (byte)(checksum % 256);
+
+        // End marker
+        b[63] = 35; // '#'
+
+        // Send packet
+        SERoutBYTES(b, 64);
+
+        status_update("MAP1 Settings Saved!");
+    } catch {
+        MessageBox.Show("Failed");
+    }
+}
+
+// ===== Settings Commands & Protocol =====
+
+// Command Bytes & Sequences:
+// "BBB" - Stop data flow (sent multiple times for BT reliability)
+// "$#CJ" - Request tuning data
+// "A" - Start logging/monitoring
+// "B" - Stop logging/monitoring
+// "E" - Request device status (returns 72 or 59)
+// "M" + [map number] - Select map
+// "ZY" - Enter bootloader mode
+// "YX" - Reboot JB4
+// "!" - Clear buffer
+// "#" - Clear buffer
+// "[" - Clear buffer
+// "J" - Clear buffer
+// "CA" - Start logging with clear
+
+// Handshake Protocol:
+// 1. Send "BBB" to stop any active data flow
+// 2. Send "E" twice, expect 72 or 59 response
+// 3. Send "$#CJ" to request tuning data
+// 4. Send "A" to start monitoring
+// Response 72 = Normal mode
+// Response 59 = Bootloader mode
+
+// ===== Bluetooth Communication =====
+
+// Connection Setup:
+// - Default baud rate: 115200
+// - Handshake: RequestToSend
+// - StopBits: One
+// - DataBits: 8
+// - Parity: None
+// - ReadTimeout: 3000ms
+// - WriteTimeout: 3000ms
+// - DtrEnable: true
+// - RtsEnable: true
+
+// Bluetooth Specific:
+// - HM18 service ID: 13
+// - HM10 service ID: 18
+// - Must handle dropped bytes on initial connection
+// - Additional delay between bytes needed
+// - Check RSSI for signal strength
+// - Handle connection drops gracefully
+
+// ===== Settings Dependencies =====
+
+// TMAP Dependencies:
+// - Boost limits depend on TMAP sensor type
+// - WMI settings must respect TMAP limits
+// - Affects all boost-related validations
+
+// Map Dependencies:
+// - Each map can have different boost targets
+// - Map changes require settings refresh
+// - Some settings are map-specific
+
+// Firmware Dependencies:
+// - FUD bits meaning varies by firmware version
+// - Some features only available in newer firmware
+// - Version check required for certain settings
+
+// ===== Data Structures =====
+
+// LogPoint Structure:
+// Used for recording and storing data points
+public struct LogPoint {
+    // Core measurements
+    public int rpm, tps, iat, pwm, fuel, map, timer1, accel, meth, oiltemp;
+    // Flow and temperature
+    public int oilf, waterf, transf, mph;
+    // Status indicators
+    public int clock, gear, ffpid, e85;
+    // Timing
+    public double timestamp;
+    // Decimal precision measurements
+    public decimal boost, dmetarget, dmeboost, ignadv, fuelp, afr, avgign;
+    public decimal dmebt, egt, afr2, cps, boost2, trims2;
+    // Knock readings
+    public decimal kr_1, kr_2, kr_3, kr_4, kr_5, kr_6, kr_7, kr_8;
+    // Auxiliary readings
+    public int aux1, aux2, aux3, aux4, aux5, aux6, maf1, maf2;
+}
+
+// BlueToothAdapters Structure:
+// Stores BT adapter information
+public struct BlueToothAdapters {
+    public string name;
+    public byte[] address;
+}
+
+// ControlPoint Structure:
+// UI control positioning and styling
+public struct ControlPoint {
+    public int x, y, width, height;
+    public float FontSize;
+    public bool FontBold;
+}
+
+// ===== Bluetooth Communication =====
+
+// Connection Setup:
+// - Default baud rate: 115200
+// - Handshake: RequestToSend
+// - StopBits: One
+// - DataBits: 8
+// - Parity: None
+// - ReadTimeout: 3000ms
+// - WriteTimeout: 3000ms
+// - DtrEnable: true
+// - RtsEnable: true
+
+// Bluetooth Specific:
+// - HM18 service ID: 13
+// - HM10 service ID: 18
+// - Must handle dropped bytes on initial connection
+// - Additional delay between bytes needed
+// - Check RSSI for signal strength
+// - Handle connection drops gracefully
+
+// ===== Constants & Timing =====
+
+// Default Delays:
+msDELAY = 25; // Default delay between bytes for settings transmission
+msDELAY2 = 25; // Default for serial 50
+
+// Buffer Sizes:
+buffer_size = 2000; // Buffer size for incoming data
+maxLogPoints = 5000; // Maximum number of log points
+
+// ===== Platform-Specific Settings =====
+
+// BMW Six-Digit Platforms:
+// List: 1, 2, 3, 7, 8, 10, 11, 12, 19, 41, 46, 48, 58, 63, 64, 65, 68, 24, 640
+// - Special handling for these platforms
+// - Different code lengths and parsing
+
+// Country-Specific Restrictions:
+// USA Compliance:
+// - Certain features blocked in USA
+// - E85 bit 6 disabled
+// - Compliance validation on firmware load
+
+// ===== UI Update Handling =====
+
+// Status Updates:
+// - Real-time value updates
+// - Error message formatting
+// - Connection status display
+// - Firmware version display
+// - Safety limit warnings
+// - Settings validation feedback
+
+// ===== Response Validation =====
+
+// WMI Packet (26-byte):
+// - Validate packet length
+// - Check start byte ('T')
+// - Verify end marker ('$')
+// - Validate all parameter ranges
+
+// MAP1 Packet (64-byte):
+// - Validate packet length
+// - Check start byte ('R')
+// - Calculate and verify checksum (bytes 1-61)
+// - Verify end marker ('#')
+// - Validate all parameter ranges
+
+// ===== TMAP Sensor Handling =====
+
+// TMAP Sensor Value Storage:
+// - Stored in byte 38 of MAP1 packet
+// - Raw value range: 0-255
+// - Voltage conversion: Raw value * 0.0228V
+// - Example: Raw value 100 = 2.28V
+
+// TMAP Sensor Types & Boost Limits:
+// Type 1 (3.5 bar sensor):
+// - Max boost: 36.1 PSI
+// - Max value: 140
+// - Used in: Most N54/N55 applications
+
+// Type 2 (4.0 bar sensor):
+// - Max boost: 43.0 PSI
+// - Max value: 140
+// - Used in: High boost applications
+
+// Other types:
+// - Max boost: 20.0 PSI
+// - Max value: 80
+// - Used in: Stock/low boost applications
+
+// TMAP Impact on Settings:
+// - Affects all boost-related validations
+// - Enforces max boost limits based on sensor type
+// - Impacts: RPM boost targets, boost safety limits, WMI settings
+// - Invalid TMAP type defaults to lowest limits
+// - Global override available for testing (tempMAX = 60)
+
+// ===== Settings Save Process =====
+
+// Pre-save Steps:
+// 1. Stop logging ("B" command)
+// 2. Validate all settings
+// 3. Build appropriate packet (MAP1 or WMI)
+// 4. Calculate checksum if needed
+// 5. Clear input buffer
+
+// Save Process:
+// 1. Send packet byte-by-byte with delays
+// 2. Wait for acknowledgment
+// 3. Verify checksum/response
+// 4. Handle any errors
+// 5. Resume logging if needed
+
+// Error Recovery:
+// - Retry on checksum failure
+// - Revert to previous values on error
+// - Reconnect if connection lost
+// - Clear buffers and restart if needed
+
+// ===== WMI Settings (26-byte packet) =====
+
+// WMI Validation
+private bool N2Ovalid() {
+    int temp, tempMAX;
+    decimal tempd;
+    decimal tempMAX2;
+
+    if (tmap_sensor.Text.Equals("1")) {
+        tempMAX = 140;
+        tempMAX2 = (decimal)36.1;
+    } else if (tmap_sensor.Text.Equals("2")) {
+        tempMAX = 140;
+        tempMAX2 = 43;
+    } else {
+        tempMAX = 80;
+        tempMAX2 = 20;
+    }
+
+    tempMAX2 = 60;
+
+    try {
+        temp = Convert.ToInt32(n1enabled.Text);
+        if (temp < 0 || temp > 255) {
+            MessageBox.Show("Valid range is 0-255");
+            n1enabled.Focus();
+            return false;
+        }
+
+        tempd = Convert.ToDecimal(n1minpsi.Text);
+        if (tempd < 0 || tempd > tempMAX2) {
+            MessageBox.Show("Valid range is 0-" + tempMAX2.ToString());
+            n1minpsi.Focus();
+            return false;
+        }
+
+        tempd = Convert.ToDecimal(n1minrpm.Text);
+        if (tempd < 0 || tempd > 10000) {
+            MessageBox.Show("Valid range is 0-10000rpm");
+            n1minrpm.Focus();
+            return false;
+        }
+                                
+        tempd = Convert.ToDecimal(n1maxrpm.Text);
+        if (tempd < 0 || tempd > 10000) {
+            MessageBox.Show("Valid range is 0-10000rpm");
+            n1maxrpm.Focus();
+            return false;
+        }
+
+        tempd = Convert.ToDecimal(n1ramprate.Text);
+        if (tempd < 0 || tempd > 255) {
+            MessageBox.Show("Valid range is 0-255");
+            n1ramprate.Focus();
+            return false;
+        }
+
+        tempd = Convert.ToDecimal(virtual_ff_offset.Text);
+        if (tempd < 0 || tempd > 255) {
+            MessageBox.Show("Valid range is 0-255");
+            virtual_ff_offset.Focus();
+            return false;
+        }
+
+        temp = Convert.ToInt16(m1methhard.Text);
+        if (temp < 0 || temp > tempMAX) {
+            MessageBox.Show("Valid range is 0-255");
+            m1methhard.Focus();
+            return false;
+        }
+
+        temp = Convert.ToInt16(methrange.Text);
+        if (temp < 0 || temp > 255) {
+            MessageBox.Show("Valid range is 0-255");
+            methrange.Focus();
+            return false;
+        }
+
+        temp = Convert.ToInt16(n1minafr.Text);
+        if (temp < 0 || temp > 255) {
+            MessageBox.Show("Valid range is 0-255");
+            n1minafr.Focus();
+            return false;
+        }
+
+        temp = Convert.ToInt16(n1minadvance.Text);
+        if (temp < 0 || temp > 255) {
+            MessageBox.Show("Valid range is 0-255");
+            n1minadvance.Focus();
+            return false;
+        }
+
+        temp = Convert.ToInt16(n1mingear.Text);
+        if (temp < 0 || temp > 255) {
+            MessageBox.Show("Valid range is 0-255");
+            n1mingear.Focus();
+            return false;
+        }
+    } catch {
+        MessageBox.Show("Invalid Value -- Threw Exception");
+        return false;
+    }
+    return true;
+}
+
+// WMI Packet Building
+private void N2Osend() {
+    if (!N2Ovalid()) {
+        return;
+    }
+
+    byte[] b = new byte[100];
+    byte[] value = new byte[1];
+    b[0] = 84; // 'T' for WMI settings
+
+    // Stop logging for data updates
+    pauseToolStripMenuItem_Click2(null, null);
+
+    try {
+        // Convert e85 setup bits to byte value
+        e85_bits[0] = e85_bit0.Checked;
+        e85_bits[1] = e85_bit1.Checked;
+        e85_bits[2] = e85_bit2.Checked;
+        e85_bits[3] = e85_bit3.Checked;
+        e85_bits[4] = e85_bit4.Checked;
+        e85_bits[5] = e85_bit5.Checked;
+        e85_bits[6] = e85_bit6.Checked;
+        e85_bits[7] = e85_bit7.Checked;
+        e85_bits.CopyTo(value, 0);
+
+        // Setup byte array
+        b[1] = WordToBytes(Convert.ToInt32(Convert.ToDouble(n1minpsi.Text)))[0];
+        b[2] = WordToBytes(Convert.ToInt32(Convert.ToDouble(n1minpsi.Text)))[1];
+        b[3] = WordToBytes(Convert.ToInt32(n1enabled.Text))[0];
+        b[4] = WordToBytes(Convert.ToInt32(n1enabled.Text))[1];
+        b[5] = value[0];
+        b[6] = value[0]; 
+        b[7] = WordToBytes(Convert.ToInt32(n1minrpm.Text))[0];
+        b[8] = WordToBytes(Convert.ToInt32(n1minrpm.Text))[1];
+        b[9] = WordToBytes(Convert.ToInt32(n1maxrpm.Text))[0];
+        b[10] = WordToBytes(Convert.ToInt32(n1maxrpm.Text))[1];
+        b[11] = WordToBytes(Convert.ToInt32(n1ramprate.Text))[0];
+        b[12] = WordToBytes(Convert.ToInt32(n1ramprate.Text))[1];
+        b[13] = WordToBytes(Convert.ToInt32(virtual_ff_offset.Text))[0];
+        b[14] = WordToBytes(Convert.ToInt32(virtual_ff_offset.Text))[1];
+        b[15] = WordToBytes(Convert.ToInt32(m1methhard.Text))[0];
+        b[16] = WordToBytes(Convert.ToInt32(m1methhard.Text))[1];
+        b[17] = WordToBytes(Convert.ToInt32(methrange.Text))[0];
+        b[18] = WordToBytes(Convert.ToInt32(methrange.Text))[1];
+        b[19] = WordToBytes(Convert.ToInt32(n1mingear.Text))[0];
+        b[20] = WordToBytes(Convert.ToInt32(n1mingear.Text))[1];
+        b[21] = WordToBytes(Convert.ToInt32(n1minafr.Text))[0];
+        b[22] = WordToBytes(Convert.ToInt32(n1minafr.Text))[1];
+        b[23] = WordToBytes(Convert.ToInt32(n1minadvance.Text))[0];
+        b[24] = WordToBytes(Convert.ToInt32(n1minadvance.Text))[1];
+
+        // End marker
+        b[25] = 36; // '$'
+
+        // Send packet
+        SERoutBYTES(b, 26);
+
+        status_update("WMI/E85 Settings Saved!");
+    } catch {
+        MessageBox.Show("Failed");
+    }
+}
+
+// ===== Common Functions =====
+
+// Packet Sending
+private void SERoutBYTES(byte[] b, int tosend) {
+    byte[] byte_out = new byte[1];
+
+    try {
+        if (Port1.IsOpen) {
+            for (int x = 0; x < tosend; x++) {
+                if (bluetooth_port.Equals(true)) {
+                    byte_out[0] = b[x];
+                    bluetooth_out_bytes(byte_out);
+                } else {
+                    Port1.Write(b, x, 1);
+                }
+
+                Thread.Sleep(msDELAY2);
+            }
+        }
+    } catch {
+        status_update("Failed to send bytes " + b.ToString());
+    }
+}
+
+// Helper Methods
+private byte[] WordToBytes(int value) {
+    if (value > 255) {
+        int msb = (value ~/ 256);
+        int lsb = value - (msb * 256);
+        return [msb, lsb];
+    }
+    return [0, value];
+}
+
+// ===== Response Validation =====
+
+// For WMI settings (26-byte packet)
+private bool ValidateWmiResponse(byte[] packet) {
+    if (packet.length != 26) {
+        print('WMI packet length invalid: ${packet.length}');
+        return false;
+    }
+    if (packet[0] != 'T'.codeUnitAt(0)) {
+        print('WMI packet identifier invalid: ${packet[0]}');
+        return false;
+    }
+    bool isValid = packet[25] == '\$'.codeUnitAt(0);
+    if (!isValid) {
+        print('WMI packet validation failed:');
+        print('Expected end marker: \$, got: ${String.fromCharCode(packet[25])}');
+    }
+    return isValid;
+}
+
+// For MAP1 settings (64-byte packet)
+private bool ValidateMap1Response(byte[] packet) {
+    if (packet.length != 64) {
+        print('MAP1 packet length invalid: ${packet.length}');
+        return false;
+    }
+    if (packet[0] != 'R'.codeUnitAt(0)) {
+        print('MAP1 packet identifier invalid: ${packet[0]}');
+        return false;
+    }
+    int checksum = 0;
+    for (int i = 1; i <= 61; i++) {
+        checksum += packet[i];
+    }
+    checksum = checksum % 256;
+    bool isValid = packet[62] == checksum && packet[63] == '#'.codeUnitAt(0);
+    if (!isValid) {
+        print('MAP1 packet validation failed:');
+        print('Expected checksum: $checksum, got: ${packet[62]}');
+        print('Expected end marker: #, got: ${String.fromCharCode(packet[63])}');
+    }
+    return isValid;
+}
+
+// ===== Settings Fetching =====
+
+// Initial handshake and settings fetch
+private bool goOnline() {
+    try {
+        if (Port1.IsOpen) {
+            status_update("Closing port...");
+            Port1.Close();
+            Thread.Sleep(1000);
+        }
+
+        startTick = 0;
+
+        // Connect to port
+        Port1.Open();
+
+        if (Port1.IsOpen) {
+            // Handshake
+            SERout("BBB"); // Stop dataflow if currently streaming
+            Thread.Sleep(500);
+            
+            int temp = read_single_byte("E");
+            int temp2 = read_single_byte("E");
+            bool ll_pass = ((temp.Equals(72) || temp.Equals(59)) && (temp2.Equals(72) || temp2.Equals(59)));
+
+            if (!ll_pass) {
+                status_update("Failed to communicate with JB4");
+                Port1.Close();
+                return false;
+            }
+
+            // Request tuning data
+            SERout("$#CJ");
+            parse_data();
+            SERout("A");
+            parse_data();
+
+            status_update("Connected");
+            return true;
+        }
+        return false;
+    } catch {
+        status_update("Failed port not found or busy");
+        return false;
+    }
+}
+
+// ===== Buffer Handling =====
+
+// Clear buffers
+private void clearBuffers() {
+    for (int i = 0; i < buffer_size; i++) {
+        byteIN[i] = 46;
+    }
+    byte_counter = 0;
+    byte_counter_end = 0;
+}
+
+// Parse incoming data
+private void parse_data() {
+    try {
+        while (Port1.BytesToRead > 0) {
+            byteIN[byte_counter_end] = (byte)Port1.ReadByte();
+            byte_counter_end++;
+            if (byte_counter_end.Equals(buffer_size)) {
+                byte_counter_end = 0;
+            }
+        }
+    } catch {
+        status_update("Error loading settings");
+    }
+}
+
+// ===== Map Selection =====
+
+private void map_select_SelectedIndexChanged(object sender, EventArgs e) {
+    if (map_select2.Text.Equals("Pick")) {
+        return;
+    }
+
+    SERout("M" + WordToAscii(Convert.ToInt16(map_select2.Text)));
+    map_select2.Text = "Pick";
+
+    // Update settings 
+    SERout("$#CJ");
+}
+
+// ===== E85/FlexFuel Settings =====
+
+private void setup_fud_prompts() {
+    if (JB4firmware.Text.StartsWith("30")) {
+        fud_bit0.Text = "0: Disable Wheel Controls";
+        fud_bit1.Text = "1: Disable WG Adaption";
+        fud_bit2.Text = "2: Boost Cold Start";
+        fud_bit3.Text = "3: PI Tip In Increase";
+        fud_bit4.Text = "4: No Longer Active";
+        fud_bit5.Text = "5: Block Antilag From Brake";
+        fud_bit6.Text = "6: Disable O2 pressure factor";
+        fud_bit7.Text = "7: Disable O2 adaption resets";
+    } else if (JB4firmware.Text.StartsWith("58/")) {
+        // Different firmware version prompts
+        // ... etc for other firmware versions
+    }
+}

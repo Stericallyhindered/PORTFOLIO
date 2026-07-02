@@ -1,0 +1,247 @@
+# Instructions
+
+Do not work on tasks in this file unless you get permission first or are told to
+
+During your interaction with the user, if you find anything reusable in this project (e.g. version of a library, model name), especially about a fix to a mistake you made or a correction you received, you should take note in the `Lessons` section in the `.cursorrules` file so you will not make the same mistake again.
+
+You should also use the `.cursorrules` file as a Scratchpad to organize your thoughts. Especially when you receive a new task, you should first review the content of the Scratchpad, clear old different task if necessary, first explain the task, and plan the steps you need to take to complete the task. You can use todo markers to indicate the progress, e.g.
+[X] Task 1
+[ ] Task 2
+
+Also update the progress of the task in the Scratchpad when you finish a subtask.
+Especially when you finished a milestone, it will help to improve your depth of task accomplishment to use the Scratchpad to reflect and plan.
+The goal is to help you maintain a big picture as well as the progress of the task. Always refer to the Scratchpad when you plan the next step.
+
+
+# Lessons
+
+## User Specified Lessons
+
+- Include info useful for debugging in the program output.
+- Read the file before you try to edit it.
+- For Radix UI's DropdownMenu in Next.js, to prevent layout shifts:
+  - Set `modal={false}` on DropdownMenu component
+  - Set `collisionPadding={0}` and `hideWhenDetached` on DropdownMenuContent
+  - Avoid using `alignOffset` or `forceMount` unless specifically needed
+- Payload CMS schema sync "data loss" warnings can be misleading:
+  - If columns already exist with data, the warning about adding NOT NULL columns can be safely ignored
+  - The warning appears because Payload lost track of existing columns, not because data will be lost
+  - Schema sync will realign Payload's schema understanding with the actual database state
+- When working with Payload CMS migrations:
+  - Remember to handle both main table and versioning table (_collection_v)
+  - Version table columns are prefixed with "version_"
+  - Always test migrations with rollback functionality
+  - Consider data in both tables when planning migrations
+  - Keep column names consistent between main and version tables
+  - When changing timestamp precision to timestamp(3), it's safe and preferred by Payload
+  - Timestamp(3) warnings can be safely accepted as they improve precision without data loss
+- When Drizzle shows schema push warnings about NOT NULL constraints:
+  - The operation might hang if there are table locks or concurrent operations
+  - Better to add columns as nullable first, update data, then add NOT NULL constraints
+  - Check if columns actually need to be added before proceeding with schema changes
+- When accessing potentially undefined nested objects in TypeScript:
+  - Use optional chaining (?.) to safely access properties
+  - Use nullish coalescing (??) to provide default values
+  - Add thorough validation in filter functions before mapping
+  - Provide clear error messages when required data is missing
+- When handling authentication errors in Next.js server components:
+  - Always redirect to login on 401, 403, AND 404 errors from authentication endpoints
+  - 404 errors from /api/dealers/me or /api/users/me typically mean the user is not authenticated
+  - Don't throw errors for authentication failures - redirect instead to prevent 500 errors
+  - Test bypass attempts to ensure proper error handling
+- When handling authentication API calls in client-side hooks:
+  - 404 responses from /api/dealers/me are expected when user is not a dealer
+  - Browser network tab will always show 404 errors - this is normal and unavoidable
+  - Don't use console.error() for expected 404 responses in JavaScript code
+  - Handle 404s gracefully in application logic without preventing functionality
+  - Avoid overly restrictive token checks that break legitimate dealer functionality
+- When fetching data from Payload CMS:
+  - Use appropriate depth parameter to get nested objects (e.g., depth=3 for deeply nested data)
+  - Explicitly specify nested fields in populate parameter (e.g., populate=items.product,items.product.shippingDetails)
+  - Add debug logging to verify data structure when objects appear undefined
+  - When TypeScript types are too strict for populate, use depth parameter instead
+  - When depth parameter doesn't fully populate nested objects, fetch them individually and merge
+- When performing critical operations that depend on related data:
+  - Refresh the data immediately before the operation to ensure it's up to date
+  - Add debug logging to verify the data structure after refresh
+  - Handle cases where the refresh fails gracefully
+  - Consider implementing retry logic for transient failures
+- Order statuses in the system are strictly defined:
+  - pending
+  - processing
+  - completed
+  - cancelled
+  - refunded
+  - When creating shipping labels, set status to 'completed'
+  - Always check the enum_orders_status in the database schema
+- For UPS shipping API:
+  - Always use two-letter state codes (e.g., 'AZ' instead of 'Arizona')
+  - Convert full state names to codes before sending to UPS
+  - Handle case-insensitive state name matching
+  - Validate state codes before sending to prevent 400 errors
+- For shipping label storage and retrieval:
+  - Store label URLs in the `label_url` field, not the `label` field
+  - Base64 label data goes in the `label` field
+  - Always check both fields when retrieving labels
+  - Add debug logging to track label data flow through the system
+- For UPS shipping labels:
+  - Only set the `name` field in the destination address, not both `name` and `attention_name`
+  - Setting both fields will cause the name to appear twice on the label
+  - The `attention_name` field should only be used for special routing instructions
+- For TypeScript interfaces in shipping labels:
+  - Keep packageTrackingNumbers type consistent across all interfaces
+  - Include all required fields: number, label, packageNumber, totalPackages
+  - Make optional fields nullable with '?' to match database schema
+  - Use string type for tracking numbers to handle various formats
+- For modal implementations in Next.js to prevent layout shifts and gaps:
+  - Use `createPortal` with a custom modal implementation instead of Radix UI's Dialog
+  - Set fixed positioning with high z-index values (e.g., 999999 for backdrop, 1000000 for content)
+  - Prevent background scrolling with useEffect and document.body.style.overflow
+  - Use inset-0 with flex layout for proper centering
+  - Add backdrop blur and semi-transparent background for depth
+  - Handle click-outside with currentTarget comparison
+  - Avoid using Dialog's padding compensation which can cause gaps
+- For UPS API rate calculations:
+  - Published rates include base charge and fuel surcharge (e.g., $62.19 + $25.90 = $88.09)
+  - Negotiated rates show different structure:
+    - Base charge per package ($61.35)
+    - Separate pickup charge ($14.75)
+    - Final negotiated rate ($45.43)
+  - To get negotiated rates with all charges, must include:
+    - NegotiatedRatesIndicator: 'Y'
+    - TPFCNegotiatedRatesIndicator: 'Y'
+    - RateChartIndicator: 'Y'
+    - IncludePackingAndPickupCharges: 'Y'
+    - IncludeFuelSurcharge: 'Y'
+  - Without these options, rates may exclude:
+    - Fuel surcharges
+    - Pickup fees
+    - Other accessorial charges
+  - The combination ensures we get complete rates matching UPS.com
+  - Add debug logging to verify rate response structure and pricing breakdown
+- For dealer custom product pricing discount percentages:
+  - Discount percentages are now applied to the dealer price (product.dealerPrice) instead of regular price
+  - This allows dealers to get additional discounts on their already discounted dealer pricing
+  - The logic uses dealerPrice as base if available, otherwise falls back to regular price
+  - Fixed price functionality remains unchanged and overrides all other pricing
+  - Updated in getDealerProductPrice utility function in src/utilities/getDealerProductPrice.ts
+- For Payload admin UI components accessing internal auth fields:
+  - The useDocumentInfo hook may not expose internal auth fields like _verified properly
+  - When accessing auth fields in admin components, fetch data directly via API calls
+  - Use component state to manage the verification status and loading states
+  - Implement fallback mechanisms to gracefully handle API failures
+  - Internal fields like _verified, _verificationToken are not always accessible through useDocumentInfo
+  - Direct API access via /api/[collection]/[id] ensures access to all fields including internal ones
+- For Payload CMS field-level validation with mutual exclusivity:
+  - Use field-level `validate` functions instead of array-level validation for real-time feedback
+  - Access sibling field values using `data.siblingFieldName` in validation functions
+  - Provide specific error messages that tell users exactly what to do to resolve conflicts
+  - Real-time validation prevents frustrating save-time errors and improves UX
+  - Field validation runs on change, not just on save, providing immediate feedback
+  - Conditional display (`admin.condition`) may not work reliably in all contexts - field-level validation is more reliable
+- For Payload CMS collections with relationship-based access control:
+  - When adding new user types (like salesReps), update ALL related collections' access controls
+  - Add proper type definitions for all user types that need access (DealerUser, SalesRepUser, etc.)
+  - Use relationship queries like 'dealer.salesRep' for nested access control
+  - Always use Payload's built-in APIs instead of custom endpoints to ensure proper authentication
+  - Custom API endpoints bypass Payload's access control unless explicitly implemented
+  - Test access control thoroughly - successful authentication doesn't guarantee data access
+  - 403 errors during data fetching often indicate missing access control, not authentication issues
+- For LogoutButton component in multi-user-type applications:
+  - Detect user type based on current path (e.g., /sales-rep vs /dealer routes)
+  - Use appropriate logout endpoint for each user type (/api/salesReps/logout vs /api/dealers/logout)
+  - Redirect to correct login page after logout based on user type
+  - Handle path-based routing for different authentication flows
+- For API queries with relationship filters when no related records exist:
+  - Check if related records exist before making API calls to prevent 400 errors
+  - Return empty arrays immediately when no relationships exist (e.g., no dealers assigned to sales rep)
+  - Add graceful error handling for 400 errors when relationship queries fail
+  - Pass necessary context (like assignedDealers array) to prevent unnecessary API calls
+- For sales rep profile management and security:
+  - Commission rates and target quotas should be admin-only fields, not editable by sales reps
+  - These financial/performance fields should always be read-only in sales rep profile forms
+  - Include explanatory text indicating these fields are set by administrators
+  - Remove commission rate and quota from form state and update operations for security
+- For commission calculation timing and order status considerations:
+  - Consider calculating commission only on 'completed' orders instead of all orders
+  - This prevents commission on cancelled, refunded, or back-ordered items that may never ship
+  - Completed orders represent actual revenue generation and shipped products
+  - Current system calculates on all orders regardless of status, which can be inaccurate
+  - Back-orders can take months to fulfill, making early commission calculation problematic
+  - Order status progression: pending → processing → completed (or cancelled/refunded)
+  - Filtering by completed status aligns commission with actual business performance
+- For React infinite loop errors with Select components and form.watch():
+  - The combination of form.watch() with useEffect can create infinite re-render loops
+  - form.watch() triggers on every form change, including Select component updates
+  - If useEffect calls setState based on watched values, it can cause Select components to re-render infinitely
+  - Solution: Replace reactive form.watch() with manual validation functions called on form submission
+  - Use form.getValues() instead of form.watch() to get current values without creating reactive dependencies
+  - Consider adding manual validation buttons for user-triggered validation instead of automatic validation
+- For Payload CMS API nested relationship queries:
+  - Nested relationship queries like `'dealer.salesRep': { equals: id }` may not work reliably with URL query parameters
+  - Instead of using nested queries, fetch the related records first, then use their IDs in a direct query
+  - Example: First fetch dealers with `{ salesRep: { equals: id } }`, then use dealer IDs with `{ dealer: { in: dealerIds } }`
+  - This approach is more reliable and provides better error handling
+  - Add proper error handling for cases where no related records exist
+  - Use `{ in: [] }` queries only when the array has items to prevent unnecessary API calls
+  - **IMPORTANT**: Payload API queries may return false positives where relationship fields are undefined/null but still match the query
+  - Always filter results client-side to verify the relationship field actually matches the expected value
+  - Example: `dealersData.docs.filter((dealer: any) => dealer.salesRep === expectedId)` to exclude dealers where `salesRep` is undefined
+- For custom admin pages making Payload API calls:
+  - Always include `credentials: 'include'` in fetch calls to ensure proper authentication
+  - Without credentials, API calls will fail with 400/401/403 errors even from authenticated admin pages
+  - Custom admin pages run client-side and need explicit credential inclusion for server-side API authentication
+  - This is required for all Payload API endpoints that have access control restrictions
+  - Example: `fetch('/api/collection', { credentials: 'include' })` instead of just `fetch('/api/collection')`
+  - When passing JSON query parameters, always use `encodeURIComponent()` to properly encode the JSON string
+  - Example: `fetch(\`/api/orders?where=\${encodeURIComponent(JSON.stringify(whereClause))}\`)` instead of just `JSON.stringify(whereClause)`
+  - Malformed URL encoding can cause 400 Bad Request errors even with valid JSON queries
+  - When custom API routes override Payload's built-in APIs, use the custom route's expected parameters
+  - For example, if `/api/orders/route.ts` expects `dealerId` as a query parameter, use `?dealerId=123` instead of `?where={"dealer":{"equals":123}}`
+  - Check the custom route implementation to understand what parameters it expects and how to structure the request
+- For React infinite loop errors with Select components and form.watch():
+  - The combination of form.watch() with useEffect can create infinite re-render loops
+  - form.watch() triggers on every form change, including Select component updates
+  - If useEffect calls setState based on watched values, it can cause Select components to re-render infinitely
+  - Solution: Replace reactive form.watch() with manual validation functions called on form submission
+  - Use form.getValues() instead of form.watch() to get current values without creating reactive dependencies
+  - Consider adding manual validation buttons for user-triggered validation instead of automatic validation
+
+## Cursor learned
+
+- For search results, ensure proper handling of different character encodings (UTF-8) for international queries
+- Add debug information to stderr while keeping the main output clean in stdout for better pipeline integration
+- When using seaborn styles in matplotlib, use 'seaborn-v0_8' instead of 'seaborn' as the style name due to recent seaborn version changes
+- Use 'gpt-4o' as the model name for OpenAI's GPT-4 with vision capabilities
+- When searching for recent news, use the current year (2025) instead of previous years, or simply use the "recent" keyword to get the latest information
+
+# Scratchpad
+
+## Current Task: Fix Infinite Loop in Dealer Profile Select Components
+
+### Task Overview
+The dealer profile page loads initially but then goes blank after 3-5 seconds with a "Maximum update depth exceeded" error. The error originates from SelectTrigger components causing infinite re-renders in React.
+
+### Error Analysis
+- **Error Location**: SelectTrigger component in select.tsx line 17
+- **Affected Components**: State and Tax Exemption document type Select fields
+- **Root Cause**: Likely improper handling of controlled component state in Select fields
+- **Stack Trace**: FormField → FormControl → SelectTrigger → infinite setState loop
+
+### Fix Strategy
+[X] **Identify Select Issues**: Check how Select components handle value/onValueChange props
+[X] **Fix State Select**: Ensure proper controlled component implementation for address.state field
+[X] **Fix Tax Exempt Select**: Fix document type Select field implementation
+[X] **Fix Form Watch Issue**: Remove problematic form.watch() that was causing infinite re-renders
+[ ] **Test Fix**: Verify page loads without infinite loops
+[ ] **Add Lesson**: Document the fix pattern for future reference
+
+### Technical Analysis
+The root cause was the `form.watch()` call watching address fields that created an infinite loop:
+1. form.watch() triggers on any form change
+2. useEffect validates address and calls setAddressValidation()
+3. Component re-renders, causing Select components to re-render
+4. Select components trigger form updates, which triggers watch again
+5. Infinite loop occurs
+
+**Solution**: Replaced reactive address validation with manual validation on form submission and optional manual validation via button.

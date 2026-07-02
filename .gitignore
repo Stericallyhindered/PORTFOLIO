@@ -1,0 +1,46 @@
+﻿# Dependencies and builds
+node_modules/
+dist/
+build/
+.next/
+.cache/
+.turbo/
+.dart_tool/
+.gradle/
+Pods/
+coverage/
+target/
+bin/
+obj/
+
+# Secrets and local config
+.env
+.env.*
+*.env
+*.local
+*.pem
+*.key
+*.p12
+*.pfx
+*secret*
+*credential*
+*token*
+
+# Databases and generated data
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.tmp
+
+# Large/binary artifacts
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.exe
+*.dll
+*.apk
+*.ipa
+*.aab

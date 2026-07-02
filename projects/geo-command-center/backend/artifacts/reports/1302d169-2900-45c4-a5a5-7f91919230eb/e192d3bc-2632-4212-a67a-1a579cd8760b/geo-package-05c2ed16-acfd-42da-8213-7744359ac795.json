@@ -1,0 +1,13 @@
+{
+  "run_id": "05c2ed16-acfd-42da-8213-7744359ac795",
+  "run_folder": "example.com-e192d3bc-2632-4212-a67a-1a579cd8760b-1773313876",
+  "project_id": "e192d3bc-2632-4212-a67a-1a579cd8760b",
+  "domain": "example.com",
+  "generated_at": "2026-03-12T04:11:57.258289",
+  "pages": [
+    {
+      "url": "https://example.com",
+      "score": 13.189
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+antilag notes
+
+
+Platform Specific Notes
+There are some small differences in MHD+ between platforms. This can include the tables
+provided, axis orientation, implementation details, etc. Also, some platforms needed special
+conditions added in order to circumvent their unique limitations (like the ~22psi boost cap on
+N54).
+We have done our best to comprehensively detail these differences, exceptions, etc in this
+document. In each of the below sections, a PLATFORM NOTES comment will expand upon these
+details. Please feel free to reach out to us if there is something you have a question about or
+notice it is not covered / detailed, and we will be more than happy to assist.
+
+Antilag
+This feature is enabled by setting the Enable Antilag table to 1, while appropriately tuning the
+below tables. Antilag is then activated in the car (once operating conditions are within the
+configurable safety limits) by pressing and holding one of the following buttons below, while
+applying throttle:
+● E-Series: pull cruise control stalk in TOWARD you, or hold steering wheel VOL DOWN
+● F/G-Series: hold either the cruise control RES button, or the cruise control DOWN rocker
+switch (both first and second indent work)
+PLATFORM NOTES:
+● MG1 DME: provides the ability to Enable Antilag per map slot.
+
+Main Tables
+Tuning of these tables can greatly vary from car to car due to the exhaust setup, turbo, fuel, etc.
+The values and screenshots below are meant to be a general guide / starting point. Always log
+and validate per vehicle.
+
+© 2025 MHD Tuning 7
+Antilag Timing (Base)
+Timing retard is the main driver in generating exhaust gas energy and heat to get your turbo
+spooled up. The goal is to retard timing enough to greatly reduce or eliminate the forward
+acceleration of the vehicle (for rolling use cases, stopped / launch use cases can disregard),
+while also providing sufficient energy to get the turbo spooled. Similar amounts of timing retard
+can likely be used for various boost target columns as the DME can regulate boost with WGDC
+and throttle position as well. While antilag is active, this timing table becomes the new main
+timing table.
+● X-axis: Boost Target (psi, relative)
+● Y-axis: RPM
+
+PLATFORM NOTES:
+● MSD8x DME: the boost target axis features dynamic scaling (when also using the 3-cell
+TMAP scaling), to allow entering actual boost values past 22psi.
+● MG1 DME: the X and Y axis are swapped
+
+© 2025 MHD Tuning 8
+Antilag Timing (P-Factor)
+This is a simple P-factor table whose output is added to the result of the Timing (Base) table
+above. Its purpose is to help provide enough timing retard to attain the boost target (for large
+positive boost deviations), while also providing a safety net to add positive timing in the result of
+an overboost (negative deviation).
+● X-axis: Boost Deviation (psi, relative)
+● Y-axis: RPM
+
+PLATFORM NOTES:
+● MSD8x DME: this table is not provided due to free CAL space restrictions
+● MG1 DME: the X and Y axis are swapped
+
+© 2025 MHD Tuning 9
+Antilag Timing Ramp Rates
+The instant antilag is disengaged, ignition timing starts blending back to the values of whichever
+main DME timing table is currently active (spool, path 1, path 2, etc). These two single cell
+tables determine that rate. While ignition timing is still negative, the Timing Ramp Rate (°crk &lt;
+0) table is used. Once it reaches 0, then the Timing Ramp Rate table is used.
+● Timing Ramp Rate: suggested value of 1.5 (°crk/10ms)
+● Timing Ramp Rate (°crk &lt; 0): suggested value range of 5 - 10 (°crk/10ms)
+
+Antilag Boost Target
+While antilag is active, this acts as a ceiling to boost target. Therefore if the user is only slightly
+pressing the throttle, it is possible to have a lower target than what is set in this table. The table
+units are psi, relative.
+PLATFORM NOTES:
+● MSD8x DME: this table features dynamic scaling (when also using the 3-cell TMAP
+scaling), to allow entering actual boost values past 22psi.
+● MG1 DME: provides configuration boost targets per map
+
+Antilag Fuel Target
+While antilag is active, this table becomes the active AFR target for fuel banks 1 (and 2 if
+appropriate). Leaner values can give even quicker spool, while richer will help keep the EGT
+cooler. If you are using this to try and keep EGT under the safety value, be sure to log our EGT
+pre-turbo parameter. While its exact value is not necessarily accurate, the trends are and this is
+one of the fastest responding EGT parameters the DME has.
+
+© 2025 MHD Tuning 10
+Turbine I-Factor
+While antilag is active, we selectively enable the I-Factor applied to turbine power (kW). There
+are three single cell tables: the minimum and maximum bounds of the integration constant sum,
+and the actual integration constant (amount added or subtracted every 10ms). The intent of
+these tables is to help with overboosting during antilag, so we recommend setting the Maximum
+to 0. The Minimum and Constant can be set to 0 if not desired, or tuned accordingly to help
+keep antilag boost in check.
+PLATFORM NOTES:
+● MSD8x DME: this table is not provided (was not deemed necessary)
+● MG1 DME: this table is not provided (was not deemed necessary)
+
+Antilag Compressor Base / P-factor
+These tables are provided to give better boost control during antilag on MG1 DME vehicles. To
+enable these tables, set the Enable Antilag Compressor Map and P-Fac Tables table to 1, and
+then fill the Antilag Compressor Map… and Antilag WGDC P-Fac tables accordingly. If you are
+using our custom WGDC boost control scheme on a supported platform (detailed in the New /
+Custom tables section of this document), that will override the values in these tables.
+PLATFORM NOTES:
+● MSD8x DME: these tables are not provided (were not deemed necessary)
+● MEVD DME: these tables are not provided (were not deemed necessary)
+
+© 2025 MHD Tuning 11
+Safeties
+Currently, the following tables are provided in order to ensure a relatively safe usage of antilag.
+They may be expanded in the future.
+● Antilag Coolant Safety (Min / Max): antilag will only activate if the engine coolant temp
+is inside these values. Once active, if the max is exceeded antilag will disengage.
+● Antilag EGT Safety (Max): antilag will only activate if the parameter EGT pre-turbo is
+less than this value. Once active, if the max is exceeded antilag will disengage.
+● Antilag Cooldown Timer: this is the time duration in seconds that must pass before
+being able to use antilag again.
+● Antilag Timeout: this is the time duration in seconds that antilag can remain active for
+during one use. Once active, if the time expires antilag will disengage.
+● Antilag Start Delay: this is the time delay in seconds which determines how long one of
+the “activation condition” buttons / levers must be pressed / held before antilag
+activates.
+○ E-Series: pull CC stalk TOWARD you or VOL DOWN
+○ F/G-Series: hold RES or CC Down
+
+If you are looking for a starting point for these values, we use the following for our OTS flash
+option config:
+● Coolant Min = 70*C
+● Coolant Max = 115*C
+● EGT Max = 1050*C
+● Cooldown Timer = 12s
+● Timeout = 5s
+● Start Delay = 0.3s

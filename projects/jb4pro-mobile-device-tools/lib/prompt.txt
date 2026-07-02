@@ -1,0 +1,44 @@
+The first major difference is in the data format. For JB4 we use ASCII
+characters rather than bytes. So that means if I want to indicate
+10psi, we output the string "100". Certain fields such as boost fields
+you need to divide by 10.
+
+You'll send in "A" (0x65) to start logging, you'll send in "B" (0x66)
+to stop logging.
+
+With logging active it will output parameters as they change in a long
+string. So your bleeventhandler will be continually parsing the string
+of inbound characters.
+
+Function  parse_data() shows you how to parse it.
+
+Each parameter will be an ASCII identifier byte that isn't byte 46-57
+(0-9) followed by a string of digits for the value.
+
+"A3000" would mean RPM 3000.
+"A3000B200" would mean RPM 3000, PSI 20.0psi.
+"A3000B200j150" would mean RPM 3000, PSI 20.0, PSI2 15.0
+
+As data comes in its just added to a string to be processed.
+
+Then the processor starts from the left and parses it all out making
+the string shorter each time until its empty and all values are
+assigned. In the code you can see what the ASCII identifier is for
+each field and whether there is any formatting required. As I
+mentioned some values are divided by 10 since we don't send decimals.
+
+
+If you flash the JB4 PRO firmware since no sensors or anything are
+connected some values will spit out values which you can use to start
+your parsing
+
+
+
+
+
+
+
+
+
+
+ Device checksum = 2, Local checksum = 11585345
