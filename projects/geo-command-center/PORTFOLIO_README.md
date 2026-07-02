@@ -1,6 +1,6 @@
-﻿# geo-command-center
+# geo-command-center
 
-Multi-tenant AI/search visibility SaaS with Next.js, Supabase/Postgres, Drizzle, Redis/BullMQ, FastAPI, reports, and dashboards.
+AI/search visibility command center with multi-tenant structure, Next.js frontend, Supabase/Postgres/Drizzle data layer, FastAPI backend services, provider adapters, audits, reports, citation tracking, prompt/report pipelines, worker-style flows, and dashboards.
 
 ## Portfolio Notes
 
@@ -8,6 +8,6 @@ This is a sanitized source snapshot for portfolio review. Build artifacts, depen
 
 ## Why It Matters
 
-- Demonstrates product engineering across ambiguous requirements, real users, and production-like workflows.
-- Shows full-stack implementation patterns, integrations, data modeling, dashboards, and operational tooling.
-- Included to make the code browsable without exposing private runtime configuration or secrets.
+- Shows a larger AI/data product shape: providers, reports, scoring, backend services, and dashboards.
+- Demonstrates system design around AI outputs, data persistence, background work, and customer-facing insight.
+- Included because it shows product thinking beyond single features.

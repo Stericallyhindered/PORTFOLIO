@@ -1,6 +1,6 @@
-﻿# str8tune-ecu-calibration-editor
+# str8tune-ecu-calibration-editor
 
-React/TypeScript ECU calibration editor for XDF/BIN parsing, editable maps, 3D visualization, and export workflows.
+ECU calibration/editor tooling with React and TypeScript: XDF/BIN parsing concepts, editable tables/maps, hex and calibration views, tuning assistant flows, comparison tools, 2D/3D visualization, and export-style workflows.
 
 ## Portfolio Notes
 
@@ -8,6 +8,6 @@ This is a sanitized source snapshot for portfolio review. Build artifacts, depen
 
 ## Why It Matters
 
-- Demonstrates product engineering across ambiguous requirements, real users, and production-like workflows.
-- Shows full-stack implementation patterns, integrations, data modeling, dashboards, and operational tooling.
-- Included to make the code browsable without exposing private runtime configuration or secrets.
+- Shows domain-heavy software where the UI has to respect technical data, not just display cards.
+- Demonstrates parsing, state management, visualization, calibration editing patterns, and AI-assisted tuning support concepts.
+- Included because it connects frontend engineering with real automotive tuning workflows.

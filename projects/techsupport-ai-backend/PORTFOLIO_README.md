@@ -1,6 +1,6 @@
-﻿# techsupport-ai-backend
+# techsupport-ai-backend
 
-Node/Express AI support backend with Claude, MongoDB, JWT auth, document ingestion, tickets, analytics, and notifications.
+AI support backend built around real support operations: Claude integration, JWT auth, MongoDB/Mongoose models, machine/customer records, support tickets, document ingestion, analytics, notifications, and routes for turning a customer conversation into trackable backend workflow.
 
 ## Portfolio Notes
 
@@ -8,6 +8,6 @@ This is a sanitized source snapshot for portfolio review. Build artifacts, depen
 
 ## Why It Matters
 
-- Demonstrates product engineering across ambiguous requirements, real users, and production-like workflows.
-- Shows full-stack implementation patterns, integrations, data modeling, dashboards, and operational tooling.
-- Included to make the code browsable without exposing private runtime configuration or secrets.
+- Shows AI wrapped in backend guardrails instead of dumped straight into a chat box.
+- Demonstrates auth, routing, persistence, document/context handling, support workflows, and service structure.
+- Maps directly to customer support, insurance intake, claims, warranty, and internal operations tooling.

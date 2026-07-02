@@ -37,16 +37,26 @@ If you are reviewing this for an interview, these are the projects I would start
 
 | Project | What it shows |
 | --- | --- |
-| [`techsupport-ai-backend`](./projects/techsupport-ai-backend) | AI customer support backend, Claude/API integration, tickets, auth, document ingestion, analytics, notifications |
-| [`stealth-ai-support-system`](./projects/stealth-ai-support-system) | Stealth Batteries AI chat/support concept with admin dashboard, conversation logging, ticketing, escalation, and analytics |
-| [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin) | Next.js/Payload/Postgres commerce and admin platform with order, dealer, affiliate, warranty, sales, and support workflows |
-| [`customer-tracking-crm`](./projects/customer-tracking-crm) | CRM/order tracking system with customer portal, approvals, documents, audit trails, realtime updates, and notifications |
-| [`geo-command-center`](./projects/geo-command-center) | AI/search visibility platform with dashboards, reports, worker flows, audits, citations, and multi-tenant structure |
-| [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools) | Flutter mobile app work for automotive tuning hardware, logs, gauges, diagnostics, settings, mapping, and device communication |
-| [`canflex-mobile-app`](./projects/canflex-mobile-app) | Current Flutter/Canflex hardware app work with BLE, firmware screens, logs, settings, and support tooling |
-| [`str8tune-ecu-calibration-editor`](./projects/str8tune-ecu-calibration-editor) | React/TypeScript ECU calibration editor with map parsing, editing, visualization, and export-style workflows |
-| [`ampgen-configurator`](./projects/ampgen-configurator) | Next.js/React product configurator for electrical/power-system product workflows |
-| [`hotspot-control-api`](./projects/hotspot-control-api) | Python/PowerShell local automation around Windows/network hotspot control |
+| [`techsupport-ai-backend`](./projects/techsupport-ai-backend) | The backend for an AI support system: Claude integration, machine/customer records, tickets, auth, document ingestion, analytics, and the plumbing that turns chat into a real support workflow instead of a toy bot. |
+| [`stealth-ai-support-system`](./projects/stealth-ai-support-system) | A Stealth Batteries support prototype built to take pressure off manual inbox work: customer chat, admin review, conversation history, escalation, tickets, and support analytics. |
+| [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin) | A serious full-stack operations platform: commerce, products, dealers, affiliates, sales reps, orders, shipping logic, support/warranty flows, dashboards, and Payload/Postgres admin tooling. |
+| [`customer-tracking-crm`](./projects/customer-tracking-crm) | CRM/order ops software for the messy middle of a business: customers, companies, contacts, admin approvals, customer portal views, uploaded docs, OCR-style flows, audit trails, realtime updates, and notifications. |
+| [`geo-command-center`](./projects/geo-command-center) | AI/search visibility command center with multi-tenant structure, prompt/report pipelines, provider adapters, audits, citation tracking, background-worker style flows, and dashboards built for decision making. |
+| [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools) | Final JB4Pro mobile app source: Flutter, BLE/device communication, gauges, logs, vehicle diagnostics, mapping/protocol notes, firmware-related screens, WMI lookup, settings, and customer-facing tuning hardware workflows. |
+| [`canflex-mobile-app`](./projects/canflex-mobile-app) | Current Canflex/NewCanflex hardware app work: Flutter/Dart, BLE communication, firmware screens, E85 calculator, logs, settings, gauges, and the mobile side of automotive hardware support. |
+| [`str8tune-ecu-calibration-editor`](./projects/str8tune-ecu-calibration-editor) | ECU calibration tooling with React/TypeScript, XDF/BIN parsing concepts, editable maps, hex/table views, tuning assistant flows, 2D/3D visualization, and export-style calibration workflows. |
+| [`ampgen-configurator`](./projects/ampgen-configurator) | A clean Next.js/React configurator for power/electrical product planning, with draggable layout zones and UI logic for turning a physical product setup into an interactive tool. |
+| [`hotspot-control-api`](./projects/hotspot-control-api) | Small but useful Windows/network automation: Python plus PowerShell control around local hotspot workflows, showing the kind of practical scripting that keeps ops moving. |
+
+## Interview Walkthrough
+
+If you only have ten minutes, I would walk through these in this order:
+
+1. **JB4Pro** - shows mobile + hardware + vehicle systems, not just web CRUD.
+2. **Tech Support AI Backend** - shows Claude/API integration wrapped in real backend workflows.
+3. **Stealth Batteries Admin** - shows full-stack business operations: orders, dealers, shipping, warranty, dashboards.
+4. **Customer Tracking CRM** - shows workflow ownership, customer portals, approvals, notifications, auditability.
+5. **GEO Command Center** - shows larger AI/data product thinking with providers, reports, workers, and dashboards.
 
 ## What These Projects Have In Common
 

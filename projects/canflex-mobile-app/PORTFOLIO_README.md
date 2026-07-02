@@ -1,6 +1,6 @@
-﻿# canflex-mobile-app
+# canflex-mobile-app
 
-Current Canflex/NewCanflex mobile hardware project with BLE/device communication, firmware screens, settings, logs, gauges, and automotive support workflows.
+Current Canflex/NewCanflex Flutter hardware app work: BLE/device communication, firmware screens, logs, gauges, E85 calculator, settings, Android/iOS platform structure, and the mobile support tooling around an automotive hardware product.
 
 ## Portfolio Notes
 
@@ -8,6 +8,6 @@ This is a sanitized source snapshot for portfolio review. Build artifacts, depen
 
 ## Why It Matters
 
-- Demonstrates mobile and hardware-adjacent engineering connected to real vehicle/customer workflows.
-- Shows Flutter/Dart implementation patterns, device communication, firmware-related flows, diagnostics, logging, and settings management.
-- Included to make the code browsable without exposing private runtime configuration, firmware binaries, or secrets.
+- Shows mobile software talking to hardware, not just a normal app screen.
+- Demonstrates Flutter/Dart UI, BLE communication, firmware-related workflows, logs, settings, and automotive support tooling.
+- Included because hardware-connected software forces careful thinking around state, timing, errors, and user trust.

@@ -1,16 +1,21 @@
-# jb4protest
+﻿# JB4Pro Mobile Device Tools
 
-A new Flutter project.
+This is the final JB4Pro Flutter mobile app source snapshot from `D:\jb4pro_final`.
 
-## Getting Started
+This project is included because it shows real hardware-connected mobile work: BLE/device communication, automotive tuning workflows, gauges, logging, settings, firmware-related command flows, user-adjustment screens, WMI/diagnostic views, protocol notes, and platform-specific Flutter app structure.
 
-This project is a starting point for a Flutter application.
+## What To Look At
 
-A few resources to get you started if this is your first Flutter project:
+- `lib/main.dart` - app entry point and primary app wiring
+- `lib/providers/ble_provider.dart` - BLE/device communication logic
+- `lib/gauge_screen.dart` and `lib/custom_gauge_widget.dart` - live gauge/dashboard UI work
+- `lib/logging_screen.dart` - vehicle data/logging workflow
+- `lib/settings_screen.dart` and `lib/user_adjustment_screen.dart` - tuning/settings workflows
+- `lib/screens/firmware_screen.dart` - firmware-related app flow
+- `lib/wmi_screen.dart` - vehicle/diagnostic lookup workflow
+- `Mapping.cs` - mapping/protocol-related support code
+- `savingsettings.txt`, `settings_protocol.txt`, and related docs - command/settings notes and implementation references
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Portfolio Note
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is a sanitized public snapshot. Generated build outputs, local caches, packaged app binaries, runtime secrets, and private environment files are excluded. Source, docs, assets, platform scaffolding, and implementation notes are intentionally kept so the project is reviewable.
