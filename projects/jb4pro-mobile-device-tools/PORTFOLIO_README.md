@@ -1,6 +1,15 @@
-﻿# jb4pro-mobile-device-tools
+# jb4pro-mobile-device-tools
 
-Final JB4Pro Flutter mobile app source snapshot from `D:\jb4pro_final`, showing BLE/device communication, automotive tuning workflows, gauges, logs, settings, firmware-related screens, diagnostics, mapping/protocol notes, and customer-facing vehicle tooling.
+Final JB4Pro Flutter mobile app source snapshot from `D:\jb4pro_final`, showing BLE/device communication, automotive tuning workflows, gauges, logs, settings, firmware update flows, diagnostics, mapping/protocol notes, and customer-facing vehicle tooling.
+
+## What It Shows
+
+- BLE scan/connect and notification parsing for JB4Pro hardware.
+- Live vehicle gauges and datalogging for tuning workflows.
+- ASCII/byte-level command handling for logging, settings retrieval, map changes, and device configuration.
+- Firmware update screen and bootloader flow: enter bootloader, erase, flash/write, checksum verification, and exit bootloader.
+- User adjustment screens for boost/fuel tables, WMI/meth settings, E85/flex fuel behavior, AFR/fuel pressure telemetry, and advanced tuning values.
+- Developer diagnostics and command/protocol notes for support/debugging.
 
 ## Portfolio Notes
 

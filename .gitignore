@@ -41,6 +41,10 @@ obj/
 *.gz
 *.exe
 *.dll
+*.pdb
 *.apk
 *.ipa
 *.aab
+
+# Flutter generated host output
+ephemeral/

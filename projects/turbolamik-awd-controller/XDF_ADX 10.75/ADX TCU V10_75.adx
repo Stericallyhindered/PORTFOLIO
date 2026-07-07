@@ -1,0 +1,3094 @@
+<ADXFORMAT version="1.01">
+  <!-- Written 02/25/2026 13:44:33 -->
+  <ADXHEADER>
+    <guid>c5731267-9d67-4125-9375-50fb55e1e3a9</guid>
+    <flags>0x10001</flags>
+    <objectcount>214</objectcount>
+    <userversion>v2.0</userversion>
+    <author>Turbo Lamik</author>
+    <baud>921600</baud>
+    <DEFAULTS datasizeinbits="8" sigdigits="2" outputtype="3" baud="0" signed="0" lsbfirst="0" float="0" />
+    <monitorcmd>COMMAND0MAC</monitorcmd>
+  </ADXHEADER>
+
+  <ADXLOOKUPTABLE id="Cal gear" idhash="0xAD98A3DA" title="Cal gear">
+    <inputtype>0</inputtype>
+    <outputtype>0</outputtype>
+    <lookupmode>1</lookupmode>
+    <entrycount>2</entrycount>
+    <tableentry input="3.000000" output="3.000000" />
+    <tableentry input="4.000000" output="8.000000" />
+  </ADXLOOKUPTABLE>
+
+  <ADXBITMASK id="AAANIC2" idhash="0xBDCE1ED5" title="AAA nic2">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <ALARMONSET color="0x000000FF" />
+    <ALARMONNOTSET color="0x0000FF00" />
+    <packetoffset>0x00</packetoffset>
+    <bitop>XOR</bitop>
+  </ADXBITMASK>
+
+  <ADXVALUE id="PROGRAMSW." idhash="0x7E63E273" title="Program  SW.">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Program SW.</units>
+    <packetoffset>0x05</packetoffset>
+    <range low="0.000000" high="9.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="MAXRPMLIMIT" idhash="0x251771F2" title="Max RPM Limit">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Max RPM Limit</units>
+    <packetoffset>0x52</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="9000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="MAXRPMAUTOMODE" idhash="0x45457C2D" title="Max RPM Auto Mode">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Max RPM Auto Mode</units>
+    <packetoffset>0x4E</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="9000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="MINRMAUTOMODE" idhash="0xDB38F462" title="Min RPM Auto Mode">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Min RPM Auto Mode</units>
+    <packetoffset>0x50</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="9000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="1" idhash="0x86F3549B" title="Engine RPM">
+    <flags>0x00000006</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Engine RPM</units>
+    <packetoffset>0x08</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="9000.000000" />
+    <alarms low="500.000000" high="8000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ENGINETORQUE" idhash="0x6199AE22" title="Engine TQ (NM)">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Engine TQ (NM)</units>
+    <packetoffset>0x08</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="1200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ENGINETQ(FT/LB" idhash="0x1D2B3008" title="Engine TQ (ft/lbs)">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Engine TQ (NM)</units>
+    <packetoffset>0x08</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-80.000000" high="1200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.7376">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ENGINECLT" idhash="0xB2EC8DBE" title="Engine CLT">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Engine CLT (C)</units>
+    <packetoffset>0x35</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X-40">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="56" idhash="0xDE689570" title="Engine Pressure">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Engine Pressure (Kpa)</units>
+    <packetoffset>0x0A</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="10.350000" high="650.000000" />
+    <alarms low="10.350000" high="400.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LINEARPRESURES" idhash="0xFE9E0FD3" title="Linear Presure Sensor">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Linear Presure Sensor Bar</units>
+    <packetoffset>0x15</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-5.000000" high="25.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/100">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ENGINETQAFTERC" idhash="0xDD3BC5C1" title="Gearbox TQ (NM)">
+    <desc>engine torque after correction</desc>
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Gearbox TQ (NM)</units>
+    <packetoffset>0x02</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="1400.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="GEARBOXTQ(FT/L" idhash="0x1B9F1B17" title="Gearbox TQ (ft/lbs)">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Gearbox TQ (ft/lbs)</units>
+    <packetoffset>0x02</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-80.000000" high="1200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.7376">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="WHEELSTQ" idhash="0x45761743" title="Wheels TQ (NM)">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Wheele TQ (NM)</units>
+    <packetoffset>0x0F</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="2550.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TQCUT1FLAG" idhash="0x39367FFE" title="TQ Cut 1 Flag">
+    <desc>Slipt Calculation</desc>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>TQ Cut 1 Flag</units>
+    <packetoffset>0x12</packetoffset>
+    <range low="0.000000" high="1.100000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TQCUT2FLAG" idhash="0x93367FFF" title="TQ Cut 2 Flag">
+    <desc>Time calculation</desc>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>TQ Cut 2 Flag</units>
+    <packetoffset>0x13</packetoffset>
+    <range low="0.000000" high="1.150000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BLIPSTATUS" idhash="0x6155FFE0" title="Blip Status">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Blip Status</units>
+    <packetoffset>0x45</packetoffset>
+    <range low="-1.000000" high="7.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TORGUEREDUCTIO" idhash="0x5D503D54" title="Torgue Reduction Map Value">
+    <flags>0x0000000C</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Torque Redyction %</units>
+    <packetoffset>0x42</packetoffset>
+    <range low="-10.000000" high="120.000000" />
+    <alarms low="0.000000" high="110.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/1.28">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BLIPTARGETTORG" idhash="0x0BAC72CF" title="Blip Target Torgue (NM)">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Blip Target Torgu (NM)</units>
+    <packetoffset>0x46</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-300.000000" high="500.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BLIPTARGER%" idhash="0x565C4446" title="Blip Targer %">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Blip Targer %</units>
+    <packetoffset>0x48</packetoffset>
+    <range low="-10.000000" high="110.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/1.28">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="2" idhash="0x86F34E3B" title="Input RPM">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Input RPM</units>
+    <packetoffset>0x04</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="9000.000000" />
+    <alarms low="0.000000" high="8000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TURBINESPEEDAC" idhash="0x5ADF1374" title="Input RPM ACCEL.">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Input ACCEL.</units>
+    <packetoffset>0x3F</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-4500.000000" high="4500.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="3" idhash="0x86F3513B" title="Output RPM">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Output RPM</units>
+    <packetoffset>0x06</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="12000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="RPMOUTPUTACCEL" idhash="0xC6EE8949" title="Output Speed ACCEL.">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Output ACCEL.</units>
+    <packetoffset>0x41</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-1450.000000" high="1450.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="VEHICLESPEED" idhash="0xDD1D236C" title="Vehicle Speed (km/h)">
+    <flags>0x0000000C</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Speed Km/h</units>
+    <packetoffset>0x0E</packetoffset>
+    <range low="0.000000" high="300.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*2">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="VEHICLESPEED(M" idhash="0x748C80B4" title="Vehicle Speed (mph)">
+    <flags>0x0000000C</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Speed (mph)</units>
+    <packetoffset>0x0E</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="(X*2)*0.621371">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OILTEMP" idhash="0x7BE13C7F" title="Oil Temp (C)">
+    <flags>0x0000000C</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Oil Temp (C)</units>
+    <packetoffset>0x0C</packetoffset>
+    <range low="-40.000000" high="200.000000" />
+    <alarms low="-10.000000" high="120.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <datatype>21</datatype>
+    <unittype>26</unittype>
+    <MATH equation="X-40">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="Oil Temp (F)" idhash="0x286D3B16" title="Oil Temp (F)">
+    <flags>0x0000000C</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Oil Temp (F)</units>
+    <packetoffset>0x0C</packetoffset>
+    <range low="-10.000000" high="300.000000" />
+    <alarms low="0.000000" high="230.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <datatype>21</datatype>
+    <unittype>26</unittype>
+    <MATH equation="(X-40)*1.8+32">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OILTEMP.VOLTAG" idhash="0xA9DB5EF8" title="Oil Temp. Voltage">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Oil Voltage (V)</units>
+    <packetoffset>0x4D</packetoffset>
+    <range low="-0.200000" high="5.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.02">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TPS" idhash="0xCD44515B" title="TPS">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>TPS (%)</units>
+    <packetoffset>0x0E</packetoffset>
+    <range low="0.000000" high="105.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TPSAUTOMATICMO" idhash="0xDEDDFCE2" title="TPS Automatic Mode">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>TPS Automatic Mode (%)</units>
+    <packetoffset>0x3D</packetoffset>
+    <range low="0.000000" high="105.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="KICKDOWN" idhash="0x3A251410" title="Kickdown">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Kickdown</units>
+    <packetoffset>0x5D</packetoffset>
+    <range low="-0.100000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TIMEOFFAUTOMAT" idhash="0x98901648" title="Time OFF Automatic Mode">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>OFF Automatic (s)</units>
+    <packetoffset>0x3E</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="DBW" idhash="0xCD79127B" title="DBW">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>DBW %</units>
+    <packetoffset>0x0F</packetoffset>
+    <range low="0.000000" high="110.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="PRELIMINARYGEA" idhash="0xB6912D9D" title="Gear Target">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Gear Target</units>
+    <packetoffset>0x0A</packetoffset>
+    <range low="-1.000000" high="10.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X-100">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="GEAR" idhash="0xA6737119" title="Gear">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Gear</units>
+    <packetoffset>0x0B</packetoffset>
+    <range low="-1.000000" high="10.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X-100">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCHA" idhash="0x11948B94" title="Clutch X">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Clutch X</units>
+    <packetoffset>0x2F</packetoffset>
+    <range low="0.000000" high="265.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTHOPEN" idhash="0xDC8FA8A7" title="Clutch X Corect">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Clutch X Corect</units>
+    <packetoffset>0x31</packetoffset>
+    <range low="0.000000" high="265.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="NEWITEM" idhash="0xE7CE3DB9" title="Clutch Y">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Clutch Y </units>
+    <packetoffset>0x30</packetoffset>
+    <range low="0.000000" high="265.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH" idhash="0xA08CA4B6" title="Clutch Y Corect">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Clutch Y Corect</units>
+    <packetoffset>0x32</packetoffset>
+    <range low="0.000000" high="265.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BASECOR.PRES.L" idhash="0xF91C1E52" title="Base Cor. Pres. Lockup">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Base Cor. Pres. Lockup</units>
+    <packetoffset>0x3F</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BASECOR.PRES.C" idhash="0xF91C1172" title="Base Cor. Pres. Clutch">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Base Cor. Pres. Clutch</units>
+    <packetoffset>0x5E</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="290.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/16">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="COR.PRES.CLOUS" idhash="0xDA4A431D" title="Cor. Pres. Clouse Clutch">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Cor. Pres. Clouse Clutch</units>
+    <packetoffset>0x3B</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/16">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="COR.PRES.OPENC" idhash="0x0A5B329C" title="Cor. Pres. Open Clutch">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Cor. Pres. Open Clutch</units>
+    <packetoffset>0x3D</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/16">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="SLIPTCORECopen" idhash="0xAA650C0F" title="Slipt Corection Close">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Slipt Corection Close</units>
+    <packetoffset>0x02</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/16">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="SLIPTCOREClous" idhash="0xAE106ACF" title="Slipt Corection Open">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Slipt Corection Open</units>
+    <packetoffset>0x10</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/16">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="SLIPTCLUTCH%" idhash="0x9A6AA4A5" title="Slipt Gear Clutch %">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Slipt Gear Clutch %</units>
+    <packetoffset>0x00</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-167.000000" high="167.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="SLIPTCLUTCHFLA" idhash="0xAAC4B729" title="Slipt Gear Clutch Flags">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Slipt Gear Clutch Flags</units>
+    <packetoffset>0x41</packetoffset>
+    <range low="0.000000" high="1.050000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/100">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LINEARP" idhash="0xA06A8CC6" title="Linear pres.">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Linear pres.</units>
+    <packetoffset>0x61</packetoffset>
+    <range low="3.000000" high="250.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LOCKUPPRES." idhash="0x82C1F3D7" title="Lockup Pres.">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Lockup Pres.</units>
+    <packetoffset>0x63</packetoffset>
+    <range low="-10.000000" high="260.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LOCKUPMULTIPLE" idhash="0x481DF04D" title="Lockup Multipler">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Lockup Multipler</units>
+    <packetoffset>0x62</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/1.28">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LOCKUPI." idhash="0x306DB0F8" title="Lockup I.">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Lockup I.</units>
+    <packetoffset>0x02</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-10.000000" high="55.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LOCKUPSLIPT%" idhash="0x2F851174" title="Lockup Slipt %">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Lockup Slipt %</units>
+    <packetoffset>0x04</packetoffset>
+    <range low="-50.000000" high="110.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="100-X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TIME1" idhash="0x1BF48A55" title="Time 1 Shift Time">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Time 1 Shift Time</units>
+    <packetoffset>0x28</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/5">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TIME2" idhash="0x1BF490F5" title="Time 2 Slipt Adaptation Time">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Time 2 Slipt Adaptation Time</units>
+    <packetoffset>0x2A</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/5">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TIME3" idhash="0x1BF48FF5" title="Time 3 Clutch Adaptation Time">
+    <desc>Clutch Adaptation Time</desc>
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Time 3 Clutch Adaptation Time</units>
+    <packetoffset>0x2C</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/5">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BATERYWOLT." idhash="0x31782C9E" title="Batery Volt.">
+    <flags>0x0000000C</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Batery Volt.</units>
+    <packetoffset>0x07</packetoffset>
+    <range low="0.000000" high="26.000000" />
+    <alarms low="10.000000" high="16.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/10">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="IGNITIONVOLT." idhash="0x1045FC9E" title="Ignition Volt.">
+    <flags>0x0000000C</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Ignition Volt.</units>
+    <packetoffset>0x06</packetoffset>
+    <range low="0.000000" high="26.000000" />
+    <alarms low="10.000000" high="16.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/10">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BUTOON" idhash="0x8752165C" title="Button UP ALL">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Button UP ALL</units>
+    <packetoffset>0x0E</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="1-X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BUTTONDOWN" idhash="0x66776C11" title="Button DOWN ALL">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Button DOWN ALL</units>
+    <packetoffset>0x0F</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="1-X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BUTTONUP1" idhash="0x8B61F6E7" title="Button Up1 ">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Button Up1 </units>
+    <packetoffset>0x2F</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BUTTONDOWN1" idhash="0xCEED8F4C" title="Button DOWN1">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Button DOWN1</units>
+    <packetoffset>0x30</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BUTTONUP2" idhash="0x8B61EC47" title="Button UP2">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Button UP2</units>
+    <packetoffset>0x31</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BUTTONDOWN2" idhash="0xCEED95EC" title="Button DOWN2">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Button DOWN2</units>
+    <packetoffset>0x32</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BUTTONUPCAN" idhash="0x87E6A6CD" title="Button UP Can">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Button UP Can</units>
+    <packetoffset>0x33</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BUTTONDOWNCAN" idhash="0xB6000BDB" title="Button DOWN Can">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Button DOWN Can</units>
+    <packetoffset>0x34</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="SW1MUX" idhash="0xF7A0901C" title="SW1 MUX">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>SW1 MUX</units>
+    <packetoffset>0x4A</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="SW2MUX" idhash="0xFAF0901C" title="SW2 MUX">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>SW2 MUX</units>
+    <packetoffset>0x4B</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="SW3MUX" idhash="0xF570901C" title="SW3 Mux">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>SW3 Mux</units>
+    <packetoffset>0x4C</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="PARAMETRIC1" idhash="0x3A6E4563" title="Parametric 1">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Parametric 1</units>
+    <packetoffset>0x5F</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="PARAMETRIC2" idhash="0x3A6E5FC3" title="Parametric 2">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Parametric 2</units>
+    <packetoffset>0x60</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="PARAMETRIC3" idhash="0x3A6E40C3" title="Parametric 3">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Parametric 3</units>
+    <packetoffset>0x61</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="PARAMETRIC4" idhash="0x3A6E42C3" title="Parametric 4">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Parametric 4</units>
+    <packetoffset>0x62</packetoffset>
+    <range low="0.000000" high="1.200000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="BRAKE" idhash="0xE0FE6C75" title="Foot brake">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Foot brake</units>
+    <packetoffset>0x27</packetoffset>
+    <range low="0.500000" high="1.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="TBRAKE" idhash="0x084BE5E3" title="T-Brake">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>T-Brake</units>
+    <packetoffset>0x5E</packetoffset>
+    <range low="-1.000000" high="2.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCHPEDAL" idhash="0x3EFCBCA8" title="Virtual Clutch Position">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Virtual Clutch Position %</units>
+    <packetoffset>0x26</packetoffset>
+    <range low="0.000000" high="110.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="100-(X/2.5)">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCHPOSITION" idhash="0x02856F8E" title="Virtual Clutch Presure">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Virtual Clutch Presure</units>
+    <packetoffset>0x43</packetoffset>
+    <range low="-5.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="WIRTUALCLUTCHT" idhash="0xEEBBE4DA" title="Virtual Clutch time">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Virtual Clutch time</units>
+    <packetoffset>0x43</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CPULOAD" idhash="0x53337964" title="CPU Load 0">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>%</units>
+    <packetoffset>0x60</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LoopCycle0" idhash="0xF8665F43" title="Software Loop Cycle 0">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <packetoffset>0x5A</packetoffset>
+    <range low="-100.000000" high="900.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <unittype>26</unittype>
+    <MATH equation="X*10">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LoopCycle1" idhash="0xF8665103" title="Software Loop Cycle 1">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <packetoffset>0x5B</packetoffset>
+    <range low="-100.000000" high="900.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*10">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LoopCycle2" idhash="0xF8664BA3" title="Software Loop Cycle 2">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <packetoffset>0x5C</packetoffset>
+    <range low="-100.000000" high="900.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*10">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LoopCycle3" idhash="0xF86654A3" title="CPU Load 3">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <packetoffset>0x5D</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LOGTIME" idhash="0xBB9EB279" title="Log Time">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Log Time (s)</units>
+    <packetoffset>0x0C</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="70.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>3</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/1000">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="Samplenu" idhash="0x504B1F21" title="Sample number">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Sample number</units>
+    <packetoffset>0x00</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="65535.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="COR.TEMPZAL" idhash="0x99FF4303" title="Cor. Temp Zal Clutch ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Cor. Temp Zal Clutch </units>
+    <packetoffset>0x00</packetoffset>
+    <range low="-100.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X- 100">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="COR.TEMPOPENCL" idhash="0x60921925" title="Cor. Temp Open Clutch ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Cor. Temp Open Clutch </units>
+    <packetoffset>0x01</packetoffset>
+    <range low="-100.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X-100">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="DEBUG1" idhash="0x00D257DD" title="Debug 1">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Debug 1</units>
+    <packetoffset>0x33</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-200.000000" high="2000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="DEBUG2" idhash="0x00D24D7D" title="Debug 2">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Debug 2</units>
+    <packetoffset>0x35</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="2000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="DEBUG3" idhash="0x00D2527D" title="Debug 3">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Debug 3</units>
+    <packetoffset>0x37</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="2000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="DEBUG4" idhash="0x00D2507D" title="Debug 4">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Debug 4</units>
+    <packetoffset>0x39</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="2000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AWDDC" idhash="0x47969DF4" title="AWD activation Base">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AWD activation Base</units>
+    <packetoffset>0x45</packetoffset>
+    <range low="-10.000000" high="120.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/2">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AWDSTERINGACTU" idhash="0x415B00BA" title="AWD activation Actual">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AWD activation Actual</units>
+    <packetoffset>0x5C</packetoffset>
+    <range low="-10.000000" high="120.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/2">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AWDSTERINGALL" idhash="0xD20B393F" title="AWD activation target">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AWD activation target</units>
+    <packetoffset>0x44</packetoffset>
+    <range low="-10.000000" high="120.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/2">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AWDCURRENT" idhash="0x43C03809" title="AWD Current">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AWD Current</units>
+    <packetoffset>0x54</packetoffset>
+    <range low="-2.000000" high="28.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/10">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AWDDCOUT" idhash="0x4E84438B" title="PWM1 DC OUT">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>PWM1 DC OUT</units>
+    <packetoffset>0x46</packetoffset>
+    <range low="-10.000000" high="120.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/1.28">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AWDENGINESPEPS" idhash="0x4C70D6B4" title="AWD Engine Speps">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AWD Engine Speps</units>
+    <packetoffset>0x5A</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-50.000000" high="1300.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="STERINGANGLE" idhash="0x63173BFD" title="Stering Angle">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Stering Angle</units>
+    <packetoffset>0x47</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/10">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="UNIVERSALSPEED" idhash="0xD58A26B2" title="Universal speed input 2">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Universal speed input 2</units>
+    <packetoffset>0x58</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-100.000000" high="9000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH1PRES.A." idhash="0xBB08F305" title="Clutch 1-A Pres. Adaptation">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Clutch 1-A Pres. Adaptation</units>
+    <packetoffset>0x05</packetoffset>
+    <range low="-100.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/2-50">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH2PRES.AD" idhash="0xBB082265" title="Clutch 2-B Pres. Adaptation">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Clutch 2-B Pres. Adaptation</units>
+    <packetoffset>0x06</packetoffset>
+    <range low="-100.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/2-50">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH3PRES.AD" idhash="0xBB08DA65" title="Clutch 3-E Pres. Adaptation">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Clutch 3-E Pres. Adaptation</units>
+    <packetoffset>0x07</packetoffset>
+    <range low="-100.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/2-50">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH4PRES.AD" idhash="0xBB08CA65" title="Clutch 4-C Pres. Adaptation">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Clutch 4-C Pres. Adaptation</units>
+    <packetoffset>0x08</packetoffset>
+    <range low="-100.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/2-50">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH5PRES.AD" idhash="0xBB087165" title="Clutch 5-D Pres. Adaptation">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Clutch 5-D Pres. Adaptation</units>
+    <packetoffset>0x09</packetoffset>
+    <range low="-100.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/2-50">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ADAPTATIONACTI" idhash="0xFB5983B6" title="Adaptation Activation Parameter">
+    <flags>0x00000004</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Adaptation Activation Parameter</units>
+    <packetoffset>0x0A</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="1.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH1" idhash="0x11949BB4" title="Clutch 1-A">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Clutch 1-A</units>
+    <packetoffset>0x39</packetoffset>
+    <range low="0.000000" high="265.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH2" idhash="0x11948114" title="Clutch 2-B">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Clutch 2-B</units>
+    <packetoffset>0x3A</packetoffset>
+    <range low="0.000000" high="265.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH3" idhash="0x11949E14" title="Clutch 3-E">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Clutch 3-E</units>
+    <packetoffset>0x3B</packetoffset>
+    <range low="0.000000" high="265.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH4" idhash="0x11949C14" title="Clutch 4-C">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Clutch 4-C</units>
+    <packetoffset>0x3C</packetoffset>
+    <range low="0.000000" high="265.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH5" idhash="0x11948B74" title="Clutch 5-D">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Clutch 5-D</units>
+    <packetoffset>0x3D</packetoffset>
+    <range low="0.000000" high="265.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CLUTCH6" idhash="0x119488D4" title="Clutch 6 Clutch Turbine">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Clutch 6 Clutch Turbine</units>
+    <packetoffset>0x3E</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="MV(1)" idhash="0xE53F4F95" title="Clutch 7">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Clutch 7</units>
+    <packetoffset>0x3F</packetoffset>
+    <range low="0.000000" high="110.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="MV(2)" idhash="0xE53C1B95" title="MV(2)">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>MV(2)</units>
+    <packetoffset>0x40</packetoffset>
+    <range low="0.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="MV(3)" idhash="0xE53FFB95" title="MV(3)">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>MV(3)</units>
+    <packetoffset>0x41</packetoffset>
+    <range low="0.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="MV(4)" idhash="0xE53FBB95" title="MV(4)">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>MV(4)</units>
+    <packetoffset>0x42</packetoffset>
+    <range low="0.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="MV(5)" idhash="0xE53D5795" title="MV(5)">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>MV(5)</units>
+    <packetoffset>0x43</packetoffset>
+    <range low="0.000000" high="100.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU1" idhash="0x8169D9D9" title="curent calculation1">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation1 (mA)</units>
+    <packetoffset>0x10</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU2" idhash="0x8169C379" title="curent calculation2 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation2 (mA)</units>
+    <packetoffset>0x12</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU3" idhash="0x8169DC79" title="curent calculation3 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation3 (mA)</units>
+    <packetoffset>0x14</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU4" idhash="0x8169DE79" title="curent calculation4 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation4 (mA)</units>
+    <packetoffset>0x16</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU5" idhash="0x8169C919" title="curent calculation5">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation5 (mA)</units>
+    <packetoffset>0x18</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU6" idhash="0x8169CAB9" title="curent calculation6 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation6 (mA)</units>
+    <packetoffset>0x1A</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU7" idhash="0x8169D0F9" title="curent calculation7 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation7 (mA)</units>
+    <packetoffset>0x1C</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU8" idhash="0x8169DDB9" title="curent calculation8 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation8 (mA)</units>
+    <packetoffset>0x1E</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU9" idhash="0x8169CAF9" title="curent calculation9 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation9 (mA)</units>
+    <packetoffset>0x20</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU10" idhash="0x2D3B3810" title="curent calculation10 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation10 (mA)</units>
+    <packetoffset>0x22</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CURENTCALCU11" idhash="0x2D3B3650" title="curent calculation11 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Curent calculation11 (mA)</units>
+    <packetoffset>0x24</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent1" idhash="0x7D39735B" title="Out current1 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current1 (mA)</units>
+    <packetoffset>0x44</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent2" idhash="0x7D3969FB" title="Out current2 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current2 (mA)</units>
+    <packetoffset>0x46</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent3" idhash="0x7D3976FB" title="Out current3 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current3 (mA)</units>
+    <packetoffset>0x48</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent4" idhash="0x7D3974FB" title="Out current4 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current4 (mA)</units>
+    <packetoffset>0x4A</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent5" idhash="0x7D39639B" title="Out current5 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current5 (mA)</units>
+    <packetoffset>0x4C</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent6" idhash="0x7D39603B" title="Out current6 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current6 (mA)</units>
+    <packetoffset>0x4E</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent7" idhash="0x7D397A7B" title="Out current7 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current7 (mA)</units>
+    <packetoffset>0x50</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent8" idhash="0x7D39773B" title="Out current8 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current8 (mA)</units>
+    <packetoffset>0x52</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent9" idhash="0x7D39607B" title="Out current9 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current9 (mA)</units>
+    <packetoffset>0x54</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent10" idhash="0xA72E684F" title="Out current10 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current10 (mA)</units>
+    <packetoffset>0x56</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="outcurrent11" idhash="0xA72E660F" title="Out current11 ">
+    <flags>0x00000002</flags>
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current11 (mA)</units>
+    <packetoffset>0x58</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="1200.000000" />
+    <alarms low="0.000000" high="1000.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="current1 Adapt" idhash="0xCC7427A8" title="Out current1 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current1 Adaptation %</units>
+    <packetoffset>0x2E</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT2ADA" idhash="0x6B01D576" title="Out current2 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current2 Adaptation %</units>
+    <packetoffset>0x2F</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT3ADA" idhash="0x6481D576" title="Out current3 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current3 Adaptation %</units>
+    <packetoffset>0x30</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT4ADA" idhash="0x6581D576" title="Out current4 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current4 Adaptation %</units>
+    <packetoffset>0x31</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT5ADA" idhash="0x6E31D576" title="Out current5 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current5 Adaptation %</units>
+    <packetoffset>0x32</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT6ADA" idhash="0x6FE1D576" title="Out current6 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current6 Adaptation %</units>
+    <packetoffset>0x33</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT7ADA" idhash="0x62C1D576" title="Out current7 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current7 Adaptation %</units>
+    <packetoffset>0x34</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT8ADA" idhash="0x6461D576" title="Out current8 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current8 Adaptation %</units>
+    <packetoffset>0x35</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT9ADA" idhash="0x6FC1D576" title="Out current9 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current9 Adaptation %</units>
+    <packetoffset>0x36</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT10AD" idhash="0x662B17B6" title="Out current10 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current10 Adaptation %</units>
+    <packetoffset>0x37</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="OUTCURRENT11AD" idhash="0x661217B6" title="Out current11 Adaptation ">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Out current11 Adaptation %</units>
+    <packetoffset>0x38</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN1" idhash="0xC9B4AAAC" title="Analog in1">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in1 (V)</units>
+    <packetoffset>0x11</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN2" idhash="0xC9B4B00C" title="Analog in2">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in2 (V)</units>
+    <packetoffset>0x12</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN3" idhash="0xC9B4AF0C" title="Analog in3">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in3 (V)</units>
+    <packetoffset>0x13</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN4" idhash="0xC9B4AD0C" title="Analog in4">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in4 (V)</units>
+    <packetoffset>0x14</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN5" idhash="0xC9B4BA6C" title="Analog in5">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in5 (V)</units>
+    <packetoffset>0x15</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN6" idhash="0xC9B4B9CC" title="Analog in6">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in6 (V)</units>
+    <packetoffset>0x16</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN7" idhash="0xC9B4A38C" title="Analog in7">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in7 (V)</units>
+    <packetoffset>0x17</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN8" idhash="0xC9B4AECC" title="Analog in8">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in8 (V)</units>
+    <packetoffset>0x18</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN9" idhash="0xC9B4B98C" title="Analog in9">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in9 (V)</units>
+    <packetoffset>0x19</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN10" idhash="0x369556B9" title="Analog in10">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in10 (V)</units>
+    <packetoffset>0x1A</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN11" idhash="0x369558F9" title="Analog in11">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in11 (V)</units>
+    <packetoffset>0x1B</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ANALOGIN12" idhash="0x36954259" title="Analog in12">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Analog in12 (V)</units>
+    <packetoffset>0x1C</packetoffset>
+    <range low="-0.500000" high="5.500000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X*0.0196">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX1" idhash="0xA2131A19" title="AUX 1">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 1</units>
+    <packetoffset>0x1D</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX2" idhash="0xA21300B9" title="AUX 2">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 2</units>
+    <packetoffset>0x1E</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX3" idhash="0xA2131FB9" title="AUX 3">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 3</units>
+    <packetoffset>0x1F</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX4" idhash="0xA2131DB9" title="AUX 4">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 4</units>
+    <packetoffset>0x20</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX5" idhash="0xA2130AD9" title="AUX 5">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 5</units>
+    <packetoffset>0x21</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX6" idhash="0xA2130979" title="AUX 6">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 6</units>
+    <packetoffset>0x22</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX7" idhash="0xA2131339" title="AUX 7">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 7</units>
+    <packetoffset>0x23</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX8" idhash="0xA2131E79" title="AUX 8">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 8</units>
+    <packetoffset>0x24</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX9" idhash="0xA2130939" title="AUX 9">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 9</units>
+    <packetoffset>0x25</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX10" idhash="0x42634014" title="AUX 10">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 10</units>
+    <packetoffset>0x26</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX11" idhash="0x42634E54" title="AUX 11">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 11</units>
+    <packetoffset>0x27</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUX12" idhash="0x426354F4" title="AUX 12">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>AUX 12</units>
+    <packetoffset>0x28</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CANTQ1" idhash="0xAB5E4FD7" title="CAN TQ1">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Can TQ (NM)</units>
+    <packetoffset>0x29</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-500.000000" high="1000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CANTQ2" idhash="0xAB5E5577" title="CAN TQ2">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>CAN TQ2 (NM)</units>
+    <packetoffset>0x2B</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-500.000000" high="1000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CANTQ3" idhash="0xAB5E4A77" title="CAN TQ3">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>CAN TQ3 (NM)</units>
+    <packetoffset>0x2D</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-500.000000" high="1000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ENGINELOSSES" idhash="0x2F41B629" title="CAN Engine losses">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>CAN Engine losses (NM)</units>
+    <packetoffset>0x3B</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="-200.000000" high="1000.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="CANSELECTORCOM" idhash="0x1E3B4ACA" title="Selector comand">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Selector comand</units>
+    <packetoffset>0x49</packetoffset>
+    <range low="4.000000" high="25.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="SAFEMODE" idhash="0x40061DD9" title="Safe mode">
+    <flags>0x00000004</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Safe mode</units>
+    <packetoffset>0x0B</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="1.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ERRORCODE" idhash="0x545A8161" title="Error Code Active">
+    <flags>0x00000006</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Error Code Active</units>
+    <packetoffset>0x0C</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="500.000000" />
+    <alarms low="0.000000" high="1.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="ERRORC.HISTORI" idhash="0x72F719FD" title="Error Code Historic">
+    <flags>0x00000006</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Error Code Historic</units>
+    <packetoffset>0x36</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="500.000000" />
+    <alarms low="0.000000" high="1.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="SELENOIDVOLDAG" idhash="0xF408059E" title="Supplying the solenoid valves">
+    <flags>0x0000000C</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Supplying the solenoid valves</units>
+    <packetoffset>0x3A</packetoffset>
+    <range low="0.000000" high="26.000000" />
+    <alarms low="10.000000" high="16.000000" />
+    <digcount>1</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/10">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="GROUNDDIFFEREN" idhash="0xE9375D42" title="Ground differential voltage ">
+    <flags>0x00000003</flags>
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Ground differential voltage </units>
+    <packetoffset>0x38</packetoffset>
+    <sizeinbits>16</sizeinbits>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X/100">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUTOMATICMODE" idhash="0x5514F313" title="Automatic Mode">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Automatic Mode</units>
+    <packetoffset>0x55</packetoffset>
+    <range low="-0.200000" high="3.400000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUTOMATICMAPUP" idhash="0xA3F6F7AA" title="Automatic Map Up">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Automatic Map Up</units>
+    <packetoffset>0x56</packetoffset>
+    <range low="0.000000" high="9.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="AUTOMATICMADOW" idhash="0xA3BE720A" title="Automatic Ma Down">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Automatic Ma Down</units>
+    <packetoffset>0x57</packetoffset>
+    <range low="0.000000" high="9.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="LOCKUPMAP" idhash="0x0DA85EC6" title="Lockup Map">
+    <parentcmdidhash>0x11A8A134</parentcmdidhash>
+    <units>Lockup Map</units>
+    <packetoffset>0x04</packetoffset>
+    <range low="0.000000" high="4.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>2</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="GEAR3,8" idhash="0xB8AF6E39" title="gear 3,8">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>gear 3,8</units>
+    <packetoffset>0x0B</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X-100" lookupidhash="0xAD98A3DA">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="GEAR-1OFSET" idhash="0x06A56B96" title="Gear -1 Ofset">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <units>Gear -1 Ofset</units>
+    <packetoffset>0x0B</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X-101">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXVALUE id="UPSHIFTMODE" idhash="0x2FCD64B1" title="Upshift Mode">
+    <parentcmdidhash>0x4BBB413A</parentcmdidhash>
+    <units>Upshift Mode</units>
+    <packetoffset>0x63</packetoffset>
+    <range low="0.000000" high="4.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="X">
+      <VAR varID="X" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXMONITOR id="MONITOR" idhash="0xEFCE2DD1" title="Monitor">
+    <mainbkgcolor>0x00FFFFFF</mainbkgcolor>
+    <plotbkgcolor>0x00F0F0F0</plotbkgcolor>
+    <plotoutlinecolor>0x00000000</plotoutlinecolor>
+    <titlecolor>0x00000000</titlecolor>
+    <timeaxiscolor>0x00000000</timeaxiscolor>
+    <entrycount>5</entrycount>
+    <ADXMONSERIES linecolor="0x0000FF" axiscolor="0x0000FF" itemidhash="0x9A6AA4A5" />
+    <ADXMONSERIES linecolor="0xFF8080" axiscolor="0xFF8080" itemidhash="0xB6912D9D" />
+    <ADXMONSERIES linecolor="0xC8C800" axiscolor="0xC8C800" itemidhash="0x86F3549B" />
+    <ADXMONSERIES linecolor="0x800080" axiscolor="0x800080" itemidhash="0xDD3BC5C1" />
+    <ADXMONSERIES linecolor="0x009600" axiscolor="0x009600" itemidhash="0x1BF48A55" />
+  </ADXMONITOR>
+
+  <ADXMONITOR id="MONITOR2" idhash="0xF9C5ADFD" title="Monitor2">
+    <mainbkgcolor>0x00FFFFFF</mainbkgcolor>
+    <plotbkgcolor>0x00F0F0F0</plotbkgcolor>
+    <plotoutlinecolor>0x00000000</plotoutlinecolor>
+    <titlecolor>0x00000000</titlecolor>
+    <timeaxiscolor>0x00000000</timeaxiscolor>
+    <entrycount>3</entrycount>
+    <ADXMONSERIES linecolor="0xFF8080" axiscolor="0xFF8080" itemidhash="0x5D503D54" />
+    <ADXMONSERIES linecolor="0x0000FF" axiscolor="0x0000FF" itemidhash="0x1BF48FF5" />
+    <ADXMONSERIES linecolor="0x009600" axiscolor="0x009600" itemidhash="0x7E63E273" />
+  </ADXMONITOR>
+
+  <ADXDASHBOARD id="MAINDASH" idhash="0x7A2F048C" title="Main Dash">
+    <bkgrndcolor>0x00808080</bkgrndcolor>
+    <entrycount>25</entrycount>
+    <ADXDGENTRY gaugetype="0" itemidhash="0x86F34E3B" left="0" top="0" right="25" bottom="37" arcmax="300" bkgndcolor="0x00808080" curvaltxtcolor="0x00000000" facecolor="0x00FFFFFF" needlecolor="0x000000FF" mintickcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="0" itemidhash="0xDD3BC5C1" left="25" top="0" right="50" bottom="37" arcmax="300" bkgndcolor="0x00808080" curvaltxtcolor="0x00000000" facecolor="0x00FFFFFF" needlecolor="0x000000FF" mintickcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="0" itemidhash="0xA06A8CC6" left="50" top="0" right="75" bottom="37" arcmax="300" bkgndcolor="0x00808080" curvaltxtcolor="0x00000000" facecolor="0x00FFFFFF" needlecolor="0x000000FF" mintickcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="0" itemidhash="0x9A6AA4A5" left="75" top="0" right="100" bottom="37" arcmax="320" bkgndcolor="0x00808080" curvaltxtcolor="0x00000000" facecolor="0x00FFFFFF" needlecolor="0x000000FF" mintickcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xB6912D9D" left="0" top="37" right="15" bottom="58" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCD44515B" left="29" top="37" right="43" bottom="58" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F3549B" left="43" top="37" right="57" bottom="58" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x2F851174" left="57" top="37" right="71" bottom="58" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x31782C9E" left="71" top="37" right="85" bottom="58" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x1045FC9E" left="85" top="37" right="100" bottom="58" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F34E3B" left="0" top="58" right="15" bottom="79" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F3513B" left="15" top="58" right="29" bottom="79" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDE689570" left="29" top="58" right="43" bottom="79" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7E63E273" left="43" top="58" right="57" bottom="79" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x82C1F3D7" left="57" top="58" right="71" bottom="79" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x306DB0F8" left="71" top="58" right="85" bottom="79" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7BE13C7F" left="85" top="58" right="100" bottom="79" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x5D503D54" left="0" top="79" right="15" bottom="100" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xE0FE6C75" left="15" top="79" right="29" bottom="100" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x1BF48FF5" left="29" top="79" right="43" bottom="100" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x11948114" left="43" top="79" right="57" bottom="100" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x545A8161" left="57" top="79" right="71" bottom="100" bordercolor="0x00000000" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x40061DD9" left="71" top="79" right="85" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x72F719FD" left="85" top="79" right="100" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD3BC5C1" left="15" top="37" right="29" bottom="58" curvaltxtcolor="0x00010006" alarmlowcolor="0x00010005" />
+  </ADXDASHBOARD>
+
+  <ADXDASHBOARD id="CLUTCHPRESS" idhash="0x3C0CF608" title="Clutch Press">
+    <bkgrndcolor>0x00808080</bkgrndcolor>
+    <entrycount>35</entrycount>
+    <ADXDGENTRY gaugetype="1" itemidhash="0x11949BB4" left="0" top="0" right="15" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x11948114" left="15" top="0" right="29" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x11949E14" left="29" top="0" right="43" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x11949C14" left="43" top="0" right="57" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x11948B74" left="57" top="0" right="71" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x119488D4" left="71" top="0" right="85" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xE53F4F95" left="85" top="0" right="100" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8169D9D9" left="0" top="20" right="15" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8169C379" left="15" top="20" right="29" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8169DC79" left="29" top="20" right="43" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8169DE79" left="43" top="20" right="57" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8169C919" left="57" top="20" right="71" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8169CAB9" left="71" top="20" right="85" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8169D0F9" left="85" top="20" right="100" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7D39735B" left="0" top="40" right="15" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7D3969FB" left="15" top="40" right="29" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7D3976FB" left="29" top="40" right="43" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7D3974FB" left="43" top="40" right="57" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7D39639B" left="57" top="40" right="71" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7D39603B" left="71" top="40" right="85" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7D397A7B" left="85" top="40" right="100" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCC7427A8" left="0" top="60" right="15" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x6B01D576" left="15" top="60" right="29" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x6481D576" left="29" top="60" right="43" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x6581D576" left="43" top="60" right="57" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x6E31D576" left="57" top="60" right="71" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x6FE1D576" left="71" top="60" right="85" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x62C1D576" left="85" top="60" right="100" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x53337964" left="0" top="80" right="15" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xF8665F43" left="15" top="80" right="29" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xF8665103" left="29" top="80" right="43" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xF8664BA3" left="43" top="80" right="57" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xF86654A3" left="57" top="80" right="71" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAAC4B729" left="71" top="80" right="85" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xB6912D9D" left="85" top="80" right="100" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+  </ADXDASHBOARD>
+
+  <ADXDASHBOARD id="DASCH3" idhash="0x20A5AE7D" title="Adaptation">
+    <entrycount>25</entrycount>
+    <ADXDGENTRY gaugetype="1" itemidhash="0xBB08F305" left="0" top="0" right="20" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xBB082265" left="20" top="0" right="40" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xBB08DA65" left="40" top="0" right="60" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xBB08CA65" left="60" top="0" right="80" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F3549B" left="0" top="20" right="20" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xB6912D9D" left="20" top="20" right="40" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD3BC5C1" left="40" top="20" right="60" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7BE13C7F" left="60" top="20" right="80" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x1BF48FF5" left="0" top="40" right="20" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x1BF490F5" left="20" top="40" right="40" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7BE13C7F" left="40" top="40" right="60" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8169DDB9" left="60" top="40" right="80" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x1BF48A55" left="0" top="60" right="20" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x0BAC72CF" left="20" top="60" right="40" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x5D503D54" left="40" top="60" right="60" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7D39773B" left="60" top="60" right="80" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xBB087165" left="80" top="0" right="100" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xFB5983B6" left="80" top="20" right="100" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8169CAF9" left="80" top="40" right="100" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7D39607B" left="80" top="60" right="100" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD1D236C" left="0" top="80" right="20" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCD44515B" left="20" top="80" right="40" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x6461D576" left="60" top="80" right="80" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x6FC1D576" left="80" top="80" right="100" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC6EE8949" left="40" top="80" right="60" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+  </ADXDASHBOARD>
+
+  <ADXDASHBOARD id="AUTOMOD" idhash="0xEA203688" title="AUTOMODE">
+    <entrycount>16</entrycount>
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F3549B" left="0" top="0" right="25" bottom="25" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDB38F462" left="25" top="0" right="50" bottom="25" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x45457C2D" left="50" top="0" right="75" bottom="25" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x251771F2" left="75" top="0" right="100" bottom="25" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCD44515B" left="0" top="25" right="25" bottom="50" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDEDDFCE2" left="25" top="25" right="50" bottom="50" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x3A251410" left="50" top="25" right="75" bottom="50" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7BE13C7F" left="75" top="25" right="100" bottom="50" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xB6912D9D" left="0" top="50" right="25" bottom="75" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xE0FE6C75" left="25" top="50" right="50" bottom="75" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x9A6AA4A5" left="50" top="50" right="75" bottom="75" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x2F851174" left="75" top="50" right="100" bottom="75" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7E63E273" left="0" top="75" right="25" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD1D236C" left="25" top="75" right="50" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x45761743" left="50" top="75" right="75" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x545A8161" left="75" top="75" right="100" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+  </ADXDASHBOARD>
+
+  <ADXDASHBOARD id="DASCH5" idhash="0x20A5BB1D" title="CAN TQ">
+    <entrycount>35</entrycount>
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAB5E4FD7" left="0" top="0" right="15" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAB5E5577" left="15" top="0" right="29" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAB5E4A77" left="29" top="0" right="43" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x2F41B629" left="43" top="0" right="57" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCD44515B" left="57" top="0" right="71" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDE689570" left="71" top="0" right="85" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xB2EC8DBE" left="85" top="0" right="100" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x6199AE22" left="0" top="20" right="15" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD3BC5C1" left="15" top="20" right="29" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x45761743" left="29" top="20" right="43" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F3549B" left="43" top="20" right="57" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDEDDFCE2" left="57" top="20" right="71" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F3513B" left="71" top="20" right="85" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCD44515B" left="85" top="20" right="100" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x5D503D54" left="0" top="40" right="15" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCD44515B" left="15" top="40" right="29" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x3A251410" left="29" top="40" right="43" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F34E3B" left="43" top="40" right="57" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x98901648" left="57" top="40" right="71" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x6155FFE0" left="71" top="40" right="85" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA6737119" left="85" top="40" right="100" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7E63E273" left="0" top="60" right="15" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x66776C11" left="15" top="60" right="29" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8752165C" left="29" top="60" right="43" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x63173BFD" left="43" top="60" right="57" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD1D236C" left="57" top="60" right="71" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x1E3B4ACA" left="71" top="60" right="85" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="85" top="60" right="100" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x1E3B4ACA" left="0" top="80" right="15" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD1D236C" left="15" top="80" right="29" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x87E6A6CD" left="29" top="80" right="43" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xE0FE6C75" left="43" top="80" right="57" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x72F719FD" left="57" top="80" right="71" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x545A8161" left="71" top="80" right="85" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x40061DD9" left="85" top="80" right="100" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+  </ADXDASHBOARD>
+
+  <ADXDASHBOARD id="DASCH6" idhash="0x20A5B8BD" title="AWD">
+    <entrycount>35</entrycount>
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F3549B" left="0" top="0" right="15" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCD44515B" left="15" top="0" right="29" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x45761743" left="29" top="0" right="43" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD1D236C" left="43" top="0" right="57" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD3BC5C1" left="57" top="0" right="71" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="71" top="0" right="85" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xB2EC8DBE" left="85" top="0" right="100" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x47969DF4" left="0" top="20" right="15" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xD20B393F" left="15" top="20" right="29" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x4E84438B" left="29" top="20" right="43" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="43" top="20" right="57" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="57" top="20" right="71" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="71" top="20" right="85" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="85" top="20" right="100" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA6737119" left="0" top="40" right="15" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x7E63E273" left="15" top="40" right="29" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x63173BFD" left="29" top="40" right="43" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="43" top="40" right="57" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="57" top="40" right="71" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="71" top="40" right="85" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="85" top="40" right="100" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x1E3B4ACA" left="0" top="60" right="15" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xD58A26B2" left="15" top="60" right="29" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCD44515B" left="29" top="60" right="43" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="43" top="60" right="57" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="57" top="60" right="71" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="71" top="60" right="85" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="85" top="60" right="100" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xD58A26B2" left="0" top="80" right="15" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x43C03809" left="15" top="80" right="29" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xD20B393F" left="29" top="80" right="43" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x415B00BA" left="43" top="80" right="57" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x4C70D6B4" left="57" top="80" right="71" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D2507D" left="71" top="80" right="85" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="85" top="80" right="100" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+  </ADXDASHBOARD>
+
+  <ADXDASHBOARD id="DASCH7" idhash="0x20A5A2FD" title="Analog">
+    <entrycount>35</entrycount>
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4AAAC" left="0" top="0" right="15" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4B00C" left="15" top="0" right="29" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4AF0C" left="29" top="0" right="43" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4AD0C" left="43" top="0" right="57" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4BA6C" left="57" top="0" right="71" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4B9CC" left="71" top="0" right="85" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4A38C" left="85" top="0" right="100" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4AECC" left="0" top="20" right="15" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4B98C" left="15" top="20" right="29" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x369556B9" left="29" top="20" right="43" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x369558F9" left="43" top="20" right="57" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x36954259" left="57" top="20" right="71" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA72E684F" left="71" top="20" right="85" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA72E660F" left="85" top="20" right="100" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x66776C11" left="0" top="40" right="15" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8752165C" left="15" top="40" right="29" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D257DD" left="29" top="40" right="43" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D24D7D" left="43" top="40" right="57" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D2527D" left="57" top="40" right="71" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D2507D" left="71" top="40" right="85" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x661217B6" left="85" top="40" right="100" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCEED8F4C" left="0" top="60" right="15" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8B61F6E7" left="15" top="60" right="29" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAA650C0F" left="29" top="60" right="43" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAE106ACF" left="43" top="60" right="57" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA9DB5EF8" left="57" top="60" right="71" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA72E684F" left="71" top="60" right="85" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xFE9E0FD3" left="85" top="60" right="100" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCEED95EC" left="0" top="80" right="15" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8B61EC47" left="15" top="80" right="29" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA3F6F7AA" left="29" top="80" right="43" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xEEBBE4DA" left="43" top="80" right="57" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x42634E54" left="57" top="80" right="71" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x42634E54" left="71" top="80" right="85" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x680E7254" left="85" top="80" right="100" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+  </ADXDASHBOARD>
+
+  <ADXDASHBOARD id="DASCH8" idhash="0x20A5AFBD" title="DASCH 8">
+    <entrycount>35</entrycount>
+    <ADXDGENTRY gaugetype="1" itemidhash="0x3EFCBCA8" left="0" top="0" right="15" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4B00C" left="15" top="0" right="29" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA9DB5EF8" left="29" top="0" right="43" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDA4A431D" left="43" top="0" right="57" bottom="20" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x0A5B329C" left="57" top="0" right="71" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x2D3B3810" left="71" top="0" right="85" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x2D3B3650" left="85" top="0" right="100" bottom="20" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDEDDFCE2" left="0" top="20" right="15" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC9B4BA6C" left="15" top="20" right="29" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x369556B9" left="29" top="20" right="43" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAA650C0F" left="43" top="20" right="57" bottom="40" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA9DB5EF8" left="57" top="20" right="71" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA72E684F" left="71" top="20" right="85" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA72E660F" left="85" top="20" right="100" bottom="40" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xE9375D42" left="0" top="40" right="15" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D257DD" left="15" top="40" right="29" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D24D7D" left="29" top="40" right="43" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D2527D" left="43" top="40" right="57" bottom="60" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D2507D" left="57" top="40" right="71" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x662B17B6" left="71" top="40" right="85" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x661217B6" left="85" top="40" right="100" bottom="60" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAA650C0F" left="0" top="60" right="15" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x084BE5E3" left="15" top="60" right="29" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAA650C0F" left="29" top="60" right="43" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAE106ACF" left="43" top="60" right="57" bottom="80" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA9DB5EF8" left="57" top="60" right="71" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA72E684F" left="71" top="60" right="85" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xC6EE8949" left="85" top="60" right="100" bottom="80" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D257DD" left="0" top="80" right="15" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x5514F313" left="15" top="80" right="29" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xA3F6F7AA" left="29" top="80" right="43" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xEEBBE4DA" left="43" top="80" right="57" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x02856F8E" left="57" top="80" right="71" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x42634E54" left="71" top="80" right="85" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x426354F4" left="85" top="80" right="100" bottom="100" bordercolor="0x00010007" curvaltxtcolor="0x00010006" />
+  </ADXDASHBOARD>
+
+  <ADXDASHBOARD id="DASCH9" idhash="0x20A5B8FD" title="DASCH 9">
+    <entrycount>16</entrycount>
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D257DD" left="0" top="0" right="25" bottom="25" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D24D7D" left="25" top="0" right="50" bottom="25" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D2527D" left="50" top="0" right="75" bottom="25" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x00D2507D" left="75" top="0" right="100" bottom="25" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xCD44515B" left="0" top="25" right="25" bottom="50" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x53337964" left="25" top="25" right="50" bottom="50" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAA650C0F" left="50" top="25" right="75" bottom="50" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAE106ACF" left="75" top="25" right="100" bottom="50" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x66776C11" left="0" top="50" right="25" bottom="75" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x8752165C" left="25" top="50" right="50" bottom="75" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xB6912D9D" left="50" top="50" right="75" bottom="75" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x86F3549B" left="75" top="50" right="100" bottom="75" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0x545A8161" left="0" top="75" right="25" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xDD1D236C" left="25" top="75" right="50" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xAAC4B729" left="50" top="75" right="75" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+    <ADXDGENTRY gaugetype="1" itemidhash="0xE0FE6C75" left="75" top="75" right="100" bottom="100" bordercolor="0x00000000" curvaltxtcolor="0x00000000" alarmlowcolor="0x0000FFFF" />
+  </ADXDASHBOARD>
+
+  <ADXCSENDCOMMAND id="COMMAND0" idhash="0xC579AD33" title="Mode 1, Send Comand Log1">
+    <bytestring size="0x4">4C4F4731</bytestring>
+  </ADXCSENDCOMMAND>
+
+  <ADXCSENDCOMMAND id="RESETERRORS" idhash="0x26CEE8A2" title="Reset Errors" basecmdflags="0x03">
+    <bytestring size="0x4">424C4144</bytestring>
+  </ADXCSENDCOMMAND>
+
+  <ADXCSENDCOMMAND id="POWERDOWN" idhash="0xD6F3D941" title="Power Down" basecmdflags="0x03">
+    <bytestring size="0x4">424C415A</bytestring>
+  </ADXCSENDCOMMAND>
+
+  <ADXCSENDCOMMAND id="MODE1,Send1 " idhash="0xE6EDF208" title="Mode 1, Send Comand Log2">
+    <bytestring size="0x4">4C4F4732</bytestring>
+  </ADXCSENDCOMMAND>
+
+  <ADXCLISTENPACKET id="MODE1,MESSAGE0" idhash="0x4BBB4F7A" title="Mode 1, Log Fast " flags="0x00000005">
+    <listentimeout>400</listentimeout>
+    <packetbodylength>100</packetbodylength>
+    <packetoffsetinbody>0</packetoffsetinbody>
+    <packetsize>100</packetsize>
+  </ADXCLISTENPACKET>
+
+  <ADXCLISTENPACKET id="FASTLOG" idhash="0x11A8A134" title="Mode 1, Log1" flags="0x00000005">
+    <listentimeout>400</listentimeout>
+    <packetbodylength>100</packetbodylength>
+    <packetoffsetinbody>0</packetoffsetinbody>
+    <packetsize>100</packetsize>
+  </ADXCLISTENPACKET>
+
+  <ADXCLISTENPACKET id="MODE1,MESSAGE1" idhash="0x4BBB413A" title="Mode 1, Log2" flags="0x00000005">
+    <listentimeout>400</listentimeout>
+    <packetbodylength>100</packetbodylength>
+    <packetoffsetinbody>0</packetoffsetinbody>
+    <packetsize>100</packetsize>
+  </ADXCLISTENPACKET>
+
+  <ADXMACRO id="COMMAND0MAC" idhash="0xD685487C" title="Mode 1, Log Config" repeatcount="1">
+    <NODE commandID="COMMAND0" repeatcount="1" />
+    <NODE commandID="MODE1,MESSAGE0" repeatcount="1" />
+    <NODE commandID="FASTLOG" repeatcount="1" />
+    <NODE commandID="MODE1,Send1 " repeatcount="1" />
+    <NODE commandID="MODE1,MESSAGE0" repeatcount="1" />
+    <NODE commandID="MODE1,MESSAGE1" repeatcount="1" />
+  </ADXMACRO>
+
+  <ADXVALUE id="EMPTY" idhash="0x680E7254" title="empty">
+    <parentcmdidhash>0x4BBB4F7A</parentcmdidhash>
+    <packetoffset>0x7F</packetoffset>
+    <range low="0.000000" high="255.000000" />
+    <alarms low="0.000000" high="255.000000" />
+    <digcount>0</digcount>
+    <outputtype>3</outputtype>
+    <MATH equation="x">
+      <VAR varID="x" type="native" />
+    </MATH>
+  </ADXVALUE>
+
+  <ADXLISTVIEW id="ANALOGINPUT" idhash="0xD2CA5366" title="Analog Input">
+    <entrycount>33</entrycount>
+    <ADXLVENTRY entrytype="1" flags="0x00000001" title="-=Engine=- " />
+    <ADXLVENTRY entrytype="0" itemidhash="0x86F3549B" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x6199AE22" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xCD44515B" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x8752165C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x66776C11" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x8B61F6E7" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xCEED8F4C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x8B61EC47" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xCEED95EC" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x87E6A6CD" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xB6000BDB" />
+    <ADXLVENTRY entrytype="1" flags="0x00000001" title="MUX" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xF7A0901C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xFAF0901C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xF570901C" />
+    <ADXLVENTRY entrytype="1" flags="0x00000001" title="-=Analog=-" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xC9B4AAAC" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xC9B4B00C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xC9B4AF0C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xC9B4AD0C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xC9B4BA6C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xC9B4B9CC" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xC9B4A38C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xC9B4AECC" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xC9B4B98C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x369556B9" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x369558F9" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x36954259" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x3A6E4563" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x3A6E5FC3" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x3A6E40C3" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x3A6E42C3" />
+  </ADXLISTVIEW>
+
+  <ADXLISTVIEW id="AUXOUTPUT" idhash="0xC3314651" title="AUX Output">
+    <entrycount>17</entrycount>
+    <ADXLVENTRY entrytype="1" flags="0x00000001" title="-=Engine=- " />
+    <ADXLVENTRY entrytype="0" itemidhash="0x86F3549B" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x6199AE22" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xCD44515B" />
+    <ADXLVENTRY entrytype="1" flags="0x00000001" title="-=AUX=-" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xA2131A19" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xA21300B9" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xA2131FB9" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xA2131DB9" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xA2130AD9" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xA2130979" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xA2131339" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xA2131E79" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xA2130939" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x42634014" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x42634E54" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x426354F4" />
+  </ADXLISTVIEW>
+
+  <ADXLISTVIEW id="DEFAULTVIEW" idhash="0x38ADC566" title="Sensor Data">
+    <entrycount>21</entrycount>
+    <ADXLVENTRY entrytype="1" flags="0x00000001" />
+    <ADXLVENTRY entrytype="1" flags="0x00000001" title="-=General=-" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x7E63E273" />
+    <ADXLVENTRY entrytype="1" flags="0x00000001" title="-=Engine=-" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x86F3549B" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xB2EC8DBE" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x6199AE22" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xCD44515B" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xCD79127B" />
+    <ADXLVENTRY entrytype="1" flags="0x00000001" title="-=Transmission=-" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x86F34E3B" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x86F3513B" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x7BE13C7F" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xDD3BC5C1" />
+    <ADXLVENTRY entrytype="0" itemidhash="0xDD1D236C" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x31782C9E" />
+    <ADXLVENTRY entrytype="1" flags="0x00000001" title="-=Parametric out=-" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x3A6E4563" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x3A6E5FC3" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x3A6E40C3" />
+    <ADXLVENTRY entrytype="0" itemidhash="0x3A6E42C3" />
+  </ADXLISTVIEW>
+</ADXFORMAT>

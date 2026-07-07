@@ -1,0 +1,16 @@
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.jar binary
+*.adx text eol=lf
+*.xdf text eol=lf
+*.md text eol=lf
+*.dart text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
