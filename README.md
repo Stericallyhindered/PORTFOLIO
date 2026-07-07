@@ -6,10 +6,9 @@ Most of my work has been in places where the software has to understand both the
 
 This repo is not every project I have ever written. It is a cleaned-up set of source snapshots that show the work most relevant to vehicle/embedded software, hardware-connected mobile development, full-stack product engineering, AI/API integrations, and customer workflow automation.
 
-## Current Resume Snapshots
+## Current Resume
 
-- [Harbinger Software Integration Engineer resume](./resume/Matthew_Phillips_Harbinger_Software_Integration_Engineer_Resume.pdf)
-- [Meyers Manx Principal Vehicle Software resume](./resume/Matthew_Phillips_Meyers_Manx_Principal_Vehicle_Software_Resume.pdf)
+- [Matthew Phillips resume](./resume/Matthew_Phillips_Resume.pdf)
 
 ## The Short Version
 

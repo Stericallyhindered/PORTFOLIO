@@ -1,13 +1,6 @@
-# Resume Files
+# Resume
 
-This folder contains role-targeted resume snapshots that match the code portfolio.
+- `Matthew_Phillips_Resume.pdf`
+- `Matthew_Phillips_Resume.md`
 
-## Current Vehicle / Embedded Resumes
-
-- `Matthew_Phillips_Harbinger_Software_Integration_Engineer_Resume.pdf`  
-  Software integration, firmware-adjacent workflows, CAN/ECU diagnostics, logs, telemetry, and embedded vehicle systems.
-
-- `Matthew_Phillips_Meyers_Manx_Principal_Vehicle_Software_Resume.pdf`  
-  Principal vehicle software, controls-adjacent systems, CAN/LIN-oriented vehicle workflows, infotainment/tooling, and hardware-connected software.
-
-The markdown files are editable source copies for fast tailoring.
+Current public portfolio resume and editable source. This is the full version: vehicle software, embedded-adjacent integration, CAN/BLE hardware workflows, firmware update tooling, diagnostics, Stealth Batteries, Stealth Machine, AI support systems, CRM/order tools, commerce/admin, and full-stack product engineering.
