@@ -41,6 +41,7 @@ obj/
 *.gz
 *.exe
 *.dll
+*.jar
 *.pdb
 *.apk
 *.ipa

@@ -1,0 +1,77 @@
+========================================
+BASS CLOWN CO - LOCAL SETUP STEPS
+========================================
+
+STEP 1: INSTALL BUN
+-------------------
+Windows:
+  powershell -c "irm bun.sh/install.ps1 | iex"
+
+Or download from: https://bun.sh
+
+
+STEP 2: NAVIGATE TO PROJECT
+----------------------------
+cd "dev website"
+
+
+STEP 3: CREATE ENVIRONMENT FILE
+--------------------------------
+1. Copy ENV_TEMPLATE.txt to .env.local:
+   copy ENV_TEMPLATE.txt .env.local
+
+2. Edit .env.local and add:
+   - DATABASE_URL (get free one from https://neon.tech)
+   - NEXTAUTH_SECRET (any random string)
+   - JWT_SECRET (any random string)
+   - NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+
+STEP 4: INSTALL DEPENDENCIES
+-----------------------------
+bun install
+
+
+STEP 5: SET UP DATABASE
+------------------------
+bun run create-admin
+
+This creates admin user:
+  Email: david@solheim.tech
+  Password: bassclown25
+
+
+STEP 6: START SERVER
+--------------------
+bun dev
+
+
+STEP 7: OPEN BROWSER
+--------------------
+Go to: http://localhost:3000
+
+Login with:
+  Email: david@solheim.tech
+  Password: bassclown25
+
+
+========================================
+TROUBLESHOOTING
+========================================
+
+Bun not found?
+  - Install Bun from https://bun.sh
+  - Or use: npm install && npm run dev
+
+Port 3000 in use?
+  - netstat -ano | findstr :3000
+  - taskkill /PID <PID> /F
+
+Database error?
+  - Check DATABASE_URL in .env.local
+  - Make sure database is accessible
+
+Need help? See SETUP_INSTRUCTIONS.md
+
+========================================
+

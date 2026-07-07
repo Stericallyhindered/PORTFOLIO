@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Shipping Label Creation - StrainCollector</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%);
+      color: #fff;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      color: #8fffd4;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      color: #cbd5f5;
+      margin-bottom: 2rem;
+    }
+    
+    .test-form {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(143, 255, 212, 0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      color: #8fffd4;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid rgba(143, 255, 212, 0.3);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 1rem;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #8fffd4;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: #8fffd4;
+      color: #1a0f2e;
+    }
+    
+    .btn-primary:hover {
+      background: #6ee7b7;
+      transform: translateY(-2px);
+    }
+    
+    .btn-primary:disabled {
+      background: #666;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .result {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border-radius: 12px;
+      display: none;
+    }
+    
+    .result.success {
+      background: rgba(16, 185, 129, 0.2);
+      border: 2px solid #10b981;
+      display: block;
+    }
+    
+    .result.error {
+      background: rgba(239, 68, 68, 0.2);
+      border: 2px solid #ef4444;
+      display: block;
+    }
+    
+    .result h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    
+    .result pre {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    
+    .result a {
+      color: #8fffd4;
+      text-decoration: underline;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    
+    .loading {
+      display: none;
+      text-align: center;
+      color: #8fffd4;
+      margin-top: 1rem;
+    }
+    
+    .loading.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧪 Test Shipping Label Creation</h1>
+    <p class="subtitle">Manually test Shippo label generation to debug issues</p>
+    
+    <form class="test-form" id="test-form">
+      <h2 style="color: #8fffd4; margin-bottom: 1.5rem;">Shipping Address</h2>
+      
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required value="Test Customer">
+      </div>
+      
+      <div class="form-group">
+        <label for="street1">Street Address *</label>
+        <input type="text" id="street1" name="street1" required value="123 Test Street">
+      </div>
+      
+      <div class="form-group">
+        <label for="street2">Street Address 2 (Optional)</label>
+        <input type="text" id="street2" name="street2" value="">
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">City *</label>
+          <input type="text" id="city" name="city" required value="San Francisco">
+        </div>
+        
+        <div class="form-group">
+          <label for="state">State *</label>
+          <input type="text" id="state" name="state" required value="CA" maxlength="2" style="text-transform: uppercase;">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="zip">ZIP Code *</label>
+          <input type="text" id="zip" name="zip" required value="94117">
+        </div>
+        
+        <div class="form-group">
+          <label for="country">Country *</label>
+          <select id="country" name="country" required>
+            <option value="US" selected>United States</option>
+            <option value="CA">Canada</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone (Optional)</label>
+          <input type="tel" id="phone" name="phone" value="+1 555 123 4567">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email (Optional)</label>
+          <input type="email" id="email" name="email" value="test@example.com">
+        </div>
+      </div>
+      
+      <h2 style="color: #8fffd4; margin-top: 2rem; margin-bottom: 1.5rem;">Package Details</h2>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="weight">Weight (lbs) *</label>
+          <input type="number" id="weight" name="weight" required value="1" min="0.1" step="0.1">
+        </div>
+        
+        <div class="form-group">
+          <label for="weight-unit">Weight Unit</label>
+          <select id="weight-unit" name="weight-unit">
+            <option value="lb" selected>Pounds (lb)</option>
+            <option value="oz">Ounces (oz)</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="length">Length (inches) *</label>
+          <input type="number" id="length" name="length" required value="8" min="0.1" step="0.1">
+        </div>
+        
+        <div class="form-group">
+          <label for="width">Width (inches) *</label>
+          <input type="number" id="width" name="width" required value="6" min="0.1" step="0.1">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="height">Height (inches) *</label>
+          <input type="number" id="height" name="height" required value="4" min="0.1" step="0.1">
+        </div>
+        
+        <div class="form-group">
+          <label for="dimension-unit">Dimension Unit</label>
+          <select id="dimension-unit" name="dimension-unit">
+            <option value="in" selected>Inches (in)</option>
+            <option value="cm">Centimeters (cm)</option>
+          </select>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary" id="submit-btn">
+        🚀 Create Shipping Label
+      </button>
+      
+      <div class="loading" id="loading">
+        ⏳ Creating label... This may take a few seconds...
+      </div>
+    </form>
+    
+    <div class="result" id="result">
+      <h3 id="result-title"></h3>
+      <pre id="result-content"></pre>
+      <div id="result-actions"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('test-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submit-btn');
+      const loading = document.getElementById('loading');
+      const result = document.getElementById('result');
+      const resultTitle = document.getElementById('result-title');
+      const resultContent = document.getElementById('result-content');
+      const resultActions = document.getElementById('result-actions');
+      
+      // Reset UI
+      submitBtn.disabled = true;
+      loading.classList.add('active');
+      result.className = 'result';
+      resultActions.innerHTML = '';
+      
+      // Collect form data
+      const formData = {
+        orderId: 'test_' + Date.now(),
+        shippingAddress: {
+          name: document.getElementById('name').value,
+          street1: document.getElementById('street1').value,
+          street2: document.getElementById('street2').value,
+          city: document.getElementById('city').value,
+          state: document.getElementById('state').value.toUpperCase(),
+          zip: document.getElementById('zip').value,
+          country: document.getElementById('country').value,
+          phone: document.getElementById('phone').value,
+          email: document.getElementById('email').value
+        },
+        packageWeight: {
+          value: parseFloat(document.getElementById('weight').value),
+          unit: document.getElementById('weight-unit').value
+        },
+        packageDimensions: {
+          length: document.getElementById('length').value,
+          width: document.getElementById('width').value,
+          height: document.getElementById('height').value,
+          unit: document.getElementById('dimension-unit').value
+        }
+      };
+      
+      try {
+        console.log('Sending request:', formData);
+        
+        const response = await fetch('create-shipping-label.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        const responseText = await response.text();
+        console.log('Response status:', response.status);
+        console.log('Response text:', responseText);
+        
+        let data;
+        try {
+          data = JSON.parse(responseText);
+        } catch (parseError) {
+          throw new Error('Invalid JSON response: ' + responseText.substring(0, 200));
+        }
+        
+        if (response.ok && data.success) {
+          // Success!
+          result.className = 'result success';
+          resultTitle.textContent = '✅ Label Created Successfully!';
+          resultContent.textContent = JSON.stringify(data, null, 2);
+          
+          if (data.labelUrl) {
+            resultActions.innerHTML = `
+              <a href="${data.labelUrl}" target="_blank" class="btn btn-primary" style="display: inline-block; margin-right: 1rem;">
+                📥 Download Label PDF
+              </a>
+            `;
+          }
+          
+          if (data.trackingNumber) {
+            resultActions.innerHTML += `
+              <a href="https://tools.usps.com/go/TrackConfirmAction?tLabels=${encodeURIComponent(data.trackingNumber)}" target="_blank" class="btn btn-primary" style="display: inline-block;">
+                📦 Track Package
+              </a>
+            `;
+          }
+          
+          console.log('Label created:', data);
+        } else {
+          // Error
+          result.className = 'result error';
+          resultTitle.textContent = '❌ Error Creating Label';
+          resultContent.textContent = JSON.stringify(data, null, 2);
+          console.error('Error:', data);
+        }
+      } catch (error) {
+        result.className = 'result error';
+        resultTitle.textContent = '❌ Error';
+        resultContent.textContent = 'Error: ' + error.message + '\n\nCheck browser console for details.';
+        console.error('Exception:', error);
+      } finally {
+        submitBtn.disabled = false;
+        loading.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
+

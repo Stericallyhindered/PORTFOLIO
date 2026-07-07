@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="300px" viewBox="0 0 400 300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>Service Polaroid - Cinematic Commercials</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="400" height="300"></rect>
+        <text font-family="Arial" font-size="16" font-weight="bold" fill="#FFFFFF" x="125" y="150">
+            Cinematic Commercials
+        </text>
+        <path d="M200,50 C160,50 125,85 125,125 C125,165 160,200 200,200 C240,200 275,165 275,125 C275,85 240,50 200,50 Z" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M200,75 L200,175" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M150,125 L250,125" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M175,100 L175,150" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M225,100 L225,150" stroke="#FFFFFF" stroke-width="2"></path>
+    </g>
+</svg>

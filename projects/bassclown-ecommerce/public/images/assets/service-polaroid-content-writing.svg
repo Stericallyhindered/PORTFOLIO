@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="300px" viewBox="0 0 400 300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>Service Polaroid - Content Writing</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="400" height="300"></rect>
+        <text font-family="Arial" font-size="16" font-weight="bold" fill="#FFFFFF" x="135" y="150">
+            Content Writing
+        </text>
+        <path d="M140,80 L260,80 L260,200 L140,200 Z" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M160,100 L240,100" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M160,120 L240,120" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M160,140 L240,140" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M160,160 L220,160" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M160,180 L200,180" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M280,120 L280,160 L300,140 L280,120" stroke="#FFFFFF" stroke-width="2"></path>
+    </g>
+</svg>

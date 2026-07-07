@@ -41,6 +41,9 @@ If you are reviewing this for an interview, these are the projects I would start
 6. [`customer-tracking-crm`](./projects/customer-tracking-crm)  
    CRM/order workflow system: admin approvals, customer portal, documents/OCR, real-time updates, email/SMS-style notifications, and audit trails.
 
+7. [`stealth-machine-backend`](./projects/stealth-machine-backend) and [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter)  
+   Stealth Machine Tools support ecosystem: Next.js/Prisma backend, AI support workflows, admin tooling, and a Flutter field/support app.
+
 ## Projects
 
 | Project | What it shows |
@@ -56,6 +59,13 @@ If you are reviewing this for an interview, these are the projects I would start
 | [`str8tune-ecu-calibration-editor`](./projects/str8tune-ecu-calibration-editor) | ECU calibration tooling with React/TypeScript, XDF/BIN parsing concepts, editable maps, hex/table views, tuning assistant flows, 2D/3D visualization, and export-style calibration workflows. |
 | [`ampgen-configurator`](./projects/ampgen-configurator) | A clean Next.js/React configurator for power/electrical product planning, with draggable layout zones and UI logic for turning a physical product setup into an interactive tool. |
 | [`hotspot-control-api`](./projects/hotspot-control-api) | Small but useful Windows/network automation: Python plus PowerShell control around local hotspot workflows, showing the kind of practical scripting that keeps ops moving. |
+| [`stealth-machine-backend`](./projects/stealth-machine-backend) | Next.js/TypeScript/Prisma backend for Stealth Machine Tools operations: auth, customers, machines, tickets, training/support materials, AI config, analytics, and admin workflows. |
+| [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter) | Cross-platform Flutter app for machine support/training workflows with API integration, local storage, auth helpers, camera/speech/PDF support, QR, charts, and field-service style UX. |
+| [`esp32-mouse-controller`](./projects/esp32-mouse-controller) | Compact embedded + desktop project: ESP32 USB HID mouse firmware, test sketch, and Python GUI/control scripts for configuring and testing a physical device. |
+| [`laserconsumables-commerce`](./projects/laserconsumables-commerce) | Industrial commerce/admin system: Next.js, TypeScript, Prisma, inventory services, manual order flows, shipping dashboards, and admin workflow components. |
+| [`straincollector-commerce`](./projects/straincollector-commerce) | Specialty commerce/order workflow project: Next.js/Supabase structure plus PHP checkout, webhook, shipping-label, and tracking workflows. |
+| [`bassclown-ecommerce`](./projects/bassclown-ecommerce) | Polished client ecommerce build with Next.js, Drizzle, migrations, reusable components, admin/customer workflows, API docs, and handoff documentation. |
+| [`jb4pro-csharp-interface`](./projects/jb4pro-csharp-interface) | Legacy C# WinForms JB4Pro interface showing desktop-era hardware communication, serial port monitoring, Bluetooth/BLE support code, and tuning-tool UI structure. |
 
 ## Interview Walkthrough
 
@@ -66,6 +76,7 @@ If you only have ten minutes, I would walk through these in this order:
 3. **CANFlex** - shows BLE-connected fuel/sensor hardware, E85/fuel telemetry, CANbus output settings, calibration, and firmware/version handling.
 4. **Tech Support AI Backend** - shows Claude/API integration wrapped in real backend workflows.
 5. **Stealth Batteries Admin** - shows full-stack business operations: orders, dealers, shipping, warranty, dashboards.
+6. **Stealth Machine Tools** - shows AI support workflows, Flutter field-service UX, machine/customer records, and admin tooling.
 
 ## What These Projects Have In Common
 
@@ -89,6 +100,7 @@ That is the work I am best at. I do not need a perfect spec to start. I need the
 **Vehicle/Embedded:** C, ESP-IDF-oriented firmware scaffolding, CAN bus, CAN-system workflows, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN output docs, raw CAN capture, health/watchdog state, derived metrics, shadow-mode control logic  
 **Mobile/Hardware:** Flutter, Dart, BLE/device communication, diagnostics, firmware update flows, bootloader/erase/write/checksum patterns, gauges, datalogging, settings/configuration UI  
 **Automation:** Python, PowerShell, Windows/server-oriented scripting, local operational tools  
+**Desktop/Legacy Hardware UI:** C#, WinForms, serial port monitoring, Bluetooth/BLE support libraries  
 **Working Style:** scoped changes, clean commits, useful comments, plain-language notes, careful review of AI-generated code
 
 ## A Note On The Code

@@ -1,0 +1,87 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# ─── Legacy old site files ───────────────────────
+# PHP files
+*.php
+# Old HTML pages
+/index.html
+/cart.html
+/orders.html
+/checkout-success.html
+/checkout-cancel.html
+/test.html
+# Old assets
+/assets/
+/data/
+/strains/
+/background.jpg
+/START_PHP_SERVER.bat
+/START_SERVER.bat
+# Old documentation
+/BREVO_SETUP.md
+/CART_PANEL_FIX.md
+/CART_UI_UPDATE.md
+/CHECKOUT_FLOW.md
+/CURRENTORDERTRACKING/
+/CURRENTORDERTRACKING_SETUP.md
+/DEBUG_SHIPPO.md
+/FIX_500_ERROR.md
+/GODADDY_DEPLOYMENT.md
+/INSTALL_PHP_WINDOWS.md
+/LOCAL_TESTING.md
+/MERGE_REPORT.md
+/ORDER_MANAGEMENT_GUIDE.md
+/PHP_SERVER_SETUP.md
+/PLAN.md
+/QUICK_FIX_405_ERROR.md
+/QUICK_START.md
+/SECURITY_WARNING.md
+/SHIPPO_ADMIN_PANEL.md
+/SHIPPO_READY.md
+/SHIPPO_SETUP.md
+/SNIPS_REMOVED.md
+/START_SERVER.md
+/STRIPE_INTEGRATION_SUMMARY.md
+/STRIPE_SETUP.md
+/TEST_MODE_READY.md
+/UPDATE_SUMMARY.md
+/UPLOAD_TO_GODADDY.md
+/WHERE_TO_ADD_KEYS.md
+# Clone scraper (huge image database)
+/clone scraper/
+# Old strain pics folder (empty)
+/strainpics/

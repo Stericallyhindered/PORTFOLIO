@@ -1,0 +1,100 @@
+name: stealth_machine_tools_app
+description: "Stealth Machine Tools - AI-Powered Tech Support & Training App"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  provider: ^6.1.1
+  riverpod: ^2.4.9
+  flutter_riverpod: ^2.4.9
+  
+  # HTTP & API
+  dio: ^5.4.0
+  http: ^1.1.2
+  
+  # Local Storage
+  sqflite: ^2.3.0
+  shared_preferences: ^2.2.2
+  
+  # Authentication & Security
+  jwt_decoder: ^2.0.1
+  crypto: ^3.0.3
+  
+  # Speech Recognition (TTS disabled for Windows - requires ATL)
+  speech_to_text: ^7.3.0
+  # flutter_tts: ^3.8.5  # Disabled - requires Visual Studio ATL component
+  
+  # Camera & AR
+  camera: ^0.10.5+5
+  # ar_flutter_plugin: ^0.7.3  # Temporarily disabled due to Android namespace issue
+  
+  # UI Components
+  cupertino_icons: ^1.0.6
+  material_design_icons_flutter: ^7.0.7296
+  flutter_svg: ^2.0.9
+  cached_network_image: ^3.3.0
+  
+  # Navigation
+  go_router: ^12.1.3
+  
+  # File Handling
+  file_picker: ^8.3.0
+  path_provider: ^2.1.2
+  path: ^1.8.3
+  
+  # Video & Media
+  video_player: ^2.8.2
+  chewie: ^1.7.4
+  
+  # Charts & Analytics
+  fl_chart: ^0.66.0
+  
+  # QR Code
+  qr_flutter: ^4.1.0
+  
+  # Notifications (disabled for Windows - requires ATL)
+  # flutter_local_notifications: ^19.4.2  # Disabled - requires Visual Studio ATL component
+  
+  # PDF & Document Viewing (pdfrx supports Windows, Android, iOS, macOS, Linux, Web)
+  pdf: ^3.10.7
+  pdfrx: ^1.0.82
+  
+  # URL Launcher
+  url_launcher: ^6.2.2
+  
+  # Web Support
+  flutter_web_plugins:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+    # Support materials are now served from Vercel Blob - not bundled locally
+    # - assets/support_materials/manuals/
+    # - assets/support_materials/contracts/
+    # - assets/support_materials/schematics/
+    # - assets/support_materials/troubleshooting/
+  
+  # fonts:
+  #   - family: SMT
+  #     fonts:
+  #       - asset: assets/fonts/SMT-Regular.ttf
+  #       - asset: assets/fonts/SMT-Bold.ttf
+  #         weight: 700

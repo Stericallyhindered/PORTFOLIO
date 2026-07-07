@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="300px" viewBox="0 0 400 300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>Service Polaroid - Photography</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="400" height="300"></rect>
+        <text font-family="Arial" font-size="16" font-weight="bold" fill="#FFFFFF" x="150" y="150">
+            Photography
+        </text>
+        <rect x="140" y="80" width="120" height="80" rx="10" stroke="#FFFFFF" stroke-width="2"></rect>
+        <circle cx="160" cy="100" r="10" stroke="#FFFFFF" stroke-width="2"></circle>
+        <circle cx="200" cy="120" r="25" stroke="#FFFFFF" stroke-width="2"></circle>
+        <path d="M140,190 L260,190" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M150,210 L250,210" stroke="#FFFFFF" stroke-width="2"></path>
+        <path d="M170,230 L230,230" stroke="#FFFFFF" stroke-width="2"></path>
+    </g>
+</svg>
