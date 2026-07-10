@@ -87,6 +87,7 @@ Current
 - Built full-stack operational systems connecting products, customers, dealers, affiliates, sales reps, orders, shipping, support tickets, warranties, claims, approvals, notifications, and admin reporting into usable workflows.
 - Built Stealth Machine Tools software across machine/customer/admin operations, support tooling, CRM workflows, machine records, training/support content, AI-assisted support, and manufacturing-adjacent business workflows.
 - Built CAM/CAD-style and machine-tool support workflows around fiber lasers, cutting tools, pan brakes, customer onboarding, machine support, training, service records, and internal operations.
+- Built GEO Command Center, an AI/search visibility platform with multi-tenant dashboards, prompt/search audit workflows, citation tracking, Supabase/Postgres data modeling, Drizzle, FastAPI services, worker-style processing, report generation, and analytics.
 - Built AI support tooling with customer chat, onboarding, claim/warranty intake, internal workflow assistance, knowledge-base context, logging, analytics, ticketing, and human handoff paths.
 - Built CRM/order/customer tracking systems with Node.js, Express, SQLite, JWT auth, role permissions, admin approval workflows, customer portals, OCR/document scanning, real-time updates, Twilio/Nodemailer notifications, audit trails, and deployment documentation.
 - Built automation and dashboards that connected customer-facing portals, admin work, order state, approvals, document uploads, notifications, reporting, and support history into maintainable business workflows.
@@ -134,6 +135,18 @@ Built a production business platform connecting ecommerce, products, dealers, af
 
 Built software across the Stealth Machine Tools ecosystem, including CAM/CAD-style workflows, fiber laser and cutting-tool support, pan brake workflows, machine/customer/admin records, CRM/support tooling, training/support content management, customer onboarding, AI-assisted support, and full-stack web/admin systems. This work combined manufacturing context, operational software, customer support, and production business tooling.
 
+### GEO Command Center
+
+Built a production-grade AI/search visibility and reporting platform for tracking how brands, products, and content appear across AI/search-style systems. The platform included multi-tenant dashboards, Supabase/Postgres data modeling, Drizzle, Redis/BullMQ-style worker architecture, FastAPI backend services, Claude/Perplexity-style connectors, prompt and content audits, citation/source tracking, report generation, analytics workflows, and user-facing dashboards for decision-making.
+
+Strong contribution areas:
+
+- Built full-stack product workflows across frontend dashboards, backend services, database models, workers, and external AI/search connectors.
+- Modeled tenants, brands, prompts, audits, citations, reports, visibility metrics, and historical analytics.
+- Designed workflows for recurring scans, async processing, result normalization, report generation, and dashboard review.
+- Integrated AI tooling into a controlled product workflow rather than a one-off chatbot.
+- Built around real user questions: where are we visible, what sources are cited, what content needs improvement, and how does visibility change over time.
+
 ### AI Support and Workflow Automation
 
 Built AI-assisted customer and internal support systems with chat, onboarding, knowledge-base context, warranty/claims handling, ticketing, analytics, logging, escalation, and human handoff. These were practical workflow tools designed to reduce manual support load and help employees resolve customer issues faster.
@@ -149,10 +162,6 @@ Built mobile and hardware-connected software for JB4Pro tuning hardware, includi
 ### CANFlex Fuel and Sensor Controller
 
 Built CANFlex software for a fuel injector / E85 sensor / fuel pressure control ecosystem with BLE communication, ethanol/fuel-temperature/fuel-pressure gauges, CANbus and analog output configuration, pressure sensor modes, calibration, logs, firmware/version handling, and ECU/JB4 integration paths for race-car tuning.
-
-### GEO Command Center
-
-Built AI/search visibility tooling with multi-tenant dashboards, Supabase/Postgres, Drizzle, Redis/BullMQ-style workers, FastAPI services, Claude/Perplexity-style connectors, content audits, citation tracking, report generation, and analytics workflows.
 
 ## Technologies
 
