@@ -1,0 +1,27 @@
+# Local Tuya run script (may contain App Secret — never commit)
+tuya_run.local.ps1
+*.local.ps1
+# Local Tuya dart-defines (App Secret — never commit)
+tuya_run.defines.env
+# Local Supabase dart-defines (anon key is technically public but we keep it
+# out of git so different envs don't collide).
+supabase_run.defines.env
+
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+**/GeneratedPluginRegistrant.*
+**/flutter_export_environment.sh
+**/Flutter.podspec
+**/Podfile.lock
+.idea/
+*.iml
+*.log
+
+# ESP32 hub — local WiFi password (never commit)
+firmware/growmie-hub/include/wifi_secrets.h
+firmware/growmie-hub/include/hub_secrets.h
+firmware/growmie-hub-arduino/include/wifi_secrets.h
+firmware/growmie-hub-arduino/include/hub_secrets.h

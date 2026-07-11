@@ -1,0 +1,42 @@
+name: growcontrol
+description: Grow room controller — VPD-aware climate, ESP32 hub, Supabase, Tuya BLE pairing.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  fl_chart: ^1.2.0
+  provider: ^6.1.2
+  intl: ^0.20.2
+  uuid: ^4.5.1
+  collection: ^1.19.0
+  google_fonts: ^6.2.1
+  path_provider: ^2.1.5
+  shared_preferences: ^2.5.2
+  # Tuya App SDK — phone-side ONLY. Free tier, never expires. We use it for
+  # three things and three things only:
+  #   1. BLE pair new devices on the user's Wi-Fi
+  #   2. Pull the user's Tuya device list (which carries `localKey` per device)
+  #   3. Push that list into Supabase so the ESP32 hub can use Local Tuya
+  # The ESP32 hub does NOT use this; it talks Local Tuya directly on port 6668.
+  tuya_home_sdk_flutter: ^0.2.7
+  permission_handler: ^12.0.1
+  supabase_flutter: ^2.5.0
+  qr_flutter: ^4.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+# fl_chart needs Matrix4.translateByDouble (vector_math >=2.2). Pin 2.2.x — 2.3+ requires Dart >3.6 (Flutter 3.27).
+dependency_overrides:
+  vector_math: 2.2.0
+
+flutter:
+  uses-material-design: true

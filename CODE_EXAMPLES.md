@@ -49,6 +49,76 @@ This file points reviewers to the highest-signal examples in the portfolio, espe
 - `projects/canflex-mobile-app/lib/screens/main_screen.dart`  
   Live telemetry UI for ethanol content, fuel temperature, fuel pressure, RPM, speed, water temp, oil temp, gear, and torque.
 
+### T56 BLE Transmission Controller
+
+- `projects/t56-ble-transmission-controller/firmware/src/gear_engine.cpp`  
+  Gear/control logic for the firmware side of the controller.
+
+- `projects/t56-ble-transmission-controller/firmware/src/ble_server.cpp`  
+  BLE server behavior for app-to-device communication.
+
+- `projects/t56-ble-transmission-controller/app/lib/ble/protocol.dart`  
+  Flutter-side BLE protocol definitions.
+
+- `projects/t56-ble-transmission-controller/app/lib/services/ble_device_client.dart`  
+  Mobile BLE client behavior.
+
+- `projects/t56-ble-transmission-controller/shared/schema/mapping_schema.json`  
+  Mapping schema for vehicle/output configuration.
+
+### AWD Transfer Case Tuner
+
+- `projects/awd-transfer-case-tuner/lib/`  
+  Flutter app source for AWD/transfer-case tuning and mobile configuration workflows.
+
+- `projects/awd-transfer-case-tuner/pubspec.yaml`  
+  Project dependency and platform configuration.
+
+### GrowControl Climate Automation Platform
+
+- `projects/growcontrol-climate-automation-platform/lib/state/grow_room_controller.dart`  
+  Central app/control state for the grow automation system.
+
+- `projects/growcontrol-climate-automation-platform/lib/domain/vpd/vpd_calculator.dart`  
+  Environmental/VPD calculation logic.
+
+- `projects/growcontrol-climate-automation-platform/lib/services/scene_rules_evaluator.dart`  
+  Automation rule evaluation.
+
+- `projects/growcontrol-climate-automation-platform/lib/services/device_gateway.dart`  
+  Device gateway abstraction.
+
+- `projects/growcontrol-climate-automation-platform/firmware/growmie-hub/src/main.cpp`  
+  Hub firmware entry point.
+
+- `projects/growcontrol-climate-automation-platform/supabase/migrations/`  
+  Database schema and policy work for hubs, devices, ownership, and local Tuya state.
+
+### Growmie Edge Hub Firmware
+
+- `projects/growmie-edge-hub-firmware/src/main.cpp`  
+  Firmware application flow.
+
+- `projects/growmie-edge-hub-firmware/src/climate.cpp`  
+  Climate-control behavior.
+
+- `projects/growmie-edge-hub-firmware/src/local_tuya.cpp`  
+  Local Tuya/device integration.
+
+- `projects/growmie-edge-hub-firmware/src/supabase_client.cpp`  
+  Backend sync client.
+
+### Vehicle Touch Input Controller
+
+- `projects/vehicle-touch-input-controller/blake.ino`  
+  Main Arduino sketch for the hardware input behavior.
+
+- `projects/vehicle-touch-input-controller/blake_simple.ino`  
+  Simplified bring-up sketch.
+
+- `projects/vehicle-touch-input-controller/CST816S.cpp`  
+  CST816S touch controller implementation.
+
 ### ESP32 Mouse Controller
 
 - `projects/esp32-mouse-controller/esp32_mouse_controller.ino`  
@@ -69,6 +139,43 @@ This file points reviewers to the highest-signal examples in the portfolio, espe
   WinForms tuning-tool UI surface for a hardware-connected desktop app.
 
 ## Full-Stack / AI / Operations
+
+### GEO Command Center Platform
+
+- `projects/geo-command-center-platform/src/`  
+  Next.js application/frontend source for the GEO product.
+
+- `projects/geo-command-center-platform/backend/`  
+  Backend service code for provider/report workflows.
+
+- `projects/geo-command-center-platform/worker/`  
+  Async/background processing for scans, provider calls, reports, and normalization.
+
+- `projects/geo-command-center-platform/drizzle/`  
+  Database schema and migration work.
+
+- `projects/geo-command-center-platform/supabase/`  
+  Supabase project assets.
+
+- `projects/geo-command-center-platform/tests/`  
+  Test coverage/examples for product behavior.
+
+- `projects/geo-command-center-platform/docker-compose.yml`  
+  Local service orchestration.
+
+### Str8Tune Binforge Calibration Editor
+
+- `projects/str8tune-binforge-calibration-editor/app/`  
+  Next.js app routes and product shell.
+
+- `projects/str8tune-binforge-calibration-editor/components/`  
+  UI components for calibration/editor workflows.
+
+- `projects/str8tune-binforge-calibration-editor/lib/`  
+  Shared app logic.
+
+- `projects/str8tune-binforge-calibration-editor/supabase/`  
+  Supabase/backend project structure.
 
 ### Tech Support AI Backend
 

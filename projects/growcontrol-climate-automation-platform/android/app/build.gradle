@@ -1,0 +1,84 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+// Native Thing SDK reads App Key / Secret from manifest at startup (`ThingHomeSdk.init`).
+// Lines parsed from repo-root `tuya_run.defines.env` (gitignored) — same file as `--dart-define-from-file`.
+def loadTuyaDefinesEnv() {
+    def m = [:]
+    def f = file("${rootProject.projectDir.parentFile}/tuya_run.defines.env")
+    if (!f.exists()) return m
+    f.eachLine { line ->
+        def s = line.trim()
+        if (s.isEmpty() || s.startsWith("#")) return
+        def i = s.indexOf('=')
+        if (i > 0) {
+            m[s.substring(0, i).trim()] = s.substring(i + 1).trim()
+        }
+    }
+    return m
+}
+def tuyaDefines = loadTuyaDefinesEnv()
+
+// Tuya Android integration (Thing Smart App SDK)
+configurations.configureEach {
+    exclude group: "com.thingclips.smart", module: "thingsmart-modularCampAnno"
+}
+
+android {
+    namespace = "com.growcontrol.app"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.growcontrol.app"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = 24
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+        manifestPlaceholders += [
+                THING_SMART_APPKEY : tuyaDefines["TUYA_APP_KEY"] ?: "",
+                THING_SMART_SECRET : tuyaDefines["TUYA_APP_SECRET"] ?: "",
+        ]
+    }
+
+    packagingOptions {
+        pickFirst 'lib/*/libc++_shared.so'
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    implementation fileTree(include: ['*.aar'], dir: 'libs')
+    // Same revision as root `build.gradle` resolutionStrategy — needed for ThingHomeSdk.init in Application.
+    implementation 'com.thingclips.smart:thingsmart:7.5.1'
+}

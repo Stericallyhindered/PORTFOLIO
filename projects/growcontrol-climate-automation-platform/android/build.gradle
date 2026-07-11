@@ -1,0 +1,39 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        // Tuya / Thing Smart App SDK (required by tuya_home_sdk_flutter)
+        maven { url 'https://maven-other.tuya.com/repository/maven-releases/' }
+        maven { url 'https://maven-other.tuya.com/repository/maven-commercial-releases/' }
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+// Match the Thing Smart App SDK version from your Tuya console download (see
+// `7.5.0/thingsmart_home_sdk/dependencies.txt`). The Flutter plugin pins an older
+// `thingsmart` revision; without this, Maven + `security-algorithm*.aar` can disagree.
+subprojects { subproject ->
+    subproject.afterEvaluate {
+        subproject.configurations.configureEach { configuration ->
+            configuration.resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == "com.thingclips.smart" &&
+                        details.requested.name == "thingsmart") {
+                    details.useVersion("7.5.1")
+                    details.because("Thing Smart App SDK version from Tuya IoT integration bundle")
+                }
+            }
+        }
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

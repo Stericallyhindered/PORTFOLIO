@@ -1,0 +1,106 @@
+{
+  "id": "t56_stock",
+  "name": "T56 Stock Inputs",
+  "description": "Measured T56 gearbox PWM signatures on pins 2, 3, 4. BMW outputs zeroed pending reverse engineering.",
+  "inputCount": 3,
+  "outputCount": 2,
+  "matchTolerancePct": 2.0,
+  "gears": [
+    {
+      "gear": "Neutral",
+      "inputs": [
+        { "dutyPct": 29.0, "periodMs": 4.0, "vavg": 1.40, "vrms": 2.08, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 41.5, "periodMs": 4.04, "vavg": 2.02, "vrms": 3.11, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 41.0, "periodMs": 4.0, "vavg": 2.02, "vrms": 3.10, "vmax": 5.07, "vmin": 0.02 }
+      ],
+      "outputs": [
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 },
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 }
+      ]
+    },
+    {
+      "gear": "1st",
+      "inputs": [
+        { "dutyPct": 20.0, "periodMs": 4.0, "vavg": 1.05, "vrms": 2.18, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 20.7, "periodMs": 4.04, "vavg": 1.05, "vrms": 2.21, "vmax": 5.10, "vmin": 0.02 },
+        { "dutyPct": 63.0, "periodMs": 4.0, "vavg": 3.10, "vrms": 3.85, "vmax": 5.07, "vmin": 0.05 }
+      ],
+      "outputs": [
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 },
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 }
+      ]
+    },
+    {
+      "gear": "2nd",
+      "inputs": [
+        { "dutyPct": 20.0, "periodMs": 4.0, "vavg": 1.05, "vrms": 2.18, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 20.0, "periodMs": 4.0, "vavg": 1.00, "vrms": 2.15, "vmax": 5.07, "vmin": 0.0 },
+        { "dutyPct": 18.8, "periodMs": 4.04, "vavg": 0.95, "vrms": 2.09, "vmax": 5.02, "vmin": 0.02 }
+      ],
+      "outputs": [
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 },
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 }
+      ]
+    },
+    {
+      "gear": "3rd",
+      "inputs": [
+        { "dutyPct": 40.5, "periodMs": 4.04, "vavg": 2.02, "vrms": 3.09, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 41.5, "periodMs": 4.04, "vavg": 2.00, "vrms": 3.09, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 63.0, "periodMs": 4.0, "vavg": 3.05, "vrms": 3.85, "vmax": 5.10, "vmin": 0.05 }
+      ],
+      "outputs": [
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 },
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 }
+      ]
+    },
+    {
+      "gear": "4th",
+      "inputs": [
+        { "dutyPct": 40.5, "periodMs": 4.04, "vavg": 2.02, "vrms": 3.09, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 41.5, "periodMs": 4.04, "vavg": 2.00, "vrms": 3.10, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 17.0, "periodMs": 4.0, "vavg": 0.90, "vrms": 2.01, "vmax": 5.07, "vmin": 0.0 }
+      ],
+      "outputs": [
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 },
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 }
+      ]
+    },
+    {
+      "gear": "5th",
+      "inputs": [
+        { "dutyPct": 60.3, "periodMs": 4.04, "vavg": 2.95, "vrms": 3.78, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 60.3, "periodMs": 4.04, "vavg": 2.95, "vrms": 3.77, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 62.0, "periodMs": 4.0, "vavg": 3.05, "vrms": 3.82, "vmax": 5.10, "vmin": 0.02 }
+      ],
+      "outputs": [
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 },
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 }
+      ]
+    },
+    {
+      "gear": "6th",
+      "inputs": [
+        { "dutyPct": 60.3, "periodMs": 4.04, "vavg": 2.95, "vrms": 3.78, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 60.3, "periodMs": 4.04, "vavg": 2.95, "vrms": 3.77, "vmax": 5.07, "vmin": 0.02 },
+        { "dutyPct": 17.0, "periodMs": 4.0, "vavg": 0.92, "vrms": 2.00, "vmax": 5.07, "vmin": 0.0 }
+      ],
+      "outputs": [
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 },
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 }
+      ]
+    },
+    {
+      "gear": "Reverse",
+      "inputs": [
+        { "dutyPct": 81.1, "periodMs": 4.04, "vavg": 3.92, "vrms": 4.37, "vmax": 5.07, "vmin": 0.05 },
+        { "dutyPct": 81.0, "periodMs": 4.0, "vavg": 3.90, "vrms": 4.35, "vmax": 5.12, "vmin": 0.02 },
+        { "dutyPct": 61.0, "periodMs": 4.0, "vavg": 3.02, "vrms": 3.80, "vmax": 5.07, "vmin": 0.05 }
+      ],
+      "outputs": [
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 },
+        { "dutyPct": 0, "periodMs": 4.0, "vavg": 0, "vrms": 0, "vmax": 0, "vmin": 0 }
+      ]
+    }
+  ]
+}

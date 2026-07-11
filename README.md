@@ -4,7 +4,7 @@ I'm a Southern California vehicle-software and full-stack product engineer who l
 
 Most of my work has been in places where the software has to understand both the machine and the user: vehicles, hardware, customer orders, warranty claims, support tickets, inventory, shipping, firmware, raw logs, diagnostics, and business operations. I care a lot about clean changes, readable code, safety-first validation, and not breaking parts of a system that were already working.
 
-This repo is not every project I have ever written. It is a cleaned-up set of source snapshots that show the work most relevant to vehicle/embedded software, hardware-connected mobile development, full-stack product engineering, AI/API integrations, and customer workflow automation.
+This repo is not every project I have ever written. It is a cleaned-up set of source snapshots that show the work most relevant to full-stack product engineering, frontend/backend application work, databases, API design, AI integrations, workflow automation, vehicle/embedded software, and hardware-connected mobile development.
 
 ## Current Resume
 
@@ -12,7 +12,7 @@ This repo is not every project I have ever written. It is a cleaned-up set of so
 
 ## The Short Version
 
-- I build vehicle software, hardware-connected mobile apps, frontends, backends, APIs, dashboards, databases, and internal tools.
+- I build full-stack production software: Next.js/React frontends, Node/FastAPI backends, REST APIs, Postgres/Supabase/SQLite/Mongo data models, dashboards, admin tools, background workflows, AI integrations, and hardware-connected apps.
 - I have real experience with Node, Express, React, Next.js, TypeScript, Python, Flutter/Dart, SQL, Postgres, SQLite, MongoDB, Supabase, and API integrations.
 - I have vehicle/embedded experience around CAN bus, BLE device communication, firmware update workflows, ECU/tuning workflows, telemetry parsing, logs, diagnostics, raw frame capture, and validation-first hardware integration.
 - I have built AI support systems using Claude/Anthropic-style workflows, including chat, ticketing, warranty/claims handling, document/context ingestion, and escalation paths.
@@ -44,6 +44,9 @@ If you are reviewing this for an interview, these are the projects I would start
 7. [`stealth-machine-backend`](./projects/stealth-machine-backend) and [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter)  
    Stealth Machine Tools support ecosystem: Next.js/Prisma backend, AI support workflows, admin tooling, and a Flutter field/support app.
 
+8. [`geo-command-center-platform`](./projects/geo-command-center-platform)  
+   Full-stack GEO SaaS/product system: Next.js frontend, FastAPI backend, REST/API routes, Supabase/Postgres/Drizzle database modeling, worker/background jobs, AI provider integrations, citation tracking, reporting, analytics dashboards, and tests.
+
 ## Projects
 
 | Project | What it shows |
@@ -53,9 +56,16 @@ If you are reviewing this for an interview, these are the projects I would start
 | [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin) | A serious full-stack operations platform: commerce, products, dealers, affiliates, sales reps, orders, shipping logic, support/warranty flows, dashboards, and Payload/Postgres admin tooling. |
 | [`customer-tracking-crm`](./projects/customer-tracking-crm) | CRM/order ops software for the messy middle of a business: customers, companies, contacts, admin approvals, customer portal views, uploaded docs, OCR-style flows, audit trails, realtime updates, and notifications. |
 | [`geo-command-center`](./projects/geo-command-center) | AI/search visibility command center with multi-tenant structure, prompt/report pipelines, provider adapters, audits, citation tracking, background-worker style flows, and dashboards built for decision making. |
+| [`geo-command-center-platform`](./projects/geo-command-center-platform) | Larger full-stack GEO platform snapshot: Next.js frontend, app/API routes, Supabase/Postgres/Drizzle database modeling, FastAPI backend services, worker/background pipelines, AI provider integrations, tests, report workflows, citation tracking, and analytics dashboards. |
 | [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller) | Vehicle/embedded integration: ESP-IDF-oriented C scaffold, BMW E90 CAN signal decoding, TurboLamik TCU frames, raw CAN capture, health/watchdog state, derived drivetrain metrics, shadow AWD request logic, BLE telemetry, and Flutter dashboard. |
 | [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools) | Final JB4Pro mobile app source: Flutter, BLE/device communication, gauges, logs, vehicle diagnostics, mapping/protocol notes, firmware update flows, WMI lookup, settings, and customer-facing tuning hardware workflows. |
 | [`canflex-mobile-app`](./projects/canflex-mobile-app) | Current CANFlex/NewCANFlex hardware app work: Flutter/Dart, BLE communication, firmware screens, E85/fuel telemetry, CANbus output settings, pressure/calibration settings, logs, gauges, and the mobile side of automotive hardware support. |
+| [`t56-ble-transmission-controller`](./projects/t56-ble-transmission-controller) | BLE transmission/controller project with PlatformIO firmware, Flutter app logic, BLE protocol docs, mapping schema, presets, PWM capture/output, and gear/control logic. |
+| [`awd-transfer-case-tuner`](./projects/awd-transfer-case-tuner) | Flutter vehicle AWD/transfer-case tuning app snapshot focused on mobile configuration and drivetrain-control workflows. |
+| [`growcontrol-climate-automation-platform`](./projects/growcontrol-climate-automation-platform) | Flutter + firmware + Supabase grow room automation system with climate math, telemetry, scene rules, device gateways, local Tuya integration, firmware, and migrations. |
+| [`growmie-edge-hub-firmware`](./projects/growmie-edge-hub-firmware) | Arduino/ESP-style edge hub firmware for climate/device automation, provisioning, config storage, buffering, local Tuya control, and Supabase sync. |
+| [`vehicle-touch-input-controller`](./projects/vehicle-touch-input-controller) | Arduino/CST816S touch-input controller showing hardware input handling, driver integration, and compact embedded UI/control code. |
+| [`str8tune-binforge-calibration-editor`](./projects/str8tune-binforge-calibration-editor) | Next.js/TypeScript ECU/BIN calibration editor shell with tuning-oriented UI structure, Supabase project assets, app/components/lib organization, and domain-specific product flow. |
 | [`str8tune-ecu-calibration-editor`](./projects/str8tune-ecu-calibration-editor) | ECU calibration tooling with React/TypeScript, XDF/BIN parsing concepts, editable maps, hex/table views, tuning assistant flows, 2D/3D visualization, and export-style calibration workflows. |
 | [`ampgen-configurator`](./projects/ampgen-configurator) | A clean Next.js/React configurator for power/electrical product planning, with draggable layout zones and UI logic for turning a physical product setup into an interactive tool. |
 | [`hotspot-control-api`](./projects/hotspot-control-api) | Small but useful Windows/network automation: Python plus PowerShell control around local hotspot workflows, showing the kind of practical scripting that keeps ops moving. |
@@ -75,8 +85,9 @@ If you only have ten minutes, I would walk through these in this order:
 2. **JB4Pro** - shows mobile + hardware + vehicle systems, firmware update workflows, BLE, diagnostics, tuning settings, and logs.
 3. **CANFlex** - shows BLE-connected fuel/sensor hardware, E85/fuel telemetry, CANbus output settings, calibration, and firmware/version handling.
 4. **Tech Support AI Backend** - shows Claude/API integration wrapped in real backend workflows.
-5. **Stealth Batteries Admin** - shows full-stack business operations: orders, dealers, shipping, warranty, dashboards.
-6. **Stealth Machine Tools** - shows AI support workflows, Flutter field-service UX, machine/customer records, and admin tooling.
+5. **GEO Command Center Platform** - shows a major AI/search visibility product: multi-tenant data model, provider pipelines, citations, reports, workers, backend services, and dashboards.
+6. **Stealth Batteries Admin** - shows full-stack business operations: orders, dealers, shipping, warranty, dashboards.
+7. **Stealth Machine Tools** - shows AI support workflows, Flutter field-service UX, machine/customer records, and admin tooling.
 
 ## What These Projects Have In Common
 

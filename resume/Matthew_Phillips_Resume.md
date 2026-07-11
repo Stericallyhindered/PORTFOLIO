@@ -1,12 +1,12 @@
 # Matthew Phillips
 
-**Full-Stack Product Engineer | JavaScript / React / Node | Production Systems | AI-Assisted Development**
+**Full-Stack Product Engineer | Next.js / React / Node / FastAPI | Databases | AI Integrations | Production Systems**
 
 bajaracer415@gmail.com | 415-504-5897 | GitHub Portfolio: https://github.com/Stericallyhindered/PORTFOLIO
 
 ## Summary
 
-Senior full-stack product engineer with deep experience building production web applications, business operations platforms, REST APIs, databases, admin systems, customer portals, automation tools, and hardware-connected software. I build systems that connect sales, support, operations, shipping, warranty, accounting-adjacent workflows, customer records, dashboards, and internal teams into usable software.
+Senior full-stack product engineer with deep experience building production web applications, Next.js/React frontends, Node/FastAPI backends, REST APIs, databases, admin systems, customer portals, automation tools, AI-integrated workflows, and hardware-connected software. I build systems that connect sales, support, operations, shipping, warranty, accounting-adjacent workflows, customer records, dashboards, and internal teams into usable software.
 
 My strongest work is practical product engineering: taking messy real-world workflows, modeling the data, building the frontend and backend, integrating third-party APIs, shipping useful features quickly, and improving quality over time. I am fluent in JavaScript/TypeScript, React, Next.js, Node.js, Express, REST APIs, SQL/Postgres, SQLite, MongoDB/Mongoose, Payload CMS, Supabase, Python automation, CI/CD-style workflows, and AI-assisted development with Claude, Codex, and Cursor-style workflows.
 
@@ -87,7 +87,7 @@ Current
 - Built full-stack operational systems connecting products, customers, dealers, affiliates, sales reps, orders, shipping, support tickets, warranties, claims, approvals, notifications, and admin reporting into usable workflows.
 - Built Stealth Machine Tools software across machine/customer/admin operations, support tooling, CRM workflows, machine records, training/support content, AI-assisted support, and manufacturing-adjacent business workflows.
 - Built CAM/CAD-style and machine-tool support workflows around fiber lasers, cutting tools, pan brakes, customer onboarding, machine support, training, service records, and internal operations.
-- Built GEO Command Center, an AI/search visibility platform with multi-tenant dashboards, prompt/search audit workflows, citation tracking, Supabase/Postgres data modeling, Drizzle, FastAPI services, worker-style processing, report generation, and analytics.
+- Built GEO Command Center, a full-stack AI/search visibility platform with Next.js dashboards, app/API routes, FastAPI backend services, Supabase/Postgres data modeling, Drizzle schemas, worker-style processing, provider integrations, prompt/search audit workflows, citation tracking, report generation, analytics, and tests.
 - Built AI support tooling with customer chat, onboarding, claim/warranty intake, internal workflow assistance, knowledge-base context, logging, analytics, ticketing, and human handoff paths.
 - Built CRM/order/customer tracking systems with Node.js, Express, SQLite, JWT auth, role permissions, admin approval workflows, customer portals, OCR/document scanning, real-time updates, Twilio/Nodemailer notifications, audit trails, and deployment documentation.
 - Built automation and dashboards that connected customer-facing portals, admin work, order state, approvals, document uploads, notifications, reporting, and support history into maintainable business workflows.
@@ -137,15 +137,16 @@ Built software across the Stealth Machine Tools ecosystem, including CAM/CAD-sty
 
 ### GEO Command Center
 
-Built a production-grade AI/search visibility and reporting platform for tracking how brands, products, and content appear across AI/search-style systems. The platform included multi-tenant dashboards, Supabase/Postgres data modeling, Drizzle, Redis/BullMQ-style worker architecture, FastAPI backend services, Claude/Perplexity-style connectors, prompt and content audits, citation/source tracking, report generation, analytics workflows, and user-facing dashboards for decision-making.
+Built a production-grade GEO / AI-search visibility platform for tracking how brands, products, pages, and topics appear across AI/search-style systems. This was a full product, not a demo: Next.js frontend, app/API routes, FastAPI backend services, Supabase/Postgres databases, Drizzle schema work, worker/background processing, provider integrations, prompt and content audits, citation/source tracking, recurring scans, report generation, analytics workflows, tests, and user-facing dashboards for decision-making.
 
 Strong contribution areas:
 
-- Built full-stack product workflows across frontend dashboards, backend services, database models, workers, and external AI/search connectors.
-- Modeled tenants, brands, prompts, audits, citations, reports, visibility metrics, and historical analytics.
-- Designed workflows for recurring scans, async processing, result normalization, report generation, and dashboard review.
-- Integrated AI tooling into a controlled product workflow rather than a one-off chatbot.
-- Built around real user questions: where are we visible, what sources are cited, what content needs improvement, and how does visibility change over time.
+- Owned the full-stack product shape across frontend dashboards, backend services, database models, worker pipelines, scripts, tests, and external AI/search connectors.
+- Modeled tenants, brands, prompts, audits, citations, reports, visibility metrics, historical analytics, and review workflows.
+- Designed recurring scan workflows with async processing, provider execution, result normalization, report generation, citation tracking, and dashboard review.
+- Integrated AI/search providers into controlled, persisted product workflows with traceable outputs instead of one-off chatbot interactions.
+- Built around real customer questions: where are we visible, what sources are cited, what content needs improvement, what changed over time, and what actions should the team take next.
+- Published a sanitized full-stack source snapshot in the portfolio as `geo-command-center-platform` to show the frontend, backend, worker, database, test, and orchestration structure.
 
 ### AI Support and Workflow Automation
 
