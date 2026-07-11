@@ -77,10 +77,10 @@ My strongest work is practical product engineering: taking messy real-world work
 
 ## Professional Experience
 
-### Freelance Full-Stack Product Engineer / Integration Developer
+### Stealth Machine Tools / Stealth Batteries
 
-**Stealth Batteries, Stealth Machine Tools, AI Support Systems, Commerce/Admin, CRM, Operations Tools**  
-Current
+**Full-Stack Product Engineer, Manufacturing Software, Commerce/Admin, CRM, AI Support, Operations Tools**  
+Long-running company/product work
 
 - Built production full-stack applications across Stealth Batteries, Stealth Machine Tools, AI support systems, CRM/order tools, customer portals, support workflows, warranty/claims workflows, and admin dashboards.
 - Built Stealth Batteries commerce/admin platform using Next.js, React, TypeScript, Payload CMS, Postgres, Stripe, webhooks, Resend/Nodemailer, Vercel Blob, UPS/shipping APIs, dealer portals, affiliate workflows, sales-rep workflows, order management, warranty/support workflows, and internal dashboards.
@@ -105,6 +105,8 @@ Current
 - Developed CANFlex-style hardware software for fuel and sensor control: BLE device communication, ethanol content, fuel temperature, fuel pressure, CANbus output configuration, analog output modes, pressure sensor modes, calibration controls, firmware/version display, live gauges, logs, and race-car tuning workflows.
 - Built CRM-backed support tooling that replaced manual email-based log review with structured customer submissions, vehicle log intake, AI-assisted parsing, diagnostic/tuning guidance, support history, and escalation paths.
 - Worked close to embedded systems, firmware, custom hardware, and vehicle communication protocols, translating raw device/vehicle data into reliable UI state and supportable diagnostic workflows.
+
+Together, my Stealth Machine Tools / Stealth Batteries work and Burger Motorsports work represent roughly 9 years of sustained production software experience across full-stack web applications, databases, mobile apps, AI integrations, business operations systems, hardware-connected software, vehicle protocols, BLE, CAN bus, firmware-adjacent workflows, diagnostics, and customer-facing tools.
 
 ### Independent Vehicle / Hardware Software Projects
 
