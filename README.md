@@ -15,7 +15,7 @@ This repo is not every project I have ever written. It is a cleaned-up set of so
 - I build full-stack production software: Next.js/React frontends, Node/FastAPI backends, REST APIs, Postgres/Supabase/SQLite/Mongo data models, dashboards, admin tools, background workflows, AI integrations, and hardware-connected apps.
 - I have real experience with Node, Express, React, Next.js, TypeScript, Python, Flutter/Dart, SQL, Postgres, SQLite, MongoDB, Supabase, and API integrations.
 - I have vehicle/embedded experience around CAN bus, BLE device communication, firmware update workflows, ECU/tuning workflows, telemetry parsing, logs, diagnostics, raw frame capture, and validation-first hardware integration.
-- I have built AI support systems using Claude/Anthropic-style workflows, including chat, ticketing, warranty/claims handling, document/context ingestion, and escalation paths.
+- I have built AI support systems and AI-assisted engineering workflows using Claude/Anthropic-style integrations, Codex/Cursor-style coding flows, LM Studio/local LLMs, prompt engineering, custom context pipelines, automation tooling, chat, ticketing, warranty/claims handling, document/context ingestion, and escalation paths.
 - I have built automotive/mobile hardware software around JB4Pro, CANFlex, TurboLamik, BLE/device communication, CAN bus/CAN-system workflows, logs, gauges, diagnostics, settings, and firmware-related flows.
 - I am comfortable taking an unclear business problem, asking the right questions, and turning it into something shipped.
 
@@ -107,7 +107,7 @@ That is the work I am best at. I do not need a perfect spec to start. I need the
 **Frontend:** React, Next.js, TypeScript, JavaScript, HTML/CSS, Tailwind-style UI, Radix UI, Fabric.js  
 **Backend:** Node.js, Express, FastAPI, REST APIs, auth, webhooks, background jobs, notifications  
 **Databases:** Postgres, Supabase, Drizzle, SQLite, MongoDB/Mongoose, SQL workflow/data modeling  
-**AI:** Claude/Anthropic API work, support automation, prompt behavior tuning, document/context ingestion, AI-assisted development  
+**AI:** Claude/Anthropic API work, Codex/Cursor-style coding workflows, LM Studio, local LLMs, Ollama-style local model workflows, prompt engineering, AI-assisted code architecture, codebase reverse engineering, custom context pipelines, scripted codebase indexing, tool orchestration, support automation, prompt behavior tuning, document/context ingestion  
 **Vehicle/Embedded:** C, ESP-IDF-oriented firmware scaffolding, CAN bus, CAN-system workflows, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN output docs, raw CAN capture, health/watchdog state, derived metrics, shadow-mode control logic  
 **Mobile/Hardware:** Flutter, Dart, BLE/device communication, diagnostics, firmware update flows, bootloader/erase/write/checksum patterns, gauges, datalogging, settings/configuration UI  
 **Automation:** Python, PowerShell, Windows/server-oriented scripting, local operational tools  

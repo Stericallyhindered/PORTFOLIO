@@ -8,7 +8,7 @@ bajaracer415@gmail.com | 415-504-5897 | GitHub Portfolio: https://github.com/Ste
 
 Senior full-stack product engineer with deep experience building production web applications, Next.js/React frontends, Node/FastAPI backends, REST APIs, databases, admin systems, customer portals, automation tools, AI-integrated workflows, and hardware-connected software. I build systems that connect sales, support, operations, shipping, warranty, accounting-adjacent workflows, customer records, dashboards, and internal teams into usable software.
 
-My strongest work is practical product engineering: taking messy real-world workflows, modeling the data, building the frontend and backend, integrating third-party APIs, shipping useful features quickly, and improving quality over time. I am fluent in JavaScript/TypeScript, React, Next.js, Node.js, Express, REST APIs, SQL/Postgres, SQLite, MongoDB/Mongoose, Payload CMS, Supabase, Python automation, CI/CD-style workflows, and AI-assisted development with Claude, Codex, and Cursor-style workflows.
+My strongest work is practical product engineering: taking messy real-world workflows, modeling the data, building the frontend and backend, integrating third-party APIs, shipping useful features quickly, and improving quality over time. I am fluent in JavaScript/TypeScript, React, Next.js, Node.js, Express, REST APIs, SQL/Postgres, SQLite, MongoDB/Mongoose, Payload CMS, Supabase, Python automation, CI/CD-style workflows, and advanced AI-assisted development with Claude, Codex, Cursor-style workflows, LM Studio, local LLMs, prompt engineering, code-architecture planning, codebase reverse engineering, context design, and custom automation pipelines.
 
 ## Role Fit
 
@@ -18,7 +18,7 @@ My strongest work is practical product engineering: taking messy real-world work
 - **Data modeling / SQL:** Postgres, SQLite, Supabase, Drizzle, Prisma-style workflows, MongoDB/Mongoose, Payload CMS, workflow state, audit trails, customer/order/device/support records, reporting, and operational dashboards.
 - **Integration-heavy systems:** Stripe, UPS/shipping APIs, email/SMS providers, Resend/Nodemailer, Twilio, webhook flows, document/OCR-style intake, AI support connectors, and cross-system workflow automation.
 - **Quality / ownership:** Bias toward action, readable code, clear data flow, edge-case handling, documentation, debugging, and practical testing/verification.
-- **AI coding workflows:** Daily use of Claude, Codex, Cursor-style tools for implementation, debugging, code review, documentation, refactoring, and codebase analysis while retaining responsibility for correctness.
+- **AI coding workflows:** Daily use of Claude, Codex, Cursor-style tools, LM Studio, local LLMs, custom agent workflows, prompt engineering, architecture planning, codebase reverse engineering, scripted context generation, guardrails, review loops, and automation pipelines for implementation, debugging, code review, documentation, refactoring, test/checklist generation, and codebase analysis while retaining responsibility for correctness.
 
 ## Core Skills
 
@@ -91,7 +91,7 @@ Long-running company/product work
 - Built AI support tooling with customer chat, onboarding, claim/warranty intake, internal workflow assistance, knowledge-base context, logging, analytics, ticketing, and human handoff paths.
 - Built CRM/order/customer tracking systems with Node.js, Express, SQLite, JWT auth, role permissions, admin approval workflows, customer portals, OCR/document scanning, real-time updates, Twilio/Nodemailer notifications, audit trails, and deployment documentation.
 - Built automation and dashboards that connected customer-facing portals, admin work, order state, approvals, document uploads, notifications, reporting, and support history into maintainable business workflows.
-- Used Claude, Codex, and Cursor-style AI development workflows daily for implementation, code review, documentation, debugging, refactoring, codebase analysis, and test/checklist generation.
+- Used Claude, Codex, Cursor-style AI development workflows, LM Studio, local LLMs, custom code-assistant pipelines, prompt engineering, architecture planning, codebase reverse engineering, scripted automation, and tool orchestration daily for implementation, code review, documentation, debugging, refactoring, codebase analysis, and test/checklist generation.
 
 ### Burger Motorsports
 
@@ -178,7 +178,7 @@ Built CANFlex software for a fuel injector / E85 sensor / fuel pressure control 
 
 **DevOps / Delivery:** Git, GitHub, Docker Compose, CI/CD awareness, deployment notes, Vercel-style hosting, environment configuration, production troubleshooting.
 
-**AI / Tools:** Claude, Codex, Cursor-style workflows, Anthropic integrations, AI support agents, prompt/context workflows, document ingestion, OCR/document processing, analytics, human handoff.
+**AI / Tools:** Claude, Codex, Cursor-style workflows, LM Studio, local LLMs, Ollama-style local model workflows, Anthropic/OpenAI integrations, prompt engineering, AI-assisted code architecture, codebase reverse engineering, context-window strategy, prompt/context systems, guardrails, review loops, custom AI pipelines, coding agents, scripted codebase indexing, tool orchestration, AI support agents, document ingestion, OCR/document processing, analytics, automation, and human handoff.
 
 **Integrations:** Stripe, UPS/shipping APIs, Resend/Nodemailer, Twilio, webhooks, email/SMS, payment/shipping/status workflows.
 
