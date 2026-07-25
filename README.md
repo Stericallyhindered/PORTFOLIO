@@ -1,123 +1,114 @@
-# Matthew Phillips - Code Portfolio
+# Matthew Phillips - Engineering Portfolio
 
-I'm a Southern California vehicle-software and full-stack product engineer who likes building software that touches the real world: vehicle hardware, CAN bus telemetry, BLE devices, firmware update workflows, logs, diagnostics, customer support tools, admin dashboards, API integrations, AI-assisted workflows, and the behind-the-scenes systems that keep a business from drowning in manual work.
+I'm Matthew Phillips, a Southern California engineering lead and full-stack software engineer. I build the software behind real products: AI support systems, CRM/order platforms, customer portals, admin dashboards, API integrations, mobile apps, embedded-adjacent hardware tools, CAN/BLE vehicle software, firmware update workflows, analytical testing software, and internal tools that keep businesses from drowning in manual work.
 
-Most of my work has been in places where the software has to understand both the machine and the user: vehicles, hardware, customer orders, warranty claims, support tickets, inventory, shipping, firmware, raw logs, diagnostics, and business operations. I care a lot about clean changes, readable code, safety-first validation, and not breaking parts of a system that were already working.
-
-This repo is not every project I have ever written. It is a cleaned-up set of source snapshots that show the work most relevant to full-stack product engineering, frontend/backend application work, databases, API design, AI integrations, workflow automation, vehicle/embedded software, and hardware-connected mobile development.
+This portfolio is a cleaned-up source snapshot of work I can talk through in detail. It is not a collection of toy apps. Most of these projects came from actual operational problems: support teams buried in email, customers needing clear portals, hardware needing a usable mobile interface, vehicle logs needing structure, AI workflows needing guardrails, orders needing traceability, and technical teams needing tools that make the work less painful.
 
 ## Current Resume
 
-- [Matthew Phillips resume](./resume/Matthew_Phillips_Resume.pdf)
+- [Matthew Phillips resume PDF](./resume/Matthew_Phillips_Resume.pdf)
+- [Editable resume source](./resume/Matthew_Phillips_Resume.md)
 
-## The Short Version
+## The Quick Read
 
-- I build full-stack production software: Next.js/React frontends, Node/FastAPI backends, REST APIs, Postgres/Supabase/SQLite/Mongo data models, dashboards, admin tools, background workflows, AI integrations, and hardware-connected apps.
-- I have real experience with Node, Express, React, Next.js, TypeScript, Python, Flutter/Dart, SQL, Postgres, SQLite, MongoDB, Supabase, and API integrations.
-- I have vehicle/embedded experience around CAN bus, BLE device communication, firmware update workflows, ECU/tuning workflows, telemetry parsing, logs, diagnostics, raw frame capture, and validation-first hardware integration.
-- I have built AI support systems and AI-assisted engineering workflows using Claude/Anthropic-style integrations, Codex/Cursor-style coding flows, LM Studio/local LLMs, prompt engineering, custom context pipelines, automation tooling, chat, ticketing, warranty/claims handling, document/context ingestion, and escalation paths.
-- I have built automotive/mobile hardware software around JB4Pro, CANFlex, TurboLamik, BLE/device communication, CAN bus/CAN-system workflows, logs, gauges, diagnostics, settings, and firmware-related flows.
-- I am comfortable taking an unclear business problem, asking the right questions, and turning it into something shipped.
+- I have led developers, not just written tickets. At Burger Motorsports I led five developers through connected automotive product development. At Stealth Machine Tools / Stealth Batteries I currently lead and mentor three junior developers while building AI and operations software.
+- I build full-stack systems with React, Next.js, TypeScript, Node.js, Express, FastAPI, Python, Postgres, SQLite, MongoDB, Supabase, Payload CMS, Prisma/Drizzle-style modeling, REST APIs, webhooks, auth, dashboards, and admin workflows.
+- I build AI workflow software around Claude/OpenAI-style APIs, support agents, document/context ingestion, ticket triage, customer onboarding, warranty/claims handling, analytics, escalation, and human handoff.
+- I build embedded-adjacent and hardware-connected software: Flutter/Dart mobile apps, BLE device communication, CAN bus workflows, OBD2-connected hardware, firmware update flows, bootloader/erase/write/checksum patterns, live telemetry, diagnostics, datalogging, gauges, and calibration/configuration tools.
+- I have a biochemistry and analytical testing background, so I care about data integrity, traceability, validation, documentation, and software that works in technical or regulated environments.
 
-## Start Here
+## Best Interview Walkthrough
 
-If you are reviewing this for an interview, these are the projects I would start with:
+If you only have ten minutes, I would start here:
 
 1. [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller)  
-   Vehicle/embedded integration project: ESP-IDF-oriented C scaffold, BMW E90 CAN signal decoding, TurboLamik TCU frame decoding, raw CAN capture, health/watchdog state, derived drivetrain metrics, shadow AWD logic, BLE telemetry, and Flutter dashboard.
+   C/ESP-IDF-oriented vehicle integration: CAN capture, BMW E90 signal decoding, TurboLamik TCU frames, health/watchdog state, derived drivetrain metrics, shadow AWD logic, BLE telemetry, and Flutter dashboard work.
 
 2. [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools)  
-   Final JB4Pro mobile/hardware work: Flutter app, vehicle data, BLE/device communication, gauges, logs, settings, mapping, diagnostics, and firmware update workflows.
+   Final JB4Pro mobile/hardware work: Flutter, BLE device communication, gauges, logs, diagnostics, settings, mapping/protocol notes, firmware update workflows, and customer-facing tuning hardware tools.
 
 3. [`canflex-mobile-app`](./projects/canflex-mobile-app)  
-   Current CANFlex/NewCANFlex mobile hardware project with BLE/device communication, firmware screens, E85/fuel telemetry, CANbus output settings, pressure/calibration settings, logging, and automotive support tooling.
+   CANFlex/NewCANFlex hardware app: BLE communication, firmware screens, E85/fuel telemetry, CAN bus output settings, analog output modes, pressure/calibration settings, logs, gauges, and automotive support tooling.
 
 4. [`techsupport-ai-backend`](./projects/techsupport-ai-backend)  
-   Backend AI support system: Claude integration, auth, tickets, document ingestion, notifications, analytics, and support workflows.
+   Backend AI support system: Claude integration, JWT auth, MongoDB/Mongoose models, machine/customer records, tickets, document ingestion, notifications, analytics, and real support workflow structure.
 
 5. [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin)  
-   Full-stack commerce/admin platform: products, dealers, affiliates, orders, warranty/support flows, dashboards, and operational tooling.
+   Full-stack commerce/admin platform: products, dealers, affiliates, sales reps, orders, shipping logic, warranty/support flows, dashboards, Payload CMS, Postgres, Stripe, and operational tooling.
 
-6. [`customer-tracking-crm`](./projects/customer-tracking-crm)  
-   CRM/order workflow system: admin approvals, customer portal, documents/OCR, real-time updates, email/SMS-style notifications, and audit trails.
+6. [`stealth-machine-backend`](./projects/stealth-machine-backend) and [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter)  
+   Stealth Machine Tools support ecosystem: Next.js/Prisma backend, customers, machines, tickets, training/support materials, AI config, analytics, admin workflows, and a Flutter field/support app.
 
-7. [`stealth-machine-backend`](./projects/stealth-machine-backend) and [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter)  
-   Stealth Machine Tools support ecosystem: Next.js/Prisma backend, AI support workflows, admin tooling, and a Flutter field/support app.
+7. [`geo-command-center-platform`](./projects/geo-command-center-platform)  
+   Full-stack GEO/AI-search visibility platform: Next.js frontend, FastAPI backend services, Supabase/Postgres/Drizzle modeling, workers, provider pipelines, audits, citation tracking, reports, dashboards, and tests.
 
-8. [`geo-command-center-platform`](./projects/geo-command-center-platform)  
-   Full-stack GEO SaaS/product system: Next.js frontend, FastAPI backend, REST/API routes, Supabase/Postgres/Drizzle database modeling, worker/background jobs, AI provider integrations, citation tracking, reporting, analytics dashboards, and tests.
+8. [`customer-tracking-crm`](./projects/customer-tracking-crm)  
+   CRM/order workflow system: companies, contacts, orders, approvals, customer portal views, document uploads, OCR-style intake, realtime updates, notifications, audit trails, and role-aware workflows.
 
-## Projects
+## Project Map
 
-| Project | What it shows |
+| Project | What it proves |
 | --- | --- |
-| [`techsupport-ai-backend`](./projects/techsupport-ai-backend) | The backend for an AI support system: Claude integration, machine/customer records, tickets, auth, document ingestion, analytics, and the plumbing that turns chat into a real support workflow instead of a toy bot. |
-| [`stealth-ai-support-system`](./projects/stealth-ai-support-system) | A Stealth Batteries support prototype built to take pressure off manual inbox work: customer chat, admin review, conversation history, escalation, tickets, and support analytics. |
-| [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin) | A serious full-stack operations platform: commerce, products, dealers, affiliates, sales reps, orders, shipping logic, support/warranty flows, dashboards, and Payload/Postgres admin tooling. |
-| [`customer-tracking-crm`](./projects/customer-tracking-crm) | CRM/order ops software for the messy middle of a business: customers, companies, contacts, admin approvals, customer portal views, uploaded docs, OCR-style flows, audit trails, realtime updates, and notifications. |
-| [`geo-command-center`](./projects/geo-command-center) | AI/search visibility command center with multi-tenant structure, prompt/report pipelines, provider adapters, audits, citation tracking, background-worker style flows, and dashboards built for decision making. |
-| [`geo-command-center-platform`](./projects/geo-command-center-platform) | Larger full-stack GEO platform snapshot: Next.js frontend, app/API routes, Supabase/Postgres/Drizzle database modeling, FastAPI backend services, worker/background pipelines, AI provider integrations, tests, report workflows, citation tracking, and analytics dashboards. |
-| [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller) | Vehicle/embedded integration: ESP-IDF-oriented C scaffold, BMW E90 CAN signal decoding, TurboLamik TCU frames, raw CAN capture, health/watchdog state, derived drivetrain metrics, shadow AWD request logic, BLE telemetry, and Flutter dashboard. |
-| [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools) | Final JB4Pro mobile app source: Flutter, BLE/device communication, gauges, logs, vehicle diagnostics, mapping/protocol notes, firmware update flows, WMI lookup, settings, and customer-facing tuning hardware workflows. |
-| [`canflex-mobile-app`](./projects/canflex-mobile-app) | Current CANFlex/NewCANFlex hardware app work: Flutter/Dart, BLE communication, firmware screens, E85/fuel telemetry, CANbus output settings, pressure/calibration settings, logs, gauges, and the mobile side of automotive hardware support. |
-| [`t56-ble-transmission-controller`](./projects/t56-ble-transmission-controller) | BLE transmission/controller project with PlatformIO firmware, Flutter app logic, BLE protocol docs, mapping schema, presets, PWM capture/output, and gear/control logic. |
-| [`awd-transfer-case-tuner`](./projects/awd-transfer-case-tuner) | Flutter vehicle AWD/transfer-case tuning app snapshot focused on mobile configuration and drivetrain-control workflows. |
-| [`growcontrol-climate-automation-platform`](./projects/growcontrol-climate-automation-platform) | Flutter + firmware + Supabase grow room automation system with climate math, telemetry, scene rules, device gateways, local Tuya integration, firmware, and migrations. |
-| [`growmie-edge-hub-firmware`](./projects/growmie-edge-hub-firmware) | Arduino/ESP-style edge hub firmware for climate/device automation, provisioning, config storage, buffering, local Tuya control, and Supabase sync. |
-| [`vehicle-touch-input-controller`](./projects/vehicle-touch-input-controller) | Arduino/CST816S touch-input controller showing hardware input handling, driver integration, and compact embedded UI/control code. |
-| [`str8tune-binforge-calibration-editor`](./projects/str8tune-binforge-calibration-editor) | Next.js/TypeScript ECU/BIN calibration editor shell with tuning-oriented UI structure, Supabase project assets, app/components/lib organization, and domain-specific product flow. |
-| [`str8tune-ecu-calibration-editor`](./projects/str8tune-ecu-calibration-editor) | ECU calibration tooling with React/TypeScript, XDF/BIN parsing concepts, editable maps, hex/table views, tuning assistant flows, 2D/3D visualization, and export-style calibration workflows. |
-| [`ampgen-configurator`](./projects/ampgen-configurator) | A clean Next.js/React configurator for power/electrical product planning, with draggable layout zones and UI logic for turning a physical product setup into an interactive tool. |
-| [`hotspot-control-api`](./projects/hotspot-control-api) | Small but useful Windows/network automation: Python plus PowerShell control around local hotspot workflows, showing the kind of practical scripting that keeps ops moving. |
-| [`stealth-machine-backend`](./projects/stealth-machine-backend) | Next.js/TypeScript/Prisma backend for Stealth Machine Tools operations: auth, customers, machines, tickets, training/support materials, AI config, analytics, and admin workflows. |
-| [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter) | Cross-platform Flutter app for machine support/training workflows with API integration, local storage, auth helpers, camera/speech/PDF support, QR, charts, and field-service style UX. |
-| [`esp32-mouse-controller`](./projects/esp32-mouse-controller) | Compact embedded + desktop project: ESP32 USB HID mouse firmware, test sketch, and Python GUI/control scripts for configuring and testing a physical device. |
-| [`laserconsumables-commerce`](./projects/laserconsumables-commerce) | Industrial commerce/admin system: Next.js, TypeScript, Prisma, inventory services, manual order flows, shipping dashboards, and admin workflow components. |
-| [`straincollector-commerce`](./projects/straincollector-commerce) | Specialty commerce/order workflow project: Next.js/Supabase structure plus PHP checkout, webhook, shipping-label, and tracking workflows. |
-| [`bassclown-ecommerce`](./projects/bassclown-ecommerce) | Polished client ecommerce build with Next.js, Drizzle, migrations, reusable components, admin/customer workflows, API docs, and handoff documentation. |
-| [`jb4pro-csharp-interface`](./projects/jb4pro-csharp-interface) | Legacy C# WinForms JB4Pro interface showing desktop-era hardware communication, serial port monitoring, Bluetooth/BLE support code, and tuning-tool UI structure. |
-
-## Interview Walkthrough
-
-If you only have ten minutes, I would walk through these in this order:
-
-1. **TurboLamik AWD Controller** - shows C/firmware-adjacent vehicle integration, CAN decoding, raw frame capture, health state, derived metrics, and safe shadow-mode control thinking.
-2. **JB4Pro** - shows mobile + hardware + vehicle systems, firmware update workflows, BLE, diagnostics, tuning settings, and logs.
-3. **CANFlex** - shows BLE-connected fuel/sensor hardware, E85/fuel telemetry, CANbus output settings, calibration, and firmware/version handling.
-4. **Tech Support AI Backend** - shows Claude/API integration wrapped in real backend workflows.
-5. **GEO Command Center Platform** - shows a major AI/search visibility product: multi-tenant data model, provider pipelines, citations, reports, workers, backend services, and dashboards.
-6. **Stealth Batteries Admin** - shows full-stack business operations: orders, dealers, shipping, warranty, dashboards.
-7. **Stealth Machine Tools** - shows AI support workflows, Flutter field-service UX, machine/customer records, and admin tooling.
+| [`techsupport-ai-backend`](./projects/techsupport-ai-backend) | AI support backend with Claude integration, auth, persistence, tickets, document/context ingestion, analytics, notifications, and support workflow routes. |
+| [`stealth-ai-support-system`](./projects/stealth-ai-support-system) | Customer support/chat prototype with admin review, conversation history, escalation, ticketing, support analytics, warranty/claims handling, onboarding, and human handoff. |
+| [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin) | Production business platform connecting ecommerce, dealers, affiliates, sales reps, orders, shipping, warranty, support, dashboards, and Payload/Postgres admin tooling. |
+| [`stealth-machine-backend`](./projects/stealth-machine-backend) | Next.js/TypeScript/Prisma backend for machine/customer records, tickets, training/support materials, AI configuration, analytics, and admin workflows. |
+| [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter) | Cross-platform Flutter field/support app with API integration, local storage, auth helpers, camera/speech/PDF support, QR-style workflows, charts, and field-service UX. |
+| [`customer-tracking-crm`](./projects/customer-tracking-crm) | CRM/order ops system with approvals, portals, uploads, OCR-style processing, realtime updates, notifications, permissions, and audit trails. |
+| [`geo-command-center`](./projects/geo-command-center) | AI/search visibility command center with multi-tenant structure, provider adapters, audits, prompt/report pipelines, citation tracking, and dashboards. |
+| [`geo-command-center-platform`](./projects/geo-command-center-platform) | Larger GEO SaaS snapshot with Next.js, FastAPI, Supabase/Postgres, Drizzle, workers, tests, provider pipelines, reports, citations, and analytics. |
+| [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller) | Embedded-adjacent vehicle integration with C scaffolding, CAN RX, BMW E90 decoding, TurboLamik decoding, raw frame capture, health state, derived metrics, BLE telemetry, and Flutter UI. |
+| [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools) | Flutter mobile app for JB4Pro hardware: BLE, command parsing, gauges, logs, diagnostics, settings, firmware update flows, WMI/meth, E85/flex fuel, and tuning workflows. |
+| [`canflex-mobile-app`](./projects/canflex-mobile-app) | Flutter/Dart hardware app for CANFlex fuel/sensor controller: BLE, firmware screens, fuel telemetry, CAN bus output config, analog output, calibration, logs, and support tools. |
+| [`t56-ble-transmission-controller`](./projects/t56-ble-transmission-controller) | BLE transmission/controller project with PlatformIO firmware, Flutter logic, BLE protocol docs, mapping schema, presets, PWM capture/output, and gear/control logic. |
+| [`awd-transfer-case-tuner`](./projects/awd-transfer-case-tuner) | Flutter AWD/transfer-case tuning app with realtime pages, diagnostics, configuration, drive rules, torque/slip logic, PWM commands, profiles, maps, and BLE sync paths. |
+| [`vehicle-touch-input-controller`](./projects/vehicle-touch-input-controller) | Arduino/CST816S touch-input controller showing compact embedded input handling, driver integration, and hardware control code. |
+| [`esp32-mouse-controller`](./projects/esp32-mouse-controller) | ESP32 USB HID mouse firmware plus Python GUI/control scripts for configuring and testing a physical device. |
+| [`jb4pro-csharp-interface`](./projects/jb4pro-csharp-interface) | Legacy C# WinForms JB4Pro interface showing serial port monitoring, Bluetooth/BLE support code, Windows UI, device discovery, and tuning-tool ergonomics. |
+| [`str8tune-ecu-calibration-editor`](./projects/str8tune-ecu-calibration-editor) | ECU calibration/editor tooling with React/TypeScript, XDF/BIN parsing concepts, editable maps, hex/table views, tuning assistant flows, comparison tools, 2D/3D visualization, and export-style workflows. |
+| [`str8tune-binforge-calibration-editor`](./projects/str8tune-binforge-calibration-editor) | Next.js/TypeScript ECU/BIN calibration editor shell with tuning-oriented UI structure, Supabase assets, app/component organization, and domain-specific product flow. |
+| [`ampgen-configurator`](./projects/ampgen-configurator) | Next.js/React configurator for electrical/power-system planning with draggable layout zones and UI logic for turning a physical setup into an interactive tool. |
+| [`laserconsumables-commerce`](./projects/laserconsumables-commerce) | Industrial commerce/admin system with Next.js, TypeScript, Prisma, inventory services, manual order flows, shipping dashboards, and admin workflow components. |
+| [`bassclown-ecommerce`](./projects/bassclown-ecommerce) | Client ecommerce build with Next.js, Drizzle, migrations, reusable components, admin/customer workflows, API docs, and handoff documentation. |
+| [`hotspot-control-api`](./projects/hotspot-control-api) | Python/PowerShell Windows/network automation around local hotspot workflows and operational scripting. |
 
 ## What These Projects Have In Common
 
-I like building the "connective tissue" of a business. That usually means taking messy inputs and turning them into a clean workflow:
+I like building the connective tissue of a business or product.
 
-- A customer message becomes a support ticket, warranty flow, or onboarding step.
+- A customer message becomes a support ticket, warranty flow, onboarding step, or escalation.
 - A vehicle log becomes something a tuner or support person can actually act on.
-- A raw CAN frame becomes a decoded signal, health state, derived metric, or validation note.
-- An order becomes approvals, customer status, shipping actions, admin visibility, and support history.
-- A hardware device becomes a mobile interface with settings, logs, gauges, and diagnostics.
-- An AI response becomes part of a controlled system instead of a random chatbot answer.
+- A raw CAN frame becomes a decoded signal, health state, derived metric, validation note, or dashboard value.
+- An order becomes approvals, shipping actions, customer status, support history, and admin visibility.
+- A hardware device becomes a mobile interface with settings, logs, gauges, diagnostics, and firmware workflows.
+- An AI response becomes part of a controlled workflow instead of a random chatbot answer.
 
 That is the work I am best at. I do not need a perfect spec to start. I need the problem, the constraints, and access to the people using the thing.
 
 ## Technical Range
 
-**Frontend:** React, Next.js, TypeScript, JavaScript, HTML/CSS, Tailwind-style UI, Radix UI, Fabric.js  
-**Backend:** Node.js, Express, FastAPI, REST APIs, auth, webhooks, background jobs, notifications  
-**Databases:** Postgres, Supabase, Drizzle, SQLite, MongoDB/Mongoose, SQL workflow/data modeling  
-**AI:** Claude/Anthropic API work, Codex/Cursor-style coding workflows, LM Studio, local LLMs, Ollama-style local model workflows, prompt engineering, AI-assisted code architecture, codebase reverse engineering, custom context pipelines, scripted codebase indexing, tool orchestration, support automation, prompt behavior tuning, document/context ingestion  
-**Vehicle/Embedded:** C, ESP-IDF-oriented firmware scaffolding, CAN bus, CAN-system workflows, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN output docs, raw CAN capture, health/watchdog state, derived metrics, shadow-mode control logic  
-**Mobile/Hardware:** Flutter, Dart, BLE/device communication, diagnostics, firmware update flows, bootloader/erase/write/checksum patterns, gauges, datalogging, settings/configuration UI  
-**Automation:** Python, PowerShell, Windows/server-oriented scripting, local operational tools  
-**Desktop/Legacy Hardware UI:** C#, WinForms, serial port monitoring, Bluetooth/BLE support libraries  
-**Working Style:** scoped changes, clean commits, useful comments, plain-language notes, careful review of AI-generated code
+**Frontend:** React, Next.js, TypeScript, JavaScript, HTML/CSS, Tailwind-style UI, Radix/shadcn-style components, dashboards, customer portals, admin panels, configuration interfaces, charts/gauges, table/map editors, 2D/3D visualization concepts.
+
+**Backend:** Node.js, Express, FastAPI, REST APIs, WebSockets, JWT, OAuth concepts, role permissions, audit logging, provider adapters, webhooks, background jobs, notification workflows.
+
+**Databases:** Postgres, SQLite, MongoDB/Mongoose, Supabase, Drizzle, Prisma, Redis/BullMQ-style queues, Payload CMS, data modeling, migrations, reporting tables, CRM/order state, support history, and audit trails.
+
+**AI:** Claude/Anthropic, OpenAI-style APIs, AI support agents, prompt/context workflows, local LLM workflows, Codex/Cursor-style coding flows, codebase indexing, document ingestion, OCR/document processing, ticket triage, warranty/claims workflows, analytics, escalation, and human handoff.
+
+**Vehicle / Embedded:** C, C++, ESP-IDF-oriented scaffolding, CAN bus, CAN-system workflows, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN output docs, raw CAN capture, health/watchdog state, derived metrics, shadow-mode logic, OBD2-connected hardware, ECU/tuning workflows.
+
+**Mobile / Hardware:** Flutter, Dart, Android concepts, BLE/device communication, serial-style communication, diagnostics, firmware update flows, bootloader/erase/write/checksum patterns, gauges, datalogging, settings/configuration UI.
+
+**Desktop / Automation:** C#, WinForms, Python, PowerShell, Windows/server-oriented scripting, local APIs, serial port monitoring, Bluetooth/BLE support libraries, Docker Compose, Git/GitHub, deployment notes, and technical documentation.
+
+## How I Work
+
+I am careful with existing systems. I like scoped changes, readable code, useful comments, plain-language notes, and documentation that helps the next person. I use AI tools aggressively, but I review the output like an engineer who owns the result. My default move is to understand the workflow, find the real constraint, build the simplest thing that can survive production, and leave the system easier to work on than I found it.
 
 ## A Note On The Code
 
 These are public portfolio snapshots. I removed runtime secrets, `.env` files, dependency folders, generated builds, databases, archives, private customer data, firmware binaries, and large binary assets before publishing.
 
-Some projects were built fast because the job was to solve a real business problem quickly. Some are more polished than others. What I want you to see is the range: full-stack systems, AI integrations, dashboards, workflow automation, hardware-connected mobile apps, and code that was written to make real work easier.
+Some projects were built fast because the job was to solve a real business problem quickly. Some are more polished than others. What I want you to see is the range: engineering leadership, full-stack systems, AI integrations, CRM/support tools, dashboards, workflow automation, embedded-adjacent code, hardware-connected mobile apps, and software written to make real work easier.
 
 Contact: `bajaracer415@gmail.com`
