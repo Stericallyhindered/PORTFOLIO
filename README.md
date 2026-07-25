@@ -11,7 +11,6 @@ This portfolio is a cleaned-up source snapshot of work I can talk through in det
 
 ## The Quick Read
 
-- I have led developers, not just written tickets. At Burger Motorsports I led five developers through connected automotive product development. At Stealth Machine Tools / Stealth Batteries I currently lead and mentor three junior developers while building AI and operations software.
 - I build full-stack systems with React, Next.js, TypeScript, Node.js, Express, FastAPI, Python, Postgres, SQLite, MongoDB, Supabase, Payload CMS, Prisma/Drizzle-style modeling, REST APIs, webhooks, auth, dashboards, and admin workflows.
 - I build AI workflow software around Claude/OpenAI-style APIs, support agents, document/context ingestion, ticket triage, customer onboarding, warranty/claims handling, analytics, escalation, and human handoff.
 - I build embedded-adjacent and hardware-connected software: Flutter/Dart mobile apps, BLE device communication, CAN bus workflows, OBD2-connected hardware, firmware update flows, bootloader/erase/write/checksum patterns, live telemetry, diagnostics, datalogging, gauges, and calibration/configuration tools.
