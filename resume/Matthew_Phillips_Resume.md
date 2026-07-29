@@ -6,11 +6,11 @@ Portfolio: https://github.com/Stericallyhindered/PORTFOLIO
 
 ## Summary
 
-Engineering lead and full-stack software engineer with experience across AI automation, backend/API systems, internal tools, CRM/support platforms, mobile applications, embedded-adjacent hardware software, automotive device communication, industrial tooling, and regulated analytical testing environments.
+Engineering lead and full-stack, firmware, and embedded systems engineer with experience across Oracle APEX-backed database applications, AI automation, backend/API systems, industrial CAD/CAM and machine-control interfaces, cross-platform applications, microcontroller firmware, automotive tuning systems, telematics, hardware validation, and regulated analytical testing environments.
 
 I have led development teams through the full lifecycle of connected products and business platforms: translating unclear requirements into buildable work, coordinating across software/hardware/support needs, reviewing implementation details, documenting decisions, mentoring junior developers, and shipping systems used by real customers and staff.
 
-My strongest work is the connective tissue between systems: AI support flows, customer and developer workflow tooling, API integrations, dashboards, mobile apps, BLE/CAN/OBD2 device communication, firmware-related workflows, commerce/admin operations, analytical/scientific workflows, and tooling that keeps teams out of manual email, spreadsheets, and repeated one-off support loops.
+My strongest work is the connective tissue between systems: embedded firmware, bootloaders, remote application-to-device updates, Python test automation, CAD/CAM and operator interfaces, mobile and desktop applications, BLE/CAN/OBD2/UART communication, high-volume telemetry, cloud APIs, databases, AI support flows, and production tooling that connects physical products to customers, technicians, and business operations.
 
 ## Leadership Profile
 
@@ -23,11 +23,15 @@ My strongest work is the connective tissue between systems: AI support flows, cu
 ## Core Strengths
 
 - Full-stack product engineering: React, Next.js, TypeScript, JavaScript, Node.js, Express, Python, FastAPI, REST APIs, WebSockets, auth, permissions, dashboards, admin tools, customer portals, and deployment documentation.
-- Backend and integration work: API integrations, webhooks, provider adapters, notification flows, Stripe/payment workflows, shipping workflows, ticketing, logging, audit trails, role-aware state machines, and structured operational data.
+- Backend and integration work: API integrations, webhooks, provider adapters, notification flows, Stripe/payment workflows, shipping workflows, ticketing, logging, audit trails, role-aware state machines, structured operational data, and Oracle APEX-connected business databases.
+- Oracle APEX and database application engineering: Oracle APEX, SQL, PL/SQL-style workflow thinking, customer/warranty/automation databases, reporting, production support, documentation, testing, and enhancements.
 - AI systems: Claude/Anthropic and OpenAI-style integrations, AI support agents, chat workflows, document/context ingestion, ticket triage, warranty/claims intake, onboarding, knowledge-base lookup, analytics, escalation paths, and human handoff flows.
 - Internal tools and workflow platforms: CRM/order systems, developer/support tooling, operational dashboards, approval workflows, customer records, machine/device records, sales/dealer portals, affiliate workflows, field-service tools, and support history.
-- Mobile and hardware-connected software: Flutter, Dart, Android concepts, BLE device communication, serial-style communication, CAN bus workflows, OBD2-connected hardware, live telemetry, diagnostics, datalogging, gauges, settings, firmware update flows, bootloader workflows, checksum validation, and configuration UI.
-- Embedded-adjacent and vehicle systems: C, ESP-IDF-oriented scaffolding, CAN RX integration, raw frame capture, signal decoding, derived metrics, health/watchdog state, safe shadow-mode logic, ECU/tuning workflows, fuel/sensor controllers, and vehicle validation.
+- Industrial machine and CAD/CAM software: full-stack operator and technician interfaces for fiber laser welders and cutters, plasma CNC equipment, press brakes, benders, and related machine tools; CAD/CAM workflows, job and machine configuration, diagnostics, telemetry, field support, and remote service tooling.
+- Mobile and hardware-connected software: Flutter/Dart applications across Windows, macOS, iOS, and Android; BLE, UART/serial, CAN bus, OBD2, TCP/IP, device discovery, live telemetry, diagnostics, datalogging, settings, calibration, and application-to-device control.
+- Firmware and embedded systems: C/C++, microcontrollers and embedded development platforms, ESP32/ESP-IDF, Arduino, Raspberry Pi-class systems, device drivers, interrupts, state machines, watchdogs, persistent configuration, bootloaders, remote firmware delivery, HEX parsing, block erase/write, checksum validation, and recovery behavior.
+- Firmware validation and test engineering: Python automated test scripts, regression testing, protocol and packet validation, hardware-in-the-loop and bench testing, failure reproduction, instrumentation, logging, CI-aware test workflows, release validation, and root-cause analysis.
+- Vehicle, IoT, and telematics systems: ECU/tuning workflows, cellular/GPS/connected-device concepts, BLE/CAN/OBD2 telemetry, raw frame capture, signal decoding, thousands of logged parameters, derived metrics, fuel/sensor controllers, and embedded Linux/networking concepts.
 - Scientific and regulated background: biochemistry, analytical testing software, medical/technical device-adjacent code, data integrity, traceable workflows, documentation, validation, and quality-focused change control.
 - Working style: ask scope questions early, understand the user, keep changes readable, document decisions, review AI-generated code critically, communicate before going dark, and own production behavior.
 
@@ -38,11 +42,16 @@ Software Engineer / AI Engineer / Technical Lead
 May 2025 - Present
 
 - Lead and mentor three junior developers while building full-stack software, AI integrations, CRM systems, support automation, dashboards, field/support apps, and internal tools for Stealth Machine Tools, Stealth Batteries, and related businesses.
+- Architected and developed full-stack CAD/CAM, operator, configuration, diagnostics, and support interfaces for fiber laser welders and cutters, plasma CNC machines, press brakes, benders, and related industrial equipment.
+- Built cross-platform Flutter/Dart machine applications for Windows, macOS, iOS, and Android, connecting user interfaces and cloud services to machine settings, telemetry, logs, diagnostics, firmware, customer records, and remote-support workflows.
+- Worked across embedded controllers, microcontrollers, sensors, machine communications, firmware behavior, and application-to-device integration; developed Python tooling for automated validation, repeatable diagnostics, regression testing, log analysis, and production troubleshooting.
+- Supported firmware and hardware testing with UART/serial, TCP/IP, BLE, embedded Linux and microcontroller development platforms, and laboratory tools including oscilloscopes, multimeters, logic analyzers, and bench power supplies.
 - Built AI-assisted customer support and internal workflow systems with customer chat, onboarding, claim/warranty intake, document/context lookup, ticketing, logging, analytics, escalation paths, and human review workflows.
+- Built Oracle APEX-backed customer, warranty, automation, and support databases for Stealth Machine Tools and Burger Motorsports, turning business requirements into database applications instead of manual spreadsheets and inbox tracking.
 - Built Stealth Batteries commerce/admin platform using Next.js, React, TypeScript, Payload CMS, Postgres, Stripe, webhooks, email providers, shipping APIs, dealer portals, affiliate workflows, sales-rep dashboards, order management, warranty/support workflows, and custom admin tools.
 - Built Stealth Machine backend tooling with Next.js/TypeScript/Prisma patterns around auth, customers, machines, tickets, training/support materials, AI configuration, analytics, and admin workflows.
 - Built cross-platform Flutter field/support tooling for machine support and training workflows, including API integration, local storage, auth helpers, camera/speech/PDF support, QR-style workflows, charts, and field-service user experience.
-- Built CRM/order/customer tracking systems with Node/Express, SQLite, JWT auth, role permissions, admin approvals, customer portals, document intake, real-time updates, Twilio/Nodemailer notifications, audit trails, and deployment notes.
+- Built CRM/order/customer tracking systems with Node/Express, SQLite, JWT auth, role permissions, admin approvals, customer portals, document intake, real-time updates, Twilio/Nodemailer notifications, audit trails, deployment notes, and Oracle APEX-connected operational records.
 - Connected customer-facing portals, admin work, order state, approvals, document uploads, notifications, reporting, support history, warranty claims, shipping/return steps, and customer records into structured workflows that reduced manual operational load.
 - Built support workflows that could register customers, collect product/warranty information, track claim status, assist with returns, create shipping/return workflows, and reduce repetitive staff work.
 - Worked across ecommerce, industrial equipment support, customer onboarding, warranty/claims handling, inventory visibility, admin dashboards, operational reporting, and AI-assisted employee workflows.
@@ -52,14 +61,16 @@ May 2025 - Present
 Lead Developer - Automotive Software, Mobile Apps, Hardware Integration, Support Platforms  
 2019 - 2025
 
-- Served as lead developer overseeing five developers through the development lifecycle of multiple connected automotive products, including JB4Pro, CANFlex, tuning devices, fuel injector controllers, mobile apps, backend/support systems, firmware-related workflows, and customer-facing tools.
+- Served as principal vehicle software engineer and lead developer across the complete JB4 product stack: embedded firmware, bootloaders, tuning logic, connected hardware, cross-platform user interfaces, backend/support systems, databases, and production validation for an ecosystem used by more than 500,000 vehicles worldwide.
 - Coordinated work across software, hardware, firmware-adjacent requirements, vehicle platform behavior, support needs, customer usability, release risk, and product documentation.
-- Helped build and launch software around the JB4 tuning device ecosystem, including mobile application features, BLE/device workflows, diagnostics, support systems, firmware-related flows, settings, logs, and platform-specific behavior across many vehicle platforms and firmware combinations.
-- Built JB4Pro mobile/device software using Flutter/Dart with BLE scan/connect behavior, connection recovery, notification parsing, ASCII/byte-level command handling, live gauges, datalogging, map/settings screens, user-adjustment interfaces, and developer diagnostics.
-- Implemented firmware update workflows for JB4Pro-style hardware including firmware download/manual HEX loading, bootloader entry, erase/write commands, block flashing, checksum validation, bootloader exit, progress state, and user-facing safety warnings.
+- Built the full-stack interface around JB4 tuning hardware, including Flutter/Dart applications for iOS, Android, Windows, and macOS; BLE/serial device communication; cloud and support services; Oracle APEX operational databases; and customer, tuner, and developer interfaces.
+- Developed and supported embedded C/C++ firmware and microcontroller integrations for JB4 devices, CANFlex controllers, standalone GDI drivers, fuel injector controllers, sensor modules, and related automotive hardware.
+- Built vehicle tuning, calibration, diagnostics, and datalogging systems capable of collecting, decoding, visualizing, and exporting thousands of parameters across many vehicle platforms, ECUs, firmware versions, maps, and hardware configurations.
+- Implemented remote application-to-device firmware delivery including firmware retrieval and manual HEX loading, bootloader entry, erase/write commands, block flashing, checksums, version validation, progress state, recovery handling, bootloader exit, and user-facing safety controls.
+- Built automated and bench validation workflows using Python and engineering tools to test firmware, protocols, telemetry, connection recovery, regression behavior, and hardware/software interaction before release.
 - Built command/protocol logic for JB4 hardware including settings retrieval, settings save, logging start/pause, map selection, E85/flex fuel configuration, WMI/meth settings, boost/fuel tables, AFR/meth/fuel pressure telemetry, and developer packet inspection.
 - Developed CANFlex/NewCANFlex mobile hardware software for fuel and sensor control: BLE device communication, ethanol content, fuel temperature, fuel pressure, RPM, speed, water/oil temperature, gear and torque surfaces, CAN bus output configuration, analog output modes, pressure sensor modes, calibration controls, firmware/version display, live gauges, logs, and ECU/JB4 integration paths.
-- Built CRM-backed support tooling that replaced manual email-based log review with structured customer submissions, vehicle log intake, AI-assisted parsing, diagnostic/tuning guidance, support history, and escalation paths.
+- Built CRM-backed support tooling that replaced manual email-based log review with structured customer submissions, vehicle log intake, AI-assisted parsing, diagnostic/tuning guidance, support history, escalation paths, and Oracle APEX-backed operational records.
 - Helped reduce operational support burden by creating systems that allowed technical support workflows, product context, vehicle logs, and customer history to live in structured tools instead of inboxes and spreadsheets.
 - Worked close to embedded systems, custom hardware, firmware, and vehicle communication protocols, translating raw device/vehicle data into reliable UI state and supportable diagnostic workflows.
 - Built across desktop and mobile hardware interfaces, including legacy C# WinForms/serial/BLE support code and newer Flutter mobile tooling.
@@ -76,6 +87,9 @@ Vehicle Telemetry, CAN Integration, Firmware-Adjacent Tools
 - Designed Flutter telemetry/logging app shells for vehicle-side diagnostics, including device status, live dashboard, raw frame monitor, decoded signal monitor, capture control, saved sessions/export, and vehicle profile display.
 - Built AWD/transfer-case tuning application concepts with Flutter domain models for torque estimates, slip resolution, predictive layers, drive rules, PWM commands, map interpolation, profiles, real-time diagnostics, configuration pages, and BLE sync paths.
 - Built ESP32 and touch-input hardware projects demonstrating compact embedded input handling, USB HID-style control, driver integration, Python GUI/control scripts, and physical-device testing workflows.
+- Developed across a broad range of microcontrollers and embedded platforms, including Arduino and Raspberry Pi-class systems, with UART/serial communications, TCP/IP networking, embedded Linux, BLE, CAN, GPIO, PWM, persistent configuration, and device-level troubleshooting.
+- Used oscilloscopes, logic analyzers, digital multimeters, bench power supplies, and serial/CAN diagnostic equipment to validate signals, power behavior, timing, communications, firmware changes, and failure conditions.
+- Built Python-based automated test and data-analysis tools for repeatable device validation, packet/protocol testing, regression coverage, telemetry inspection, and production issue reproduction, with CI-oriented workflows where appropriate.
 
 ### Bayer
 Technical / Analytical Testing Software Background  
@@ -100,14 +114,17 @@ Production business platform connecting ecommerce, products, dealers, affiliates
 ### Stealth Machine Backend and Field App
 Next.js/Prisma backend plus Flutter field/support app for machine records, support tickets, training materials, customer context, AI support configuration, analytics, local storage, camera/speech/PDF helpers, QR-style workflows, charts, and field-service support UX.
 
+### Industrial Machine CAD/CAM and Control Software
+Full-stack CAD/CAM, operator, configuration, diagnostics, telemetry, and remote-support software for fiber laser welders and cutters, plasma CNC machines, press brakes, benders, and related manufacturing equipment, spanning cross-platform Flutter/Dart interfaces, backend services, databases, machine communications, embedded controllers, firmware workflows, and field validation.
+
 ### Customer Tracking CRM
-CRM/order workflow software for companies, contacts, orders, admin approvals, customer portal views, document uploads, OCR-style processing, real-time updates, notifications, audit trails, and role-aware workflows.
+CRM/order workflow software for companies, contacts, orders, admin approvals, customer portal views, document uploads, OCR-style processing, real-time updates, notifications, audit trails, role-aware workflows, and Oracle APEX-connected database operations.
 
 ### GEO Command Center Platform
 Full-stack AI/search visibility SaaS with Next.js frontend, Supabase/Postgres/Drizzle data modeling, FastAPI backend services, worker/background processing, tests, provider/report pipelines, audits, citation tracking, multi-tenant dashboards, and analytics workflows.
 
 ### JB4Pro Vehicle Tuning Platform
-Mobile and hardware-connected software for JB4Pro tuning hardware, including BLE discovery/connection, command handling, live telemetry, logging, firmware update flows, settings save/retrieval, map/user adjustment screens, E85/flex fuel workflows, WMI/meth configuration, boost/fuel tables, AFR/fuel pressure telemetry, and developer diagnostics.
+End-to-end embedded and full-stack platform for JB4 tuning hardware, including C/C++ firmware, microcontrollers, bootloaders, remote application-to-device firmware delivery, BLE/serial/CAN communication, Flutter applications across mobile and desktop, vehicle calibration, live telemetry, logging of thousands of parameters, settings and map control, E85/flex fuel and WMI/meth workflows, diagnostics, cloud/support systems, and production validation.
 
 ### CANFlex Fuel and Sensor Controller
 Mobile software for a fuel injector / E85 sensor / fuel pressure control ecosystem with BLE communication, ethanol/fuel-temperature/fuel-pressure gauges, CAN bus and analog output configuration, pressure sensor modes, calibration, logs, firmware/version handling, and ECU/JB4 integration paths.
@@ -135,11 +152,14 @@ Built and maintained C# WinForms-era hardware interface code around serial port 
 Languages: JavaScript, TypeScript, Python, SQL, Dart, C#, C++, C, Java, HTML, CSS, Bash, PowerShell, VBA  
 Frontend: React, Next.js, Tailwind CSS, Radix/shadcn-style UI, dashboard UI, admin panels, customer portals, configuration interfaces, charts/gauges, table/map editors, 2D/3D visualization concepts  
 Backend: Node.js, Express, FastAPI, REST APIs, WebSockets, JWT, OAuth concepts, role permissions, audit logging, provider adapters, webhooks, background jobs, notification workflows  
-Data: Postgres, SQLite, MongoDB/Mongoose, Supabase, Drizzle, Prisma, Redis/BullMQ-style queues, Payload CMS, data modeling, migrations, reporting tables, CRM/order state  
+Data: Oracle APEX, SQL, PL/SQL-style workflows, Postgres, SQLite, MongoDB/Mongoose, Supabase, Drizzle, Prisma, Redis/BullMQ-style queues, Payload CMS, data modeling, migrations, reporting tables, CRM/order state  
 AI / Integrations: Claude/Anthropic, OpenAI-style APIs, AI support agents, prompt/context workflows, document ingestion, OCR/document processing, ticket triage, analytics, Stripe, shipping APIs, UPS workflows, Resend/Nodemailer, Twilio, webhooks  
-Mobile / Hardware: Flutter, Dart, Android concepts, BLE, serial communication, CAN bus, OBD2-connected hardware, ECU/tuning workflows, raw frame capture, diagnostics, datalogging, gauges, bootloader/firmware update workflows, HEX parsing, checksums  
-Embedded / Vehicle: C, ESP-IDF-oriented scaffolding, CAN RX dispatch, signal stores, health/watchdog state, derived metrics, shadow-mode control logic, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN documentation, fuel/sensor controller workflows  
-Desktop / Ops: C# WinForms, serial port monitoring, Python GUI tools, PowerShell scripts, Windows/server-oriented automation, Docker Compose, Git, GitHub, technical documentation
+Industrial / CAD-CAM: fiber laser welders and cutters, plasma CNC systems, press brakes, benders, operator HMIs, CAD/CAM workflows, machine configuration, diagnostics, telemetry, remote support, and field-service software  
+Mobile / Hardware: Flutter, Dart, iOS, Android, Windows, macOS, BLE, UART/serial, CAN bus, OBD2, TCP/IP, cellular/GPS/telematics concepts, raw frame capture, diagnostics, high-volume datalogging, gauges, calibration, and application-to-device control  
+Embedded / Firmware: C, C++, microcontrollers, ESP32, ESP-IDF, Arduino, Raspberry Pi, embedded Linux, GPIO, PWM, interrupts, drivers, watchdogs, state machines, persistent configuration, bootloaders, remote firmware updates, HEX parsing, erase/write, checksums, and recovery flows  
+Validation / Test: Python automation, firmware validation, regression testing, protocol and packet tests, hardware-in-the-loop and bench testing, CI pipelines, automated test frameworks, logging, failure reproduction, root-cause analysis, oscilloscopes, logic analyzers, multimeters, power supplies, and serial/CAN tools  
+Vehicle / Telematics: ECU calibration and tuning, JB4, CANFlex, GDI drivers, CAN RX dispatch, signal stores, thousands of telemetry parameters, BMW E90 decoding, TurboLamik TCU decoding, MaxxECU CAN integration, fuel/sensor controller workflows, and connected-device diagnostics  
+Desktop / Ops: C# WinForms, serial port monitoring, Python GUI tools, PowerShell scripts, Windows/server automation, Docker Compose, Git, GitHub, CI/CD, and technical documentation
 
 ## Education
 
