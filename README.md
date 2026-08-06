@@ -1,8 +1,8 @@
 # Matthew Phillips - Engineering Portfolio
 
-I'm Matthew Phillips, a Southern California engineering lead and full-stack software engineer. I build the software behind real products: AI support systems, CRM/order platforms, customer portals, admin dashboards, API integrations, mobile apps, embedded-adjacent hardware tools, CAN/BLE vehicle software, firmware update workflows, analytical testing software, and internal tools that keep businesses from drowning in manual work.
+I'm Matthew Phillips, a Southern California engineering lead and vehicle software engineer. I build the software behind real products: ECU/TCU tuning platforms, connected automotive hardware, Flutter mobile and desktop tuner apps, C# Windows tools, embedded firmware workflows, CAN/BLE/OBD2 communication, AI support systems, CRM/order platforms, customer portals, admin dashboards, API integrations, analytical testing software, and internal tools that keep businesses from drowning in manual work.
 
-This portfolio is a cleaned-up source snapshot of work I can talk through in detail. It is not a collection of toy apps. Most of these projects came from actual operational problems: support teams buried in email, customers needing clear portals, hardware needing a usable mobile interface, vehicle logs needing structure, AI workflows needing guardrails, orders needing traceability, and technical teams needing tools that make the work less painful.
+This portfolio is a cleaned-up source snapshot of work I can talk through in detail. It is not a collection of toy apps. Most of these projects came from actual operational problems: tuning hardware needing safe app-to-device workflows, vehicle logs needing structure, firmware updates needing recovery behavior, support teams buried in email, customers needing clear portals, hardware needing a usable mobile interface, AI workflows needing guardrails, orders needing traceability, and technical teams needing tools that make the work less painful.
 
 ## Current Resume
 
@@ -11,6 +11,7 @@ This portfolio is a cleaned-up source snapshot of work I can talk through in det
 
 ## The Quick Read
 
+- I build ECU/TCU tuning software and connected vehicle ecosystems: standalone tuning hardware, firmware and bootloader workflows, map/calibration interfaces, BLE/serial/CAN/OBD2 communication, diagnostics, high-volume datalogging, safety states, customer/tuner portals, and production release support.
 - I build full-stack systems with React, Next.js, TypeScript, Node.js, Express, FastAPI, Python, Postgres, SQLite, MongoDB, Supabase, Payload CMS, Prisma/Drizzle-style modeling, REST APIs, webhooks, auth, dashboards, and admin workflows.
 - I build AI workflow software around Claude/OpenAI-style APIs, support agents, document/context ingestion, ticket triage, customer onboarding, warranty/claims handling, analytics, escalation, and human handoff.
 - I build embedded-adjacent and hardware-connected software: Flutter/Dart mobile apps, BLE device communication, CAN bus workflows, OBD2-connected hardware, firmware update flows, bootloader/erase/write/checksum patterns, live telemetry, diagnostics, datalogging, gauges, and calibration/configuration tools.
@@ -24,10 +25,10 @@ If you only have ten minutes, I would start here:
    C/ESP-IDF-oriented vehicle integration: CAN capture, BMW E90 signal decoding, TurboLamik TCU frames, health/watchdog state, derived drivetrain metrics, shadow AWD logic, BLE telemetry, and Flutter dashboard work.
 
 2. [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools)  
-   Final JB4Pro mobile/hardware work: Flutter, BLE device communication, gauges, logs, diagnostics, settings, mapping/protocol notes, firmware update workflows, and customer-facing tuning hardware tools.
+   Final JB4Pro tuning hardware work: Flutter mobile and desktop surfaces, BLE device communication, gauges, logs, diagnostics, map/settings control, protocol notes, firmware update workflows, E85/flex fuel, WMI/meth workflows, and customer-facing tuner software.
 
 3. [`canflex-mobile-app`](./projects/canflex-mobile-app)  
-   CANFlex/NewCANFlex hardware app: BLE communication, firmware screens, E85/fuel telemetry, CAN bus output settings, analog output modes, pressure/calibration settings, logs, gauges, and automotive support tooling.
+   CANFlex/NewCANFlex fuel and sensor controller app: BLE communication, firmware screens, E85/fuel telemetry, CAN bus output settings, analog output modes, pressure/calibration settings, logs, gauges, and ECU/JB4 integration paths.
 
 4. [`techsupport-ai-backend`](./projects/techsupport-ai-backend)  
    Backend AI support system: Claude integration, JWT auth, MongoDB/Mongoose models, machine/customer records, tickets, document ingestion, notifications, analytics, and real support workflow structure.
@@ -57,8 +58,8 @@ If you only have ten minutes, I would start here:
 | [`geo-command-center`](./projects/geo-command-center) | AI/search visibility command center with multi-tenant structure, provider adapters, audits, prompt/report pipelines, citation tracking, and dashboards. |
 | [`geo-command-center-platform`](./projects/geo-command-center-platform) | Larger GEO SaaS snapshot with Next.js, FastAPI, Supabase/Postgres, Drizzle, workers, tests, provider pipelines, reports, citations, and analytics. |
 | [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller) | Embedded-adjacent vehicle integration with C scaffolding, CAN RX, BMW E90 decoding, TurboLamik decoding, raw frame capture, health state, derived metrics, BLE telemetry, and Flutter UI. |
-| [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools) | Flutter mobile app for JB4Pro hardware: BLE, command parsing, gauges, logs, diagnostics, settings, firmware update flows, WMI/meth, E85/flex fuel, and tuning workflows. |
-| [`canflex-mobile-app`](./projects/canflex-mobile-app) | Flutter/Dart hardware app for CANFlex fuel/sensor controller: BLE, firmware screens, fuel telemetry, CAN bus output config, analog output, calibration, logs, and support tools. |
+| [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools) | Flutter mobile/desktop tuner app for JB4Pro hardware: BLE, command parsing, gauges, logs, diagnostics, map/settings control, firmware update flows, WMI/meth, E85/flex fuel, and production tuning workflows. |
+| [`canflex-mobile-app`](./projects/canflex-mobile-app) | Flutter/Dart hardware app for CANFlex fuel/sensor controller: BLE, firmware screens, E85/fuel telemetry, CAN bus output config, analog output, calibration, logs, pressure modes, and ECU/JB4 integration paths. |
 | [`t56-ble-transmission-controller`](./projects/t56-ble-transmission-controller) | BLE transmission/controller project with PlatformIO firmware, Flutter logic, BLE protocol docs, mapping schema, presets, PWM capture/output, and gear/control logic. |
 | [`awd-transfer-case-tuner`](./projects/awd-transfer-case-tuner) | Flutter AWD/transfer-case tuning app with realtime pages, diagnostics, configuration, drive rules, torque/slip logic, PWM commands, profiles, maps, and BLE sync paths. |
 | [`vehicle-touch-input-controller`](./projects/vehicle-touch-input-controller) | Arduino/CST816S touch-input controller showing compact embedded input handling, driver integration, and hardware control code. |
@@ -77,6 +78,7 @@ I like building the connective tissue of a business or product.
 
 - A customer message becomes a support ticket, warranty flow, onboarding step, or escalation.
 - A vehicle log becomes something a tuner or support person can actually act on.
+- A tuning device becomes a full product ecosystem: firmware, bootloader, app, protocol, map controls, telemetry, diagnostics, support history, release notes, and recovery behavior.
 - A raw CAN frame becomes a decoded signal, health state, derived metric, validation note, or dashboard value.
 - An order becomes approvals, shipping actions, customer status, support history, and admin visibility.
 - A hardware device becomes a mobile interface with settings, logs, gauges, diagnostics, and firmware workflows.
@@ -94,9 +96,9 @@ That is the work I am best at. I do not need a perfect spec to start. I need the
 
 **AI:** Claude/Anthropic, OpenAI-style APIs, AI support agents, prompt/context workflows, local LLM workflows, Codex/Cursor-style coding flows, codebase indexing, document ingestion, OCR/document processing, ticket triage, warranty/claims workflows, analytics, escalation, and human handoff.
 
-**Vehicle / Embedded:** C, C++, ESP-IDF-oriented scaffolding, CAN bus, CAN-system workflows, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN output docs, raw CAN capture, health/watchdog state, derived metrics, shadow-mode logic, OBD2-connected hardware, ECU/tuning workflows.
+**Vehicle / Tuning / Embedded:** ECU/TCU tuning workflows, JB4, CANFlex, standalone ECU/TCU-adjacent controllers, GDI drivers, fuel injector controllers, C, C++, ESP-IDF-oriented scaffolding, CAN bus, OBD2, UDS-style diagnostics, BLE/serial communication, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN output docs, raw CAN capture, health/watchdog state, derived metrics, calibration interfaces, map control, firmware update flows, bootloader/erase/write/checksum patterns, and production tuning support.
 
-**Mobile / Hardware:** Flutter, Dart, Android concepts, BLE/device communication, serial-style communication, diagnostics, firmware update flows, bootloader/erase/write/checksum patterns, gauges, datalogging, settings/configuration UI.
+**Mobile / Hardware:** Flutter, Dart, iOS, Android, Windows, macOS, Android concepts, BLE/device communication, serial-style communication, diagnostics, firmware update flows, gauges, datalogging, settings/configuration UI, tuner/customer interfaces, and app-to-device control.
 
 **Desktop / Automation:** C#, WinForms, Python, PowerShell, Windows/server-oriented scripting, local APIs, serial port monitoring, Bluetooth/BLE support libraries, Docker Compose, Git/GitHub, deployment notes, and technical documentation.
 
