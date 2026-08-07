@@ -123,32 +123,32 @@ Technical Intern / Analytical Testing Software and Embedded Lab Systems
 
 ## Selected Project Highlights
 
-### Tech Support AI Backend
-Production AI support backend that turned scattered customer conversations into structured operational workflows. Built Claude/LLM integration, JWT auth, MongoDB/Mongoose data models, machine/customer records, support tickets, document ingestion, analytics, notifications, and API routes so support could track real issues instead of losing context in inboxes.
+### JB4Pro Vehicle Tuning Platform
+End-to-end embedded and full-stack platform for JB4 tuning hardware used across a massive active vehicle ecosystem. Built C/C++ firmware workflows, microcontroller integrations, bootloaders, remote app-to-device firmware delivery, BLE/serial/CAN communication, Flutter apps across mobile and desktop, calibration tools, live telemetry, thousands of logged parameters, map/settings control, E85/flex fuel and WMI/meth workflows, diagnostics, cloud/support systems, and release validation.
 
-### Stealth AI Support System
-Agentic customer and internal support platform for complex industrial products. Connected Claude-style chat, real-time support workflows, admin dashboards, ticketing, analytics, conversation history, onboarding, warranty/claims handling, escalation rules, and human handoff so customers could get guided technical help without waiting for manual triage.
+### CANFlex Fuel and Sensor Controller
+Mobile and hardware-connected software for a fuel injector, E85 sensor, and fuel-pressure control ecosystem. Built BLE communication, ethanol/fuel-temperature/fuel-pressure gauges, CAN bus and analog output configuration, pressure sensor modes, calibration, logs, firmware/version handling, and ECU/JB4 integration paths for real vehicle tuning use.
 
-### Stealth Batteries Commerce/Admin Platform
-Full production commerce and operations platform for a physical-product business. Connected ecommerce, products, dealers, affiliates, sales reps, orders, shipping, support, warranty, dashboards, and Payload/Postgres admin tooling, replacing manual email/status tracking with a system the business could actually run from.
+### Industrial Machine CAD/CAM and Control Software
+End-to-end CAD/CAM, operator, configuration, diagnostics, telemetry, and remote-support software for fiber laser welders and cutters, plasma CNC machines, press brakes, benders, and related manufacturing equipment. Spanned Flutter/Dart mobile/desktop interfaces, backend services, databases, machine communications, embedded controllers, firmware workflows, and field validation for equipment used in real manufacturing.
 
 ### Stealth Machine Backend and Field App
 Industrial machine support stack combining a Next.js/Prisma backend with a Flutter field app. Built machine records, customer context, support tickets, training materials, AI configuration, analytics, local storage, camera/speech/PDF helpers, QR-style workflows, charts, and field-service UX so technicians had the machine history and tools in hand.
 
-### Industrial Machine CAD/CAM and Control Software
-End-to-end CAD/CAM, operator, configuration, diagnostics, telemetry, and remote-support software for fiber laser welders and cutters, plasma CNC machines, press brakes, benders, and related manufacturing equipment. Spanned Flutter/Dart mobile/desktop interfaces, backend services, databases, machine communications, embedded controllers, firmware workflows, and field validation for equipment used in real manufacturing.
+### Stealth Batteries Commerce/Admin Platform
+Full production commerce and operations platform for a physical-product business. Connected ecommerce, products, dealers, affiliates, sales reps, orders, shipping, support, warranty, dashboards, and Payload/Postgres admin tooling, replacing manual email/status tracking with a system the business could actually run from.
+
+### Stealth AI Support System
+Agentic customer and internal support platform for complex industrial products. Connected Claude-style chat, real-time support workflows, admin dashboards, ticketing, analytics, conversation history, onboarding, warranty/claims handling, escalation rules, and human handoff so customers could get guided technical help without waiting for manual triage.
+
+### Tech Support AI Backend
+Production AI support backend that turned scattered customer conversations into structured operational workflows. Built Claude/LLM integration, JWT auth, MongoDB/Mongoose data models, machine/customer records, support tickets, document ingestion, analytics, notifications, and API routes so support could track real issues instead of losing context in inboxes.
 
 ### Customer Tracking CRM
 Custom CRM and order operations platform for real business throughput. Built company/contact/order workflows, approvals, customer portal views, document uploads, OCR-style processing, real-time updates, notifications, audit trails, role-aware state, and Oracle APEX-connected database operations to make sales, support, and fulfillment traceable.
 
 ### GEO Command Center Platform
 Full-stack AI/search visibility SaaS architecture with Next.js, Supabase/Postgres, Drizzle, FastAPI, background workers, tests, provider/report pipelines, audits, citation tracking, multi-tenant dashboards, and analytics. Built as a serious SaaS foundation, not a demo, with data modeling and operational reporting from the start.
-
-### JB4Pro Vehicle Tuning Platform
-End-to-end embedded and full-stack platform for JB4 tuning hardware used across a massive active vehicle ecosystem. Built C/C++ firmware workflows, microcontroller integrations, bootloaders, remote app-to-device firmware delivery, BLE/serial/CAN communication, Flutter apps across mobile and desktop, calibration tools, live telemetry, thousands of logged parameters, map/settings control, E85/flex fuel and WMI/meth workflows, diagnostics, cloud/support systems, and release validation.
-
-### CANFlex Fuel and Sensor Controller
-Mobile and hardware-connected software for a fuel injector, E85 sensor, and fuel-pressure control ecosystem. Built BLE communication, ethanol/fuel-temperature/fuel-pressure gauges, CAN bus and analog output configuration, pressure sensor modes, calibration, logs, firmware/version handling, and ECU/JB4 integration paths for real vehicle tuning use.
 
 ### TurboLamik AWD / Transmission Telemetry
 Vehicle and embedded telemetry system for transmission and AWD control research. Built ESP-IDF-oriented C scaffolding, BMW E90 CAN signal decoding, TurboLamik TCU frame decoding, raw CAN capture, health/watchdog state, derived drivetrain metrics, shadow AWD request logic, BLE telemetry, Flutter dashboard, raw frame monitor, decoded signal monitor, and saved log/export workflows.
