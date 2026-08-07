@@ -16,7 +16,7 @@ This portfolio is a cleaned-up source snapshot of work I can talk through in det
 - I build mobile and desktop applications with Flutter/Dart and hardware-connected workflows across Windows, macOS, iOS, Android, BLE/device communication, local storage, diagnostics, telemetry, charts/gauges, settings, and field-service UX.
 - I build embedded-adjacent and hardware-connected software: C/C++ firmware workflows, microcontrollers, CAN bus, OBD2-connected hardware, firmware update flows, bootloader/erase/write/checksum patterns, live telemetry, diagnostics, datalogging, and calibration/configuration tools.
 - I build ECU/TCU tuning software and connected vehicle ecosystems: standalone tuning hardware, map/calibration interfaces, BLE/serial/CAN/OBD2 communication, diagnostics, high-volume datalogging, safety states, customer/tuner portals, and production release support.
-- I own MP Analytical and have built custom scientific software for analytical testing workflows, HPLC, mass spectrometry, ISO lab practices, reporting, data integrity, traceability, validation, documentation, and technical users in regulated environments.
+- I own MP Analytical and began in a Bayer internship that turned into a professional lab/software role, building custom scientific software and embedded firmware around analytical testing equipment, HPLC, mass spectrometry, ISO lab practices, reporting, data integrity, traceability, validation, documentation, and regulated medical-adjacent workflows.
 
 ## Best Interview Walkthrough
 
@@ -98,7 +98,7 @@ That is the work I am best at. I do not need a perfect spec to start. I need the
 
 **AI:** Claude/Anthropic, OpenAI-style APIs, AI support agents, prompt/context workflows, local LLM workflows, Codex/Cursor-style coding flows, codebase indexing, document ingestion, OCR/document processing, ticket triage, warranty/claims workflows, analytics, escalation, and human handoff.
 
-**Scientific / Analytical:** MP Analytical, HPLC, mass spectrometry, analytical testing workflows, ISO lab standards, scientific data handling, method/run context, validation checks, reporting support, data integrity, traceable records, regulated documentation, exception review, and lab-process automation.
+**Scientific / Analytical:** MP Analytical, Bayer internship-to-role experience, HPLC, mass spectrometry, analytical testing equipment, embedded firmware for lab systems, ISO lab standards, regulated medical-adjacent workflows, scientific data handling, method/run context, validation checks, reporting support, data integrity, traceable records, strict protocol navigation, regulated documentation, exception review, and lab-process automation.
 
 **Vehicle / Tuning / Embedded:** ECU/TCU tuning workflows, JB4, CANFlex, standalone ECU/TCU-adjacent controllers, GDI drivers, fuel injector controllers, C, C++, ESP-IDF-oriented scaffolding, CAN bus, OBD2, UDS-style diagnostics, BLE/serial communication, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN output docs, raw CAN capture, health/watchdog state, derived metrics, calibration interfaces, map control, firmware update flows, bootloader/erase/write/checksum patterns, and production tuning support.
 

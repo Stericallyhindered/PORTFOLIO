@@ -96,13 +96,14 @@ Owner / Scientific Software and Analytical Testing Systems
 - Brought software engineering into analytical operations by reducing spreadsheet/manual-process risk, improving traceability, documenting assumptions, and building tools around how scientists and technicians actually work.
 
 ### Bayer
-Technical / Analytical Testing Software Background  
+Technical Intern / Analytical Testing Software and Embedded Lab Systems  
 2015 - 2018
 
-- Worked in analytical/scientific environments after studying biochemistry and software engineering.
-- Built and supported custom code, analytical workflows, and technical operations for regulated testing environments.
-- Gained experience with documentation, data integrity, regulated processes, quality expectations, validation, troubleshooting, careful change control, and technical systems where small mistakes could affect real outcomes.
-- Developed a strong foundation in scientific thinking, root-cause analysis, measurement workflows, traceability, and software that supports technical users instead of just looking polished.
+- Started as an internship that turned into a professional engineering role, working inside analytical and medical-adjacent lab environments where process control, documentation, validation, and traceability mattered every day.
+- Learned and supported analytical testing equipment, scientific measurement workflows, instrument behavior, sample/result handling, troubleshooting, and strict laboratory protocols.
+- Wrote and supported embedded firmware and custom software around analytical testing equipment, helping connect lab instruments, technical workflows, data handling, and repeatable operating procedures.
+- Developed a deep working understanding of ISO lab practices, regulated medical/testing environments, quality systems, change control, data integrity, and the discipline required to navigate highly controlled analytical processes.
+- Built the foundation for how I still engineer today: measure carefully, validate assumptions, document decisions, respect protocol, and treat small software or workflow mistakes as real production risk.
 
 ## Independent Engineering Work
 
