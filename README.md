@@ -1,6 +1,6 @@
 # Matthew Phillips - Engineering Portfolio
 
-I'm Matthew Phillips, a Southern California engineering lead and full-stack software engineer. I build the software behind real products: web platforms, AI support systems, agentic workflows, mobile and desktop apps, cloud APIs, databases, CRM/order platforms, customer portals, admin dashboards, ecommerce systems, industrial machine tools, CAD/CAM workflows, embedded firmware, connected automotive hardware, ECU/TCU tuning platforms, analytical testing software, and internal tools that keep businesses from drowning in manual work.
+I'm Matthew Phillips, a Southern California engineering lead and full-stack software engineer. I build the software behind real products: web platforms, AI support systems, agentic workflows, mobile and desktop apps, cloud APIs, databases, CRM/order platforms, customer portals, admin dashboards, ecommerce systems, industrial machine tools, CAD/CAM workflows, embedded firmware, connected automotive hardware, ECU/TCU tuning platforms, MP Analytical scientific software, HPLC/mass spec workflows, analytical testing software, and internal tools that keep businesses from drowning in manual work.
 
 This portfolio is a cleaned-up source snapshot of work I can talk through in detail. It is not a collection of toy apps. Most of these projects came from actual operational problems: support teams buried in email, customers needing clear portals, orders needing traceability, machines needing usable software, AI workflows needing guardrails, tuning hardware needing safe app-to-device workflows, vehicle logs needing structure, firmware updates needing recovery behavior, and technical teams needing tools that make the work less painful.
 
@@ -16,7 +16,7 @@ This portfolio is a cleaned-up source snapshot of work I can talk through in det
 - I build mobile and desktop applications with Flutter/Dart and hardware-connected workflows across Windows, macOS, iOS, Android, BLE/device communication, local storage, diagnostics, telemetry, charts/gauges, settings, and field-service UX.
 - I build embedded-adjacent and hardware-connected software: C/C++ firmware workflows, microcontrollers, CAN bus, OBD2-connected hardware, firmware update flows, bootloader/erase/write/checksum patterns, live telemetry, diagnostics, datalogging, and calibration/configuration tools.
 - I build ECU/TCU tuning software and connected vehicle ecosystems: standalone tuning hardware, map/calibration interfaces, BLE/serial/CAN/OBD2 communication, diagnostics, high-volume datalogging, safety states, customer/tuner portals, and production release support.
-- I have a biochemistry and analytical testing background, so I care about data integrity, traceability, validation, documentation, and software that works in technical or regulated environments.
+- I own MP Analytical and have built custom scientific software for analytical testing workflows, HPLC, mass spectrometry, ISO lab practices, reporting, data integrity, traceability, validation, documentation, and technical users in regulated environments.
 
 ## Best Interview Walkthrough
 
@@ -81,6 +81,7 @@ I like building the connective tissue of a business or product.
 - A vehicle log becomes something a tuner or support person can actually act on.
 - A tuning device becomes a full product ecosystem: firmware, bootloader, app, protocol, map controls, telemetry, diagnostics, support history, release notes, and recovery behavior.
 - A raw CAN frame becomes a decoded signal, health state, derived metric, validation note, or dashboard value.
+- A lab instrument output becomes structured analytical data, validation checks, traceable reporting, method context, exception review, and a workflow technicians can actually use.
 - An order becomes approvals, shipping actions, customer status, support history, and admin visibility.
 - A hardware device becomes a mobile interface with settings, logs, gauges, diagnostics, and firmware workflows.
 - An AI response becomes part of a controlled workflow instead of a random chatbot answer.
@@ -96,6 +97,8 @@ That is the work I am best at. I do not need a perfect spec to start. I need the
 **Databases:** Postgres, SQLite, MongoDB/Mongoose, Supabase, Drizzle, Prisma, Redis/BullMQ-style queues, Payload CMS, data modeling, migrations, reporting tables, CRM/order state, support history, and audit trails.
 
 **AI:** Claude/Anthropic, OpenAI-style APIs, AI support agents, prompt/context workflows, local LLM workflows, Codex/Cursor-style coding flows, codebase indexing, document ingestion, OCR/document processing, ticket triage, warranty/claims workflows, analytics, escalation, and human handoff.
+
+**Scientific / Analytical:** MP Analytical, HPLC, mass spectrometry, analytical testing workflows, ISO lab standards, scientific data handling, method/run context, validation checks, reporting support, data integrity, traceable records, regulated documentation, exception review, and lab-process automation.
 
 **Vehicle / Tuning / Embedded:** ECU/TCU tuning workflows, JB4, CANFlex, standalone ECU/TCU-adjacent controllers, GDI drivers, fuel injector controllers, C, C++, ESP-IDF-oriented scaffolding, CAN bus, OBD2, UDS-style diagnostics, BLE/serial communication, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN output docs, raw CAN capture, health/watchdog state, derived metrics, calibration interfaces, map control, firmware update flows, bootloader/erase/write/checksum patterns, and production tuning support.
 

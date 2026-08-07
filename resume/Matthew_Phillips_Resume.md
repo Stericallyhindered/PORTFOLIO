@@ -10,7 +10,7 @@ Hands-on software engineer and engineering lead with more than 11 years of exper
 
 I build the connective tissue between products, users, devices, data, APIs, operations, and support teams. My work includes customer portals, admin dashboards, API integrations, AI support agents, LLM workstation tools, ecommerce platforms, CRM/order systems, warranty workflows, inventory and shipping automation, mobile apps, firmware update flows, telemetry, diagnostics, validation tools, background jobs, webhooks, audit trails, and deployment pipelines.
 
-My background is intentionally broad: industrial CAD/CAM and machine-control software, cross-platform Flutter applications, embedded C/C++ firmware, bootloaders, Python test automation, BLE/CAN/OBD2/UART communication, high-volume vehicle telemetry, cloud APIs, database architecture, practical AI systems, Oracle APEX business applications, ecommerce operations, and regulated analytical testing. This range lets me debug across application, infrastructure, data, device, firmware, and human-process boundaries.
+My background is intentionally broad: industrial CAD/CAM and machine-control software, cross-platform Flutter applications, embedded C/C++ firmware, bootloaders, Python test automation, BLE/CAN/OBD2/UART communication, high-volume vehicle telemetry, cloud APIs, database architecture, practical AI systems, Oracle APEX business applications, ecommerce operations, MP Analytical custom scientific software, HPLC/mass spec workflows, ISO lab practices, and regulated analytical testing. This range lets me debug across application, infrastructure, data, device, firmware, laboratory, and human-process boundaries.
 
 ## Full-Stack, Mobile, AI, and Embedded Profile
 
@@ -36,7 +36,7 @@ My background is intentionally broad: industrial CAD/CAM and machine-control sof
 - Firmware and embedded systems: C/C++, microcontrollers and embedded development platforms, ESP32/ESP-IDF, Arduino, Raspberry Pi-class systems, device drivers, interrupts, state machines, watchdogs, persistent configuration, bootloaders, remote firmware delivery, HEX parsing, block erase/write, checksum validation, and recovery behavior.
 - Firmware validation and test engineering: Python automated test scripts, regression testing, protocol and packet validation, hardware-in-the-loop and bench testing, failure reproduction, instrumentation, logging, CI-aware test workflows, release validation, and root-cause analysis.
 - Vehicle, IoT, and telematics systems: ECU/tuning workflows, cellular/GPS/connected-device concepts, BLE/CAN/OBD2 telemetry, raw frame capture, signal decoding, thousands of logged parameters, derived metrics, fuel/sensor controllers, and embedded Linux/networking concepts.
-- Scientific and regulated background: biochemistry, analytical testing software, medical/technical device-adjacent code, data integrity, traceable workflows, documentation, validation, and quality-focused change control.
+- Scientific and regulated background: MP Analytical owner/operator, biochemistry, HPLC, mass spectrometry, analytical testing software, ISO lab standards, medical/technical device-adjacent code, data integrity, traceable workflows, documentation, validation, and quality-focused change control.
 - Working style: ask scope questions early, understand the user, keep changes readable, document decisions, review AI-generated code critically, communicate before going dark, and own production behavior.
 
 ## Professional Experience
@@ -85,8 +85,29 @@ Lead Developer - Automotive Software, Mobile Apps, Hardware Integration, Support
 - Operated in a domain where incorrect parsing, settings, firmware assumptions, or support guidance could affect real vehicles, requiring careful validation, documentation, ownership, and code review.
 - Completed the major software initiatives ahead of schedule, documented and transitioned the systems, and moved on once the core work had been delivered and the role naturally wound down.
 
-### Independent Vehicle / Hardware Software Projects
-Vehicle Telemetry, CAN Integration, Firmware-Adjacent Tools
+### MP Analytical
+Owner / Scientific Software and Analytical Testing Systems
+2015 - 2021
+
+- Owned and operated MP Analytical while building custom software and technical workflows for analytical testing, laboratory operations, data review, reporting, traceability, and scientific process automation.
+- Worked heavily with HPLC, mass spectrometry, analytical testing practices, ISO lab standards, regulated documentation, data integrity, instrument-driven workflows, method context, result review, and quality-focused change control.
+- Built custom tools that helped turn raw analytical data, instrument output, sample context, batch/run information, reports, and customer or internal requirements into structured workflows technical users could trust.
+- Developed software around scientific data handling, calculations, validation checks, reporting support, audit-friendly records, exception review, repeatable procedures, and practical troubleshooting in lab environments.
+- Brought software engineering into analytical operations by reducing spreadsheet/manual-process risk, improving traceability, documenting assumptions, and building tools around how scientists and technicians actually work.
+
+### Bayer
+Technical / Analytical Testing Software Background  
+2015 - 2018
+
+- Worked in analytical/scientific environments after studying biochemistry and software engineering.
+- Built and supported custom code, analytical workflows, and technical operations for regulated testing environments.
+- Gained experience with documentation, data integrity, regulated processes, quality expectations, validation, troubleshooting, careful change control, and technical systems where small mistakes could affect real outcomes.
+- Developed a strong foundation in scientific thinking, root-cause analysis, measurement workflows, traceability, and software that supports technical users instead of just looking polished.
+
+## Independent Engineering Work
+
+### Vehicle Telemetry, CAN Integration, and Firmware-Adjacent Tools
+2015 - Present
 
 - Built TurboLamik AWD/transmission telemetry foundation with ESP-IDF-oriented firmware scaffolding, passive CAN listening on a shared 500 kbps bus, selected BMW E90 CAN ID decoding, TurboLamik TCU frame decoding, normalized drivetrain/chassis signals, derived metrics, health/watchdog state, raw CAN capture, and shadow-mode AWD request logic.
 - Reverse engineered TurboLamik ADX protocol behavior into a client-device spec, including serial assumptions, polling sequence, fixed packet maps, gearbox torque, engine torque, input/output RPM, slip/clutch data, linear pressure, lockup, analog inputs, CAN torque fields, AWD activation, PWM output, steering angle, and error/safe-mode data.
@@ -98,15 +119,6 @@ Vehicle Telemetry, CAN Integration, Firmware-Adjacent Tools
 - Developed across a broad range of microcontrollers and embedded platforms, including Arduino and Raspberry Pi-class systems, with UART/serial communications, TCP/IP networking, embedded Linux, BLE, CAN, GPIO, PWM, persistent configuration, and device-level troubleshooting.
 - Used oscilloscopes, logic analyzers, digital multimeters, bench power supplies, and serial/CAN diagnostic equipment to validate signals, power behavior, timing, communications, firmware changes, and failure conditions.
 - Built Python-based automated test and data-analysis tools for repeatable device validation, packet/protocol testing, regression coverage, telemetry inspection, and production issue reproduction, with CI-oriented workflows where appropriate.
-
-### Bayer
-Technical / Analytical Testing Software Background  
-2015 - 2018
-
-- Worked in analytical/scientific environments after studying biochemistry and software engineering.
-- Built and supported custom code, analytical workflows, and technical operations for regulated testing environments.
-- Gained experience with documentation, data integrity, regulated processes, quality expectations, validation, troubleshooting, careful change control, and technical systems where small mistakes could affect real outcomes.
-- Developed a strong foundation in scientific thinking, root-cause analysis, measurement workflows, traceability, and software that supports technical users instead of just looking polished.
 
 ## Selected Project Highlights
 
