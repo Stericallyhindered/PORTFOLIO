@@ -1,8 +1,8 @@
 # Matthew Phillips - Engineering Portfolio
 
-I'm Matthew Phillips, a Southern California engineering lead and vehicle software engineer. I build the software behind real products: ECU/TCU tuning platforms, connected automotive hardware, Flutter mobile and desktop tuner apps, C# Windows tools, embedded firmware workflows, CAN/BLE/OBD2 communication, AI support systems, CRM/order platforms, customer portals, admin dashboards, API integrations, analytical testing software, and internal tools that keep businesses from drowning in manual work.
+I'm Matthew Phillips, a Southern California engineering lead and full-stack software engineer. I build the software behind real products: web platforms, AI support systems, agentic workflows, mobile and desktop apps, cloud APIs, databases, CRM/order platforms, customer portals, admin dashboards, ecommerce systems, industrial machine tools, CAD/CAM workflows, embedded firmware, connected automotive hardware, ECU/TCU tuning platforms, analytical testing software, and internal tools that keep businesses from drowning in manual work.
 
-This portfolio is a cleaned-up source snapshot of work I can talk through in detail. It is not a collection of toy apps. Most of these projects came from actual operational problems: tuning hardware needing safe app-to-device workflows, vehicle logs needing structure, firmware updates needing recovery behavior, support teams buried in email, customers needing clear portals, hardware needing a usable mobile interface, AI workflows needing guardrails, orders needing traceability, and technical teams needing tools that make the work less painful.
+This portfolio is a cleaned-up source snapshot of work I can talk through in detail. It is not a collection of toy apps. Most of these projects came from actual operational problems: support teams buried in email, customers needing clear portals, orders needing traceability, machines needing usable software, AI workflows needing guardrails, tuning hardware needing safe app-to-device workflows, vehicle logs needing structure, firmware updates needing recovery behavior, and technical teams needing tools that make the work less painful.
 
 ## Current Resume
 
@@ -11,33 +11,34 @@ This portfolio is a cleaned-up source snapshot of work I can talk through in det
 
 ## The Quick Read
 
-- I build ECU/TCU tuning software and connected vehicle ecosystems: standalone tuning hardware, firmware and bootloader workflows, map/calibration interfaces, BLE/serial/CAN/OBD2 communication, diagnostics, high-volume datalogging, safety states, customer/tuner portals, and production release support.
 - I build full-stack systems with React, Next.js, TypeScript, Node.js, Express, FastAPI, Python, Postgres, SQLite, MongoDB, Supabase, Payload CMS, Prisma/Drizzle-style modeling, REST APIs, webhooks, auth, dashboards, and admin workflows.
 - I build AI workflow software around Claude/OpenAI-style APIs, support agents, document/context ingestion, ticket triage, customer onboarding, warranty/claims handling, analytics, escalation, and human handoff.
-- I build embedded-adjacent and hardware-connected software: Flutter/Dart mobile apps, BLE device communication, CAN bus workflows, OBD2-connected hardware, firmware update flows, bootloader/erase/write/checksum patterns, live telemetry, diagnostics, datalogging, gauges, and calibration/configuration tools.
+- I build mobile and desktop applications with Flutter/Dart and hardware-connected workflows across Windows, macOS, iOS, Android, BLE/device communication, local storage, diagnostics, telemetry, charts/gauges, settings, and field-service UX.
+- I build embedded-adjacent and hardware-connected software: C/C++ firmware workflows, microcontrollers, CAN bus, OBD2-connected hardware, firmware update flows, bootloader/erase/write/checksum patterns, live telemetry, diagnostics, datalogging, and calibration/configuration tools.
+- I build ECU/TCU tuning software and connected vehicle ecosystems: standalone tuning hardware, map/calibration interfaces, BLE/serial/CAN/OBD2 communication, diagnostics, high-volume datalogging, safety states, customer/tuner portals, and production release support.
 - I have a biochemistry and analytical testing background, so I care about data integrity, traceability, validation, documentation, and software that works in technical or regulated environments.
 
 ## Best Interview Walkthrough
 
 If you only have ten minutes, I would start here:
 
-1. [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller)  
-   C/ESP-IDF-oriented vehicle integration: CAN capture, BMW E90 signal decoding, TurboLamik TCU frames, health/watchdog state, derived drivetrain metrics, shadow AWD logic, BLE telemetry, and Flutter dashboard work.
-
-2. [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools)  
-   Final JB4Pro tuning hardware work: Flutter mobile and desktop surfaces, BLE device communication, gauges, logs, diagnostics, map/settings control, protocol notes, firmware update workflows, E85/flex fuel, WMI/meth workflows, and customer-facing tuner software.
-
-3. [`canflex-mobile-app`](./projects/canflex-mobile-app)  
-   CANFlex/NewCANFlex fuel and sensor controller app: BLE communication, firmware screens, E85/fuel telemetry, CAN bus output settings, analog output modes, pressure/calibration settings, logs, gauges, and ECU/JB4 integration paths.
-
-4. [`techsupport-ai-backend`](./projects/techsupport-ai-backend)  
-   Backend AI support system: Claude integration, JWT auth, MongoDB/Mongoose models, machine/customer records, tickets, document ingestion, notifications, analytics, and real support workflow structure.
-
-5. [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin)  
+1. [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin)  
    Full-stack commerce/admin platform: products, dealers, affiliates, sales reps, orders, shipping logic, warranty/support flows, dashboards, Payload CMS, Postgres, Stripe, and operational tooling.
 
-6. [`stealth-machine-backend`](./projects/stealth-machine-backend) and [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter)  
+2. [`stealth-machine-backend`](./projects/stealth-machine-backend) and [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter)  
    Stealth Machine Tools support ecosystem: Next.js/Prisma backend, customers, machines, tickets, training/support materials, AI config, analytics, admin workflows, and a Flutter field/support app.
+
+3. [`techsupport-ai-backend`](./projects/techsupport-ai-backend)  
+   Backend AI support system: Claude integration, JWT auth, MongoDB/Mongoose models, machine/customer records, tickets, document ingestion, notifications, analytics, and real support workflow structure.
+
+4. [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools)  
+   Final JB4Pro tuning hardware work: Flutter mobile and desktop surfaces, BLE device communication, gauges, logs, diagnostics, map/settings control, protocol notes, firmware update workflows, E85/flex fuel, WMI/meth workflows, and customer-facing tuner software.
+
+5. [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller)  
+   C/ESP-IDF-oriented vehicle integration: CAN capture, BMW E90 signal decoding, TurboLamik TCU frames, health/watchdog state, derived drivetrain metrics, shadow AWD logic, BLE telemetry, and Flutter dashboard work.
+
+6. [`canflex-mobile-app`](./projects/canflex-mobile-app)  
+   CANFlex/NewCANFlex fuel and sensor controller app: BLE communication, firmware screens, E85/fuel telemetry, CAN bus output settings, analog output modes, pressure/calibration settings, logs, gauges, and ECU/JB4 integration paths.
 
 7. [`geo-command-center-platform`](./projects/geo-command-center-platform)  
    Full-stack GEO/AI-search visibility platform: Next.js frontend, FastAPI backend services, Supabase/Postgres/Drizzle modeling, workers, provider pipelines, audits, citation tracking, reports, dashboards, and tests.
