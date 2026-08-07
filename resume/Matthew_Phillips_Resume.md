@@ -124,49 +124,49 @@ Technical Intern / Analytical Testing Software and Embedded Lab Systems
 ## Selected Project Highlights
 
 ### Tech Support AI Backend
-Backend AI support system built around real operations: Claude integration, JWT auth, MongoDB/Mongoose models, machine/customer records, support tickets, document ingestion, analytics, notifications, and routes that turn a customer conversation into a trackable backend workflow.
+Production AI support backend that turned scattered customer conversations into structured operational workflows. Built Claude/LLM integration, JWT auth, MongoDB/Mongoose data models, machine/customer records, support tickets, document ingestion, analytics, notifications, and API routes so support could track real issues instead of losing context in inboxes.
 
 ### Stealth AI Support System
-Customer and internal support system with Claude-style chat, real-time support workflows, admin dashboard concepts, ticketing, analytics, conversation history, escalation, warranty/claims handling, onboarding, and human handoff paths.
+Agentic customer and internal support platform for complex industrial products. Connected Claude-style chat, real-time support workflows, admin dashboards, ticketing, analytics, conversation history, onboarding, warranty/claims handling, escalation rules, and human handoff so customers could get guided technical help without waiting for manual triage.
 
 ### Stealth Batteries Commerce/Admin Platform
-Production business platform connecting ecommerce, products, dealers, affiliates, sales reps, orders, shipping, support, warranty, dashboards, and Payload/Postgres admin tooling. The system tied customer-facing workflows to internal operations so the business could move faster without relying on manual email/status tracking.
+Full production commerce and operations platform for a physical-product business. Connected ecommerce, products, dealers, affiliates, sales reps, orders, shipping, support, warranty, dashboards, and Payload/Postgres admin tooling, replacing manual email/status tracking with a system the business could actually run from.
 
 ### Stealth Machine Backend and Field App
-Next.js/Prisma backend plus Flutter field/support app for machine records, support tickets, training materials, customer context, AI support configuration, analytics, local storage, camera/speech/PDF helpers, QR-style workflows, charts, and field-service support UX.
+Industrial machine support stack combining a Next.js/Prisma backend with a Flutter field app. Built machine records, customer context, support tickets, training materials, AI configuration, analytics, local storage, camera/speech/PDF helpers, QR-style workflows, charts, and field-service UX so technicians had the machine history and tools in hand.
 
 ### Industrial Machine CAD/CAM and Control Software
-Full-stack CAD/CAM, operator, configuration, diagnostics, telemetry, and remote-support software for fiber laser welders and cutters, plasma CNC machines, press brakes, benders, and related manufacturing equipment, spanning cross-platform Flutter/Dart interfaces, backend services, databases, machine communications, embedded controllers, firmware workflows, and field validation.
+End-to-end CAD/CAM, operator, configuration, diagnostics, telemetry, and remote-support software for fiber laser welders and cutters, plasma CNC machines, press brakes, benders, and related manufacturing equipment. Spanned Flutter/Dart mobile/desktop interfaces, backend services, databases, machine communications, embedded controllers, firmware workflows, and field validation for equipment used in real manufacturing.
 
 ### Customer Tracking CRM
-CRM/order workflow software for companies, contacts, orders, admin approvals, customer portal views, document uploads, OCR-style processing, real-time updates, notifications, audit trails, role-aware workflows, and Oracle APEX-connected database operations.
+Custom CRM and order operations platform for real business throughput. Built company/contact/order workflows, approvals, customer portal views, document uploads, OCR-style processing, real-time updates, notifications, audit trails, role-aware state, and Oracle APEX-connected database operations to make sales, support, and fulfillment traceable.
 
 ### GEO Command Center Platform
-Full-stack AI/search visibility SaaS with Next.js frontend, Supabase/Postgres/Drizzle data modeling, FastAPI backend services, worker/background processing, tests, provider/report pipelines, audits, citation tracking, multi-tenant dashboards, and analytics workflows.
+Full-stack AI/search visibility SaaS architecture with Next.js, Supabase/Postgres, Drizzle, FastAPI, background workers, tests, provider/report pipelines, audits, citation tracking, multi-tenant dashboards, and analytics. Built as a serious SaaS foundation, not a demo, with data modeling and operational reporting from the start.
 
 ### JB4Pro Vehicle Tuning Platform
-End-to-end embedded and full-stack platform for JB4 tuning hardware, including C/C++ firmware, microcontrollers, bootloaders, remote application-to-device firmware delivery, BLE/serial/CAN communication, Flutter applications across mobile and desktop, vehicle calibration, live telemetry, logging of thousands of parameters, settings and map control, E85/flex fuel and WMI/meth workflows, diagnostics, cloud/support systems, and production validation.
+End-to-end embedded and full-stack platform for JB4 tuning hardware used across a massive active vehicle ecosystem. Built C/C++ firmware workflows, microcontroller integrations, bootloaders, remote app-to-device firmware delivery, BLE/serial/CAN communication, Flutter apps across mobile and desktop, calibration tools, live telemetry, thousands of logged parameters, map/settings control, E85/flex fuel and WMI/meth workflows, diagnostics, cloud/support systems, and release validation.
 
 ### CANFlex Fuel and Sensor Controller
-Mobile software for a fuel injector / E85 sensor / fuel pressure control ecosystem with BLE communication, ethanol/fuel-temperature/fuel-pressure gauges, CAN bus and analog output configuration, pressure sensor modes, calibration, logs, firmware/version handling, and ECU/JB4 integration paths.
+Mobile and hardware-connected software for a fuel injector, E85 sensor, and fuel-pressure control ecosystem. Built BLE communication, ethanol/fuel-temperature/fuel-pressure gauges, CAN bus and analog output configuration, pressure sensor modes, calibration, logs, firmware/version handling, and ECU/JB4 integration paths for real vehicle tuning use.
 
 ### TurboLamik AWD / Transmission Telemetry
-Vehicle/embedded integration project with ESP-IDF-oriented C scaffold, BMW E90 CAN signal decoding, TurboLamik TCU frame decoding, raw CAN capture, health/watchdog state, derived drivetrain metrics, shadow AWD request logic, BLE telemetry, Flutter dashboard, raw frame monitor, decoded signal monitor, and saved log/export workflows.
+Vehicle and embedded telemetry system for transmission and AWD control research. Built ESP-IDF-oriented C scaffolding, BMW E90 CAN signal decoding, TurboLamik TCU frame decoding, raw CAN capture, health/watchdog state, derived drivetrain metrics, shadow AWD request logic, BLE telemetry, Flutter dashboard, raw frame monitor, decoded signal monitor, and saved log/export workflows.
 
 ### STR8Tune ECU Calibration Editor
-ECU calibration/editor tooling with React and TypeScript: XDF/BIN parsing concepts, editable tables/maps, hex and calibration views, tuning assistant flows, comparison tools, 2D/3D visualization, and export-style workflows.
+ECU calibration editor built around the workflows tuners actually need: React/TypeScript UI, XDF/BIN parsing concepts, editable tables/maps, hex and calibration views, tuning assistant flows, comparison tools, 2D/3D visualization, and export-style workflows for making binary calibration data understandable.
 
 ### AmpGen Configurator
-Next.js/React product configurator for electrical/power-system planning, turning a physical product setup into an interactive customer/operations tool with draggable layout zones and TypeScript UI logic.
+Next.js/React configurator that turned electrical/power-system planning into an interactive product workflow. Built draggable layout zones and TypeScript UI logic so customers and operations could reason about a physical system visually instead of through back-and-forth manual notes.
 
 ### Industrial Commerce and Admin Systems
-Built commerce/admin patterns for industrial and specialty product businesses, including inventory services, manual order flows, checkout/payment logic, shipping dashboards, customer/admin workflows, migrations, reusable components, API documentation, and handoff notes.
+Commerce and admin systems for industrial and specialty-product companies where inventory, payment, shipping, and support had to line up. Built inventory services, manual order flows, checkout/payment logic, shipping dashboards, customer/admin workflows, migrations, reusable components, API documentation, and handoff notes.
 
 ### Windows and Network Automation
-Built practical Python/PowerShell local API and Windows/network automation tooling around hotspot/control workflows, showing the operational scripting side of keeping real systems usable.
+Operational automation for Windows and network-heavy environments. Built Python/PowerShell local APIs and control tooling around hotspot/network workflows, the kind of unglamorous infrastructure code that keeps real deployments usable when people are under pressure.
 
 ### Legacy Hardware Desktop Interfaces
-Built and maintained C# WinForms-era hardware interface code around serial port detection, Bluetooth/BLE support, Windows UI surfaces, device discovery, and tuning-tool ergonomics.
+Maintained and modernized legacy C# WinForms hardware interfaces where reliability mattered more than fashion. Worked around serial port detection, Bluetooth/BLE support, Windows UI surfaces, device discovery, and tuning-tool ergonomics so older production tooling stayed useful while newer platforms came online.
 
 ## Technologies
 
