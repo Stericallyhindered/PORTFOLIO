@@ -22,34 +22,38 @@ This portfolio is a cleaned-up source snapshot of work I can talk through in det
 
 If you only have ten minutes, I would start here:
 
-1. [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin)  
+1. [`stealth-ai-operations-ecosystem`](./projects/stealth-ai-operations-ecosystem)  
+   Full AI operations ecosystem across Stealth Machine Tools and Stealth Batteries: customer support agents, machine diagnostics, CAD/CAM support, warranty intake, ecommerce/order support, internal staff assistant, local/hosted LLM routing, RAG, tool calling, contextual memory, RBAC, escalation, admin dashboards, and production guardrails.
+
+2. [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin)  
    Full-stack commerce/admin platform: products, dealers, affiliates, sales reps, orders, shipping logic, warranty/support flows, dashboards, Payload CMS, Postgres, Stripe, and operational tooling.
 
-2. [`stealth-machine-backend`](./projects/stealth-machine-backend) and [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter)  
+3. [`stealth-machine-backend`](./projects/stealth-machine-backend) and [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter)  
    Stealth Machine Tools support ecosystem: Next.js/Prisma backend, customers, machines, tickets, training/support materials, AI config, analytics, admin workflows, and a Flutter field/support app.
 
-3. [`techsupport-ai-backend`](./projects/techsupport-ai-backend)  
+4. [`techsupport-ai-backend`](./projects/techsupport-ai-backend)  
    Backend AI support system: Claude integration, JWT auth, MongoDB/Mongoose models, machine/customer records, tickets, document ingestion, notifications, analytics, and real support workflow structure.
 
-4. [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools)  
+5. [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools)  
    Final JB4Pro tuning hardware work: Flutter mobile and desktop surfaces, BLE device communication, gauges, logs, diagnostics, map/settings control, protocol notes, firmware update workflows, E85/flex fuel, WMI/meth workflows, and customer-facing tuner software.
 
-5. [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller)  
+6. [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller)  
    C/ESP-IDF-oriented vehicle integration: CAN capture, BMW E90 signal decoding, TurboLamik TCU frames, health/watchdog state, derived drivetrain metrics, shadow AWD logic, BLE telemetry, and Flutter dashboard work.
 
-6. [`canflex-mobile-app`](./projects/canflex-mobile-app)  
+7. [`canflex-mobile-app`](./projects/canflex-mobile-app)  
    CANFlex/NewCANFlex fuel and sensor controller app: BLE communication, firmware screens, E85/fuel telemetry, CAN bus output settings, analog output modes, pressure/calibration settings, logs, gauges, and ECU/JB4 integration paths.
 
-7. [`geo-command-center-platform`](./projects/geo-command-center-platform)  
+8. [`geo-command-center-platform`](./projects/geo-command-center-platform)  
    Full-stack GEO/AI-search visibility platform: Next.js frontend, FastAPI backend services, Supabase/Postgres/Drizzle modeling, workers, provider pipelines, audits, citation tracking, reports, dashboards, and tests.
 
-8. [`customer-tracking-crm`](./projects/customer-tracking-crm)  
+9. [`customer-tracking-crm`](./projects/customer-tracking-crm)  
    CRM/order workflow system: companies, contacts, orders, approvals, customer portal views, document uploads, OCR-style intake, realtime updates, notifications, audit trails, and role-aware workflows.
 
 ## Project Map
 
 | Project | What it proves |
 | --- | --- |
+| [`stealth-ai-operations-ecosystem`](./projects/stealth-ai-operations-ecosystem) | Flagship AI operations case study across Stealth Machine Tools and Stealth Batteries: support agents, machine diagnostics, CAD/CAM support, warranty intake, ecommerce/order support, internal assistant, RAG, tool calling, contextual memory, local/hosted LLM routing, RBAC, escalation, audit trails, and production guardrails. |
 | [`techsupport-ai-backend`](./projects/techsupport-ai-backend) | AI support backend with Claude integration, auth, persistence, tickets, document/context ingestion, analytics, notifications, and support workflow routes. |
 | [`stealth-ai-support-system`](./projects/stealth-ai-support-system) | Customer support/chat prototype with admin review, conversation history, escalation, ticketing, support analytics, warranty/claims handling, onboarding, and human handoff. |
 | [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin) | Production business platform connecting ecommerce, dealers, affiliates, sales reps, orders, shipping, warranty, support, dashboards, and Payload/Postgres admin tooling. |
