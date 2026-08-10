@@ -114,6 +114,5 @@ I am careful with existing systems. I like scoped changes, readable code, useful
 
 These are public portfolio snapshots. I removed runtime secrets, `.env` files, dependency folders, generated builds, databases, archives, private customer data, firmware binaries, and large binary assets before publishing.
 
-Some projects were built fast because the job was to solve a real business problem quickly. Some are more polished than others. What I want you to see is the range: engineering leadership, full-stack systems, AI integrations, CRM/support tools, dashboards, workflow automation, embedded-adjacent code, hardware-connected mobile apps, and software written to make real work easier.
 
 Contact: `bajaracer415@gmail.com`
