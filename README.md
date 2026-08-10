@@ -23,7 +23,7 @@ I'm Matthew Phillips, a Southern California engineering lead and full-stack soft
 If you only have ten minutes, I would start here:
 
 1. [`stealth-ai-operations-ecosystem`](./projects/stealth-ai-operations-ecosystem)  
-   Full AI operations ecosystem across Stealth Machine Tools and Stealth Batteries: customer support agents, machine diagnostics, CAD/CAM support, warranty intake, ecommerce/order support, internal staff assistant, local/hosted LLM routing, RAG, tool calling, contextual memory, RBAC, escalation, admin dashboards, and production guardrails.
+   Full AI operations ecosystem across Stealth Machine Tools and Stealth Batteries: customer support agents, live machine-cut monitoring, learned cut-quality memory, offline/server diagnostics, CAD/CAM support, warranty evidence, ecommerce/order support, internal staff assistant, local/hosted LLM routing, RAG, tool calling, contextual memory, RBAC, escalation, admin dashboards, and production guardrails.
 
 2. [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin)  
    Full-stack commerce/admin platform: products, dealers, affiliates, sales reps, orders, shipping logic, warranty/support flows, dashboards, Payload CMS, Postgres, Stripe, and operational tooling.
@@ -53,7 +53,7 @@ If you only have ten minutes, I would start here:
 
 | Project | What it proves |
 | --- | --- |
-| [`stealth-ai-operations-ecosystem`](./projects/stealth-ai-operations-ecosystem) | Flagship AI operations case study across Stealth Machine Tools and Stealth Batteries: support agents, machine diagnostics, CAD/CAM support, warranty intake, ecommerce/order support, internal assistant, RAG, tool calling, contextual memory, local/hosted LLM routing, RBAC, escalation, audit trails, and production guardrails. |
+| [`stealth-ai-operations-ecosystem`](./projects/stealth-ai-operations-ecosystem) | Flagship AI operations case study across Stealth Machine Tools and Stealth Batteries: support agents, live machine-cut monitoring, learned cut-quality memory, offline/server diagnostics, warranty evidence, CAD/CAM support, ecommerce/order support, internal assistant, RAG, tool calling, contextual memory, local/hosted LLM routing, RBAC, escalation, audit trails, and production guardrails. |
 | [`techsupport-ai-backend`](./projects/techsupport-ai-backend) | AI support backend with Claude integration, auth, persistence, tickets, document/context ingestion, analytics, notifications, and support workflow routes. |
 | [`stealth-ai-support-system`](./projects/stealth-ai-support-system) | Customer support/chat prototype with admin review, conversation history, escalation, ticketing, support analytics, warranty/claims handling, onboarding, and human handoff. |
 | [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin) | Production business platform connecting ecommerce, dealers, affiliates, sales reps, orders, shipping, warranty, support, dashboards, and Payload/Postgres admin tooling. |
