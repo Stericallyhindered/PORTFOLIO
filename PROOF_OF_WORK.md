@@ -8,6 +8,12 @@ Most production work lived in private company repos. This public repo contains s
 
 That is why the public commit history should be read as a portfolio-publishing timeline, not the original work timeline.
 
+## Ownership Note
+
+Unless a project README explicitly says otherwise, the code published in this portfolio is my own work. In real company environments I have also led teams, reviewed code, coached junior engineers, and productionized work that started as another engineer's prototype, but this public repository is not a random team dump. It is a cleaned-up proof path of source I personally built or substantially rebuilt.
+
+When a production system had multiple contributors, the public snapshot here is meant to show the parts I can personally explain, defend, modify, and improve in an interview.
+
 ## What The Repo Proves
 
 | Claim | Public evidence | Status |

@@ -4,6 +4,8 @@ This file turns the biggest portfolio claims into direct interview probes.
 
 If I wrote it or owned it, I should be able to explain it without hiding behind a README.
 
+Unless a project README states otherwise, the code in this portfolio is my own work. These probes are meant to verify that directly: ask me to walk through the code, change it, debug it, or explain the tradeoffs.
+
 ## 1. Verify Hardware-Connected Mobile Work
 
 Ask:

@@ -6,7 +6,9 @@ Resume source: [`resume/Matthew_Phillips_Resume.md`](./resume/Matthew_Phillips_R
 
 I build software that has to work around real machines, real customers, and real business mess. That includes full stack web apps, AI support systems, agentic workflows, mobile and desktop apps, cloud APIs, databases, CRM/order platforms, customer portals, admin dashboards, ecommerce systems, industrial machine tools, CAD/CAM workflows, embedded firmware, connected automotive hardware, ECU/TCU tuning platforms, HPLC/mass spec workflows, analytical testing software, and internal tools that keep businesses from drowning in manual work.
 
-Most of my production work lived in private company repos. This public repo is a cleaned-up portfolio snapshot with secrets, customer data, private binaries, firmware images, build outputs, databases, and private infrastructure removed. The point is to show implementation style, architecture, domain depth, and the kind of problems I have owned.
+Unless a project README says otherwise, the code in this portfolio is my own work. In company settings I have also led, reviewed, and helped productionize work from other engineers, but the source snapshots published here are included as my personal proof path.
+
+Most of my production work lived in private company repos. This public repo is a cleaned-up portfolio snapshot with secrets, customer data, private binaries, firmware images, build outputs, databases, and private infrastructure removed. The point is to show implementation style, architecture, domain depth, and the kind of problems I personally built and owned.
 
 ## Start Here
 
