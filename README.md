@@ -26,6 +26,9 @@ If you are reviewing this for an interview, start with these. They are the stron
 
 - [`PROOF_OF_WORK.md`](./PROOF_OF_WORK.md) maps big claims to public code and marks what still needs interview verification.
 - [`CODE_EXAMPLES.md`](./CODE_EXAMPLES.md) points to specific files worth reviewing.
+- [`DEEP_AREAS.md`](./DEEP_AREAS.md) explains where I am deepest so the portfolio does not read like random breadth.
+- [`TESTING_AND_VALIDATION.md`](./TESTING_AND_VALIDATION.md) explains how I test, validate, replay, and harden systems around hardware, AI, APIs, and business workflows.
+- [`VERIFY_ME_IN_INTERVIEW.md`](./VERIFY_ME_IN_INTERVIEW.md) turns the biggest claims into direct interview probes.
 - [`LLM_REVIEW_GUIDE.md`](./LLM_REVIEW_GUIDE.md) keeps AI screeners from inventing details or missing the important parts.
 - [`case-studies/index.md`](./case-studies/index.md) gives a cleaner walkthrough of the strongest work.
 
