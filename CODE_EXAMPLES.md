@@ -38,6 +38,38 @@ This file points reviewers to the highest-signal examples in the portfolio, espe
 - `projects/jb4pro-mobile-device-tools/lib/command list.md`  
   JB4 command and packet notes for logging, settings retrieval/save, firmware commands, E85/N2O config, and incoming telemetry.
 
+### Redline GCAL BMW G-Chassis Calibration Studio
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Binary/CalibrationBinaryDocument.cs`  
+  DME BIN document model with bounded reads/writes, changed-byte tracking, undo/redo thinking, export behavior, and safety around source files.
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Definitions.Xdf/XdfParser.cs`  
+  XDF definition parsing for turning calibration metadata into table/map structures the UI can work with.
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Definitions.Xdf/AffineTransform.cs`  
+  Conversion/equation handling for mapping raw bytes into calibration values and back.
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Desktop/MainWindow.xaml.cs`  
+  Main WPF workflow tying files, definitions, tables, logs, validation state, and operator actions together.
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Desktop/MapSurfaceView.cs`  
+  Interactive calibration-map visualization and 3D surface rendering.
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Logs/MhdLogParser.cs`  
+  Real log ingestion, channel normalization, software-ID extraction, and quality checks.
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Persistence/LocalProfileStore.cs`  
+  Customer, vehicle, build, revision, attachment, and review persistence around the tuning workflow.
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/tests/Redline.Calibration.Tests/CalibrationBinaryDocumentTests.cs`  
+  Tests around binary document safety and edit/export behavior.
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/tests/Redline.Calibration.Tests/XdfParserTests.cs`  
+  Parser tests around XDF table/axis/category behavior.
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/tests/Redline.Calibration.Tests/UdsFlashTransferTests.cs`  
+  Defensive transfer-workflow tests for flash-like operations.
+
 ### CANFlex Mobile App
 
 - `projects/canflex-mobile-app/lib/ble_provider.dart`  

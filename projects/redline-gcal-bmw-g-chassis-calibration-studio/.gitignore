@@ -1,0 +1,23 @@
+# Visual Studio and .NET build output
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+TestResults/
+
+# Local settings, secrets, and generated diagnostics
+*.local.json
+*.secrets.json
+*.dmp
+*.log
+
+# Downloaded source references and calibration fixtures
+/work/*-reference/
+/fixtures/local/
+
+# Local package caches and publish output
+/.packages/
+/artifacts/
+/publish/
+

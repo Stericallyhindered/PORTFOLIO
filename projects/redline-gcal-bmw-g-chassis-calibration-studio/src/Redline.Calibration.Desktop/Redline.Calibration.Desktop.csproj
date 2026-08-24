@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Redline.Calibration.Domain\Redline.Calibration.Domain.csproj" />
+    <ProjectReference Include="..\Redline.Calibration.Binary\Redline.Calibration.Binary.csproj" />
+    <ProjectReference Include="..\Redline.Calibration.Definitions.Xdf\Redline.Calibration.Definitions.Xdf.csproj" />
+    <ProjectReference Include="..\Redline.Calibration.Logs\Redline.Calibration.Logs.csproj" />
+    <ProjectReference Include="..\Redline.Calibration.Persistence\Redline.Calibration.Persistence.csproj" />
+    <ProjectReference Include="..\Redline.Calibration.Diagnostics\Redline.Calibration.Diagnostics.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>GCAL.Studio</AssemblyName>
+    <Product>GCAL Studio</Product>
+    <Company>GCAL</Company>
+    <Description>G-Series calibration studio</Description>
+  </PropertyGroup>
+
+</Project>

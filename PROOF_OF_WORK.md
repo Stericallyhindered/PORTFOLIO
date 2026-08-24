@@ -19,7 +19,8 @@ That is why the public commit history should be read as a portfolio-publishing t
 | Embedded and firmware-adjacent work | `turbolamik-awd-controller/firmware`, `growmie-edge-hub-firmware`, `esp32-mouse-controller`, `vehicle-touch-input-controller` | Source-backed |
 | AI support workflows | `techsupport-ai-backend`, `stealth-ai-support-system`, `stealth-machine-backend/src/lib/ai.ts` | Source-backed |
 | Commerce, CRM, and admin systems | `stealth-batteries-commerce-admin`, `customer-tracking-crm`, `laserconsumables-commerce`, `straincollector-commerce`, `bassclown-ecommerce` | Source-backed |
-| Automotive tuning ecosystem experience | `jb4pro-mobile-device-tools`, `jb4pro-csharp-interface`, `canflex-mobile-app`, `turbolamik-awd-controller`, `str8tune-*` | Source-backed, production scale interview-verifiable |
+| Automotive tuning ecosystem experience | `jb4pro-mobile-device-tools`, `jb4pro-csharp-interface`, `redline-gcal-bmw-g-chassis-calibration-studio`, `canflex-mobile-app`, `turbolamik-awd-controller`, `str8tune-*` | Source-backed, production scale interview-verifiable |
+| BMW G-chassis/B58/S58 calibration tooling | `redline-gcal-bmw-g-chassis-calibration-studio` source and tests for BIN document handling, XDF parsing, map editing, log parsing, diagnostics, and flash workflow modeling | Source-backed |
 | Industrial machine support software | `stealth-machine-backend`, `stealth-machine-tools-flutter`, `techsupport-ai-backend` | Source-backed, private production scope interview-verifiable |
 | Leadership, mentoring, team ownership | Resume and project context | Interview/reference-verifiable |
 
@@ -42,19 +43,28 @@ If you want to verify that I know this work deeply, use these files.
 5. `projects/canflex-mobile-app/lib/ble_provider.dart`
    - Ask how BLE telemetry becomes app state and how calibration/settings commands are handled.
 
-6. `projects/stealth-machine-backend/prisma/schema.prisma`
+6. `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Binary/CalibrationBinaryDocument.cs`
+   - Ask how immutable source BINs, bounded writes, changed-byte tracking, undo/redo, and export safety work.
+
+7. `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Definitions.Xdf/XdfParser.cs`
+   - Ask how XDF definitions become editable calibration maps and where address, dimensions, equations, categories, axes, and binary verification are handled.
+
+8. `projects/redline-gcal-bmw-g-chassis-calibration-studio/tests/Redline.Calibration.Tests/UdsFlashTransferTests.cs`
+   - Ask how I think about flash-like operations, transfer state, failure handling, and what should never happen without operator confirmation.
+
+9. `projects/stealth-machine-backend/prisma/schema.prisma`
    - Ask how machines, customers, tickets, users, AI config, and training materials relate.
 
-7. `projects/stealth-machine-backend/src/lib/ai.ts`
+10. `projects/stealth-machine-backend/src/lib/ai.ts`
    - Ask how AI is bounded by context, records, tooling, and escalation.
 
-8. `projects/stealth-batteries-commerce-admin/src/collections`
+11. `projects/stealth-batteries-commerce-admin/src/collections`
    - Ask how commerce entities, dealers, affiliates, orders, shipping, and admin operations fit together.
 
-9. `projects/customer-tracking-crm/server.js`
+12. `projects/customer-tracking-crm/server.js`
    - Ask where this intentionally favors practical deployment over framework purity.
 
-10. `projects/geo-command-center-platform`
+13. `projects/geo-command-center-platform`
    - Ask about GEO/AI-search visibility workflows, provider pipelines, citations, audits, workers, and reports. This is not geospatial.
 
 ## Questions That Verify Ownership
@@ -87,4 +97,3 @@ These are real and fair to ask about.
 - Cross-layer ownership: UI, backend, database, device communication, support workflow, and customer/operator experience.
 - Practical tradeoffs where deployment constraints or business urgency mattered.
 - The ability to explain what should be improved today.
-

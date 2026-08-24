@@ -47,7 +47,31 @@ Good interview probes:
 - How do you protect calibration/settings commands?
 - How do you test without the physical device?
 
-## 3. TurboLamik AWD / Transmission Telemetry
+## 3. Redline GCAL BMW G-Chassis Calibration Studio
+
+Project link:
+
+- [`../projects/redline-gcal-bmw-g-chassis-calibration-studio`](../projects/redline-gcal-bmw-g-chassis-calibration-studio)
+
+What it shows:
+
+- .NET 8 WPF desktop calibration workspace
+- BMW G-chassis/B58/S58 DME workflow
+- BIN document safety and changed-byte tracking
+- XDF parsing and calibration map/table modeling
+- log parsing and channel normalization
+- local customer, vehicle, build, and revision profiles
+- ENET/HSFZ/UDS-oriented diagnostics and flash workflow modeling
+- test coverage around parsing, binary editing, diagnostics, transfer behavior, and persistence
+
+Good interview probes:
+
+- How does a DME binary become editable map/table data?
+- What separates a draft export from a flash-ready file?
+- How should checksum providers and flash workflow safety be isolated?
+- What log quality checks matter before trusting a calibration decision?
+
+## 4. TurboLamik AWD / Transmission Telemetry
 
 Project link:
 
@@ -69,7 +93,7 @@ Good interview probes:
 - What would need validation before real control?
 - How do you separate logging, decoding, derived metrics, and command logic?
 
-## 4. Stealth Machine Tools Support Ecosystem
+## 5. Stealth Machine Tools Support Ecosystem
 
 Project links:
 
@@ -93,7 +117,7 @@ Good interview probes:
 - Where should human escalation happen?
 - What tests or observability would you add first?
 
-## 5. Stealth Batteries Commerce/Admin Platform
+## 6. Stealth Batteries Commerce/Admin Platform
 
 Project link:
 
@@ -115,7 +139,7 @@ Good interview probes:
 - What parts came from the template and what did you customize?
 - How would you harden this for scale?
 
-## 6. Customer Tracking CRM
+## 7. Customer Tracking CRM
 
 Project link:
 
@@ -137,7 +161,7 @@ Good interview probes:
 - Where are authorization and audit logs enforced?
 - How would you modularize it if the team grew?
 
-## 7. GEO Command Center Platform
+## 8. GEO Command Center Platform
 
 Project link:
 
@@ -163,4 +187,3 @@ Good interview probes:
 - How are citations tracked?
 - How would you isolate tenant data?
 - What breaks first at high request volume?
-

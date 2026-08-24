@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "platform": "BMW B58 Gen 2",
+  "softwareId": "00005D55504809",
+  "redistribution": {
+    "allowed": false,
+    "reason": "No repository license was found for the XDF/BIN source at acquisition time. Keep all payloads local until rights are confirmed."
+  },
+  "files": [
+    {
+      "role": "definition",
+      "localFileName": "00005D55504809.xdf",
+      "sizeBytes": 1752518,
+      "sha256": "607A1BBA0D79C9A69FAAAE0AFC81108452A6D82852F806708CE5F0D59FD7EAC4",
+      "source": "https://github.com/dmacpro91/BMW-XDFs/blob/main/B58gen2/00005D55504809/00005D55504809.xdf"
+    },
+    {
+      "role": "originalBinary",
+      "localFileName": "00005D55504809_b58o1_original.bin",
+      "sizeBytes": 8388608,
+      "sha256": "FE92CDB4E9051703376286BC0D47A89870F89E4724E5EB1DE34B18C9C2AAC87D",
+      "source": "https://github.com/dmacpro91/BMW-XDFs/blob/main/B58gen2/00005D55504809/00005D55504809_b58o1_original.bin"
+    },
+    {
+      "role": "log",
+      "localFileName": "2024-01-20_M340i_MHD_00005D55504809.csv",
+      "sizeBytes": 53085,
+      "sha256": "4104E96A324FEF105A7BCEB55DB26F56E878BDA4E9CA5B144B67F30E8A736DE3",
+      "source": "https://datazap.me/u/michaelnrw/m340i-touring-xhp-stage-2-mhd-stage-2-ron102-4th-6th-gear-0",
+      "acquisition": "Datazap public log download",
+      "calibrationLabel": "MHD 4.1.6 00005D55504809 b58o1 v2.0 stg2 95_102-1"
+    }
+  ],
+  "relationships": [
+    {
+      "leftRole": "definition",
+      "rightRole": "originalBinary",
+      "kind": "exactSoftwareIdPair",
+      "verified": true
+    },
+    {
+      "leftRole": "log",
+      "rightRole": "originalBinary",
+      "kind": "sameSoftwareIdDifferentCalibrationState",
+      "verified": true,
+      "note": "The log identifies an MHD Stage 2 calibration. It is suitable for schema and ROM-family integration testing, but it must not be represented as a log of the stock binary."
+    }
+  ]
+}

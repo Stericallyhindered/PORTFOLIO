@@ -66,6 +66,7 @@ Relevant projects:
 
 - `jb4pro-mobile-device-tools`
 - `jb4pro-csharp-interface`
+- `redline-gcal-bmw-g-chassis-calibration-studio`
 - `canflex-mobile-app`
 - `turbolamik-awd-controller`
 - `t56-ble-transmission-controller`
@@ -77,7 +78,12 @@ What I can explain deeply:
 - raw frame capture
 - decoding CAN signals
 - signal freshness and invalid data
+- BMW G-chassis/B58/S58 DME calibration workflow
+- XDF/BIN parsing and calibration map modeling
+- calibration-table editing and changed-byte review
 - telemetry logging
+- log parsing and channel normalization
+- diagnostic and flash workflow modeling
 - firmware update flow from app to device
 - bootloader entry, erase/write/checksum patterns
 - calibration screens and user-adjustable settings
@@ -167,4 +173,3 @@ I have worked with these, but I would not pretend every one is my deepest specia
 - hyperscale infrastructure at FAANG size
 
 I can learn and operate in those areas, but the public portfolio is strongest around applied systems, product engineering, hardware-connected software, AI workflow integration, and business operations.
-

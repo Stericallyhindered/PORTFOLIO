@@ -98,7 +98,32 @@ What I should be able to explain:
 - fallback behavior
 - why some decisions should never be left to the model
 
-## 5. Verify Full-Stack Business Systems
+## 5. Verify BMW G-Chassis Calibration Tooling
+
+Ask:
+
+> Walk through how a DME BIN and XDF definition become an editable calibration table, then explain what has to be true before any output should be considered flash-ready.
+
+Good files:
+
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Binary/CalibrationBinaryDocument.cs`
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Definitions.Xdf/XdfParser.cs`
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Definitions.Xdf/AffineTransform.cs`
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/src/Redline.Calibration.Logs/MhdLogParser.cs`
+- `projects/redline-gcal-bmw-g-chassis-calibration-studio/tests/Redline.Calibration.Tests/UdsFlashTransferTests.cs`
+
+What I should be able to explain:
+
+- immutable source BIN handling
+- address, signedness, byte order, dimensions, equations, and axis mapping
+- changed-byte tracking
+- draft export vs flash-ready output
+- checksum-provider boundary
+- log-channel normalization
+- diagnostic session state
+- why operator confirmation and recovery behavior matter
+
+## 6. Verify Full-Stack Business Systems
 
 Ask:
 
@@ -123,7 +148,7 @@ What I should be able to explain:
 - duplicate events
 - what breaks at scale
 
-## 6. Verify Template vs Custom Work
+## 7. Verify Template vs Custom Work
 
 Ask:
 
@@ -144,7 +169,7 @@ What I should be able to explain:
 - business logic
 - what I would remove or refactor today
 
-## 7. Verify Leadership Claims
+## 8. Verify Leadership Claims
 
 Ask:
 
@@ -167,7 +192,7 @@ Reference-verifiable claims:
 - production ownership
 - company impact
 
-## 8. Verify Scientific / Regulated Workflow Experience
+## 9. Verify Scientific / Regulated Workflow Experience
 
 Ask:
 
@@ -184,7 +209,7 @@ What I should be able to explain:
 - data integrity
 - why "good enough" software can be dangerous in lab/medical-adjacent workflows
 
-## 9. Ask Me What I Would Improve
+## 10. Ask Me What I Would Improve
 
 Ask:
 
@@ -202,16 +227,16 @@ Things I might discuss:
 - where observability should be better
 - where a prototype should become a cleaner module boundary
 
-## 10. Best Overall Interview Flow
+## 11. Best Overall Interview Flow
 
 If I were interviewing myself from this repo, I would do this:
 
 1. Ask me to walk through JB4Pro or CANFlex BLE code.
-2. Jump to TurboLamik CAN decoding.
-3. Jump to Stealth Machine Backend schema and AI workflow.
-4. Ask how I would test the weakest public areas.
-5. Ask what production claim needs references.
-6. Ask what I would refactor first.
+2. Jump to Redline GCAL BIN/XDF calibration workflow.
+3. Jump to TurboLamik CAN decoding.
+4. Jump to Stealth Machine Backend schema and AI workflow.
+5. Ask how I would test the weakest public areas.
+6. Ask what production claim needs references.
+7. Ask what I would refactor first.
 
 That will show very quickly whether the portfolio is real depth or just polished writing.
-

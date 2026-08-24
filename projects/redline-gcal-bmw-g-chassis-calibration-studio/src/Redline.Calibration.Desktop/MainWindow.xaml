@@ -1,0 +1,444 @@
+﻿<Window x:Class="Redline.Calibration.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Redline.Calibration.Desktop"
+        Title="GCAL Studio"
+        Width="1520" Height="920" MinWidth="1120" MinHeight="700"
+        Background="{StaticResource WindowBrush}"
+        WindowStyle="SingleBorderWindow" ResizeMode="CanResize"
+        AllowDrop="True"
+        Drop="Window_Drop"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display">
+    <Grid Background="{StaticResource WindowBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#101319" BorderBrush="#262C35" BorderThickness="0,0,0,1">
+            <Grid Margin="18,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="24" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Width="30" Height="30" Background="{StaticResource AccentBrush}" CornerRadius="6" Margin="0,0,10,0">
+                        <TextBlock Text="G" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="16" />
+                    </Border>
+                    <StackPanel>
+                        <TextBlock Text="GCAL" FontFamily="Segoe UI Semibold" FontSize="17" />
+                        <TextBlock Text="G SERIES DME CALIBRATION" Foreground="{StaticResource MutedBrush}" FontSize="8" />
+                    </StackPanel>
+                </StackPanel>
+                <Border Grid.Column="1" Width="1" Height="24" Background="{StaticResource LineBrush}" HorizontalAlignment="Center" />
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="Profiles" Click="Profiles_Click" Margin="0,0,7,0" />
+                    <Button Content="Open BIN" Click="OpenBin_Click" Margin="0,0,7,0" />
+                    <Button Content="Open XDF" Click="OpenXdf_Click" Margin="0,0,7,0" />
+                    <Button Content="Open Log" Click="OpenLog_Click" />
+                </StackPanel>
+                <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock x:Name="DirtyStateText" Text="SOURCE IMMUTABLE" Foreground="{StaticResource SuccessBrush}" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="10" Margin="0,0,12,0" />
+                    <Button x:Name="UndoButton" Content="Undo" IsEnabled="False" Click="Undo_Click" Margin="0,0,7,0" />
+                    <Button x:Name="RedoButton" Content="Redo" IsEnabled="False" Click="Redo_Click" Margin="0,0,7,0" />
+                    <Button x:Name="ExportButton" Content="Save Copy As..." Style="{StaticResource AccentButton}" IsEnabled="False" Click="Export_Click" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="282" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="#101319" BorderBrush="#262C35" BorderThickness="0,0,1,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Margin="15,14,15,10">
+                        <TextBlock Text="WORKSPACE" Foreground="{StaticResource MutedBrush}" FontSize="10" FontFamily="Segoe UI Semibold" />
+                        <TextBlock x:Name="WorkspaceTitleText" Text="No calibration loaded" FontSize="15" FontFamily="Segoe UI Semibold" Margin="0,5,0,0" TextTrimming="CharacterEllipsis" />
+                        <TextBlock x:Name="SoftwareIdText" Text="SOFTWARE ID —" Foreground="{StaticResource CyanBrush}" FontFamily="Segoe UI Semibold" FontSize="11" Margin="0,4,0,0" />
+                    </StackPanel>
+                    <Border Grid.Row="1" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,1" Padding="15,10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="MAP LIBRARY" Foreground="{StaticResource MutedBrush}" FontSize="10" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" />
+                            <TextBlock x:Name="TableCountText" Grid.Column="1" Text="0" Foreground="{StaticResource TextBrush}" FontFamily="Segoe UI Semibold" />
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Row="2" Margin="12,10">
+                        <TextBox x:Name="MapSearchBox" TextChanged="MapSearchBox_TextChanged" />
+                        <TextBlock x:Name="SearchHint" Text="Filter maps" Foreground="#666A72" IsHitTestVisible="False" Margin="10,0" VerticalAlignment="Center" />
+                    </Grid>
+                    <Grid Grid.Row="3" Margin="12,0,12,8">
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="1.15*" /><ColumnDefinition Width="6" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                        <ComboBox x:Name="TableScopeCombo" SelectedIndex="0" SelectionChanged="TableFilter_SelectionChanged">
+                            <ComboBoxItem Content="Core maps" Tag="CoreMaps" />
+                            <ComboBoxItem Content="Air and boost" Tag="AirBoost" />
+                            <ComboBoxItem Content="Fuel system" Tag="FuelSystem" />
+                            <ComboBoxItem Content="Ignition and knock" Tag="IgnitionKnock" />
+                            <ComboBoxItem Content="Torque and load" Tag="TorqueLoad" />
+                            <ComboBoxItem Content="VANOS and idle" Tag="VanosIdle" />
+                            <ComboBoxItem Content="Limits and safeties" Tag="LimitsSafeties" />
+                            <ComboBoxItem Content="Transmission" Tag="Transmission" />
+                            <ComboBoxItem Content="Breakpoints and axes" Tag="Axes" />
+                            <ComboBoxItem Content="All XDF definitions" Tag="All" />
+                        </ComboBox>
+                        <ComboBox x:Name="TableSortCombo" Grid.Column="2" SelectedIndex="0" SelectionChanged="TableFilter_SelectionChanged">
+                            <ComboBoxItem Content="Name" Tag="System" />
+                            <ComboBoxItem Content="Address" Tag="Address" />
+                            <ComboBoxItem Content="XDF order" Tag="Source" />
+                        </ComboBox>
+                    </Grid>
+                    <ListBox x:Name="TableListBox" Grid.Row="4" Background="Transparent" BorderThickness="0" SelectionChanged="TableListBox_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+                                <Setter Property="Padding" Value="0" />
+                                <Setter Property="Margin" Value="6,1" />
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border x:Name="ItemChrome" Background="Transparent" CornerRadius="3" Padding="9,8">
+                                                <ContentPresenter />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="ItemChrome" Property="Background" Value="{StaticResource RaisedBrush}" /></Trigger>
+                                                <Trigger Property="IsSelected" Value="True"><Setter TargetName="ItemChrome" Property="Background" Value="#3A2423" /><Setter TargetName="ItemChrome" Property="BorderBrush" Value="{StaticResource AccentBrush}" /><Setter TargetName="ItemChrome" Property="BorderThickness" Value="2,0,0,0" /></Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" FontSize="12" />
+                                        <TextBlock Text="{Binding SystemAndRole}" Foreground="{StaticResource CyanBrush}" FontSize="9" Margin="0,3,0,0" TextTrimming="CharacterEllipsis" />
+                                        <TextBlock Text="{Binding AddressAndDimensions}" Foreground="{StaticResource MutedBrush}" FontFamily="Cascadia Mono, Consolas" FontSize="10" Margin="0,3,0,0" />
+                                    </StackPanel>
+                                    <Border Grid.Column="1" Background="{Binding StatusBrush}" CornerRadius="2" Padding="5,2" Margin="8,0,0,0" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Status}" FontSize="9" FontFamily="Segoe UI Semibold" />
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
+            <TabControl x:Name="WorkspaceTabs" Grid.Column="1" SelectionChanged="WorkspaceTabs_SelectionChanged">
+                <TabItem Header="OVERVIEW">
+                    <Grid Margin="22">
+                        <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                        <Border BorderBrush="{StaticResource LineBrush}" BorderThickness="0,0,0,1" Padding="0,0,0,22">
+                            <UniformGrid Columns="4">
+                                <StackPanel><TextBlock Text="BINARY" Foreground="{StaticResource MutedBrush}" FontSize="10" /><TextBlock x:Name="BinaryMetric" Text="—" FontSize="23" FontFamily="Cascadia Mono, Consolas" Margin="0,5,0,0" /></StackPanel>
+                                <StackPanel><TextBlock Text="DEFINITION" Foreground="{StaticResource MutedBrush}" FontSize="10" /><TextBlock x:Name="DefinitionMetric" Text="—" FontSize="23" FontFamily="Cascadia Mono, Consolas" Margin="0,5,0,0" /></StackPanel>
+                                <StackPanel><TextBlock Text="LOG SAMPLES" Foreground="{StaticResource MutedBrush}" FontSize="10" /><TextBlock x:Name="LogMetric" Text="—" FontSize="23" FontFamily="Cascadia Mono, Consolas" Margin="0,5,0,0" /></StackPanel>
+                                <StackPanel><TextBlock Text="MODIFIED BYTES" Foreground="{StaticResource MutedBrush}" FontSize="10" /><TextBlock x:Name="ChangedMetric" Text="0" FontSize="23" FontFamily="Cascadia Mono, Consolas" Margin="0,5,0,0" /></StackPanel>
+                            </UniformGrid>
+                        </Border>
+                        <Grid Grid.Row="1" Margin="0,24,0,0">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="1.25*" /><ColumnDefinition Width="40" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="CURRENT ASSETS" FontSize="11" Foreground="{StaticResource MutedBrush}" FontFamily="Segoe UI Semibold" />
+                                <Border BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0" Margin="0,12,0,0" Padding="0,14">
+                                    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="90" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="BIN" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="BinaryPathText" Grid.Column="1" Text="Not loaded" TextTrimming="CharacterEllipsis" /></Grid>
+                                </Border>
+                                <Border BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0" Padding="0,14">
+                                    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="90" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="XDF" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="DefinitionPathText" Grid.Column="1" Text="Not loaded" TextTrimming="CharacterEllipsis" /></Grid>
+                                </Border>
+                                <Border BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0" Padding="0,14">
+                                    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="90" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="LOG" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="LogPathText" Grid.Column="1" Text="Not loaded" TextTrimming="CharacterEllipsis" /></Grid>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="LOCAL FIXTURE" FontSize="11" Foreground="{StaticResource MutedBrush}" FontFamily="Segoe UI Semibold" />
+                                <TextBlock Text="B58 GEN 2 · 00005D55504809" FontFamily="Cascadia Mono, Consolas" FontSize="16" Margin="0,13,0,5" />
+                                <TextBlock Text="Stock BIN + exact XDF + same-software-ID MHD log" Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" />
+                                <Button Content="Open Verified Fixture" Style="{StaticResource AccentButton}" HorizontalAlignment="Left" Margin="0,18,0,0" Click="OpenFixture_Click" />
+                                <Border Background="#2C2618" BorderBrush="{StaticResource AmberBrush}" BorderThickness="2,0,0,0" Padding="12,9" Margin="0,18,0,0">
+                                    <TextBlock Text="Draft exports are not flash-ready until a checksum provider validates the selected ROM." Foreground="{StaticResource AmberBrush}" TextWrapping="Wrap" />
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="CALIBRATION">
+                    <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="288" /></Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions><RowDefinition Height="44" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                            <Border Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,0,0,1" Padding="13,0">
+                                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /><ColumnDefinition Width="10" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center"><TextBlock x:Name="MapTitleText" Text="Select a calibration map" FontFamily="Segoe UI Semibold" /><TextBlock x:Name="MapUnitText" Foreground="{StaticResource CyanBrush}" Margin="10,0,0,0" /></StackPanel>
+                                    <Button Grid.Column="1" Content="Export XDF Catalog" Click="ExportXdfCatalog_Click" Padding="10,5" />
+                                    <TextBlock x:Name="MapEditStateText" Grid.Column="3" Text="READ ONLY" Foreground="{StaticResource MutedBrush}" VerticalAlignment="Center" FontFamily="Cascadia Mono, Consolas" FontSize="10" />
+                                </Grid>
+                            </Border>
+                            <TabControl x:Name="MapViewTabs" Grid.Row="1">
+                                <TabItem Header="2D TABLE">
+                                    <DataGrid x:Name="MapDataGrid" AutoGenerateColumns="True" AutoGeneratingColumn="MapDataGrid_AutoGeneratingColumn" CellEditEnding="MapDataGrid_CellEditEnding" IsReadOnly="True" EnableRowVirtualization="True" EnableColumnVirtualization="True" GridLinesVisibility="None" HeadersVisibility="All" RowHeaderWidth="0" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" />
+                                </TabItem>
+                                <TabItem Header="3D SURFACE">
+                                    <local:MapSurfaceView x:Name="MapSurface" CellSelected="MapSurface_CellSelected" />
+                                </TabItem>
+                            </TabControl>
+                        </Grid>
+                        <Border Grid.Column="1" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource LineBrush}" BorderThickness="1,0,0,0" Padding="16">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                            <StackPanel>
+                                <TextBlock Text="MAP INSPECTOR" Foreground="{StaticResource MutedBrush}" FontSize="10" FontFamily="Segoe UI Semibold" />
+                                <TextBlock x:Name="InspectorTitle" Text="—" FontSize="16" FontFamily="Segoe UI Semibold" TextWrapping="Wrap" Margin="0,10,0,16" />
+                                <Grid Margin="0,0,0,9"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="ADDRESS" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorAddress" Grid.Column="1" Text="—" FontFamily="Cascadia Mono, Consolas" /></Grid>
+                                <Grid Margin="0,0,0,9"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="DIMENSIONS" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorDimensions" Grid.Column="1" Text="—" FontFamily="Cascadia Mono, Consolas" /></Grid>
+                                <Grid Margin="0,0,0,9"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="ENCODING" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorEncoding" Grid.Column="1" Text="—" FontFamily="Cascadia Mono, Consolas" TextWrapping="Wrap" /></Grid>
+                                <Grid Margin="0,0,0,9"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="EQUATION" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorEquation" Grid.Column="1" Text="—" FontFamily="Cascadia Mono, Consolas" TextWrapping="Wrap" /></Grid>
+                                <Grid Margin="0,0,0,9"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="SYSTEM" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorSystem" Grid.Column="1" Text="—" TextWrapping="Wrap" /></Grid>
+                                <Grid Margin="0,0,0,9"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="ROLE" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorRole" Grid.Column="1" Text="—" TextWrapping="Wrap" /></Grid>
+                                <Grid Margin="0,0,0,9"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="SYMBOL" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorSymbol" Grid.Column="1" Text="—" FontFamily="Cascadia Mono, Consolas" TextWrapping="Wrap" /></Grid>
+                                <Grid Margin="0,0,0,9"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="CATEGORIES" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorCategories" Grid.Column="1" Text="—" TextWrapping="Wrap" /></Grid>
+                                <Grid Margin="0,0,0,9"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="SOURCE" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorSourceClass" Grid.Column="1" Text="—" TextWrapping="Wrap" /></Grid>
+                                <Grid Margin="0,0,0,16"><Grid.ColumnDefinitions><ColumnDefinition Width="92" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><TextBlock Text="ACCESS" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="InspectorAccess" Grid.Column="1" Text="—" /></Grid>
+                                <Border BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0" Padding="0,14,0,0">
+                                    <TextBlock x:Name="InspectorDescription" Text="" Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" />
+                                </Border>
+                                <Border Background="#172426" BorderBrush="{StaticResource CyanBrush}" BorderThickness="2,0,0,0" Padding="10" Margin="0,15,0,0">
+                                    <TextBlock x:Name="InspectorEvidence" Foreground="{StaticResource CyanBrush}" TextWrapping="Wrap" />
+                                </Border>
+                                <Border x:Name="LimitationsPanel" Background="#2C2618" BorderBrush="{StaticResource AmberBrush}" BorderThickness="2,0,0,0" Padding="10" Margin="0,15,0,0" Visibility="Collapsed">
+                                    <TextBlock x:Name="InspectorLimitations" Foreground="{StaticResource AmberBrush}" TextWrapping="Wrap" />
+                                </Border>
+                            </StackPanel>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="LOG ANALYSIS">
+                    <Grid Margin="22">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="52" />
+                            <RowDefinition Height="2.4*" />
+                            <RowDefinition Height="46" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="1.15*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="292" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Row="0" Grid.ColumnSpan="2" Background="#101319" CornerRadius="8" Padding="16,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="18" /><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="LOG WORKBENCH" FontFamily="Segoe UI Semibold" FontSize="14" />
+                                    <TextBlock x:Name="LogCursorText" Text="NO CURSOR" Foreground="{StaticResource CyanBrush}" FontFamily="Cascadia Mono, Consolas" FontSize="9" Margin="0,3,0,0" />
+                                </StackPanel>
+                                <Border Grid.Column="1" Width="1" Height="28" Background="{StaticResource LineBrush}" HorizontalAlignment="Center" />
+                                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Button Content="Boost" Tag="Boost" Click="LogPreset_Click" Margin="0,0,6,0" />
+                                    <Button Content="Fuel" Tag="Fuel" Click="LogPreset_Click" Margin="0,0,6,0" />
+                                    <Button Content="Ignition" Tag="Ignition" Click="LogPreset_Click" Margin="0,0,6,0" />
+                                    <Button Content="Clear" Tag="Clear" Click="LogPreset_Click" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <StackPanel Margin="0,0,22,0"><TextBlock Text="SAMPLES" Foreground="{StaticResource MutedBrush}" FontSize="9" /><TextBlock x:Name="LogSamplesText" Text="—" FontFamily="Cascadia Mono, Consolas" /></StackPanel>
+                                    <StackPanel Margin="0,0,22,0"><TextBlock Text="DURATION" Foreground="{StaticResource MutedBrush}" FontSize="9" /><TextBlock x:Name="LogDurationText" Text="—" FontFamily="Cascadia Mono, Consolas" /></StackPanel>
+                                    <StackPanel Margin="0,0,22,0"><TextBlock Text="RATE" Foreground="{StaticResource MutedBrush}" FontSize="9" /><TextBlock x:Name="LogRateText" Text="—" FontFamily="Cascadia Mono, Consolas" /></StackPanel>
+                                    <StackPanel><TextBlock Text="CHANNELS" Foreground="{StaticResource MutedBrush}" FontSize="9" /><TextBlock x:Name="LogChannelsText" Text="—" FontFamily="Cascadia Mono, Consolas" /></StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="1" Grid.Column="0" Margin="0,14,12,0" Style="{StaticResource ElevatedCard}" Background="#101319">
+                            <Grid>
+                                <local:LogPlotControl x:Name="LogPlot" CursorChanged="LogPlot_CursorChanged" ViewportChanged="LogPlot_ViewportChanged" />
+                                <StackPanel x:Name="EmptyLogState" HorizontalAlignment="Center" VerticalAlignment="Center" Width="310">
+                                    <TextBlock Text="Log session ready" FontSize="22" FontFamily="Segoe UI Semibold" HorizontalAlignment="Center" />
+                                    <TextBlock Text="Open an MHD, bootmod3, or EcuTek CSV to inspect live channels, compare traces, and keep a clean diagnostic record." Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,18" />
+                                    <Button Content="Open Log" Click="OpenLog_Click" Style="{StaticResource AccentButton}" HorizontalAlignment="Center" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="0" Margin="0,8,12,0" Style="{StaticResource ElevatedCard}" Background="#101319">
+                            <local:LogNavigatorControl x:Name="LogNavigator" ViewportChanged="LogNavigator_ViewportChanged" />
+                        </Border>
+
+                        <Border Grid.Row="3" Grid.Column="0" Margin="0,8,12,0" Style="{StaticResource ElevatedCard}" Background="#15181D">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                                <ItemsControl x:Name="ActiveTraceLegend">
+                                    <ItemsControl.ItemsPanel><ItemsPanelTemplate><StackPanel Orientation="Horizontal" /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="10,5,18,5">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="4" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                                <Border Background="{Binding ColorBrush}" CornerRadius="1" Margin="0,0,8,0" />
+                                                <StackPanel Grid.Column="1">
+                                                    <TextBlock Text="{Binding DisplayName}" FontSize="10" TextTrimming="CharacterEllipsis" MaxWidth="170" />
+                                                    <TextBlock Text="{Binding CurrentValue}" Foreground="{Binding ColorBrush}" FontFamily="Cascadia Mono, Consolas" FontSize="10" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+
+                        <Border Grid.Row="4" Grid.Column="0" Margin="0,8,12,0" Style="{StaticResource ElevatedCard}" Background="#101319">
+                            <DataGrid x:Name="LogDataGrid" AutoGenerateColumns="True" IsReadOnly="True" HeadersVisibility="Column" SelectionMode="Single" SelectionUnit="FullRow" />
+                        </Border>
+
+                        <Border Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" Margin="0,14,0,0" Style="{StaticResource ElevatedCard}" Background="#15181D" Padding="16">
+                            <Grid>
+                                <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                    <TextBlock Text="CHANNEL RACK" Foreground="{StaticResource MutedBrush}" FontSize="10" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="SelectedChannelCountText" Grid.Column="1" Text="0 ACTIVE" Foreground="{StaticResource AccentBrush}" FontFamily="Cascadia Mono, Consolas" FontSize="9" />
+                                </Grid>
+                                <Grid Grid.Row="1" Margin="0,10">
+                                    <TextBox x:Name="LogChannelSearchBox" TextChanged="LogChannelSearchBox_TextChanged" />
+                                    <TextBlock x:Name="LogChannelSearchHint" Text="Filter channels" Foreground="#666A72" IsHitTestVisible="False" Margin="10,0" VerticalAlignment="Center" />
+                                </Grid>
+                                <ListBox x:Name="LogChannelList" Grid.Row="2" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                    <ListBox.ItemContainerStyle><Style TargetType="ListBoxItem"><Setter Property="Padding" Value="0" /><Setter Property="Margin" Value="0,1" /><Setter Property="HorizontalContentAlignment" Value="Stretch" /></Style></ListBox.ItemContainerStyle>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Foreground="{StaticResource TextBrush}" Padding="5,6">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions><ColumnDefinition Width="4" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                                    <Border Background="{Binding ColorBrush}" CornerRadius="1" Margin="0,0,9,0" />
+                                                    <StackPanel Grid.Column="1">
+                                                        <TextBlock Text="{Binding DisplayName}" FontSize="11" TextTrimming="CharacterEllipsis" />
+                                                        <TextBlock Text="{Binding CanonicalId}" Foreground="{StaticResource MutedBrush}" FontFamily="Cascadia Mono, Consolas" FontSize="8" TextTrimming="CharacterEllipsis" />
+                                                    </StackPanel>
+                                                    <TextBlock Grid.Column="2" Text="{Binding Unit}" Foreground="{StaticResource MutedBrush}" FontFamily="Cascadia Mono, Consolas" FontSize="9" VerticalAlignment="Center" Margin="7,0,0,0" />
+                                                </Grid>
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="DME COMMS">
+                    <Grid Margin="22">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="180" />
+                        </Grid.RowDefinitions>
+                        <Border BorderBrush="{StaticResource LineBrush}" BorderThickness="0,0,0,1" Padding="0,0,0,18">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="ENET PROGRAMMING WORKSPACE" FontFamily="Segoe UI Semibold" FontSize="16" />
+                                    <TextBlock x:Name="FlashStateText" Text="DISCONNECTED · NO ADAPTER SELECTED" Foreground="{StaticResource CyanBrush}" FontFamily="Cascadia Mono, Consolas" FontSize="10" Margin="0,5,0,0" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Button Content="Discover Adapters" Click="DiscoverAdapters_Click" Margin="0,0,8,0" />
+                                    <Button x:Name="ConnectAdapterButton" Content="Connect" Click="ConnectAdapter_Click" Style="{StaticResource AccentButton}" Margin="0,0,8,0" />
+                                    <Button Content="Read DME" Click="ReadDme_Click" Style="{StaticResource AccentButton}" Margin="0,0,8,0" />
+                                    <Button Content="Extract OEM BIN" Click="ExtractOemBin_Click" Margin="0,0,8,0" />
+                                    <Button Content="Flash Local BIN" Click="FlashLocalBin_Click" Style="{StaticResource AccentButton}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Grid Grid.Row="1" Margin="0,20,0,14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.05*" />
+                                <ColumnDefinition Width="28" />
+                                <ColumnDefinition Width="1.45*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource ElevatedCard}" Padding="14">
+                                <Grid>
+                                    <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                                    <TextBlock Text="01  DISCOVER ADAPTER" Foreground="{StaticResource CyanBrush}" FontSize="10" FontFamily="Segoe UI Semibold" />
+                                    <TextBlock Grid.Row="1" Text="Windows must already be connected to the ENET or MHD Wi-Fi network. Discovery sends the HSFZ vehicle-identification probe on active IPv4 networks." Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" Margin="0,7,0,0" />
+                                    <ListBox x:Name="FlashAdapterList" Grid.Row="2" Margin="0,14,0,0" Background="Transparent" BorderThickness="0">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Padding="11,10" Margin="0,0,0,6" Background="#17191D" BorderBrush="{StaticResource LineBrush}" BorderThickness="1">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding Endpoint}" FontFamily="Cascadia Mono, Consolas" FontSize="13" />
+                                                        <TextBlock Text="{Binding Identity}" Foreground="{StaticResource CyanBrush}" FontFamily="Cascadia Mono, Consolas" FontSize="9" Margin="0,5,0,0" />
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="2" Style="{StaticResource ElevatedCard}" Padding="18">
+                                <Grid>
+                                    <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                                    <TextBlock Text="02  LIVE DME SESSION" Foreground="{StaticResource CyanBrush}" FontSize="10" FontFamily="Segoe UI Semibold" />
+                                    <TextBlock x:Name="FlashGateTitleText" Grid.Row="1" Text="Select an adapter, connect HSFZ, then run a read-only DME identity scan." FontFamily="Segoe UI Semibold" FontSize="17" TextWrapping="Wrap" Margin="0,10,0,0" />
+                                    <Grid Grid.Row="2" Margin="0,18,0,0">
+                                        <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions><ColumnDefinition Width="132" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                        <TextBlock Text="TRANSPORT" Foreground="{StaticResource MutedBrush}" /><TextBlock x:Name="FlashTransportText" Grid.Column="1" Text="UDP 6811 / TCP 6801" FontFamily="Cascadia Mono, Consolas" />
+                                        <TextBlock Grid.Row="1" Text="DME PROFILE" Foreground="{StaticResource MutedBrush}" Margin="0,9,0,0" /><TextBlock x:Name="FlashProfileText" Grid.Row="1" Grid.Column="1" Text="Not identified" FontFamily="Cascadia Mono, Consolas" Margin="0,9,0,0" />
+                                        <TextBlock Grid.Row="2" Text="WRITE STATUS" Foreground="{StaticResource MutedBrush}" Margin="0,9,0,0" /><TextBlock x:Name="FlashWriteText" Grid.Row="2" Grid.Column="1" Text="Read-only until profile validation" Foreground="{StaticResource AmberBrush}" TextWrapping="Wrap" Margin="0,9,0,0" />
+                                    </Grid>
+                                    <Border Grid.Row="3" Background="#172126" BorderBrush="{StaticResource CyanBrush}" BorderThickness="2,0,0,0" Padding="12" Margin="0,20,0,0">
+                                        <TextBlock Text="Workflow: Discover adapter → Connect HSFZ → Read DME identities → Match profile → Read verified base BIN → Validate before any programming." Foreground="#A8DBE5" TextWrapping="Wrap" />
+                                    </Border>
+                                    <Border Grid.Row="4" Background="#2C2618" BorderBrush="{StaticResource AmberBrush}" BorderThickness="2,0,0,0" Padding="12" Margin="0,12,0,0" VerticalAlignment="Top">
+                                        <TextBlock x:Name="FlashSafetyText" Text="GCAL keeps programming disabled until the connected ECU has a validated DME profile, section plan, security session, checksum, and recovery path." Foreground="{StaticResource AmberBrush}" TextWrapping="Wrap" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Border Grid.Row="2" Style="{StaticResource ElevatedCard}" Background="#101319" Padding="12">
+                            <Grid>
+                                <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal"><TextBlock Text="DEVELOPER PACKET CONSOLE" Foreground="{StaticResource CyanBrush}" FontSize="10" FontFamily="Segoe UI Semibold" /><TextBlock Text="  ·  raw UDS TX/RX, HSFZ lifecycle, failures" Foreground="{StaticResource MutedBrush}" FontSize="10" /></StackPanel>
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal"><Button Content="Copy Log" Click="CopyFlashTrace_Click" Margin="0,0,8,0" /><Button Content="Clear" Click="ClearFlashTrace_Click" /></StackPanel>
+                                </Grid>
+                                <TextBox x:Name="FlashTraceText" Grid.Row="1" Margin="0,10,0,0" Background="#0D0E10" BorderBrush="#2D3138" BorderThickness="1" Padding="10" Foreground="#C6D1D9" FontFamily="Cascadia Mono, Consolas" FontSize="10" IsReadOnly="True" TextWrapping="NoWrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <Border Grid.Row="2" Background="#17181A" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0">
+            <Grid Margin="12,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                <TextBlock x:Name="StatusText" Text="Ready" Foreground="{StaticResource MutedBrush}" VerticalAlignment="Center" FontSize="10" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"><Ellipse x:Name="StatusDot" Width="6" Height="6" Fill="{StaticResource SuccessBrush}" Margin="0,0,6,0" /><TextBlock Text="LOCAL WORKSPACE" Foreground="{StaticResource MutedBrush}" FontSize="9" /></StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

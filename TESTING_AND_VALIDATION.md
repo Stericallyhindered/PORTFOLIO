@@ -147,6 +147,44 @@ Good test fixtures:
 - checksum mismatch case
 - interrupted update replay
 
+## Calibration, BIN/XDF, And Flash-Workflow Tooling
+
+Calibration software needs two kinds of trust: binary correctness and workflow correctness.
+
+What I would test:
+
+- bounded binary reads and writes
+- original-file immutability
+- changed-byte range tracking
+- undo/redo behavior
+- XDF table parsing
+- category and axis mapping
+- byte order and signedness handling
+- affine equation conversion and inversion
+- unsupported equation blocking
+- draft export manifests
+- checksum-provider boundaries
+- log parsing and channel normalization
+- diagnostic session state
+- flash transaction journaling
+- failure and recovery paths before any real write operation
+
+Examples from this portfolio:
+
+- `redline-gcal-bmw-g-chassis-calibration-studio`
+- `str8tune-ecu-calibration-editor`
+- `str8tune-binforge-calibration-editor`
+
+Good test fixtures:
+
+- tiny synthetic BIN fixtures with known byte locations
+- small XDF fixtures covering tables, scalars, axes, categories, and equations
+- known-good parsed catalog snapshots
+- malformed XDF examples
+- changed-byte golden files
+- fake diagnostic/transfer state machines
+- log CSV samples with missing, malformed, or renamed channels
+
 ## AI And LLM Workflows
 
 AI tests should not just ask "did the model answer nicely?"
@@ -210,15 +248,15 @@ If I were hardening the public portfolio itself, I would add:
 
 1. BLE packet parser tests for `canflex-mobile-app`.
 2. Firmware update dry-run tests for `jb4pro-mobile-device-tools`.
-3. CAN frame replay tests for `turbolamik-awd-controller`.
-4. API route tests for `stealth-machine-backend`.
-5. Webhook idempotency tests for `stealth-batteries-commerce-admin`.
-6. AI support eval fixtures for `techsupport-ai-backend`.
-7. Permission matrix tests for admin/customer workflows.
+3. BIN/XDF fixture tests for `redline-gcal-bmw-g-chassis-calibration-studio`.
+4. CAN frame replay tests for `turbolamik-awd-controller`.
+5. API route tests for `stealth-machine-backend`.
+6. Webhook idempotency tests for `stealth-batteries-commerce-admin`.
+7. AI support eval fixtures for `techsupport-ai-backend`.
+8. Permission matrix tests for admin/customer workflows.
 
 ## Interview-Friendly Summary
 
 If asked about testing, my honest answer is:
 
 > The public repo has uneven automated tests because it is a sanitized portfolio snapshot, not a polished open-source product. In production, the way I think about testing is contract-first: APIs, permissions, packet parsing, device state, telemetry freshness, retry behavior, idempotency, AI escalation, and recovery paths. For hardware and AI systems, I especially care about replay fixtures, malformed inputs, stale data, and failure cases because that is where real bugs live.
-
