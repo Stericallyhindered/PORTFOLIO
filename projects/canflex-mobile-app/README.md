@@ -1,16 +1,47 @@
-# canflex_app
+# CANFlex Mobile App
 
-A new Flutter project.
+This is a Flutter/Dart mobile app for a BLE-connected automotive fuel/sensor controller. It is included because it shows real mobile-to-hardware work, not just a UI demo.
 
-## Getting Started
+The app is built around the kind of workflow that matters in the car: connect to the device, read live sensor data, show gauges, change settings, handle calibration, track logs, and keep firmware/version behavior visible.
 
-This project is a starting point for a Flutter application.
+## What It Shows
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter/Dart mobile app structure
+- BLE scan, connect, read/write, and notification handling
+- live ethanol, fuel temperature, and fuel pressure telemetry
+- CAN output configuration
+- analog output and pressure mode settings
+- calibration flows
+- logging screens
+- firmware/version awareness
+- automotive hardware support UX
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Files Worth Reviewing
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- `lib/ble_provider.dart`  
+  Main BLE/device communication layer. This is the highest-signal file in the project.
+
+- `lib/screens/main_screen.dart`  
+  Live telemetry and gauge UI.
+
+- `lib/screens/settings_page.dart`  
+  CAN output, analog output, pressure mode, calibration, logs, and firmware/version UI.
+
+- `lib/screens/log_page.dart`  
+  Logging workflow.
+
+- `lib/screens/e85_calculator.dart`  
+  E85 calculation utility screen.
+
+## Good Interview Questions
+
+- Walk through the BLE connection lifecycle.
+- How does a raw BLE notification become app state?
+- What happens when the device disconnects while the user is changing settings?
+- How would you test calibration and telemetry parsing without physical hardware connected?
+- What would you refactor first if this app became a larger team project?
+
+## Portfolio Note
+
+This is a sanitized source snapshot. Generated builds, private binaries, local caches, secrets, and private environment files are excluded.
+
