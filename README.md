@@ -1,10 +1,14 @@
-# Matthew Phillips - Engineering Portfolio
+# Matthew Phillips - Software Engineering and Technical Leadership
 
 Portfolio: `https://github.com/Stericallyhindered/PORTFOLIO`  
 Resume: [`resume/Matthew_Phillips_Resume.pdf`](./resume/Matthew_Phillips_Resume.pdf)  
 Resume source: [`resume/Matthew_Phillips_Resume.md`](./resume/Matthew_Phillips_Resume.md)
 
-I build software that has to work around real machines, real customers, and real business mess. That includes full stack web apps, AI support systems, agentic workflows, mobile and desktop apps, cloud APIs, databases, CRM/order platforms, customer portals, admin dashboards, ecommerce systems, industrial machine tools, CAD/CAM workflows, embedded firmware, connected automotive hardware, ECU/TCU tuning platforms, HPLC/mass spec workflows, analytical testing software, and internal tools that keep businesses from drowning in manual work.
+I lead developers and build applications that support business operations, customers, and connected equipment. My work spans C#, .NET, ASP.NET, Oracle APEX and SQL, web and mobile applications, integrations, and production support.
+
+At Burger Motorsports, I led five developers while building the JB4 software ecosystem and supporting operational applications. At Stealth, I lead and mentor three junior developers across machine support, customer and warranty systems, commerce, automation, and internal tools.
+
+Oracle APEX-backed applications were part of my work at both Burger Motorsports and Stealth, supporting customer records, warranty workflows, support history, and operational automation. The public projects below show selected application components; the original production databases and private infrastructure are not included.
 
 Unless a project README says otherwise, the code in this portfolio is my own work. In company settings I have also led, reviewed, and helped productionize work from other engineers, but the source snapshots published here are included as my personal proof path.
 
@@ -12,12 +16,15 @@ Most of my production work lived in private company repos. This public repo is a
 
 ## Start Here
 
-If you are reviewing this for an interview, start with these. They are the strongest proof paths.
+Start with leadership, business applications, and C#/.NET, then explore the projects relevant to your team.
 
 | Area | Why it matters | Where to look |
 | --- | --- | --- |
+| Engineering leadership | Led five developers at Burger Motorsports; lead and mentor three junior developers at Stealth. Architecture, code review, production support, documentation, and moving prototypes into maintainable applications. | [`Resume`](./resume/Matthew_Phillips_Resume.md) |
+| Oracle business applications | Oracle APEX-backed customer, warranty, support, and automation applications at Burger Motorsports and Stealth. Production databases are private; the resume describes this work. | [`Experience and Oracle application work`](./resume/Matthew_Phillips_Resume.md), [`CRM application snapshot`](./projects/customer-tracking-crm) |
+| C# and .NET | C# WinForms JB4 hardware interfaces and a .NET 8 WPF calibration workspace. These public examples show desktop development; they do not represent the full scope of my ASP.NET experience. | [`JB4 C# interface`](./projects/jb4pro-csharp-interface), [`.NET calibration studio`](./projects/redline-gcal-bmw-g-chassis-calibration-studio) |
 | Stealth AI operations | AI support agents, live machine-cut monitoring, learned cut-quality memory, offline/server diagnostics, warranty evidence, CAD/CAM support, ecommerce/order support, internal assistant, RAG, tool calling, RBAC, escalation, and audit trails | [`projects/stealth-ai-operations-ecosystem`](./projects/stealth-ai-operations-ecosystem) |
-| JB4Pro vehicle tuning ecosystem | Mobile apps, hardware communication, firmware workflows, telemetry, diagnostics, and tuning UI for real vehicle hardware | [`projects/jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools), [`projects/jb4pro-csharp-interface`](./projects/jb4pro-csharp-interface) |
+| JB4Pro vehicle tuning ecosystem | Mobile and C# desktop applications, hardware communication, firmware workflows, telemetry, and diagnostics. The broader Burger Motorsports work also included Oracle APEX operational applications described in my resume | [`projects/jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools), [`projects/jb4pro-csharp-interface`](./projects/jb4pro-csharp-interface) |
 | BMW G-chassis calibration studio | .NET 8 WPF calibration workspace for B58/S58 DME BIN handling, XDF parsing, map editing, log review, diagnostic/flash workflow modeling, changed-byte tracking, and test coverage | [`projects/redline-gcal-bmw-g-chassis-calibration-studio`](./projects/redline-gcal-bmw-g-chassis-calibration-studio) |
 | CANFlex mobile hardware controller | Flutter app talking to BLE automotive sensor/controller hardware with calibration, logs, CAN output settings, and firmware/version screens | [`projects/canflex-mobile-app`](./projects/canflex-mobile-app) |
 | TurboLamik AWD / transmission telemetry | C and ESP-IDF-oriented CAN work, raw frame capture, BMW and TCU decoding, health state, and drivetrain metrics | [`projects/turbolamik-awd-controller`](./projects/turbolamik-awd-controller) |
