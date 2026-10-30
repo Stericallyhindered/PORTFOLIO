@@ -1,6 +1,6 @@
-# Code Examples To Review
+# Code examples
 
-This file points reviewers to the highest-signal examples in the portfolio, especially for vehicle software, firmware-adjacent integration, CAN/BLE hardware workflows, and full-stack systems.
+Selected implementation files, grouped by project.
 
 ## Vehicle / Embedded / Firmware-Adjacent
 

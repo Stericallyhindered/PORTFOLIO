@@ -1,135 +1,80 @@
-# Matthew Phillips - Software Engineering and Technical Leadership
+# Matthew Phillips
 
-Portfolio: `https://github.com/Stericallyhindered/PORTFOLIO`  
-Resume: [`resume/Matthew_Phillips_Resume.pdf`](./resume/Matthew_Phillips_Resume.pdf)  
-Resume source: [`resume/Matthew_Phillips_Resume.md`](./resume/Matthew_Phillips_Resume.md)
+Software engineer and technical lead building business applications, mobile and desktop software, and systems connected to industrial and automotive hardware.
 
-I lead developers and build applications that support business operations, customers, and connected equipment. My work spans C#, .NET, ASP.NET, Oracle APEX and SQL, web and mobile applications, integrations, and production support.
+[Resume](./resume/Matthew_Phillips_Resume.pdf) · [Experience](./resume/Matthew_Phillips_Resume.md) · [Projects](./projects) · [Code examples](./CODE_EXAMPLES.md)
 
-At Burger Motorsports, I led five developers while building the JB4 software ecosystem and supporting operational applications. At Stealth, I lead and mentor three junior developers across machine support, customer and warranty systems, commerce, automation, and internal tools.
+## Experience
 
-Oracle APEX-backed applications were part of my work at both Burger Motorsports and Stealth, supporting customer records, warranty workflows, support history, and operational automation. The public projects below show selected application components; the original production databases and private infrastructure are not included.
+**Stealth Machine Tools / Stealth Batteries | Technical Lead | 2025–present**
 
-Unless a project README says otherwise, the code in this portfolio is my own work. In company settings I have also led, reviewed, and helped productionize work from other engineers, but the source snapshots published here are included as my personal proof path.
+Lead and mentor three developers. Build customer and warranty applications, machine support tools, commerce systems, mobile apps, and internal automation. Work with production, sales, support, shipping, and engineering on requirements, releases, and ongoing support.
 
-Most of my production work lived in private company repos. This public repo is a cleaned-up portfolio snapshot with secrets, customer data, private binaries, firmware images, build outputs, databases, and private infrastructure removed. The point is to show implementation style, architecture, domain depth, and the kind of problems I personally built and owned.
+**Burger Motorsports | Lead Developer | 2019–2025**
 
-## Start Here
+Led five developers across the JB4 software ecosystem. Built mobile and desktop applications, device communications, firmware update tools, telemetry, and customer support systems. Work included Oracle APEX operational applications and C# desktop interfaces.
 
-Start with leadership, business applications, and C#/.NET, then explore the projects relevant to your team.
+**MP Analytical / Bayer**
 
-| Area | Why it matters | Where to look |
-| --- | --- | --- |
-| Engineering leadership | Led five developers at Burger Motorsports; lead and mentor three junior developers at Stealth. Architecture, code review, production support, documentation, and moving prototypes into maintainable applications. | [`Resume`](./resume/Matthew_Phillips_Resume.md) |
-| Oracle business applications | Oracle APEX-backed customer, warranty, support, and automation applications at Burger Motorsports and Stealth. Production databases are private; the resume describes this work. | [`Experience and Oracle application work`](./resume/Matthew_Phillips_Resume.md), [`CRM application snapshot`](./projects/customer-tracking-crm) |
-| C# and .NET | C# WinForms JB4 hardware interfaces and a .NET 8 WPF calibration workspace. These public examples show desktop development; they do not represent the full scope of my ASP.NET experience. | [`JB4 C# interface`](./projects/jb4pro-csharp-interface), [`.NET calibration studio`](./projects/redline-gcal-bmw-g-chassis-calibration-studio) |
-| Stealth AI operations | AI support agents, live machine-cut monitoring, learned cut-quality memory, offline/server diagnostics, warranty evidence, CAD/CAM support, ecommerce/order support, internal assistant, RAG, tool calling, RBAC, escalation, and audit trails | [`projects/stealth-ai-operations-ecosystem`](./projects/stealth-ai-operations-ecosystem) |
-| JB4Pro vehicle tuning ecosystem | Mobile and C# desktop applications, hardware communication, firmware workflows, telemetry, and diagnostics. The broader Burger Motorsports work also included Oracle APEX operational applications described in my resume | [`projects/jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools), [`projects/jb4pro-csharp-interface`](./projects/jb4pro-csharp-interface) |
-| BMW G-chassis calibration studio | .NET 8 WPF calibration workspace for B58/S58 DME BIN handling, XDF parsing, map editing, log review, diagnostic/flash workflow modeling, changed-byte tracking, and test coverage | [`projects/redline-gcal-bmw-g-chassis-calibration-studio`](./projects/redline-gcal-bmw-g-chassis-calibration-studio) |
-| CANFlex mobile hardware controller | Flutter app talking to BLE automotive sensor/controller hardware with calibration, logs, CAN output settings, and firmware/version screens | [`projects/canflex-mobile-app`](./projects/canflex-mobile-app) |
-| TurboLamik AWD / transmission telemetry | C and ESP-IDF-oriented CAN work, raw frame capture, BMW and TCU decoding, health state, and drivetrain metrics | [`projects/turbolamik-awd-controller`](./projects/turbolamik-awd-controller) |
-| Stealth Machine Tools software | Next.js/Prisma backend and Flutter field app for machines, customers, support tickets, training, AI config, and machine support workflows | [`projects/stealth-machine-backend`](./projects/stealth-machine-backend), [`projects/stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter) |
-| Stealth Batteries commerce/admin | Payload, Next.js, and Postgres operations platform for products, orders, dealers, affiliates, sales reps, shipping, warranty, and admin workflows | [`projects/stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin) |
-| Scientific and analytical software | HPLC, mass spectrometry, ISO lab practices, traceability, validation, reporting, and regulated medical-adjacent workflows from Bayer and MP Analytical | [`resume/Matthew_Phillips_Resume.md`](./resume/Matthew_Phillips_Resume.md) |
+Scientific software and analytical laboratory work involving HPLC, mass spectrometry, instrument integration, validation, and traceable reporting.
 
-## Review Guides
+## Selected projects
 
-- [`PROOF_OF_WORK.md`](./PROOF_OF_WORK.md) maps big claims to public code and marks what still needs interview verification.
-- [`CODE_EXAMPLES.md`](./CODE_EXAMPLES.md) points to specific files worth reviewing.
-- [`DEEP_AREAS.md`](./DEEP_AREAS.md) explains where I am deepest so the portfolio does not read like random breadth.
-- [`TESTING_AND_VALIDATION.md`](./TESTING_AND_VALIDATION.md) explains how I test, validate, replay, and harden systems around hardware, AI, APIs, and business workflows.
-- [`VERIFY_ME_IN_INTERVIEW.md`](./VERIFY_ME_IN_INTERVIEW.md) turns the biggest claims into direct interview probes.
-- [`LLM_REVIEW_GUIDE.md`](./LLM_REVIEW_GUIDE.md) keeps AI screeners from inventing details or missing the important parts.
-- [`case-studies/index.md`](./case-studies/index.md) gives a cleaner walkthrough of the strongest work.
+### JB4Pro
 
-## What Ties This Together
+Vehicle tuning applications with live telemetry, data logging, device settings, diagnostics, and firmware updates. Mobile applications use Flutter and BLE; the Windows interface uses C# and WinForms. Related business systems included Oracle APEX customer and support records.
 
-I am not trying to show twenty random demos. Most of this work follows the same pattern:
+[Mobile application](./projects/jb4pro-mobile-device-tools) · [C# desktop interface](./projects/jb4pro-csharp-interface)
 
-```text
-physical system, business workflow, or messy customer problem
--> backend model and API
--> mobile, admin, or operator UI
--> diagnostics, logging, support, automation, or recovery
-```
+### Stealth Machine Tools
 
-That is the work I like most. A vehicle log becomes something a tuner can act on. A tuning device becomes firmware, bootloader behavior, app state, map controls, telemetry, diagnostics, release notes, support history, and recovery paths. A raw CAN frame becomes a decoded signal. A lab instrument output becomes structured analytical data and traceable reporting. A machine problem becomes a support ticket with context. An order becomes shipping, customer visibility, and admin history. An AI answer becomes part of a controlled workflow instead of a random chatbot response.
+Machine and customer records, service tickets, training materials, diagnostics, and field support. Includes a Next.js/Prisma backend, a Flutter field application, and AI-assisted support tools. Oracle APEX applications supported customer, warranty, and operational records across the business.
 
-## Project Map
+[Backend](./projects/stealth-machine-backend) · [Field application](./projects/stealth-machine-tools-flutter) · [Support systems](./projects/stealth-ai-operations-ecosystem)
 
-| Project | What it shows |
-| --- | --- |
-| [`stealth-ai-operations-ecosystem`](./projects/stealth-ai-operations-ecosystem) | Flagship AI operations case study across Stealth Machine Tools and Stealth Batteries: support agents, live machine-cut monitoring, offline/server diagnostics, warranty evidence, CAD/CAM support, ecommerce/order support, internal assistant, RAG, tool calling, RBAC, escalation, audit trails, and production guardrails |
-| [`jb4pro-mobile-device-tools`](./projects/jb4pro-mobile-device-tools) | Flutter/Dart mobile app, BLE/device communication, gauges, logs, settings, diagnostics, firmware update hooks, WMI/meth and E85/flex fuel workflows, and automotive tuning hardware UX |
-| [`redline-gcal-bmw-g-chassis-calibration-studio`](./projects/redline-gcal-bmw-g-chassis-calibration-studio) | .NET 8 WPF BMW G-chassis/B58/S58 calibration studio with DME BIN document safety, XDF parsing, map editing, MHD log parsing, profile persistence, ENET/HSFZ/UDS-oriented diagnostics, flash workflow modeling, and tests |
-| [`canflex-mobile-app`](./projects/canflex-mobile-app) | BLE-connected fuel/sensor controller app with E85/fuel pressure telemetry, CAN output settings, analog output, calibration, logging, pressure modes, and firmware/version UI |
-| [`turbolamik-awd-controller`](./projects/turbolamik-awd-controller) | CAN frame intake, BMW/TurboLamik decoding, raw capture, health/watchdog state, derived drivetrain metrics, shadow AWD logic, BLE telemetry, and Flutter dashboard |
-| [`stealth-machine-backend`](./projects/stealth-machine-backend) | Next.js/Prisma backend for users, machines, tickets, AI config, training materials, auth, admin dashboards, analytics, and support workflows |
-| [`stealth-machine-tools-flutter`](./projects/stealth-machine-tools-flutter) | Cross-platform Flutter field/support app with API integration, local storage, auth helpers, camera/speech/PDF/QR/chart support |
-| [`stealth-batteries-commerce-admin`](./projects/stealth-batteries-commerce-admin) | Payload/Next/Postgres operations platform for products, orders, dealers, affiliates, sales reps, shipping, warranty, support, dashboards, and admin workflows |
-| [`techsupport-ai-backend`](./projects/techsupport-ai-backend) | Claude-backed support backend with auth, persistence, tickets, machine/customer records, document/context ingestion, notifications, analytics, and support workflow routes |
-| [`stealth-ai-support-system`](./projects/stealth-ai-support-system) | Customer/internal support prototype with chat, conversation history, ticketing, escalation, analytics, warranty/claims handling, onboarding, and human handoff paths |
-| [`customer-tracking-crm`](./projects/customer-tracking-crm) | CRM/order workflow app with companies, contacts, orders, approvals, customer portal, document/OCR-style processing, realtime updates, role-aware workflows, and audit trails |
-| [`geo-command-center-platform`](./projects/geo-command-center-platform) | GEO/AI-search visibility platform, not geospatial: Next.js, FastAPI, Supabase/Postgres/Drizzle, workers, providers, reports, citation tracking, audits, tests, and dashboards |
-| [`geo-command-center`](./projects/geo-command-center) | Smaller AI/search visibility command center with multi-tenant structure, provider adapters, prompt/report pipelines, audits, citation tracking, and dashboards |
-| [`str8tune-binforge-calibration-editor`](./projects/str8tune-binforge-calibration-editor) | Next.js/TypeScript ECU/BIN calibration editor shell, Supabase assets, and tuning-oriented app/components/lib structure |
-| [`str8tune-ecu-calibration-editor`](./projects/str8tune-ecu-calibration-editor) | ECU calibration tooling with React/TypeScript, XDF/BIN concepts, editable maps, hex/table views, comparison tools, visualization, and export-style workflows |
-| [`t56-ble-transmission-controller`](./projects/t56-ble-transmission-controller) | BLE transmission/controller project with PlatformIO firmware, Flutter app logic, protocol docs, mapping schema, presets, PWM capture/output, and gear/control logic |
-| [`awd-transfer-case-tuner`](./projects/awd-transfer-case-tuner) | Flutter AWD/transfer-case tuning app with realtime pages, diagnostics, configuration, drive rules, torque/slip logic, PWM commands, profiles, maps, and BLE sync paths |
-| [`growcontrol-climate-automation-platform`](./projects/growcontrol-climate-automation-platform) | Flutter, firmware, and Supabase automation with climate math, telemetry, rules, gateways, Tuya integration, and migrations |
-| [`growmie-edge-hub-firmware`](./projects/growmie-edge-hub-firmware) | Edge hub firmware for climate/device automation, provisioning, config storage, buffering, local Tuya control, and backend sync |
-| [`laserconsumables-commerce`](./projects/laserconsumables-commerce) | Industrial commerce/admin system with inventory services, manual order flows, shipping dashboards, and admin workflow components |
-| [`straincollector-commerce`](./projects/straincollector-commerce) | Specialty commerce/order workflow with Next.js/Supabase plus checkout, webhook, shipping label, and tracking flows |
-| [`bassclown-ecommerce`](./projects/bassclown-ecommerce) | Client ecommerce build with Next.js, Drizzle, migrations, reusable components, admin/customer workflows, and API docs |
-| [`ampgen-configurator`](./projects/ampgen-configurator) | Next.js/React configurator for power/electrical product planning with draggable layout zones |
-| [`hotspot-control-api`](./projects/hotspot-control-api) | Python/PowerShell Windows/network automation around local hotspot/control workflows |
-| [`esp32-mouse-controller`](./projects/esp32-mouse-controller) | ESP32 USB HID mouse firmware plus Python GUI/control scripts for physical device testing |
-| [`vehicle-touch-input-controller`](./projects/vehicle-touch-input-controller) | Arduino/CST816S hardware input controller and compact embedded control code |
+### Stealth Batteries
 
-## What Is Publicly Proven Here
+Commerce and administration software for products, orders, dealers, affiliates, shipping, and warranty support. Built with Next.js, Payload CMS, and PostgreSQL.
 
-- Source snapshots across full stack, mobile, AI, embedded, CAN/BLE, ecommerce, CRM, and machine-support projects.
-- Real project structure, implementation files, domain notes, schemas, scripts, and representative code.
-- Enough public code for a reviewer to ask deep technical questions quickly.
+[Project](./projects/stealth-batteries-commerce-admin)
 
-## What Should Be Verified In Interview
+### Customer Tracking CRM
 
-- Private production scale, company tenure, team leadership scope, deployment history, customer/user counts, and business impact.
-- Private infrastructure, production logs, app store history, proprietary repos, private firmware, and company references.
+Customer and order management with approvals, a customer portal, document intake, notifications, and audit history.
 
-I am not asking a reviewer to trust huge claims from a README alone. I am trying to make the proof path clear so a technical interview can go straight into the real work.
+[Project](./projects/customer-tracking-crm)
 
-## Technical Range
+### Redline GCAL
 
-**Frontend:** React, Next.js, TypeScript, JavaScript, HTML/CSS, Tailwind-style UI, Radix/shadcn-style components, dashboards, customer portals, admin panels, configuration interfaces, charts/gauges, table/map editors, 2D/3D visualization concepts.
+.NET 8 WPF calibration workspace for BMW G-chassis vehicles. Includes BIN editing, XDF parsing, calibration maps, log review, revision tracking, and diagnostic workflow tools.
 
-**Backend:** Node.js, Express, FastAPI, REST APIs, WebSockets, JWT, OAuth concepts, role permissions, audit logging, provider adapters, webhooks, background jobs, notification workflows.
+[Project](./projects/redline-gcal-bmw-g-chassis-calibration-studio)
 
-**Databases:** Postgres, SQLite, MongoDB/Mongoose, Supabase, Drizzle, Prisma, Redis/BullMQ-style queues, Payload CMS, data modeling, migrations, reporting tables, CRM/order state, support history, and audit trails.
+### CANFlex
 
-**AI:** Claude/Anthropic, OpenAI-style APIs, AI support agents, prompt/context workflows, local LLM workflows, Codex/Cursor-style coding flows, codebase indexing, document ingestion, OCR/document processing, ticket triage, warranty/claims workflows, analytics, escalation, and human handoff.
+Mobile application for automotive fuel and sensor hardware. Includes BLE communications, live sensor readings, calibration, CAN configuration, and device settings.
 
-**Scientific / Analytical:** MP Analytical, Bayer internship-to-role experience, HPLC, mass spectrometry, analytical testing equipment, embedded firmware for lab systems, ISO lab standards, regulated medical-adjacent workflows, scientific data handling, method/run context, validation checks, reporting support, data integrity, traceable records, strict protocol navigation, regulated documentation, exception review, and lab-process automation.
+[Project](./projects/canflex-mobile-app)
 
-**Vehicle / Tuning / Embedded:** ECU/TCU tuning workflows, BMW G-chassis/B58/S58 DME calibration, XDF/BIN parsing, map editing, flash workflow modeling, JB4, CANFlex, standalone ECU/TCU-adjacent controllers, GDI drivers, fuel injector controllers, C, C++, ESP-IDF-oriented scaffolding, CAN bus, OBD2, UDS-style diagnostics, ENET/HSFZ concepts, BLE/serial communication, BMW E90 signal decoding, TurboLamik TCU frame decoding, MaxxECU CAN output docs, raw CAN capture, health/watchdog state, derived metrics, calibration interfaces, map control, firmware update flows, bootloader/erase/write/checksum patterns, and production tuning support.
+### TurboLamik Telemetry
 
-**Mobile / Hardware:** Flutter, Dart, iOS, Android, Windows, macOS, Android concepts, BLE/device communication, serial-style communication, diagnostics, firmware update flows, gauges, datalogging, settings/configuration UI, tuner/customer interfaces, and app-to-device control.
+CAN data capture and decoding for vehicle and transmission telemetry, with signal health checks, drivetrain metrics, and a Flutter dashboard.
 
-**Desktop / Automation:** C#, WinForms, Python, PowerShell, Windows/server-oriented scripting, local APIs, serial port monitoring, Bluetooth/BLE support libraries, Docker Compose, Git/GitHub/GitLab, deployment notes, and technical documentation.
+[Project](./projects/turbolamik-awd-controller)
 
-## How I Work
+### Additional work
 
-I am careful with existing systems. I like scoped changes, readable code, useful comments, plain-language notes, and documentation that helps the next person. I use AI tools heavily, but I review the output like an engineer who owns the result. My default move is to understand the workflow, find the real constraint, build the simplest thing that can survive production, and leave the system easier to work on than I found it.
+[Calibration editors](./projects/str8tune-ecu-calibration-editor) · [Climate automation](./projects/growcontrol-climate-automation-platform) · [AI search analytics](./projects/geo-command-center-platform) · [Industrial commerce](./projects/laserconsumables-commerce) · [All projects](./projects)
 
-## Known Weak Spots
+## Technologies
 
-These are fair interview topics.
+- **Applications:** C#, .NET, ASP.NET, WPF, WinForms, Flutter, Dart, React, Next.js, TypeScript.
+- **Backend and data:** Oracle APEX, SQL, PostgreSQL, SQLite, MongoDB, Node.js, Python, FastAPI, REST APIs.
+- **Hardware:** C, C++, ESP32, embedded Linux, BLE, CAN, UART/serial, firmware updates, telemetry.
+- **Delivery:** Git, CI/CD, Docker, cloud deployments, automated validation, monitoring, and production support.
 
-- This is a portfolio snapshot, not the original private production history.
-- Some projects are sanitized and will not include private environment files, firmware images, credentials, customer data, or production infrastructure.
-- Public test coverage is uneven. I can talk through how I would add fixtures, mocks, integration tests, hardware simulators, and regression coverage.
-- Some older projects show older patterns because they are included as historical hardware-interface examples.
-- Some projects started from templates, then were heavily customized. Check the custom collections, routes, services, hooks, schemas, and workflows before judging them as template-only.
-- A few projects were built under deadline pressure. I can explain the tradeoffs and what I would refactor today.
+Selected source and documentation are included here. Customer data, credentials, proprietary binaries, and private production infrastructure are excluded.
 
-Contact: `bajaracer415@gmail.com`
+## Contact
+
+[bajaracer415@gmail.com](mailto:bajaracer415@gmail.com)
