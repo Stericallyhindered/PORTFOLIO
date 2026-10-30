@@ -42,15 +42,6 @@ The project is included because it shows the full-stack side of industrial machi
 - `scripts/upload-materials.ts` and related scripts  
   Material/context ingestion helpers.
 
-## Good Interview Questions
-
-- How does a customer or machine issue become a ticket?
-- What context is safe for AI to use?
-- How would you keep AI answers from making unsupported warranty or diagnostic claims?
-- Where is auth enforced?
-- What would you test first?
-- What would you refactor first if this moved from internal tool to larger product?
-
 ## Portfolio Note
 
 This is a sanitized source snapshot. Private machine/customer data, environment files, proprietary documents, production infrastructure, and secrets are excluded.

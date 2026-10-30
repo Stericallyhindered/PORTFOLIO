@@ -33,14 +33,6 @@ The app is built around the kind of workflow that matters in the car: connect to
 - `lib/screens/e85_calculator.dart`  
   E85 calculation utility screen.
 
-## Good Interview Questions
-
-- Walk through the BLE connection lifecycle.
-- How does a raw BLE notification become app state?
-- What happens when the device disconnects while the user is changing settings?
-- How would you test calibration and telemetry parsing without physical hardware connected?
-- What would you refactor first if this app became a larger team project?
-
 ## Portfolio Note
 
 This is a sanitized source snapshot. Generated builds, private binaries, local caches, secrets, and private environment files are excluded.

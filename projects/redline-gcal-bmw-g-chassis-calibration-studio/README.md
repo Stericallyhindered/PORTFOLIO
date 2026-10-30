@@ -96,19 +96,6 @@ The important part is not just "can edit a BIN." The important part is how the t
 
 That is the difference between a quick tuner utility and software that can support actual customers, real vehicles, revisions, troubleshooting, and support history.
 
-## Interview Probes
-
-Good questions to ask me about this project:
-
-- How does a raw DME binary become an editable calibration table?
-- How does an XDF definition map address, dimensions, byte order, signedness, units, equations, and axes into UI state?
-- What makes a draft export different from a flash-ready file?
-- Where should checksum logic live and why should it be isolated?
-- How would you recover from a partial or failed flash workflow?
-- What log quality checks matter before trusting a tuning decision?
-- How would you add hardware-in-the-loop testing for ENET/UDS behavior?
-- What would you refuse to automate without explicit operator confirmation?
-
 ## Run
 
 ```powershell

@@ -64,14 +64,6 @@ The business operations layer is the important part:
 - custom admin/order UI
 - migrations and generated types
 
-## Good Interview Questions
-
-- How do orders, customers, dealers, affiliates, and sales reps relate?
-- Where would you enforce access control for admin and customer workflows?
-- How would you handle webhook idempotency and retry safety?
-- What would you split out first if order volume grew quickly?
-- What parts are template base and what parts are business-specific?
-
 ## Portfolio Note
 
 This is a sanitized public snapshot. Secrets, production environment files, customer data, payment credentials, generated builds, and private infrastructure details are excluded.
